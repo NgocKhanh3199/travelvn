@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-qltk{
+    display: flex;
+    flex-direction: row;
+}
+
+.user-info{
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-left {
+    height: 100vh;
+}
+
+.menu-left h6,
+.content h6 {
+    font-family: cursive;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar-nav li {
+    height: 60px;
+}
+
+.navbar-nav li:hover {
+    background-color: plum;
+}
+
+.my-profile{
+    margin: 20px 0;
+}
+
+.content {
+    padding-top: 10px;
+}
+
+.content .user-input{
+    padding: 10px;
+}
+
+.content .btn-taikhoan .btn:hover {
+    background-color: thistle;
+}
+
+.content label {
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.content .btn-taikhoan{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 46.1875em) {
+    .menu-qltk{
+        /* flex-direction: column; */
+    }
+
+    .user-info{
+        /* display: none; */
+        flex-direction: column;
+    }
+
+    .avata{
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-home{
+        margin: 20px;
+    }
+    
+    .user-menu{
+        display: flex;
+        /* flex-direction: row; */
+        font-size: 12px;
+    }
+
+    .menu-left{
+        /* display: flex;
+        flex-direction: row; */
+        /* width: 100%; */
+        height: 100vh;
+    }
+
+    .user-menu li {
+        height: 100px;
+    }
+    /* .navbar-nav #diadiemyeuthich {
+        height: 130px;
+    } */
+    /* .container-fluid .menu-left .row {
+        height: 100px;
+        padding-bottom: 10px;
+    } */
+
+    .my-profile{
+        margin: 5px 0;
+        font-size: 18px;
+    }
+    .content {
+        /* padding: 0 20px 0 20px; */
+        font-size: 12px;
+    }
+
+    .content img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .content #tennd{
+        font-size: 12px;
+    }
+
+    .content .user-input{
+        padding: 5px;
+    }
+
+    .content .btn-taikhoan{
+        margin: 0 0;
+        justify-content: space-evenly;
+    }
+
+    .content .btn-taikhoan button{
+        line-height: 100%;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .content .user-input input{
+        height: 35px;
+        font-size: 12px;
+    }
+}
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.content .dmk-container{
+    /* border: 2px dashed red; */
+    padding: 20px;
+    /* background-color: thistle; */
+    margin-top: 20px;
+    height: 100vh;
+}
+
+.content .dmk-title{
+    margin: 20px;
+}
+
+.mk-input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.mk-input-group label{
+    font-style: italic;
+}
+
+.mk-button-group{
+    display: flex;
+    justify-content: center;
+}
+
+.mk-button-group button{
+    margin: 10px;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-item{
+    flex-basis: 32%;
+    border: 1px solid #111;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.card-img{
+    position: relative;
+}
+
+.card-img img{
+    width: 100%;
+    height: 200px;
+}
+
+.card-img button{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.card-info{
+    font-size: 16px;
+}

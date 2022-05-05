@@ -1,0 +1,153 @@
+.tour, .seach{
+    padding: 30px;
+}
+.header-seach, .header-tour{
+    font-size: 28px;
+    color: rgb(79, 3, 79);
+    text-align: center;
+    font-weight: 600;
+}
+.go , .stan, .dayy, .tick{
+    color: rgb(79, 3, 79);
+    font-size: 18px;
+}
+.item-seach-go, .item-seach-stan, .item-seach-day, .item-seach-ticket{
+    padding: 8px 0;
+}
+.ticket, .day{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.item-ticket, .item-day{
+    position: relative;
+    flex-basis: 50%;
+    /* background-color: rgb(153, 204, 153); */
+    border: 1px solid rgb(133, 129, 133);
+    padding: 6px;
+    text-align: center;
+}
+.item-btn-seach{
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+    /* background-color: aqua; */
+}
+.btn-seach{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background-color: rgb(201, 99, 230);
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.nunber-tour{
+    color: rgb(110, 7, 110);
+}
+
+.in4-tour{
+    margin: auto;
+    text-align: center;
+}
+.item-tour{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.item-t{
+    position: relative;
+    flex-basis: 50%;
+}
+.sapxep-tour{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.labell{
+    flex-basis: 25%;
+    color: rgb(110, 7, 110);
+}
+.sapxep{
+    flex-basis: 50%;
+    float: right;
+    
+}
+
+.item-meta {
+    padding: 10px 10px;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+}
+
+.item-meta .item-header {
+    text-decoration: none;
+}
+
+.item-meta .item-tua {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.item-meta .item-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #dc0303;
+    height: 10px;
+}
+
+.item-meta .item-khoihanh {
+    font-size: 13px;
+}
+
+.khungchuaimg {
+    height: 170px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.item-wrap img {
+    transform: scale(1);
+    transition: all 0.5s;
+    height: 100%;
+}
+
+.item-wrap img:hover {
+    transform: scale(1.1);
+}
+
+.item-chitiet {
+    color: #000;
+    font-weight: 400;
+    border: 1px solid #000;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.header-img {
+    position: relative;
+    top: -5px;
+}
+
+.header-img img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+.page-item{
+    margin-left: 10px;
+     
+}
+.page-link{
+    height: 32px;
+    min-width: 32px;
+    border-radius: 5px;
+    border: 1px solid gray; 
+}

@@ -1,0 +1,387 @@
+.body1{
+    padding-top: 82px;
+}
+.carousel-item {
+    height: 500px;
+}
+
+.tournoibat {
+    margin-top: 30px;
+}
+
+.header-diemdulichdacsac, .header-hotel {
+    margin-top: 30px;
+}
+
+.content-hotel .col-sm-3 img {
+    height: 410px;
+}
+
+.content-hotel .col-sm-12 img {
+    height: 200px;
+}
+
+.item-meta {
+    padding: 15px 15px;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+}
+
+.item-meta .item-header {
+    text-decoration: none;
+}
+
+.item-meta .item-tua {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.item-meta .item-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #dc0303;
+}
+
+.item-meta .item-khoihanh {
+    font-size: 13px;
+}
+
+.khungchuaimg {
+    height: 200px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.item-wrap img {
+    transform: scale(1);
+    transition: all 0.5s;
+    height: 100%;
+}
+
+.item-wrap img:hover {
+    transform: scale(1.1);
+}
+
+.item-chitiet {
+    color: #000;
+    font-weight: 400;
+    border: 1px solid #000;
+    padding: 3px 15px;
+    text-decoration: none;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem !important;
+}
+
+.header-img {
+    position: relative;
+    top: -5px;
+}
+
+.header-img img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
+.tuade .header-h {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
+    display: inline-block;
+    font-weight: 600;
+    position: relative;
+    font-family: Oswald;
+    color: rgb(123, 16, 148);
+}
+
+.header-tournoibat .xemthem {
+    color: rgb(172, 20, 172);
+    font-size: 17px;
+}
+
+.hihi, .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.item-dacsac {
+    height: 280px;
+    /* max-width: 100%; */
+    position: relative;
+    margin-top: 10px;
+    /* border: 2px solid rebeccapurple; */
+    padding: 0 0 0 0;
+    flex-basis: 32%;
+
+}
+
+.item-img-dacsac, .img-hotel {
+    height: 100%;
+    /* width: 100%; */
+    object-fit: cover;
+}
+
+.diemdulichdacsac {
+    padding: 10px 30px;
+}
+
+.item-content-dacsac {
+    box-shadow: inset 0 0 0 2000px
+}
+
+.overlay {
+    background-color: rgba(152, 68, 160, 0.5);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(.9);
+    transition: all 0.5s;
+
+}
+
+.item-dacsac:hover .overlay {
+    opacity: 1;
+    transform: scale(1.0);
+}
+
+.item_header-overlay {
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.ten-dacsac {
+    position: absolute;
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 600;
+    background: rgba(57, 2, 61, 0.5);
+    transition: 0.6s ease;
+    opacity: 1;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    height: 75px;
+}
+
+.item-dacsac:hover .ten-dacsac {
+    opacity: 0;
+    height: 0%;
+}
+
+/* ................ */
+.khamphangay {
+    color: rgb(138, 8, 138);
+    font-weight: 500;
+    font-size: 17px;
+    border: 1px solid rgb(246, 7, 246);
+    border-radius: 10px;
+    text-decoration: none;
+    height: 45px;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.item-hotel {
+    position: relative;
+    padding: 0 0 0 0;
+    margin-top: 10px;
+}
+
+.item-hotel-content {
+    position: absolute;
+    bottom: 0;
+    font-size: 23px;
+    font-weight: 600;
+    transition: 0.6s ease;
+    opacity: 1;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    height: 60px;
+}
+
+.img-hotel img {
+    border-radius: 10px;
+}
+
+.overlay-hotel {
+    background-color: rgba(207, 48, 228, 0.7);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    transition: all 0.5s;
+    border-radius: 10px;
+}
+
+.item-hotel:hover .overlay-hotel {
+    opacity: 1;
+    height: 100%;
+}
+
+.overlay-hotel ul {
+    padding: 10px 40px;
+}
+
+.overlay-hotel ul li {
+    color: white;
+    font-size: 20px;
+    font-family: serif;
+    list-style: circle;
+}
+
+.item-logo-hotel {
+    top: 16px;
+    left: 16px;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+.img-logo-hotel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-logo-hotel img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.hotel-h {
+    margin-top: 30px;
+}
+
+.hotel {
+    background-color: rgba(214, 23, 227, 0.1);
+    padding: 30px 70px 75px 70px;
+}
+
+/* ------------------- */
+.blogdulich {
+    padding: 30px 70px 75px 70px;
+}
+
+.item-blog {
+    max-width: 100%;
+    height: 550px;
+    position: relative;
+}
+
+.blog {
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+}
+
+.blog-1 {
+    height: 250px;
+    width: 250px;
+    top: 27%;
+    left: 5%;
+}
+
+.blog-1-img img, .blog-7-img img {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+.blog-2-img img, .blog-3-img img, .blog-4-img img, .blog-5-img img, .blog-6-img img {
+    height: 190px;
+    width: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+.blog-2 {
+    height: 190px;
+    width: 190px;
+    top: 0%;
+    left: 25%;
+}
+
+.blog-3 {
+    height: 190px;
+    width: 190px;
+    top: 35%;
+    left: 37%;
+}
+
+.blog-4 {
+    height: 190px;
+    width: 190px;
+    top: 70%;
+    left: 25%;
+}
+
+.blog-5 {
+    height: 190px;
+    width: 190px;
+    top: 15%;
+    left: 60%;
+}
+
+.blog-6 {
+    height: 190px;
+    width: 190px;
+    top: 65%;
+    left: 55%;
+}
+
+.blog-7 {
+    height: 250px;
+    width: 250px;
+    top: 45%;
+    left: 75%;
+}
+
+.tua-blog {
+    top: 0;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 12px;
+    position: absolute;
+    font-size: 16px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.9) 100%);
+    align-items: flex-end;
+    font-weight: 600;
+    border-radius: 50%;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+
+.item-blog .blog:hover {
+    transform: scale(1.1);
+}

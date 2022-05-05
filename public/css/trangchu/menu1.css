@@ -1,0 +1,76 @@
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background-color: rgb(249, 238, 250);
+    padding: 0 50px;
+}
+.logo {
+    font-size: 25px;
+}
+.logo2{
+    color: white;
+    font-size: 30px;
+}
+
+.eng ,.dangnhap, .dangky {
+    font-size: 16px;
+    text-decoration: none;
+    color: blueviolet;
+}
+
+.header {
+    background-color: rgb(186, 135, 234);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 6;
+    transform: translateX(-100%);
+    transition: transform linear 0.2s;
+}
+
+.menutop {
+    padding: 20px;
+}
+.menudown{
+    display: block;
+    background-color: rgb(228, 209, 246);
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 4;
+}
+.menudown li {
+    display: inline-block;
+    padding: 0 24px;
+}
+
+.menutop li {
+    list-style-type: none;
+    padding: 5px 0px;
+}
+
+.menutop li a {
+    color: white;
+    font-size: 20px;
+}
+
+.menudown li a {
+    font-size: 18px;
+    line-height: 20px;
+    color: rgb(79, 14, 79);
+}
+
+.overlay-phu {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 5;
+}

@@ -1,0 +1,12 @@
+<?php
+$this->view('container','homeheader');
+?>
+<?php
+$this->view('trangchu','menu');
+?>
+<?php
+$this->view('trangchu','content_home');
+?>
+<?php
+$this->view('container','homefooter');
+?>
