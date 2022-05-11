@@ -1,6 +1,8 @@
-
-
-    <div class="pt-2 menu ">
+<?php
+    session_start();
+?>
+   
+   <div class="pt-2 menu ">
         <div class="row">
             <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
                 <a class="text-decoration-none" href="#">TravelVN</a>
@@ -14,12 +16,37 @@
                     <li class="dropdown-item"> VIE</li>
                 </ul>
             </div>
+            <?php 
+                if(isset($_SESSION['iduser'])){
+            ?>
+                <div class="col-md-2 col-3 text-center">
+                    <a class="dangnhap" href="index.php?controller=cuser&action=loginpage">
+                        Xin chào, <?php 
+                        if(isset($_SESSION['name'])) {
+                            $name = $_SESSION['name'];
+                            echo $name;
+                        } 
+                        ?>
+                    </a>
+                </div>
+                <div id="dangky" class="col-md-1 text-center">
+                    <a href="index.php?controller=cuser&action=logout" class="dangky">Đăng Xuất</a>
+                </div>
+                
+            <?php 
+                } 
+                else
+                {
+            ?>
             <div class="col-md-2 col-3 text-center">
                 <a class="dangnhap" href="index.php?controller=cuser&action=loginpage">Đăng nhập</a>
             </div>
             <div id="dangky" class="col-md-1 text-center">
-                <a class="dangky">Đăng ký</a>
+                <a href="index.php?controller=cuser&action=registerPage" class="dangky">Đăng ký</a>
             </div>
+            <?php 
+                } 
+            ?>
         </div>
         <div id="header" class="header">
             <ul class="menutop" id="menutop">
@@ -27,19 +54,19 @@
                     <i id="logo-menutop1" class="logo2 fa-solid fa-bars text-center"></i>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="fa-solid fa-house"></i> Trang chủ</a>
+                    <a href="index.php?controller=chome&action=home" class="nav-link"><i class="fa-solid fa-house"></i> Trang chủ</a>
                 </li>
                 <li>
                     <a href="#" class="nav-link "><i class="fa-solid fa-people-group"></i> Về chúng tôi</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link"><i class="fa-solid fa-plane-departure"></i> Tour du lịch</a>
+                    <a href="index.php?controller=chome&action=home&page=tour" class="nav-link"><i class="fa-solid fa-plane-departure"></i> Tour du lịch</a>
                 </li>
                 <li>
                     <a href="#" class="nav-link "><i class="fa-solid fa-hotel"></i> Khách sạn</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link "><i class="fa-solid fa-notebook"></i> Kinh nghiệm du lịch</a>
+<a href="#" class="nav-link "><i class="fa-solid fa-notebook"></i> Kinh nghiệm du lịch</a>
                 </li>
             </ul>
         </div>
@@ -47,13 +74,13 @@
         <div class="menudown" id="menudown">
             <ul class="nav justify-content-center" id="menudown">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Trang chủ</a>
+                    <a href="index.php?controller=chome&action=home" class="nav-link">Trang chủ</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link ">Về chúng tôi</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Tour du lịch</a>
+                    <a href="index.php?controller=chome&action=home&page=tour" class="nav-link">Tour du lịch</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link ">Khách sạn</a>

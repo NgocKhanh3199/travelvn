@@ -1,5 +1,11 @@
+.list-tour{
+    margin-top: 100px;
+}
 .tour, .seach{
-    padding: 30px;
+    padding: 5px 30px;
+}
+.breadcrumb{
+    margin-left: 20px;
 }
 .header-seach, .header-tour{
     font-size: 28px;

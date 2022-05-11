@@ -1,0 +1,126 @@
+<script src="./public/js/js.js"></script>
+<div class="container container-form">
+    <h4 class="page-title">THÊM TOUR MỚI</h4>
+    <form class="frame" action="" method="">
+        <div class="input-group">
+            <span class="">Tên Tour</span>
+            <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
+        </div>
+        <div class="input-group">
+            <span class="">Hình ảnh</span>
+            <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
+        </div>
+        <div class="input-group">
+            <span class="">Giá</span>
+            <input id="price" type="text" class="form-control" placeholder="Nhập Giá">
+        </div>
+        <div class="input-group">
+            <span class="">Ngày Bắt Đầu</span>
+            <input id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
+        </div>
+        <div class="input-group">
+            <span class="">Ngày Kết Thúc</span>
+            <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
+        </div>
+        <div class="input-group" id="number-day">
+            <span class="">Số Lượng Ngày</span>
+            <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+        </div>
+        <div class="input-group" id="number-night">
+            <span class="">Số Lượng Đêm</span>
+            <input value="` + numberday + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
+        </div>
+        <div class="input-group">
+            <span class="">Mô Tả</span>
+            <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="add()" type="button">Thêm</button>
+            <a href="index.php?controller=chome&action=company&path=tour" class="btn btn-primary" type="button">Thoát </a>
+        </div>
+    </form>
+</div>
+<script>
+    function getLastDayOfMonth(year, month) {
+        return new Date(year, month, 0);
+    }
+
+    function total() {
+        daystar = $('#day-star').val();
+        dayend = $('#day-end').val();
+        get_start_date = new Date(daystar);
+        var start_date = get_start_date.getDate();
+        var start_month = get_start_date.getMonth() + 1;
+        var start_year = get_start_date.getFullYear();
+        get_end_date = new Date(dayend);
+        var end_date = get_end_date.getDate();
+        var end_month = get_end_date.getMonth() + 1;
+        var end_year = get_end_date.getFullYear();
+
+        const lastDayCurrentMonth = getLastDayOfMonth(
+            start_year,
+            start_month,
+        );
+        total_startdayofmonth = lastDayCurrentMonth.getDate()
+
+        if (start_month == end_month) {
+            numberday = end_date - start_date;
+            numbernight = numberday - 1;
+            if (numberday < 0) {
+                alert("lỗi rồi ngu")
+                numberday = null;
+                numbernight = null;
+            }
+        } else if (start_month != end_month) {
+            numberday = (total_startdayofmonth - start_date) + end_date;
+            numbernight = numberday - 1;
+            if (numberday < 0) {
+                alert("lỗi rồi ngu")
+                numberday = null;
+                numbernight = null;
+            }
+        }
+        $('#number-day').empty()
+        $('#number-night').empty()
+        $('#number-day').append(`
+        <span class="">Số Lượng Ngày</span>
+            <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+        `)
+        $('#number-night').append(`
+        <span class="">Số Lượng Đêm</span>
+        <input value="` + numbernight + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đêm">
+        `)
+    }
+
+    numberday = $('#number-day').val();
+    numbernight = $('#number-night').val();
+
+    function add() {
+        hinhanh = $('#hinhanh').get(0).files;
+        link = uploadFile(hinhanh, 'tour');
+        nametour = $('#nametour').val();
+        pricetour = $('#price').val();
+        dayend = $('#day-end').val();
+        daystrart = $('#day-star').val();
+        in4tour = $('#infotour').val();
+        $.post("index.php?controller=ctour&action=add", {
+            hinhanh: link,
+            nametour: nametour,
+            pricetour: pricetour,
+            dayend: dayend,
+            daystar: daystar,
+            numberday:numberday,
+            numbernight:numbernight,
+            in4tour: in4tour,
+        }, function(data) {
+            console.log(data);
+            if (data > 0) {
+                alert('sucess');
+                // window.location.href = "index.php?controller=chome&action=company";
+            }else if(data<=0){
+                alert("Không thành công")
+            }
+        })
+    }
+</script>

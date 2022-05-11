@@ -188,6 +188,43 @@ td{
     flex-basis: 10%;
 }
 
+.container {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-form .frame {
+    border: 1px solid black;
+    margin: 20px;
+    padding: 10px;
+}
+
+.container-form .input-group {
+    margin: 20px 0;
+}
+
+.container-form .input-group span {
+    flex-basis: 15%;
+    text-align: start;
+}
+
+.container-form .input-group input {
+    flex-basis: 85%;
+}
+
+.container-form .button-group {
+    margin: 10px;
+}
+
+.container-form .button-group button {
+    margin: 0 20px;
+}
+
+.container-form .button-group a{
+    text-decoration: none;
+    color: #fff;
+}
+
 @media screen and (max-width: 800px) {
     .navbar-toggler {
         display: block;

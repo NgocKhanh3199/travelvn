@@ -40,6 +40,39 @@ class controller
             echo $path;
         }
     }
+    public function viewhome($FolderName, $FileName)
+    {
+        $path = __DIR__ . "/../views/trangchu/$FolderName/$FileName.php";
+        if (file_exists($path)) {
+            require $path;
+            // echo $path;
+        } else {
+            echo "Not find Views";
+            echo $path;
+        }
+    }
+    public function viewadmin($FolderName, $FileName)
+    {
+        $path = __DIR__ . "/../views/admin/$FolderName/$FileName.php";
+        if (file_exists($path)) {
+            require $path;
+            // echo $path;
+        } else {
+            echo "Not find Views";
+            echo $path;
+        }
+    }
+    public function viewcongty($FolderName, $FileName)
+    {
+        $path = __DIR__ . "/../views/congty/$FolderName/$FileName.php";
+        if (file_exists($path)) {
+            require $path;
+            // echo $path;
+        } else {
+            echo "Not find Views";
+            echo $path;
+        }
+    }
     //function upload
     public function uploadFile()
     {

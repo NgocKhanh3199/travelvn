@@ -24,7 +24,7 @@
                     <td>6</td>
                     <td>Việt Tour</td>
                     <td>Mô tả</td>
-                    <td><button class="admin-button"><a href="?folder=tour&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="index.php?controller=chome&action=admin&path=tour&page=detail">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
                 <tr>
@@ -35,7 +35,7 @@
                     <td>6</td>
                     <td>Việt Tour</td>
                     <td>Mô tả</td>
-                    <td><button class="admin-button"><a href="">Chi Tiết</a></button></td>
+                    <td><button class="index.php?controller=chome&action=admin&path=tour&page=detail"><a href="">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
             </tbody>

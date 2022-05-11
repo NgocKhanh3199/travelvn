@@ -24,5 +24,5 @@
             </tbody>
         </table>
     </div>
-    <button class="admin-button"><a href="?folder=tour"> Trở Lại</a></button>
+    <button class="admin-button"><a href="index.php?controller=chome&action=admin&path=tour"> Trở Lại</a></button>
 </div>

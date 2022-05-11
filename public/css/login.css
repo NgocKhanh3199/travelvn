@@ -2,7 +2,38 @@
     margin: 0;
     padding: 0;
 }
+.modal-content{
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
 
+.backmodel{
+    text-align: left;
+    flex-basis: 10%;
+}
+.haeder-modal{  
+    flex-basis: 80%;
+    text-align: center;
+    
+}
+#email, #token{
+    border: 1px solid black;
+}
+.headermodal{
+    color: rgb(4, 4, 65);
+    font-size: 20px;
+
+}
+.sentcode{
+    padding: 15px 0;
+}
+.sentcode1{
+    color: white;
+    width: 100%;
+    font-size: 17px;
+}
 .container-login {
     background: rgb(238, 174, 202);
     background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
