@@ -73,6 +73,17 @@ class controller
             echo $path;
         }
     }
+    public function viewaccount($FolderName, $FileName)
+    {
+        $path = __DIR__ . "/../views/account/$FolderName/$FileName.php";
+        if (file_exists($path)) {
+            require $path;
+            // echo $path;
+        } else {
+            echo "Not find Views";
+            echo $path;
+        }
+    }
     //function upload
     public function uploadFile()
     {

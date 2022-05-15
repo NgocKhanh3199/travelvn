@@ -36,7 +36,7 @@
     margin: 0 0 10px 0;
 }
 
-.container-register form {
+.container-register .form {
     background-color: #fff;
     /* background: rgba(0, 0, 0 , 0.8); */
     /* color: #fff; */
@@ -125,7 +125,7 @@
 }
 
 @media(max-width: 46.1875em) {
-    .container-register form {
+    .container-register .form {
         max-width: 300px;
         padding: 10px 30px 5px;
     }
@@ -134,11 +134,11 @@
         font-size: 18px;
     }
 
-    .container-register form{
+    .container-register .form{
         font-size: 12px;
     }
 
-    .container-register form hr {
+    .container-register .form hr {
         display: none;
     }
 

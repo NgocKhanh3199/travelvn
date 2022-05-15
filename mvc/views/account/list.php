@@ -7,9 +7,7 @@
         </div>
     </label>
     <h6 class="text-center" id="tennd">
-        <?php //echo $_SESSION['tennguoidung']
-        ?>
-        Tran Thao
+        <!-- Tran Thao -->
     </h6>
     <div class="user-input col-lg-5 mx-auto">
         <label for="tennguoidung" class="form-label">Tên người dùng</label>
@@ -37,7 +35,57 @@
         <input type="text" class="form-control" id="gioitinh" placeholder="Nhập giới tính" value="Nữ">
     </div>
     <div class="btn-taikhoan justify-content-md-end">
-        <button class="btn btn-dark me-md-2" type="button" onclick="//updateThongTinNguoiDung()">Thay đổi</button>
-        <button class="btn btn-dark me-lg-5" type="button" onclick="//xoataikhoan()">Xoá tài khoản</button>
+        <button class="btn btn-dark me-md-2" type="button" onclick="updateUser()">Thay đổi</button>
+        <button class="btn btn-dark me-lg-5" type="button" onclick="deleteUser()">Xoá tài khoản</button>
     </div>
 </form>
+
+<script>
+    function updateUser()
+    {
+        var name = $('#tnd').val()
+        var username = $('#tendangnhap').val()
+        var email = $('#email').val()
+        var phone = $('#sodienthoai').val()
+        var birthday = $('#ngaysinh').val()
+        var gender = $('#gioitinh').val()
+        $.post('index.php?controller=cuser&action=updateUser', {
+            iduser: iduser,
+            name: name,
+            username: username,
+            email: email,
+            phone: phone,
+            birthday: birthday,
+            gender: gender
+        }, function(data){
+            if(data == 1)
+            {
+                alert('Cập nhật thành công!')
+                location.reload()
+            }
+            else if (data == 0 || data == -1) {
+                alert("Cập nhật thất bại!")
+            } else {
+                alert(data)
+            }
+        });
+    };
+
+    function deleteUser()
+    {
+        var text = 'Bạn có chắc chắn muốn xoá tài khoản? Tài khoản sẽ không thể khôi phục trong tương lai!!'
+        if(confirm(text) == true)
+        {
+            $.post("index.php?controller=cuser&action=deleteUser", {
+                iduser: iduser
+            }, function(data){
+                alert("Tài khoản đã được xoá! Cảm ơn bạn đã sử dụng dịch vụ, hy vọng có thể gặp lại bạn trong tương lai!")
+                location.replace("index.php?controller=cuser&action=logout")
+            })
+        }
+        else
+        {
+            location.reload()
+        }
+    }
+</script>
