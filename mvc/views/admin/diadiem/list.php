@@ -2,7 +2,7 @@
     <h4 class="page-title">DANH SÁCH ĐỊA ĐIỂM</h4>
     <div class="page-table">
         <table id="myTable" class="display">
-            <button class="admin-button" style="float:right; margin: 10px"><a href="?folder=diadiem&page=add">Thêm địa chỉ</a> </button>
+            <button class="admin-button" style="float:right; margin: 10px"><a href="index.php?controller=chome&action=admin&path=diadiem&page=add">Thêm địa điểm</a> </button>
             <thead>
                 <tr>
                     <th>STT</th>

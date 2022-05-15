@@ -21,7 +21,7 @@
 
 <body>
     <div class="container-register">
-        <form class="row g-3">
+        <div class="form row g-3">
             <!-- <div class="register-close">
                 <button><i class="fa-solid fa-xmark"></i></button>
             </div> -->
@@ -93,7 +93,7 @@
                     <a href="index.php?controller=ccompany&action=loginpage">Đăng nhập</a>
                 </span>
             </div>
-        </form>
+        </div>
     </div>
 
     <script>

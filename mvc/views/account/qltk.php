@@ -1,6 +1,5 @@
 <?php
-// require "define.php";
-require "./controller/controller.php";
+// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +17,7 @@ require "./controller/controller.php";
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -32,27 +32,25 @@ require "./controller/controller.php";
                     </div>
                     <div class="tennguoidung align-self-center">
                         <h6 id="tennguoidung">
-                            <?php //echo $_SESSION['tennguoidung']
-                            ?>
-                            Tran Thao
+                            <!-- Tran Thao -->
                         </h6>
                     </div>
                     <div class="align-self-center">
-                        <a href="trangchu.php?page=ndtrangchu&idnguoidung=<?php //echo $_SESSION['idnguoidung'] 
-                                                                            ?>"><button class="btn btn-home btn-dark bg-dark text-primary"><i class="fas fa-home"></i></button></a>
+                        <a href="index.php"><button class="btn btn-home btn-dark bg-dark text-primary"><i class="fas fa-home"></i></button></a>
                     </div>
                 </div>
                 <ul class="user-menu navbar-nav mb-lg-0 w-100">
+                    <input type="hidden" value="<?php echo $_SESSION['iduser'] ?>" id="iduser">
                     <li class="nav-item border-bottom pt-2 ps-2">
-                        <a class="nav-link active text-dark" aria-current="page" href="?page=list">Thông tin tài khoản</a>
+                        <a class="nav-link active text-dark" aria-current="page" href="?controller=cuser&action=account">Thông tin tài khoản</a>
                     </li>
 
                     <li class="nav-item border-bottom pt-2 ps-2" id="diadiemyeuthich">
-                        <a class="nav-link text-dark" href="?page=diadiemyeuthich">Tour du lịch yêu thích</a>
+                        <a class="nav-link text-dark" href="?controller=cuser&action=account&page=diadiemyeuthich">Tour du lịch yêu thích</a>
                     </li>
 
                     <li class="nav-item border-bottom pt-2 ps-2">
-                        <a class="nav-link text-dark" href="?page=doimatkhau">Đổi mật khẩu</a>
+                        <a class="nav-link text-dark" href="?controller=cuser&action=account&page=doimatkhau">Đổi mật khẩu</a>
                     </li>
 
                 </ul>
@@ -62,25 +60,46 @@ require "./controller/controller.php";
             <div class="col-9 bg-light">
                 <div class="content bg-white mx-auto">
                     <?php
+                    if (isset($_GET['path'])) {
+                        $controller = $_GET['path'];
                         if (isset($_GET['page'])) {
-                            $page = $_GET['page'];
-                            if (strlen($page) === 0) {
-                                $page = "list";
-                                echo '<script>location.replace("?folder=' . $folder . '&page=' . $page . '")</script>';
-                            }
-                            $path = "account/" . $page;
+                            $action = ($_GET['page']);
+                            $this->viewaccount($controller, $action);
                         } else {
-                            $page = "list";
-                            $path = "account/" . "$page";
+                            $this->viewaccount($controller, 'list');
                         }
-                    getPage($path);
+                    } else {
+                        if (isset($_GET['page'])) {
+                            $action = ($_GET['page']);
+                            $this->viewaccount('', $action);
+                        } else {
+                            $this->viewaccount("", "list");
+                        }
+                    }
                     ?>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 <script>
-
+    var iduser = $('#iduser').val()
+    $(document).ready(function() {
+        $.post("index.php?controller=cuser&action=findUserById", {
+            iduser: iduser
+        }, function(data) {
+            user = JSON.parse(data);
+            u = user[0];
+            $('#tnd').val(u['name'])
+            $('#tendangnhap').val(u[['username']])
+            $('#email').val(u['email'])
+            $('#sodienthoai').val(u['phone'])
+            $('#ngaysinh').val(u['birthday'])
+            $('#gioitinh').val(u['gender'])
+            var name = u['name'];
+            $('#tennd').append(name)
+            $('#tennguoidung').append(name)
+        })
+    })
 </script>
+

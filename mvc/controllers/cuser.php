@@ -18,6 +18,14 @@ class cuser extends controller
     {
         return $this->view("account", "logout");
     }
+    public function account()
+    {
+        return $this->view("account", "qltk");
+    }
+    public function favorite_place()
+    {
+        return $this->view("account", "diadiemyeuthich");
+    }
     public function login()
     {
         $taikhoan = $_POST['tendangnhap'];
@@ -51,6 +59,58 @@ class cuser extends controller
         $birthday = $_POST['ngaysinh'];
         $data = $this->user->register($name, $username, $passwordhash1, $phone, $email, $gender, $birthday);
 
+        echo $data;
+    }
+
+    public function findUserById()
+    {
+        $iduser = $_POST['iduser'];
+        echo json_encode($this->user->findUserById($iduser));
+    }
+
+    public function updateUser()
+    {
+        $iduser = $_POST['iduser'];
+        $name = $_POST['name'];
+        $username = $_POST['username'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $birthday = $_POST['birthday'];
+        $data = $this->user->updateUser($iduser, $name, $username, $phone, $email, $gender, $birthday);
+        // echo json_encode($data);
+        echo $data;
+    }
+
+    public function deleteUser()
+    {
+        $iduser = $_POST['iduser'];
+        $data = $this->user->deleteUser($iduser);
+        echo $data;
+    }
+
+    public function checkPassword()
+    {
+        $iduser = $_POST['iduser'];
+        $oldPassword = $_POST['oldPassword'];
+        $data = $this->user->checkPassword($iduser);
+        $row = count($data);
+        if ($row > 0) {
+            if (password_verify($oldPassword, $data[0]['password'])) {
+                $row = 1;
+            } else {
+                $row = 'k tt';
+            }
+        }
+        echo $row;
+    }
+
+    public function updatePassword()
+    {
+        $iduser = $_POST['iduser'];
+        $newPassword = $_POST['newPassword'];
+        $password = password_hash($newPassword, PASSWORD_BCRYPT);
+        $data = $this->user->updatePassword($iduser, $password);
         echo $data;
     }
 }
