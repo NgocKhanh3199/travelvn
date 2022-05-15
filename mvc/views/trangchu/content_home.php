@@ -80,7 +80,7 @@
                             <span>Khởi hành:</span> Hằng ngày
                         </p>
                         <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
+                            <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>

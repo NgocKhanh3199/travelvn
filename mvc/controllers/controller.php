@@ -89,7 +89,7 @@ class controller
             }
 
             if ($check == true && in_array($file['type'], $uploadType)) {
-                $path = __DIR__ . "/../../public/image/$folder/$name";
+                $path = __DIR__ . "/../../public/img/$folder/$name";
                 if (!move_uploaded_file($file['tmp_name'], $path)) {
                     echo "Khong di chuyen duoc";
                 }
