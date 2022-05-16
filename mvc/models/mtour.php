@@ -8,13 +8,13 @@ class mtour extends database
     }
     public function getTourByIdTour($idTour)
     {
-        $qr="SELECT * FROM `tour` WHERE idtour='$idTour'";
+        $qr = "SELECT * FROM `tour` WHERE idtour='$idTour'";
         return $this->select($qr);
     }
-    public function add($hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
+    public function add($idtour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
     {
 
-        $qr = "INSERT INTO `tour`(";
+        $qr = "INSERT INTO `tour`(`idtour` ,";
         for ($i = 0; $i < count($hinhanh); $i++) {
             $column[$i] = $hinhanh[$i];
             $column[$i] = "`hinhanh$i`";
@@ -26,7 +26,7 @@ class mtour extends database
             $qr .= ",";
         }
         $qr .= "`nametour`, `price`, `day-start`, `day-end`, `numberday`, `numbernight`, `transport`, `place_start`, `service_not_include`, `schedule`, `idcompany`, `information`)";
-        $qr .= " VALUES (";
+        $qr .= " VALUES ('$idtour',";
         for ($j = 0; $j < count($hinhanh); $j++) {
             $value[$j] = $hinhanh[$j];
 
@@ -36,7 +36,12 @@ class mtour extends database
         $qr .= "' $nametour', '$pricetour', '$dayend', '$daystar', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','1','$in4tour')";
         return $this->insert($qr);
     }
-    public function edit($idTour,$hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
+    public function addDetailplace($idtour, $nameplace)
+    {
+        $qr="INSERT INTO `detail_place`(`idtour`, `idplace`) VALUES ('$idtour','$nameplace')";
+        return $this->insert($qr);
+    }
+    public function edit($idTour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
     {
 
         $qr = "UPDATE `tour` SET";
@@ -46,7 +51,7 @@ class mtour extends database
             if ($column[0] == "`hinhanh0`") {
                 $column[0] = "`hinhanh`";
             }
-       
+
             $qr .=  "$column[$i]";
             $qr .= "=";
             $qr .= "'$hinhanh[$i]' ";
@@ -58,8 +63,8 @@ class mtour extends database
     }
     public function deleteTourByIdtour($idTour)
     {
-       
-        $qr="DELETE FROM `tour` WHERE idtour ='$idTour'";
+
+        $qr = "DELETE FROM `tour` WHERE idtour ='$idTour'";
         return $this->delete($qr);
     }
 }

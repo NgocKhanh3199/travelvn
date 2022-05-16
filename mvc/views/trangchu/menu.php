@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 session_start();
 ?>
@@ -37,49 +36,6 @@ session_start();
         <?php
         } else {
         ?>
-=======
-  <?php
-    include "./common.php";
-  ?>
-   <div class="pt-2 menu ">
-        <div class="row">
-            <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
-                <a class="text-decoration-none" href="#">TravelVN</a>
-            </div>
-            <div class="col-md-4 col-2"></div>
-            <div class="dropdown col-md-1 col-3 text-center ngonngu">
-                <a class="text-decoration-none" href="?lang=eng" role="button" data-bs-toggle="dropdown">
-                    <?php echo $lang['eng'] ?>
-                </a>
-                <div class="dropdown-content">
-                    <a href="?lang=eng"><?php echo $lang['eng'] ?></a>
-                    <a href="?lang=vie"><?php echo $lang['vie'] ?></a>
-                </div>
-            </div>
-            <?php 
-                if(isset($_SESSION['iduser'])){
-            ?>
-                <div class="col-md-2 dropdown col-3 text-center">
-                    <a class="dangnhap" href="#">
-                        Xin chào, <?php 
-                        if(isset($_SESSION['name'])) {
-                            $name = $_SESSION['name'];
-                            echo $name;
-                        } 
-                        ?>
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="index.php?controller=cuser&action=account">Tài Khoản</a>
-                        <a href="index.php?controller=cuser&action=logout">Đăng Xuất</a>
-                    </div>
-                </div>
-                
-            <?php 
-                } 
-                else
-                {
-            ?>
->>>>>>> origin/thao
             <div class="col-md-2 col-3 text-center">
                 <a class="dangnhap" href="index.php?controller=cuser&action=loginpage">Đăng nhập</a>
             </div>
@@ -151,10 +107,4 @@ session_start();
         overlay.style.display = 'none';
         header.style.transform = 'translateX(-100%)';
     }
-<<<<<<< HEAD
 </script>
-=======
-
-    function googleTranslateElementInit() {  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
-</script>
->>>>>>> origin/thao

@@ -20,7 +20,7 @@
                     <td>01/01/2022</td>
                     <td>8.000.000đ</td>
                     <td>Thành Công</td>
-                    <td><button class="admin-button"><a href="?folder=donhang&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=congty&page=detail_order">Chi Tiết</a></button></td>
                 </tr>
                 <tr>
                     <th>Tổng</th>
@@ -33,5 +33,5 @@
         <h5 style="font-style: italic; text-align:start; margin: 20px; border-bottom: 1px solid black">Thuế: <span style="font-weight: bold;">10%</span></h5>
         <h5 style="font-style: italic; text-align:start; margin: 20px; border-bottom: 1px solid black">Tổng: <span style="border: 1px solid black; font-weight:bold">50.000.000đ</span></h5>
     </div>
-    <button class="admin-button"><a href="?folder=congty&page=detail"> Trở Lại</a></button>
+    <button class="admin-button"><a href="?controller=chome&action=admin&path=congty"> Trở Lại</a></button>
 </div>

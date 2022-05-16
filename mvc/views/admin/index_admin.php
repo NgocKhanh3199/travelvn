@@ -30,42 +30,42 @@
         <div class="slidebar-menu" id="slidebar-menu">
             <ul>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php">
                         <span><i class="fa-solid fa-house"></i></span> <span>Trang Chủ</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=tour&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=tour">
                         <span><i class="fa-solid fa-umbrella-beach"></i></span><span> Quản Lý Tour</span>
                     </a>
                 </li>
                 <li class="menu-item active">
-                    <a href="index.php?controller=chome&action=admin&path=nguoidung&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=nguoidung">
                         <span><i class="fa-solid fa-users"></i></span><span> Quản Lý Người Dùng</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=diadiem&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=diadiem">
                         <span><i class="fa-solid fa-location-dot"></i></span><span> Quản Lý Địa Điểm</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=donhang&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=donhang">
                         <span><i class="fa-solid fa-clipboard-list"></i></span><span> Quản Lý Đơn Hàng</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=congty&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=congty">
                         <span><i class="fa-solid fa-building"></i></span><span> Quản Lý Công Ty</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=diachi&iduser=<?php echo $_GET['iduser'] ?>">
+                    <a href="index.php?controller=chome&action=admin&path=diachi">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Địa Chỉ</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=?">
+                    <a href="index.php?controller=chome&action=admin&path=congty&page=loinhuanthang">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Giao Dịch</span>
                     </a>
                 </li>
@@ -94,24 +94,34 @@
             </div>
         </header>
         <main>
-            <?php
-            if (isset($_GET['path'])) {
-                $controller = $_GET['path'];
-                if (isset($_GET['page'])) {
-                    $action = ($_GET['page']);
-                    $this->viewadmin($controller, $action);
-                } else {
-                    $this->viewadmin($controller, 'list');
-                }
-            } else {
-                if (isset($_GET['page'])) {
-                    $action = ($_GET['page']);
-                    $this->viewadmin('', $action);
-                } else {
-                    $this->viewadmin("", "content_index_admin");
-                }
-            }
+        <?php
+           if(isset($_GET['path']))
+           {
+           $controller = $_GET['path'];
+           if(isset($_GET['page']))
+           {
+               $action = ($_GET['page']);
+               $this->viewadmin($controller,$action);
+           }
+           else
+           {
+            $this->viewadmin($controller,'list');
+           }
+           }
+           else
+           {
+           if(isset($_GET['page']))
+           {
+               $action = ($_GET['page']);
+               $this->viewadmin('',$action);
+           }
+           else
+           {
+            $this->viewadmin("", "content_index_admin");
+           }
+           }   
             ?>
+
         </main>
 
     </div>

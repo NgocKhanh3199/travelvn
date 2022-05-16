@@ -24,7 +24,7 @@
                     <td>ngocanh@gmail.com</td>
                     <td>Nữ</td>
                     <td>01/01/2000</td>
-                    <td><button class="admin-button"><a href="?folder=nguoidung&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=nguoidung&page=detail">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
             </tbody>

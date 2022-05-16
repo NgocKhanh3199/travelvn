@@ -10,7 +10,7 @@ class chome extends controller{
     }
     public function admin()
     {
-        return $this->viewadmin("", "index_admin");
+        return $this->view("admin", "index_admin");
     }
     public function config()
     {

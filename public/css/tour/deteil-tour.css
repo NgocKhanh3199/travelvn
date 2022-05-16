@@ -5,7 +5,13 @@
     font-family: serif;
     margin-left: 10px;
 }
-
+.header-tour-company{
+    text-align: center;
+    color: rgb(94, 4, 104);
+    font-size: 40px;
+    font-weight: 600;
+    font-family: serif;
+}
 .item-top {
     padding: 0 100px;
     /* background-color: rebeccapurple ; */

@@ -19,7 +19,7 @@ function uploadFile(hinhanh, folder) {
         data.append('name', nameSave)
         data.append('folder', folder)
         arrName.push(nameSave)
-        console.log(arrName)
+        // console.log(arrName)
         $.ajax({
             url: 'index.php?controller=controller&action=uploadFile',
             type: 'post',
