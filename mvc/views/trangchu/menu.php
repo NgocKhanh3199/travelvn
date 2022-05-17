@@ -1,11 +1,14 @@
+<?php
+session_start();
+?>
 <div class="pt-2 menu mt-5 ">
       <div class="row">
           <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
               <a class="text-decoration-none" href="#">TravelVN</a>
           </div>
           <div class="col-md-4 col-2"></div>
-          <?php
-            if (isset($_SESSION['iduser'])) {
+            <?php 
+                if(isset($_SESSION['iduser'])){
             ?>
               <div class="col-md-2 dropdown col-3 text-center">
                   <a class="dangnhap" href="#">

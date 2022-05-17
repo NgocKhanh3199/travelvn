@@ -20,4 +20,8 @@ class chome extends controller{
     {
         return $this->view("account", "reset_pass");
     }
+    public function detail_tour()
+    {
+        return $this->view("trangchu","detailtour");
+    }
 }

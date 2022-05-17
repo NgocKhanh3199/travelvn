@@ -31,8 +31,31 @@
             <input value="` + numberday + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
         </div>
         <div class="input-group">
+            <span class="">Vận chuyển</span>
+            <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
+        </div>
+        <div class="input-group">
+            <span class="">Nơi xuất phát</span>
+            <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
+        </div>
+        <div class="input-group">
+            <span class="">Điểm đến</span>
+            <select multiple id="dgb" style="width: 250px;" size="5">
+
+            </select>
+        </div>
+
+        <div class="input-group">
             <span class="">Mô Tả</span>
             <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
+        </div>
+        <div class="input-group">
+            <span class="">Dịch vụ bao gồm và không bao gồm</span>
+            <textarea id="service" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
+        </div>
+        <div class="input-group">
+            <span class="">Lịch trình</span>
+            <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
 
         <div class="button-group">
@@ -42,6 +65,44 @@
     </form>
 </div>
 <script>
+    document.onload = load()
+
+    function load() {
+        loadDiadiem()
+    }
+
+    function loadDiadiem() {
+        $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
+            diadiem = JSON.parse(data)
+            for (i = 0; i < diadiem.length; i++) {
+                iddiadiem = diadiem[i]['idplace']
+                tendiadiem = diadiem[i]['nameplace']
+                $('#dgb').append('<option value="' + iddiadiem + '">' + tendiadiem + '</option>')
+            }
+        })
+    }
+
+    var $select = $('#dgb');
+    var _temp = [];
+
+    $select.mousedown('option', function(e) {
+        _temp = $(this).val() || [];
+    }).click('option', function(e) {
+        var currVal = e.currentTarget.value;
+
+        if (_temp.indexOf(currVal) !== -1) {
+            _temp = _temp.filter(function(v) {
+                return v != currVal;
+            });
+        } else {
+            _temp.push(currVal);
+        }
+
+        $select.find('option').each(function(i, v) {
+            $(v).prop('selected', (_temp.indexOf(v.value) !== -1));
+        });
+    });
+
     function getLastDayOfMonth(year, month) {
         return new Date(year, month, 0);
     }
@@ -104,21 +165,29 @@
         dayend = $('#day-end').val();
         daystrart = $('#day-star').val();
         in4tour = $('#infotour').val();
+        transport = $('#transport').val();
+        service = $('#service').val();
+        schedule = $('#schedule').val();
+        start_place = $('#start_place').val();
+
         $.post("index.php?controller=ctour&action=add", {
             hinhanh: link,
             nametour: nametour,
             pricetour: pricetour,
             dayend: dayend,
             daystar: daystar,
-            numberday:numberday,
-            numbernight:numbernight,
+            numberday: numberday,
+            numbernight: numbernight,
             in4tour: in4tour,
+            transport: transport,
+            service: service,
+            schedule: schedule,
+            start_place: start_place,
         }, function(data) {
-            console.log(data);
             if (data > 0) {
                 alert('sucess');
                 // window.location.href = "index.php?controller=chome&action=company";
-            }else if(data<=0){
+            } else if (data <= 0) {
                 alert("Không thành công")
             }
         })
