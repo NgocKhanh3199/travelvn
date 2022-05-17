@@ -113,4 +113,26 @@ class cuser extends controller
         $data = $this->user->updatePassword($iduser, $password);
         echo $data;
     }
+    public function loadTableUser()
+    {
+        $user = $this->user->getAllUser();
+        $stt = 0;
+        $data = [];
+        foreach ($user as $u) {
+            $stt++;
+            $iduser = $u['iduser'];
+            $tenuser = $u['name'];
+            $taikhoan = $u['username'];
+            $sdt = $u['phone'];
+            $email = $u['email'];
+            $gioitinh = $u['gender'];
+            $birthday = $u['birthday'];
+       
+            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail&idUser=' . $iduser . '" class="a-view">Xem</a>';
+            $delete = '<a href="" class = "a-delete" onclick="deleteUser(' . $iduser . ')">Xóa</a>';
+            $row = [$stt, $tenuser, $taikhoan, $sdt, $email, $gioitinh, $birthday,$view,$delete];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
 }

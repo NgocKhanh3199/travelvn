@@ -44,11 +44,11 @@
                         <span><i class="fa-solid fa-users"></i></span><span> Quản Lý Người Dùng</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=diadiem">
                         <span><i class="fa-solid fa-location-dot"></i></span><span> Quản Lý Địa Điểm</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=donhang">
                         <span><i class="fa-solid fa-clipboard-list"></i></span><span> Quản Lý Đơn Hàng</span>
@@ -59,11 +59,11 @@
                         <span><i class="fa-solid fa-building"></i></span><span> Quản Lý Công Ty</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=diachi">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Địa Chỉ</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=congty&page=loinhuanthang">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Giao Dịch</span>

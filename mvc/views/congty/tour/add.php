@@ -170,7 +170,6 @@
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
         end_place = $('#dgb').val();
-        // console.log(end_place)
         $.post("index.php?controller=ctour&action=add", {
             idtour: Date.now(),
             hinhanh: link,
@@ -186,14 +185,12 @@
             schedule: schedule,
             start_place: start_place,
             end_place: end_place,
-        }, function(data) {
-            console.log(data);
-            // if (data > 0) {
-            //     alert('sucess');
-            //     // window.location.href = "index.php?controller=chome&action=company";
-            // } else if (data <= 0) {
-            //     alert("Không thành công")
-            // }
+        }, function(rs) {
+            console.log(rs);
+            const data = JSON.parse(rs)
+            if (data.status) {
+                alert(data.message)
+            }           
         })
     }
 </script>
