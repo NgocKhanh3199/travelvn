@@ -169,13 +169,15 @@
         service = $('#service').val();
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
-
+        end_place = $('#dgb').val();
+        // console.log(end_place)
         $.post("index.php?controller=ctour&action=add", {
+            idtour: Date.now(),
             hinhanh: link,
             nametour: nametour,
             pricetour: pricetour,
             dayend: dayend,
-            daystar: daystar,
+            daystar: daystrart,
             numberday: numberday,
             numbernight: numbernight,
             in4tour: in4tour,
@@ -183,13 +185,15 @@
             service: service,
             schedule: schedule,
             start_place: start_place,
+            end_place: end_place,
         }, function(data) {
-            if (data > 0) {
-                alert('sucess');
-                // window.location.href = "index.php?controller=chome&action=company";
-            } else if (data <= 0) {
-                alert("Không thành công")
-            }
+            console.log(data);
+            // if (data > 0) {
+            //     alert('sucess');
+            //     // window.location.href = "index.php?controller=chome&action=company";
+            // } else if (data <= 0) {
+            //     alert("Không thành công")
+            // }
         })
     }
 </script>

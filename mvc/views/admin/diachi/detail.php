@@ -25,11 +25,11 @@
                     <td>6</td>
                     <td>Việt Tour</td>
                     <td></td>
-                    <td><button class="admin-button"><a href="?folder=tour&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=diachi&page=detail_tour">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button class="admin-button"><a href="?folder=diachi">Trở Lại</a> </button>
+    <button class="admin-button"><a href="?controller=chome&action=admin&path=diachi">Trở Lại</a> </button>
 </div>

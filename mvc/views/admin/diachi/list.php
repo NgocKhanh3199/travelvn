@@ -12,7 +12,7 @@
                     </select>
                 </div>
                 <div class="button-header">
-                    <button class="admin-button"><a href="?folder=diachi&page=add">Thêm địa chỉ</a> </button>
+                    <button class="admin-button"><a href="?controller=chome&action=admin&path=diachi&page=add">Thêm địa chỉ</a> </button>
                 </div>
             </div>
             <thead>
@@ -32,8 +32,8 @@
                     <td>Tân An</td>
                     <td>Ninh Kiều</td>
                     <td>Cần Thơ</td>
-                    <td><button class="admin-button"><a href="?folder=diachi&page=detail">Chi Tiết</a></button></td>
-                    <td><button class="admin-button"><a href="?folder=diachi&page=edit">Sửa</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=diachi&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=diachi&page=edit">Sửa</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
             </tbody>

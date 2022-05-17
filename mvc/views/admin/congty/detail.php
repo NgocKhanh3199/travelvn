@@ -25,7 +25,7 @@
                     <td>6</td>
                     <td>Việt Tour</td>
                     <td></td>
-                    <td><button class="admin-button"><a href="?folder=tour&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=congty&page=detail_tour">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Xoá</a></button></td>
                 </tr>
             </tbody>
@@ -51,7 +51,7 @@
                     <td>02/2022</td>
                     <td>15.000.000đ</td>
                     <td>Chưa Thanh Toán</td>
-                    <td><button class="admin-button"><a href="?folder=congty&page=loinhuanthang">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=congty&page=loinhuanthang">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Thanh Toán</a></button></td>
                     <td><button class="admin-button"><a href="">Huỷ</a></button></td>
                 </tr>

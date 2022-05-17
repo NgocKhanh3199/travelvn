@@ -22,7 +22,7 @@
                     <td>704 Trần Tân Soạn, phường Tân Hưng, Quận 7, thành phố Hồ Chí Minh </td>
                     <td>19006775</td>
                     <td>viettour@gmail.com</td>
-                    <td><button class="admin-button"><a href="?folder=congty&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=congty&page=detail">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Huỷ</a></button></td>
                 </tr>
             </tbody>

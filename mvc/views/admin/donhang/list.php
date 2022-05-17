@@ -22,7 +22,7 @@
                     <td>01/01/2022</td>
                     <td>8.000.000đ</td>
                     <td>Thành công</td>
-                    <td><button class="admin-button"><a href="?folder=donhang&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=donhang&page=detail">Chi Tiết</a></button></td>
                     <td><button class="admin-button"><a href="">Huỷ</a></button></td>
                 </tr>
             </tbody>

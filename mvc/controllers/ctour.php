@@ -17,6 +17,7 @@ class ctour extends controller
     }
     public function add()
     {
+        $idtour = $_POST['idtour'];
         $hinhanh = $_POST['hinhanh'];
         $nametour = $_POST['nametour'];
         $pricetour = $_POST['pricetour'];
@@ -29,8 +30,32 @@ class ctour extends controller
         $service = $_POST['service'];
         $schedule = $_POST['schedule'];
         $start_place = $_POST['start_place'];
-        $data = $this->tour->add($hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
-        echo $data;
+        $end_place = $_POST['end_place'];
+        $data = $this->tour->add($idtour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
+
+        $result = [
+            "message" => "Thêm thất bại !",
+            "status" => false,
+        ];
+        if ($data > 0) {
+            $result = [
+                "message" => "Thêm thành công !",
+                "status" => true,
+            ];
+            $row = 0;
+            for ($i = 0; $i < count($end_place); $i++) {
+                $nameplace = $end_place[$i];
+                $row += $this->tour->addDetailplace($idtour, $nameplace);
+                
+            }
+            if ($row <= 0) {
+                $result = [
+                    "message" => "Thêm toure thành công ! Nhungw them dia diem that bai",
+                    "status" => true,
+                ];
+            }
+        }
+        echo json_encode($result);
     }
     public function edit()
     {
@@ -67,7 +92,7 @@ class ctour extends controller
             $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
 
-            $view = '<a href="?controller=ctour&action=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
+            $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
             $edit = '<a href="index.php?controller=chome&action=company&path=tour&page=edit&idTour=' . $idTour . '" class ="a-edit" onclick="editPlace(' . $idTour . ')">Sửa</a>';
             $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
             $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
@@ -78,7 +103,7 @@ class ctour extends controller
     public function deleteTourByIdtour()
     {
         $idTour = $_POST['idTour'];
-        $data= $this->tour->deleteTourByIdtour($idTour);
+        $data = $this->tour->deleteTourByIdtour($idTour);
         echo $data;
     }
 }

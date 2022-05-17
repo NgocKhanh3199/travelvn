@@ -22,7 +22,7 @@
                     <td>ngocanh@gmail.com</td>
                     <td>Nữ</td>
                     <td>01/01/2000</td>
-                    <td><button class="admin-button"><a href="?folder=nguoidung&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=donhang&page=detail_user">Chi Tiết</a></button></td>
                 </tr>
             </tbody>
         </table>
@@ -47,10 +47,10 @@
                     <td>1</td>
                     <td>9.000.000đ</td>
                     <td>9.000.000đ</td>
-                    <td><button class="admin-button"><a href="?folder=tour&page=detail">Chi Tiết</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=donhang&page=detail_order">Chi Tiết</a></button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button class="admin-button"><a href="?folder=donhang">Trở Lại</a></button>
+    <button class="admin-button"><a href="?controller=chome&action=admin&path=donhang">Trở Lại</a></button>
 </div>

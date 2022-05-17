@@ -19,10 +19,10 @@
                     <td>01/01/2022</td>
                     <td>50.000đ</td>
                     <td>Thành công</td>
-                    <td><button class="admin-button"><a href="">Huỷ</a></button></td>
+                    <td><button class="admin-button"><a href="?controller=chome&action=admin&path=nguoidung">Huỷ</a></button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <button class="admin-button"><a href="?folder=nguoidung"> Trở Lại</a></button>
+    <button class="admin-button"><a href="?controller=chome&action=admin&path=nguoidung"> Trở Lại</a></button>
 </div>

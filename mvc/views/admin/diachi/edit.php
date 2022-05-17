@@ -18,7 +18,7 @@
             </div>
             <div class="button-group">
                 <button class="btn btn-primary" type="button">Lưu</button>
-                <button class="btn btn-primary" type="button"><a href="?folder=diachi&page=list">Thoát</a> </button>
+                <button class="btn btn-primary" type="button"><a href="?controller=chome&action=admin&path=diachi">Thoát</a> </button>
             </div>
         </div>
     </div>

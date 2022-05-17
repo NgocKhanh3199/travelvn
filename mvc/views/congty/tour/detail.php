@@ -14,30 +14,28 @@
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
-    <link rel="stylesheet" href="./public/css/tour/deteil-tour.css">
+
+    <!-- <link rel="stylesheet" href="./public/css/trangchu/menu1.css"> -->
+    <link rel="stylesheet" href="./public/css/trangchu/media.css">
+    <link rel="stylesheet" href="./public/css/tour/detail-tour-company.css">
 </head>
 
 <body>
     <div class="detail-tour">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Photos</a></li>
-            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
-            <li class="breadcrumb-item"><a href="#">Italy</a></li>
-            <li class="breadcrumb-item active">Rome</li>
-        </ul>
-        <header class="header-tour">Du lịch Cần Thơ</header>
-        <div class="stars">
-            <form action="">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </form>
-        </div>
+        <header class="header-tour-company">
+            <p>Du lịch Cần Thơ</p>
+        </header>
         <div class="item-top">
             <div class="img-item">
                 <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                <div class="box-img">
+                    <div class="box-img-item">
+                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    </div>
+                    <div class="box-img-item">
+                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="in4-item">
                 <div class="tuatour">
@@ -117,45 +115,7 @@
                     - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
                     - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
             </div>
-            <div class="danhgiadukhach">
-                <p class="headerr">Đánh giá của du khách</p>
-                <div class="item-danhgiakh">
-                    <div class="logokh">
-                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
-                    </div>
-                    <div class="info">
-                        <label class="tenkh" for="">Ngọc Khánh</label>
-                        <div class="stars2">
-                            <form action="">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </form>
-                        </div>
-                        <P>DU LỊCH THẤY CŨNG ĐƯỢC</P>
-                    </div>
-                </div>
-                <div class="item-danhgiakh">
-                    <div class="logokh">
-                        <img src="./public/img/trangchu/fllc.png" alt="">
-                    </div>
-                    <div class="info">
-                        <label class="tenkh" for="">Thanh Thảo</label>
-                        <div class="stars2">
-                            <form action="">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </form>
-                        </div>
-                        <P>Du lịch không có gì dui</P>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
     </div>
