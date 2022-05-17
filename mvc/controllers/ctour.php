@@ -46,7 +46,6 @@ class ctour extends controller
             for ($i = 0; $i < count($end_place); $i++) {
                 $nameplace = $end_place[$i];
                 $row += $this->tour->addDetailplace($idtour, $nameplace);
-                
             }
             if ($row <= 0) {
                 $result = [
@@ -100,10 +99,50 @@ class ctour extends controller
         }
         echo json_encode($data);
     }
+    public function loadTableTourAdmin()
+    {
+        $tour = $this->tour->getAllTour();
+        $stt = 0;
+        $data = [];
+        $path = "./public/img/tour/";
+        foreach ($tour as $t) {
+            $stt++;
+            $idTour = $t['idtour'];
+            $tenTour = $t['nametour'];
+            $giaTour = $t['price'];
+            $day_start = $t['day-start'];
+            $day_end = $t['day-end'];
+            $status = $t['status'];
+            // load img
+            $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
+            if ($status == 1) {
+                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
+                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
+                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $data[] = $row;
+            } else if ($status == 0) {
+                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
+                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
+                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $data[] = $row;
+            }
+        }
+        echo json_encode($data);
+    }
     public function deleteTourByIdtour()
     {
         $idTour = $_POST['idTour'];
         $data = $this->tour->deleteTourByIdtour($idTour);
+        echo $data;
+    }
+
+    public function duyetTourByIdtour()
+    {
+        $idTour = $_POST['idTour'];
+        $data = $this->tour->duyetTourByIdtour($idTour);
         echo $data;
     }
 }

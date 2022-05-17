@@ -38,4 +38,10 @@ class muser extends database{
         $qr = "UPDATE `user` SET `password`='$newPassword' WHERE iduser = '$iduser'";
         return $this->update($qr);
     }
+    public function getAllUser()
+    {
+        $qr = "SELECT * FROM `user`";
+        return $this->select($qr);
+        
+    }
 }

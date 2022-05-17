@@ -3,7 +3,7 @@ class mtour extends database
 {
     public function getAllTour()
     {
-        $qr = "SELECT * FROM `tour`";
+        $qr = "SELECT * FROM `tour` WHERE xoa ='0'";
         return $this->select($qr);
     }
     public function getTourByIdTour($idTour)
@@ -64,7 +64,13 @@ class mtour extends database
     public function deleteTourByIdtour($idTour)
     {
 
-        $qr = "DELETE FROM `tour` WHERE idtour ='$idTour'";
-        return $this->delete($qr);
+        $qr = "UPDATE `tour` SET `xoa`='1' WHERE idtour='$idTour'";
+        return $this->update($qr);
+    }
+    public function duyetTourByIdtour($idTour)
+    {
+
+        $qr = "UPDATE `tour` SET `status`='1' WHERE idtour='$idTour'";
+        return $this->update($qr);
     }
 }
