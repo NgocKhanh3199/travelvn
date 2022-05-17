@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <div class="pt-2 menu mt-5 ">
       <div class="row">
           <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
