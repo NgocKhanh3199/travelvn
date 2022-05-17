@@ -14,10 +14,12 @@
     <script src="https://kit.fontawesome.com/200253888f.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="./Shoppy-admin/css/style.css"> -->
     <link rel="stylesheet" href="./public/css/quanlytaikhoan.css">
+    <script src="./public/js/js.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -27,7 +29,7 @@
                 <div class="user-info border-bottom">
                     <div class="">
                         <div class="avata pt-2 pb-2 ps-1" id="hinhanh">
-                            <img class="rounded-circle" width="50" height="50" src="./public/img/nguoidung/avatar.jpg" alt="">
+                            <!-- <img class="rounded-circle" width="50" height="50" src="" alt=""> -->
                         </div>
                     </div>
                     <div class="tennguoidung align-self-center">
@@ -85,6 +87,8 @@
 <script>
     var iduser = $('#iduser').val()
     $(document).ready(function() {
+        $('#tamp').remove()
+        $('#showimg').append('<div id="tamp"></div>')
         $.post("index.php?controller=cuser&action=findUserById", {
             iduser: iduser
         }, function(data) {
@@ -99,6 +103,10 @@
             var name = u['name'];
             $('#tennd').append(name)
             $('#tennguoidung').append(name)
+            path = "./public/img/nguoidung/"
+            img = u['image'].length > 0 ? u['image'] : "avatar.jpg"
+            src = path + img
+            $('#tamp').append('<img class="rounded-circle" width="80" height="80" src="' + src + '" alt="">')
         })
     })
 </script>

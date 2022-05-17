@@ -17,10 +17,11 @@ class muser extends database{
         $qr = "SELECT * FROM `user` WHERE iduser='$iduser'";
         return $this->select($qr);
     }
-    public function updateUser($iduser, $name, $username, $phone, $email, $gender, $birthday)
+    public function updateUser($iduser, $image, $name, $username, $phone, $email, $gender, $birthday)
     {
-        $qr = "UPDATE `user` SET `name`='$name',`username`='$username',`phone`='$phone',`email`='$email',`gender`='$gender',`birthday`='$birthday' WHERE iduser = '$iduser'";
+        $qr = "UPDATE `user` SET `image`='$image', `name`='$name',`username`='$username',`phone`='$phone',`email`='$email',`gender`='$gender',`birthday`='$birthday' WHERE iduser = '$iduser'";
         return $this->update($qr);
+        // return $qr;
     }
     public function deleteUser($iduser)
     {

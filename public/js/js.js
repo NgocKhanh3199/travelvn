@@ -14,21 +14,24 @@ function uploadFile(hinhanh, folder) {
     arrName = [];
     for (i = 0; i < hinhanh.length; i++) {
         data = new FormData()
-        nameSave = getfilenameupload(hinhanh[i].name)
+        nameSave = getfilenameupload(hinhanh[0].name)
         data.append('file', hinhanh[i])
         data.append('name', nameSave)
         data.append('folder', folder)
         arrName.push(nameSave)
+        console.log(arrName);
         $.ajax({
             url: 'index.php?controller=controller&action=uploadFile',
             type: 'post',
             data: data,
             contentType: false,
             processData: false,
-            success: function(data) {}
+            success: function(data) {
+            }
         })
     }
     return arrName
+    
 }
 
 

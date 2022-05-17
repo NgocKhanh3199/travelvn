@@ -28,28 +28,28 @@
             <h3 class="register-title">Đăng Ký</h3>
             <p class="text-center mt-0 mb-0" style="border-bottom: 1px solid black;">Tài Khoản Nhà Bán Hàng</p>
             <!-- <hr> -->
-            <a href="index.php?controller=cuser&action=loginpage" class="text-center link-dark">Đăng ký với tài khoản người dùng</a>
+            <a href="index.php?controller=cuser&action=registerPage" class="text-center link-dark">Đăng ký với tài khoản người dùng</a>
             <div class="register-content">
                 <div class="register-by-account">
                     <div class="register-input mt-4">
-                        <label for="matkhau" class="form-label">Tên Công Ty</label>
-                        <input type="text" class="form-control" id="matkhau" placeholder="Nhập tên công ty">
+                        <label for="namecompany" class="form-label">Tên Công Ty</label>
+                        <input type="text" class="form-control" id="namecompany" placeholder="Nhập tên công ty">
                     </div>
                     <div class="register-input mt-4">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Nhập email">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="thanhpho" class="form-label">Thành Phố</label>
-                        <input type="text" class="form-control" id="thanhpho" placeholder="Nhập thành phố">
+                        <label for="city" class="form-label">Thành Phố</label>
+                        <input type="text" class="form-control" id="city" placeholder="Nhập thành phố">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="xaphuongthitran" class="form-label">Xã/Phường/Thị Trấn</label>
-                        <input type="text" class="form-control" id="xaphuongthitran" placeholder="Nhập xã/phường/thị trấn">
+                        <label for="ward" class="form-label">Xã/Phường/Thị Trấn</label>
+                        <input type="text" class="form-control" id="ward" placeholder="Nhập xã/phường/thị trấn">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="tendangnhap" class="form-label">Tên Đăng Nhập</label>
-                        <input type="text" class="form-control" id="tendangnhap"
+                        <label for="username" class="form-label">Tên Đăng Nhập</label>
+                        <input type="text" class="form-control" id="username"
                             placeholder="Nhập tên đăng nhập">
                     </div>
                     <div class="register-input mt-4">
@@ -60,29 +60,30 @@
                 <!-- <div style="border-right: 1px solid black;"></div> -->
                 <div class="register-by-account">
                     <div class="register-input mt-4">
-                        <label for="sodienthoai" class="form-label">Số Điện Thoại</label>
-                        <input type="text" class="form-control" id="sodienthoai"
+                        <label for="phone" class="form-label">Số Điện Thoại</label>
+                        <input type="text" class="form-control" id="phone"
                             placeholder="Nhập số điện thoại">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="diachi" class="form-label">Địa Chỉ</label>
-                        <input type="text" class="form-control" id="diachi"
+                        <label for="address" class="form-label">Địa Chỉ</label>
+                        <input type="text" class="form-control" id="address"
                             placeholder="Nhập địa chỉ">
                     </div>
+                    
                     <div class="register-input mt-4">
-                        <label for="quan" class="form-label">Quận</label>
-                        <input type="text" class="form-control" id="quan" placeholder="Nhập quận">
+                        <label for="district" class="form-label">Quận</label>
+                        <input type="text" class="form-control" id="district" placeholder="Nhập quận">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="soduong" class="form-label">Số Đường</label>
-                        <input type="text" class="form-control" id="soduong" placeholder="Nhập số đường">
+                        <label for="street" class="form-label">Số Đường</label>
+                        <input type="text" class="form-control" id="street" placeholder="Nhập số đường">
                     </div>
                     <div class="register-input mt-4">
-                        <label for="matkhau" class="form-label">Mật Khẩu</label>
-                        <input type="password" class="form-control" id="matkhau" placeholder="Nhập mật khẩu">
+                        <label for="password" class="form-label">Mật Khẩu</label>
+                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
                     </div>
                     <div class="button-group mt-4">
-                        <button class="btn btn-outline-dark">Đăng Ký</button>
+                        <button class="btn btn-outline-dark" id="dangky">Đăng Ký</button>
                         <a href="index.php" class="btn btn-outline-dark">Huỷ</a>
                     </div>    
                 </div>
@@ -108,6 +109,52 @@
                 }
             });
         });
+
+        $('#dangky').on('click', function() {
+            var username = $('#username').val()
+            var password = $('#password').val()
+            var nhaplaimatkhau = $('#nhaplaimatkhau').val()
+            var namecompany = $('#namecompany').val()
+            var email = $('#email').val()
+            var phone = $('#phone').val()
+            var address = $('#address').val()
+            var street = $('#street').val()
+            var ward = $('#ward').val()
+            var district = $('#district').val()
+            var city = $('#city').val()
+
+            if (namecompany == 0) {
+                alert('Vui lòng nhập tên công ty!')
+            } else if (username == 0) {
+                alert('Tên đăng nhập không được bỏ trống!')
+            } else if (password == 0) {
+                alert('Mật khẩu không được bỏ trống!')
+            } else if (nhaplaimatkhau == 0) {
+                alert('Nhập lại mật khẩu không được bỏ trống!')
+            } else if (password != nhaplaimatkhau) {
+                alert('Mật khẩu và nhập lại mật khẩu không khớp!')
+            } else {
+                $.post("index.php?controller=ccompany&action=register", {
+                    username: username,
+                    password: password,
+                    namecompany: namecompany,
+                    email: email,
+                    phone: phone,
+                    address: address,
+                    street: street,
+                    ward: ward,
+                    district: district,
+                    city: city
+                }, function(data) {
+                    if (data > 0) {
+                        alert('Đăng ký thành công')
+                        window.location.href = "index.php?controller=ccompany&action=loginpage"
+                    } else if (data <= 0) {
+                        alert('Đăng ký thất bại')
+                    }
+                })
+            }
+        })
         
     </script>
     

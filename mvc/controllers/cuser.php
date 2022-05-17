@@ -71,13 +71,14 @@ class cuser extends controller
     public function updateUser()
     {
         $iduser = $_POST['iduser'];
+        $image = $_POST['image'];
         $name = $_POST['name'];
         $username = $_POST['username'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $gender = $_POST['gender'];
         $birthday = $_POST['birthday'];
-        $data = $this->user->updateUser($iduser, $name, $username, $phone, $email, $gender, $birthday);
+        $data = $this->user->updateUser($iduser,$image, $name, $username, $phone, $email, $gender, $birthday);
         // echo json_encode($data);
         echo $data;
     }

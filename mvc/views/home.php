@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <link rel="stylesheet" href="./public/css/trangchu/trangchu.css">
     <link rel="stylesheet" href="./public/css/trangchu/fooder.css">
     <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
@@ -21,22 +22,12 @@
 </head>
 
 <body>
-    <!-- <span>
-        <div class="translate" id="google_translate_element"></div>
-
-        <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    PageLanguage: 'vi'
-                }, 'google_translate_element');
-            }
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </span> -->
+    
     <?php
     $this->view('trangchu', 'menu');
     ?>
     <?php
+    
     if (isset($_GET['path'])) {
         $controller = $_GET['path'];
         if (isset($_GET['page'])) {
@@ -61,3 +52,4 @@
 </body>
 
 </html>
+
