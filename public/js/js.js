@@ -10,6 +10,7 @@ function getfilenameupload(name) {
         (date.getMonth() + 1) + '_' +
         date.getFullYear() + "." + tamp[1]
 }
+
 function uploadFile(hinhanh, folder) {
     arrName = [];
     for (i = 0; i < hinhanh.length; i++) {
@@ -19,7 +20,6 @@ function uploadFile(hinhanh, folder) {
         data.append('name', nameSave)
         data.append('folder', folder)
         arrName.push(nameSave)
-        // console.log(arrName)
         $.ajax({
             url: 'index.php?controller=controller&action=uploadFile',
             type: 'post',

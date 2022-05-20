@@ -87,23 +87,22 @@ class controller
     //function upload
     public function uploadFile()
     {
-        $uploadType = ['image/png', 'image/jpg', 'image/jpeg'];
-        $uploadSize = 10000000  ; //10MB
+        $uploadTyle = ['image/png,image/jpg,image/jpeg'];
+        $uploadSize = 10000000;
         $file = isset($_FILES['file']) ? $_FILES['file'] : [];
-        $name = isset($_POST['name']) ? $_POST['name'] : date("h_m_s_d_m_Y");
-        $folder = isset($_POST['folder']) ? $_POST['folder'] : "image";
+        $name = isset($_POST['name']) ? $_POST['name'] : date("h_m_s_d_m_Y"); 
+        $folder = isset($_POST['folder']) ? $_POST['folder'] : "img";
         if (count($file) > 0) {
             $check = true;
             if ($file['size'] > $uploadSize) {
                 $check = false;
                 echo "vượt quá kích thước cho phép";
             }
-
-            if ($check == true && in_array($file['type'], $uploadType)) {
-                $path = __DIR__ . "/../../public/img/$folder/$name";
-                if (!move_uploaded_file($file['tmp_name'], $path)) {
-                    echo "Khong di chuyen duoc";
-                }
+            if ($check == true && !in_array($file['type'], $uploadTyle)) {
+            $path = __DIR__ . "/../../public/img/$folder/$name";
+            if (!move_uploaded_file($file['tmp_name'], $path)) {
+                echo "Khong di chuyen duoc";
+            }
             }
         } else {
             echo "Không đúng định dạng";

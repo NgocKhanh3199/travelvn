@@ -8,7 +8,7 @@ class mtour extends database
     }
     public function getTourByIdTour($idTour)
     {
-        $qr = "SELECT * FROM `tour` WHERE idtour='$idTour'";
+        $qr = "SELECT * FROM `detail_place`, `place`, `tour` WHERE detail_place.idtour=tour.idtour AND detail_place.idplace=place.idplace AND tour.idtour=$idTour";
         return $this->select($qr);
     }
     public function add($idtour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
@@ -34,11 +34,37 @@ class mtour extends database
             $qr .= ",";
         }
         $qr .= "' $nametour', '$pricetour', '$dayend', '$daystar', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','1','$in4tour')";
+        // return $qr;
         return $this->insert($qr);
     }
     public function addDetailplace($idtour, $nameplace)
     {
         $qr="INSERT INTO `detail_place`(`idtour`, `idplace`) VALUES ('$idtour','$nameplace')";
+        return $this->insert($qr);
+    }
+    public function addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull)
+    {
+        $qr = "INSERT INTO `place`( `idplace`,";
+        for ($i = 0; $i < count($hinhanhplace); $i++) {
+            $column[$i] = $hinhanhplace[$i];
+            $column[$i] = "`hinhanh$i`";
+            if ($column[0] == "`hinhanh0`") {
+                $column[0] = "`hinhanh`";
+            }
+
+            $qr .= "$column[$i]";
+            $qr .= ",";
+        }
+        $qr .= "`nameplace`, `information`, `address`, `city`, `district`, `ward`, `full-address`)";
+        $qr .= " VALUES ('$idplace',";
+        for ($j = 0; $j < count($hinhanhplace); $j++) {
+            $value[$j] = $hinhanhplace[$j];
+
+            $qr .= "'$value[$j]'";
+            $qr .= ",";
+        }
+        $qr .= "'$nameplace','$in4','$address','$tinh','$huyen','$xa',' $diachifull')";
+        // echo $qr;
         return $this->insert($qr);
     }
     public function edit($idTour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)

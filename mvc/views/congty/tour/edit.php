@@ -59,6 +59,15 @@
             <span class="">Lịch trình</span>
             <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
+        <div class="input-group ">
+            <div id="totalAddress">
+
+            </div>
+
+            <p id="writeroot"></p>
+            <input type="button" onclick="moreFields()" value="Thêm điểm đến" />
+            <button class="btn btn-primary" onclick="luu()" type="button">Lưu</button>
+        </div>
 
         <div class="button-group">
             <button class="btn btn-primary" onclick="edit()" type="button">Thêm</button>
@@ -85,13 +94,127 @@
             }
         })
     }
+    var counter = 0;
+
+    const renderField = (number, root) => {
+        root.append(`
+        <div>
+            <span>Thêm điểm đến</span>
+            <div class="frame adddiemden" id="diemden-${number}">
+                <input type="file" id="hinhanhplace" name="hinhanh[]" multiple="multiple">
+
+                <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
+
+                <input id="address" onchange="get_tinh(${number})" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+
+                <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
+                </select>
+
+                <select id="district" name="district" onchange="get_id_huyen(${number})" class="form-select" aria-label="Default select example">
+                </select>
+
+                <select id="ward" name="ward" class="form-select" aria-label="Default select example">
+                </select>
+
+                <textarea id="in4" name="in4" placeholder="Thông tin" class="form-control" aria-label="With textarea"></textarea>
+            </div>
+        </div>
+    `)
+    }
+
+    function moreFields() {
+        counter++;
+        renderField(counter, $('#totalAddress'))
+        // get_tinh(counter);
+    }
+
+    document.onload = moreFields()
+    function get_tinh(counter) {
+        id_tinh = null
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/?depth=3',
+            method: "GET",
+            data: {
+
+            },
+
+            success: function(data) {
+
+                for (i = 0; i < data.length; i++) {
+
+                    $(`#diemden-${counter} #city`).append(
+                        `
+                    <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                    `
+                    )
+                }
+            }
+
+        })
+
+    }
 
 
+    function get_huyen(counter) {
+
+        id_tinh = $(`#diemden-${counter} #city`).val()
+
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/p/' + id_tinh + '?depth=2',
+            method: "GET",
+            data: {
+
+            },
+            success: function(data) {
+                // num = 0;
+                // collection = document.querySelectorAll('.adddiemden').length;
+                // for (i = 1; i < collection; i++) {
+                //     num = i;
+                // }
+                $(`#diemden-${counter} #district`).children().remove()
+
+                for (i = 0; i < data['districts'].length; i++) {
+                    $(`#diemden-${counter} #district`).append(
+                        `
+                    <option id='huyen' value="` + data['districts'][i]['code'] + `">` + data['districts'][i]['name'] + `</option>
+                    `
+                    )
+                }
+            }
+        })
+    }
+
+    function get_id_huyen(counter) {
+        id_huyen = $(`#diemden-${counter} #district`).val()
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/d/' + id_huyen + '?depth=2',
+            method: "GET",
+            data: {
+
+            },
+            success: function(data) {
+
+                // num = 0;
+                // collection = document.querySelectorAll('.adddiemden').length;
+                // for (i = 1; i < collection; i++) {
+                //     num = i;
+                // }
+
+                $(`#diemden-${counter} #ward`).children().remove()
+
+                for (i = 0; i < data['wards'].length; i++) {
+                    $(`#diemden-${counter} #ward`).append(
+                        `<option id='xa' value="` + data['wards'][i]['code'] + `">` + data['wards'][i]['name'] + `</option>
+                    `
+                    )
+                }
+            }
+        })
+    }
 
     function loadTourByIdtour() {
-        // console.log(123)
-        $('#tamp').remove()
-        $('#showimg').append('<div id="tamp"></div>')
+        // $('#tamp').remove()
+        // $('#showimg').append('<div id="tamp"></div>')
         $.post("index.php?controller=ctour&action=getTourByIdTour", {
             idTour: idTour,
 
@@ -109,11 +232,37 @@
             $('#start_place').val(t['start_place']);
             $('#number-night').val(t['numbernight']);
             $('#number-day').val(t['numberday']);
-            //---------------
-            // path = "/banmypham/public/img/sanpham/"
-            // img = sp['hinhanh'].length > 0 ? sp['hinhanh'] : "delivery.png"
-            // src = path + img
-            // $('#tamp').append('<button id="btn-img"><img src="' + src + '" alt=""></button>')
+            $('#nameplace').val(t['nameplace']);
+            $('#address').val(t['address']);
+            path3 = 'https://provinces.open-api.vn/api/w/' + t['ward'] + '?depth=1'
+            $.ajax({
+                url: path3,
+                method: "GET",
+                data: {},
+                success: function(data) {
+                    $('#ward').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
+                }
+            })
+            path2 = 'https://provinces.open-api.vn/api/d/' + t['district'] + '?depth=1'
+            $.ajax({
+                url: path2,
+                method: "GET",
+                data: {},
+                success: function(data) {
+                    $('#district').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
+                }
+            })
+            path1 = 'https://provinces.open-api.vn/api/p/' + t['city'] + '?depth=1'
+            $.ajax({
+                url: path1,
+                method: "GET",
+                data: {},
+                success: function(data) {
+                    $('#city').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
+                }
+            })
+            $('#in4').val(t['infomation']);
+          
         })
     }
 
@@ -128,8 +277,8 @@
         pricetour = $('#price').val();
         dayend = $('#day-end').val();
         daystart = $('#day-star').val();
-        numberday =$('#number-day').val();
-        numbernight =$('#number-night').val();
+        numberday = $('#number-day').val();
+        numbernight = $('#number-night').val();
         in4tour = $('#infotour').val();
         transport = $('#transport').val();
         service = $('#service').val();
@@ -152,7 +301,7 @@
         }, function(data) {
             if (data > 0) {
                 alert("Cập nhật thành công");
-                window.location.href="index.php?controller=chome&action=company&path=tour"
+                window.location.href = "index.php?controller=chome&action=company&path=tour"
             } else if (data <= 0) {
                 alert("Cập nhật thất bại")
             }
@@ -234,6 +383,4 @@
 
     numberday = $('#number-day').val();
     numbernight = $('#number-night').val();
-
-    
 </script>

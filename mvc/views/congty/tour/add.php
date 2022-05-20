@@ -39,13 +39,6 @@
             <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
         </div>
         <div class="input-group">
-            <span class="">Điểm đến</span>
-            <select multiple id="dgb" style="width: 250px;" size="5">
-
-            </select>
-        </div>
-
-        <div class="input-group">
             <span class="">Mô Tả</span>
             <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
@@ -57,6 +50,21 @@
             <span class="">Lịch trình</span>
             <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
+        <div class="input-group">
+            <span class="">Điểm đến</span>
+            <select multiple id="dgb" style="width: 250px;" size="5">
+
+            </select>
+        </div>
+        <div class="input-group ">
+            <div id="totalAddress">
+               
+            </div>
+
+            <p id="writeroot"></p>
+            <input type="button" onclick="moreFields()" value="Thêm điểm đến" />
+            <button class="btn btn-primary" onclick="luu()" type="button">Lưu</button>
+        </div>
 
         <div class="button-group">
             <button class="btn btn-primary" onclick="add()" type="button">Thêm</button>
@@ -64,12 +72,15 @@
         </div>
     </form>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-    document.onload = load()
+    id_tinh = null;
+    ten_tinh = null;
+    id_huyen = null;
 
-    function load() {
-        loadDiadiem()
-    }
+
+    document.onload = loadDiadiem()
 
     function loadDiadiem() {
         $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
@@ -78,6 +89,146 @@
                 iddiadiem = diadiem[i]['idplace']
                 tendiadiem = diadiem[i]['nameplace']
                 $('#dgb').append('<option value="' + iddiadiem + '">' + tendiadiem + '</option>')
+            }
+        })
+    }
+
+
+
+
+
+    var counter = 0;
+
+    const renderField = (number, root) => {
+        root.append(`
+            <div>
+                <span>Thêm điểm đến</span>
+                <div class="frame adddiemden" id="diemden-${number}">
+                    <input type="file" id="hinhanhplace" name="hinhanh[]" multiple="multiple">
+
+                    <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
+
+                    <input id="address" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+
+                    <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
+                    </select>
+
+                    <select id="district" name="district" onchange="get_id_huyen(${number})" class="form-select" aria-label="Default select example">
+                    </select>
+
+                    <select id="ward" name="ward" class="form-select" aria-label="Default select example">
+                    </select>
+
+                    <textarea id="in4" name="in4" placeholder="Thông tin" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+        `)
+    }
+
+    function moreFields() {
+        counter++;
+        // var newFields = document.getElementById('diemden').cloneNode(true);
+        // newFields.id = '';
+        // newFields.style.display = 'block';
+        // var newField = newFields.childNodes;
+        // for (var i = 0; i < newField.length; i++) {
+        //     var attributeId = newField[i].id
+        //     if (attributeId) {
+        //         newField[i].id = attributeId + counter;
+        //     }
+        // }
+        // var insertHere = document.getElementById('writeroot');
+        // insertHere.parentNode.insertBefore(newFields, insertHere);
+        renderField(counter, $('#totalAddress'))
+        get_tinh(counter);
+        // get_huyen();
+        // get_id_huyen();
+
+    }
+
+    document.onload = moreFields()
+    // document.onload = get_tinh()
+
+
+    function get_tinh(counter) {
+        id_tinh = null
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/?depth=3',
+            method: "GET",
+            data: {
+
+            },
+
+            success: function(data) {
+
+                for (i = 0; i < data.length; i++) {
+
+                    $(`#diemden-${counter} #city`).append(
+                        `
+                    <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                    `
+                    )
+                }
+            }
+
+        })
+
+    }
+
+
+    function get_huyen(counter) {
+
+        id_tinh = $(`#diemden-${counter} #city`).val()
+
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/p/' + id_tinh + '?depth=2',
+            method: "GET",
+            data: {
+
+            },
+            success: function(data) {
+                // num = 0;
+                // collection = document.querySelectorAll('.adddiemden').length;
+                // for (i = 1; i < collection; i++) {
+                //     num = i;
+                // }
+                $(`#diemden-${counter} #district`).children().remove()
+
+                for (i = 0; i < data['districts'].length; i++) {
+                    $(`#diemden-${counter} #district`).append(
+                        `
+                    <option id='huyen' value="` + data['districts'][i]['code'] + `">` + data['districts'][i]['name'] + `</option>
+                    `
+                    )
+                }
+            }
+        })
+    }
+
+    function get_id_huyen(counter) {
+        id_huyen = $(`#diemden-${counter} #district`).val()
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/d/' + id_huyen + '?depth=2',
+            method: "GET",
+            data: {
+
+            },
+            success: function(data) {
+
+                // num = 0;
+                // collection = document.querySelectorAll('.adddiemden').length;
+                // for (i = 1; i < collection; i++) {
+                //     num = i;
+                // }
+
+                $(`#diemden-${counter} #ward`).children().remove()
+
+                for (i = 0; i < data['wards'].length; i++) {
+                    $(`#diemden-${counter} #ward`).append(
+                        `<option id='xa' value="` + data['wards'][i]['code'] + `">` + data['wards'][i]['name'] + `</option>
+                    `
+                    )
+                }
             }
         })
     }
@@ -157,7 +308,59 @@
     numberday = $('#number-day').val();
     numbernight = $('#number-night').val();
 
+    // async function luu() {
+    //     const count = $('#totalAddress')[0].childElementCount;
+    //     let rs = []
+    //     for (let i = 0; i < count; i++) {
+    //         hinhanh = $(`#diemden-${i+1} #hinhanh`).get(0).files;
+    //         link = uploadFile(hinhanh, 'diadiem');
+    //         rs = [
+    //             ...rs, {
+    //                 link,
+    //                 nameplace: $(`#diemden-${i+1} ` + '#nameplace').val(),
+    //                 in4: $(`#diemden-${i+1} ` + '#in4').val(),
+    //                 address: $(`#diemden-${i+1} ` + '#address').val(),
+    //                 tinh: $(`#diemden-${i+1} ` + '#city').val(),
+    //                 huyen: $(`#diemden-${i+1} ` + '#district').val(),
+    //                 xa: $(`#diemden-${i+1} ` + '#ward').val(),
+    //                 nametinh: $(`#diemden-${i+1} ` + '#city').find('option:selected').text(),
+    //                 namehuyen: $(`#diemden-${i+1} ` + '#district').find('option:selected').text(),
+    //                 namexa: $(`#diemden-${i+1} ` + '#ward').find('option:selected').text()
+    //             }
+    //         ]
+    //     }
+    //     $.post("index.php?controller=cdiadiem&action=addplace2", {
+    //         rs: rs,
+    //     }, function(data) {
+    //         console.log(data);
+    //         // const data = JSON.parse(rs)
+    //         // if (data.status) {
+    //         //     alert(data.message)
+    //         // }
+    //     })
+    // }
+
     function add() {
+        const count = $('#totalAddress')[0].childElementCount;
+        let rs = []
+        for (let i = 0; i < count; i++) {
+            hinhanhplace = $(`#diemden-${i+1} #hinhanhplace`).get(0).files;
+            linkplace = uploadFile(hinhanh, 'diadiem');
+            rs = [
+                ...rs, {
+                    linkplace,
+                    nameplace: $(`#diemden-${i+1} ` + '#nameplace').val(),
+                    in4: $(`#diemden-${i+1} ` + '#in4').val(),
+                    address: $(`#diemden-${i+1} ` + '#address').val(),
+                    tinh: $(`#diemden-${i+1} ` + '#city').val(),
+                    huyen: $(`#diemden-${i+1} ` + '#district').val(),
+                    xa: $(`#diemden-${i+1} ` + '#ward').val(),
+                    nametinh: $(`#diemden-${i+1} ` + '#city').find('option:selected').text(),
+                    namehuyen: $(`#diemden-${i+1} ` + '#district').find('option:selected').text(),
+                    namexa: $(`#diemden-${i+1} ` + '#ward').find('option:selected').text()
+                }
+            ]
+        }
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
         nametour = $('#nametour').val();
@@ -170,8 +373,10 @@
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
         end_place = $('#dgb').val();
+
         $.post("index.php?controller=ctour&action=add", {
             idtour: Date.now(),
+            idplace: Date.now(),
             hinhanh: link,
             nametour: nametour,
             pricetour: pricetour,
@@ -185,12 +390,13 @@
             schedule: schedule,
             start_place: start_place,
             end_place: end_place,
+            rs: rs,
         }, function(rs) {
             console.log(rs);
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
-            }           
+            }
         })
     }
 </script>

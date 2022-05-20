@@ -44,11 +44,11 @@
                         <span><i class="fa-solid fa-users"></i></span><span> Quản Lý Người Dùng</span>
                     </a>
                 </li>
-                <!-- <li class="menu-item">
+                <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=diadiem">
                         <span><i class="fa-solid fa-location-dot"></i></span><span> Quản Lý Địa Điểm</span>
                     </a>
-                </li> -->
+                </li>
                 <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=donhang">
                         <span><i class="fa-solid fa-clipboard-list"></i></span><span> Quản Lý Đơn Hàng</span>
