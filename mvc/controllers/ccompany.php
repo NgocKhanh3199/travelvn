@@ -17,6 +17,14 @@ class ccompany extends controller{
     {
         return $this->viewcongty("donhang", "list");
     }
+    public function account()
+    {
+        return $this->viewcongty("", "qltk");
+    }
+    public function logout()
+    {
+        return $this->viewcongty("", "logout");
+    }
 
     public function login()
     {
@@ -52,6 +60,60 @@ class ccompany extends controller{
         $district = $_POST['district'];
         $city = $_POST['city'];
         $data = $this->company->register($username, $passwordhash,$namecompany ,$email, $phone, $address, $street, $ward, $district, $city);
+        echo $data;
+    }
+
+    public function findCompanyById()
+    {
+        $idcompany = $_POST['idcompany'];
+        $data = $this->company->findCompanyById($idcompany);
+        echo json_encode($data);
+    }
+
+    public function updateCompany()
+    {
+        $idcompany = $_POST['idcompany'];
+        $image = $_POST['image'];
+        $namecompany = $_POST['namecompany'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $street = $_POST['street'];
+        $ward = $_POST['ward'];
+        $district = $_POST['district'];
+        $city = $_POST['city'];
+        $data = $this->company->updateCompany($idcompany,$image, $namecompany, $email, $phone , $address, $street, $ward, $district, $city);
+        // echo json_encode($data);
+        echo $data;
+    }
+    public function deleteCompany()
+    {
+        $idcompany = $_POST['idcompany'];
+        $data = $this->company->deleteCompany($idcompany);
+        echo $data;
+    }
+    public function checkPassword()
+    {
+        $idcompany = $_POST['idcompany'];
+        $oldPassword = $_POST['oldPassword'];
+        $data = $this->company->checkPassword($idcompany);
+        $row = count($data);
+        if ($row > 0) {
+            if (password_verify($oldPassword, $data[0]['password'])) {
+                $row = 1;
+            } else {
+                $row = 'k tt';
+            }
+        }
+        echo $row;
+    }
+
+    public function updatePassword()
+    {
+        $idcompany = $_POST['idcompany'];
+        $newPassword = $_POST['newPassword'];
+        $password = password_hash($newPassword, PASSWORD_BCRYPT);
+        $data = $this->company->updatePassword($idcompany, $password);
         echo $data;
     }
 }

@@ -19,15 +19,16 @@
     <link rel="stylesheet" href="./public/css/trangchu/fooder.css">
     <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
     <link rel="stylesheet" href="./public/css/trangchu/media.css">
+
 </head>
 
 <body>
-    
+
     <?php
     $this->view('trangchu', 'menu');
     ?>
     <?php
-    
+
     if (isset($_GET['path'])) {
         $controller = $_GET['path'];
         if (isset($_GET['page'])) {
@@ -53,3 +54,14 @@
 
 </html>
 
+<!-- <span>
+    <div class="translate" id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span> -->

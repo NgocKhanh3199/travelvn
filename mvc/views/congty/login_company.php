@@ -128,7 +128,7 @@
             console.log(data)
             if (data > 0) {
                 alert('sucess');
-                window.location.href = "index.php";
+                window.location.href = "index.php?controller=chome&action=company";
             } else if (data <= 0) {
                 alert('Đăng nhập thất bại')
             }
