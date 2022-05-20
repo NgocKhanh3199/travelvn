@@ -23,7 +23,7 @@
 
 <body>
     <input type="checkbox" id="nav-toggle">
-    <div class="slidebar">
+    <div class="slidebar mt-5">
         <div class="slidebar-brand">
             <h3><span class="logo"><img src="./public/img/admin/TRAVELVN.png" alt=""></span><span>Travel VN</span></h3>
         </div>
@@ -73,8 +73,8 @@
         </div>
     </div>
 
-    <div class="main-content">
-        <header>
+    <div class="main-content mt-5">
+        <header class="mt-5">
             <h4 class="header-title">
                 <label for="nav-toggle">
                     <span><i class="fa-solid fa-bars"></i></span>
@@ -153,3 +153,14 @@
 </body>
 
 </html>
+<span>
+    <div class="translate" id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'vi'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>

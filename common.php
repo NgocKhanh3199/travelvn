@@ -1,10 +1,11 @@
 <?php
-    if(isset($_GET['lang']))
+    if(isset($_SESSION['lang']))
     {
-        $lang = $_GET['lang'];
+        $lang = $_SESSION['lang'];
     }
     else
     {
+        $_SESSION['lang'] = 'vie';
         $lang = 'vie';
     }
 

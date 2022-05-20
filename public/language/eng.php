@@ -9,4 +9,6 @@
     $lang['tour']='Tour';
     $lang['hotel']='Hotel';
     $lang['experience']='Travel experience';
+    $lang['account'] = 'Account';
+    
 ?>

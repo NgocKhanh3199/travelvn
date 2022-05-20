@@ -85,7 +85,8 @@ class controller
         }
     }
     //function upload
-    public function uploadFile()
+
+public function uploadFile()
     {
         $uploadTyle = ['image/png,image/jpg,image/jpeg'];
         $uploadSize = 10000000;

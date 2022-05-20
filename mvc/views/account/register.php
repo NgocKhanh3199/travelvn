@@ -101,19 +101,6 @@
                 }
             });
         });
-        
-        $(document).ready(function() {
-            $('#eye1').click(function() {
-                $(this).toggleClass('open');
-                $(this).children('i').toggleClass('fa-eye-slash fa-eye');
-                if ($(this).hasClass('open')) {
-                    $(this).prev().attr('type', 'text');
-                } else {
-                    $(this).prev().attr('type', 'password');
-                }
-            });
-        });
-   
 
         $('#dangky').on('click', function() {
             var tennguoidung = $('#tennguoidung').val()
