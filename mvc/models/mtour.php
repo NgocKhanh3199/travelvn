@@ -99,4 +99,24 @@ class mtour extends database
         $qr = "UPDATE `tour` SET `status`='1' WHERE idtour='$idTour'";
         return $this->update($qr);
     }
+    public function search($name)
+    {
+        $qr = "SELECT * FROM `tour` WHERE nametour LIKE '%$name%' AND xoa ='0'";
+        return $this->select($qr);
+    }
+    public function getCityById($idplace)
+    {
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.price, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace'";
+        return $this->select($qr);
+    }
+    public function getCityByIdAndMinPrice($idplace, $minprice)
+    {
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.price, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.price > '$minprice'";
+        return $this->select($qr);
+    }
+    public function getCityByIdAndMaxPrice($idplace, $maxprice)
+    {
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.price, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.price < '$maxprice'";
+        return $this->select($qr);
+    }
 }

@@ -36,7 +36,10 @@
         </div>
         <div class="input-group">
             <span class="">Nơi xuất phát</span>
-            <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
+            <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
+
+            </select>
+            <!-- <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát"> -->
         </div>
         <div class="input-group">
             <span class="">Mô Tả</span>
@@ -58,7 +61,7 @@
         </div>
         <div class="input-group ">
             <div id="totalAddress">
-               
+
             </div>
 
             <p id="writeroot"></p>
@@ -79,7 +82,7 @@
     ten_tinh = null;
     id_huyen = null;
 
-
+    document.onload = get()
     document.onload = loadDiadiem()
 
     function loadDiadiem() {
@@ -93,7 +96,30 @@
         })
     }
 
+    function get() {
+        get_tinhtour()
 
+    }
+
+    function get_tinhtour() {
+        id_tinh = null
+        id_tinh =
+            $.ajax({
+                url: 'https://provinces.open-api.vn/api/?depth=3',
+                method: "GET",
+                data: {},
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $('#start_place').append(
+                            `
+                    <option id='tinhtour' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                    `
+                        )
+                    }
+
+                }
+            })
+    }
 
 
 
@@ -109,8 +135,7 @@
                     <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
 
                     <input id="address" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-
-                    <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
+<select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
                     </select>
 
                     <select id="district" name="district" onchange="get_id_huyen(${number})" class="form-select" aria-label="Default select example">
@@ -127,28 +152,13 @@
 
     function moreFields() {
         counter++;
-        // var newFields = document.getElementById('diemden').cloneNode(true);
-        // newFields.id = '';
-        // newFields.style.display = 'block';
-        // var newField = newFields.childNodes;
-        // for (var i = 0; i < newField.length; i++) {
-        //     var attributeId = newField[i].id
-        //     if (attributeId) {
-        //         newField[i].id = attributeId + counter;
-        //     }
-        // }
-        // var insertHere = document.getElementById('writeroot');
-        // insertHere.parentNode.insertBefore(newFields, insertHere);
+
         renderField(counter, $('#totalAddress'))
         get_tinh(counter);
-        // get_huyen();
-        // get_id_huyen();
 
     }
 
     document.onload = moreFields()
-    // document.onload = get_tinh()
-
 
     function get_tinh(counter) {
         id_tinh = null
@@ -187,11 +197,7 @@
 
             },
             success: function(data) {
-                // num = 0;
-                // collection = document.querySelectorAll('.adddiemden').length;
-                // for (i = 1; i < collection; i++) {
-                //     num = i;
-                // }
+
                 $(`#diemden-${counter} #district`).children().remove()
 
                 for (i = 0; i < data['districts'].length; i++) {
@@ -214,12 +220,6 @@
 
             },
             success: function(data) {
-
-                // num = 0;
-                // collection = document.querySelectorAll('.adddiemden').length;
-                // for (i = 1; i < collection; i++) {
-                //     num = i;
-                // }
 
                 $(`#diemden-${counter} #ward`).children().remove()
 
@@ -308,44 +308,13 @@
     numberday = $('#number-day').val();
     numbernight = $('#number-night').val();
 
-    // async function luu() {
-    //     const count = $('#totalAddress')[0].childElementCount;
-    //     let rs = []
-    //     for (let i = 0; i < count; i++) {
-    //         hinhanh = $(`#diemden-${i+1} #hinhanh`).get(0).files;
-    //         link = uploadFile(hinhanh, 'diadiem');
-    //         rs = [
-    //             ...rs, {
-    //                 link,
-    //                 nameplace: $(`#diemden-${i+1} ` + '#nameplace').val(),
-    //                 in4: $(`#diemden-${i+1} ` + '#in4').val(),
-    //                 address: $(`#diemden-${i+1} ` + '#address').val(),
-    //                 tinh: $(`#diemden-${i+1} ` + '#city').val(),
-    //                 huyen: $(`#diemden-${i+1} ` + '#district').val(),
-    //                 xa: $(`#diemden-${i+1} ` + '#ward').val(),
-    //                 nametinh: $(`#diemden-${i+1} ` + '#city').find('option:selected').text(),
-    //                 namehuyen: $(`#diemden-${i+1} ` + '#district').find('option:selected').text(),
-    //                 namexa: $(`#diemden-${i+1} ` + '#ward').find('option:selected').text()
-    //             }
-    //         ]
-    //     }
-    //     $.post("index.php?controller=cdiadiem&action=addplace2", {
-    //         rs: rs,
-    //     }, function(data) {
-    //         console.log(data);
-    //         // const data = JSON.parse(rs)
-    //         // if (data.status) {
-    //         //     alert(data.message)
-    //         // }
-    //     })
-    // }
-
     function add() {
         const count = $('#totalAddress')[0].childElementCount;
         let rs = []
         for (let i = 0; i < count; i++) {
             hinhanhplace = $(`#diemden-${i+1} #hinhanhplace`).get(0).files;
-            linkplace = uploadFile(hinhanh, 'diadiem');
+            linkplace = uploadFile(hinhanhplace, 'diadiem');
+            // console.log(linkplace)
             rs = [
                 ...rs, {
                     linkplace,
@@ -396,6 +365,7 @@
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
+                window.location = "index.php?controller=chome&action=company&path=tour"
             }
         })
     }

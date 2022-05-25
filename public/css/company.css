@@ -243,8 +243,30 @@ a{
     padding: 10px;
 }
 
+.container-form .frame1{
+    padding: 10px;
+}
+
 .container-form .input-group {
     margin: 20px 0;
+}
+
+.place{
+    margin: 20px;
+}
+
+.places-img{
+    display: flex;
+}
+
+.place-img{
+    flex-basis: 25%;
+    margin: 10px;
+}
+
+.places-img img{
+    width: 100%;
+    height: 80%;
 }
 
 .container-form .input-group span {

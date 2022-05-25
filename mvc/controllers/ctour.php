@@ -11,6 +11,10 @@ class ctour extends controller
     {
         return $this->viewcongty("tour", "add");
     }
+    public function getAllTour()
+    {
+        echo json_encode($this->tour->getAllTour());
+    }
     public function getTourByIdTour()
     {
         $idTour = $_POST['idTour'];
@@ -181,5 +185,32 @@ class ctour extends controller
         $idTour = $_POST['idTour'];
         $data = $this->tour->duyetTourByIdtour($idTour);
         echo $data;
+    }
+
+    public function search()
+    {
+        $name = $_POST['name'];
+        $data = $this->tour->search($name);
+        echo json_encode($data);
+    }
+    public function getCityById()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getCityById($idplace);
+        echo json_encode($data);
+    }
+    public function getCityByIdAndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getCityByIdAndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getCityByIdAndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getCityByIdAndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
     }
 }

@@ -20,10 +20,6 @@ function uploadFile(hinhanh, folder) {
         data.append('name', nameSave)
         data.append('folder', folder)
         arrName.push(nameSave)
-<<<<<<< HEAD
-=======
-        console.log(arrName);
->>>>>>> 6352a40234c18475ee04f400a2661104332ab973
         $.ajax({
             url: 'index.php?controller=controller&action=uploadFile',
             type: 'post',
@@ -37,5 +33,3 @@ function uploadFile(hinhanh, folder) {
     return arrName
     
 }
-
-

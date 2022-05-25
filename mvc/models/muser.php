@@ -44,4 +44,20 @@ class muser extends database{
         return $this->select($qr);
         
     }
+    public function sendQuestion($iduser, $content)
+    {
+        $qr = "INSERT INTO `question`(`iduser`, `content`, `status`) VALUES ('$iduser', '$content', 'Chưa trả lời')";
+        return $this->insert($qr);
+    }
+    public function getQuestionAndAnswer($iduser)
+    {
+        $qr = "SELECT * FROM `question` WHERE iduser = '$iduser'";
+        return $this->select($qr);
+    }
+    public function getAllQuestion()
+    {
+        $qr = "SELECT question.content, question.answer, user.name,question.status  FROM `question`, user WHERE question.iduser = user.iduser";
+        return $this->select($qr);
+    }
+    
 }

@@ -136,4 +136,44 @@ class cuser extends controller
         }
         echo json_encode($data);
     }
+    public function sendQuestion()
+    {
+        $iduser = $_POST['iduser'];
+        $content = $_POST['content'];
+        $data = $this->user->sendQuestion($iduser, $content);
+        echo $data;
+    }
+    public function getQuestionAndAnswer()
+    {
+        $iduser = $_POST['iduser'];
+        $data = $this->user->getQuestionAndAnswer($iduser);
+        echo json_encode($data);
+    }
+    public function loadTableQuestion()
+    {
+        $question = $this->user->getAllQuestion();
+        $stt = 0;
+        $data = [];
+        foreach($question as $q)
+        {
+            $stt++;
+            $content = $q['content'];
+            $nameuser = $q['name'];
+            $status = $q['status'];
+            if($status === 'Chưa trả lời')
+            {
+                $response = '<a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=add" class="a-view">Trả Lời</a>';
+                $delete = '<a href="" class = "link-danger" onclick="">Xóa</a>';
+            }
+            else
+            {
+                $response = '<a href="" class="a-view">Xem</a>';
+                $delete = '<a href="" class = "link-danger" onclick="">Xóa</a>';
+            }
+            $row = [$stt, $content, $nameuser, $status, $response ,$delete];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    
 }

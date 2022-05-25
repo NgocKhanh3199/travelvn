@@ -13,6 +13,7 @@
     <!-- end_link bootstrap 5 -->
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- end-link icon -->
 
     <link rel="stylesheet" href="./public/css/trangchu/trangchu.css">
@@ -62,8 +63,8 @@
             <a class="align-items-center d-flex xemthem">Xem thêm tour</a>
         </div>
         <div class="content-tournoibat">
-            <div class="row">
-                <div class="col-sm-3 item-wrap">
+            <div class="row" id="tour">
+                <!-- <div class="col-sm-3 item-wrap" id="tour">
                     <div class="khungchuaimg">
                         <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
                     </div>
@@ -82,65 +83,9 @@
                         <div class="d-flex justify-content-between">
                             <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
+                    </div> 
+                </div>-->
+
             </div>
         </div>
     </div>
@@ -186,7 +131,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     <div class="hotel-h">
         <div class="hotel">
@@ -336,7 +281,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-2 blog">
@@ -344,7 +289,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-3 blog">
@@ -352,7 +297,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-4 blog">
@@ -360,7 +305,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-5 blog">
@@ -368,7 +313,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-6 blog">
@@ -376,7 +321,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-7 blog">
@@ -384,11 +329,50 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    window.onload = loadTour()
+
+    function loadTour() {
+        $('#tamp').remove()
+        $('#temp').remove()
+        $('#showimg').append('<div id="tamp"></div>')
+        $('#hinhanh').append('<div id="temp"></div>')
+        $.post("index.php?controller=ctour&action=getAllTour", {}, function(data) {
+            var tour = JSON.parse(data)
+            path = "./public/img/tour/"
+            for (var i = 0; i < tour.length; i++) {
+                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
+                src = path + img
+                $('#tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
+                    '<div class="khungchuaimg">' +
+                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
+                    ' <div class="item-meta">' +
+                    '  <p class="item-tua mb-1">' +
+                    ' <a class="item-header" href="#">'+tour[i]['nametour']+'</a>' +
+                    '  </p>' +
+                    ' <p class="item-price md-1">' +
+                    '  <span class="amount" data-price="900000">'+tour[i]['price']+'</span>' +
+                    '  <span>VNĐ</span>' +
+                    '  </p>' +
+                    ' <p class="item-khoihanh mb-1">' +
+                    '     <i class="fa-solid fa-clock"></i>' +
+                    '     <span>Khởi hành:</span> '+tour[i]['day-start']+' ' +
+                    ' </p>' +
+                    '  <div class="d-flex justify-content-between">' +
+                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                    '</div>' +
+                    '</div>' +
+                    ' </div>')
+            }
+
+        })
+    }
+</script>
