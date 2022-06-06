@@ -14,111 +14,236 @@
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
-
-    <!-- <link rel="stylesheet" href="./public/css/trangchu/menu1.css"> -->
-    <link rel="stylesheet" href="./public/css/trangchu/media.css">
-    <link rel="stylesheet" href="./public/css/tour/detail-tour-company.css">
+    <link rel="stylesheet" href="./public/css/company.css">
+    <script src="./public/js/js.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="detail-tour">
-        <header class="header-tour-company">
-            <p>Du lịch Cần Thơ</p>
-        </header>
-        <div class="item-top">
-            <div class="img-item">
-                <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
-                <div class="box-img">
-                    <div class="box-img-item">
-                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+    <div class="container">
+        <div class="nd">
+            <div class="thongtinchung" id="diadanh">
+                <!-- <div class="row diadanh">
+                    <div class="col-sm-6">
+                        <img src="./public/img/tour/2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="400px">
                     </div>
-                    <div class="box-img-item">
-                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <div class="col-sm-6 row">
+                        <div class="col-sm-6">
+                            <img src="./public/img/tour/4b7c23abd16c3f271fde1222fc3bff9f_2_45_39_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="./public/img/tour/3a0bd5fbd3e6432d665deab43a33c345_2_44_24_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-12">
+                            <img src="./public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_2_22_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="in4-item">
-                <div class="tuatour">
-                    <h4>Du lịch Cần Thơ</h4>
+        </div>
+        <div class="container container-form">
+            <div class="frame1" action="" method="">
+                <div class="input-group">
+                    <span class="">Tên Tour</span>
+                    <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
                 </div>
-                <div class="in4tour">
-                    <div class="in4-time in4">
-                        <label class="tualabel" for="text">Thời gian:</label>
-                        <label class="in4label" for="text">2 ngày 1 đêm</label>
-                    </div>
-                    <div class="in4-go in4">
-                        <label class="tualabel" for="text">Khởi hành:</label>
-                        <label class="in4label" for="text">Thứ 7 hàng tuần</label>
-                    </div>
-                    <div class="in4-bus in4">
-                        <label class="tualabel" for="text">Vận chuyển:</label>
-                        <label class="in4label" for="text">Xe du lịch</label>
-                    </div>
-                    <div class="in4-xuatphat in4">
-                        <label class="tualabel" for="text">Xuất phát:</label>
-                        <label class="in4label" for="text">Từ Hồ Chí Minh</label>
-                    </div>
+                <div class="input-group">
+                    <span class="">Giá</span>
+                    <input id="price" type="text" class="form-control" placeholder="Nhập Giá">
                 </div>
-                <div class="book">
-                    <p class="price text-start">Giá từ: 2000000đ</p>
-                    <button class="btn-book">Đặt ngay</button>
+                <div class="input-group">
+                    <span class="">Ngày Bắt Đầu</span>
+                    <input id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
+                </div>
+                <div class="input-group">
+                    <span class="">Ngày Kết Thúc</span>
+                    <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
+                </div>
+                <div class="input-group" id="number-day">
+                    <span class="">Số Lượng Ngày</span>
+                    <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+                </div>
+                <div class="input-group" id="number-night">
+                    <span class="">Số Lượng Đêm</span>
+                    <input value="` + numberday + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
+                </div>
+                <div class="input-group">
+                    <span class="">Vận chuyển</span>
+                    <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
+                </div>
+                <div class="input-group">
+                    <span class="">Nơi xuất phát</span>
+                    <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
+                </div>
+                <div class="input-group">
+                    <span class="">Mô Tả</span>
+                    <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
+                </div>
+                <div class="input-group">
+                    <span class="">Dịch vụ bao gồm và không bao gồm</span>
+                    <textarea id="service" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
+                </div>
+                <div class="input-group">
+                    <span class="">Lịch trình</span>
+                    <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
                 </div>
             </div>
         </div>
-        <div class="down">
-            <div class="diemnhan">
-                <p class="headerr">Điểm nhấn hành trình</p>
-                <div class="item-diemnhan">
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Hành trình:</label>
-                        <label class="in4label1" for="text"></label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Lịch trình:</label>
-                        <label class="in4label1" for="text">2 ngày 1 đêm</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Ngày khỏi hành:</label>
-                        <label class="in4label1" for="text">Thứ 7 hàng tuần</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Vận chuyển:</label>
-                        <label class="in4label1" for="text">Từ Hồ Chí Minh</label>
-                    </div>
-                    <p>Đôi nét về chuyến du lịch</p>
-                </div>
-            </div>
-            <div class="lichtrinh">
-                <p class="headerr">Lịch trình</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
-            </div>
-            <div class="dichvu">
-                <p class="headerr">Dịch vụ bao gồm và không bao gồm</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
-            </div>
-            <div class="ghichu">
-                <p class="headerr">Ghi chú</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
+        <div class="place text-start">
+            <h4 class="header-place">Điểm đến: </h4>
+            <div class="item-place" id="item-place">
+                
             </div>
 
         </div>
 
-    </div>
+        <div class="button-group">
+            <a href="index.php?controller=chome&action=company&path=tour" class="btn btn-primary" type="button">Thoát</a>
+        </div>
 </body>
 
 </html>
+<script>
+    var idTour = <?= $_GET['idTour'] ?>;
+    document.onload = load()
+
+    function load() {
+
+        loadTourByIdtour();
+        loadplace();
+    }
+
+    function loadTourByIdtour() {
+        pathhinhanhtour = "./public/img/tour/";
+        $.post("index.php?controller=ctour&action=getTourByIdTour", {
+            idTour: idTour,
+
+        }, function(data) {
+            Tour = JSON.parse(data);
+            console.log(Tour)
+            t = Tour[0];
+            $('#nametour').val(t['nametour']);
+            $('#price').val(t['price']);
+            $('#day-end').val(t['day-end']);
+            $('#day-star').val(t['day-start']);
+            $('#infotour').val(t['infomation']);
+            $('#transport').val(t['transport']);
+            $('#service').val(t['service']);
+            $('#schedule').val(t['schedule']);
+            $('#start_place').val(t['start_place']);
+            $('#number-night').val(t['numbernight']);
+            $('#number-day').val(t['numberday']);
+            
+            hinhanh = t['hinhanh']
+            if (hinhanh.length == 0) {
+                hinhanh = 'noimg.png'
+            }
+            hinhanh = pathhinhanhtour + hinhanh
+
+            hinhanh1 = t['hinhanh1']
+            if (hinhanh1.length == 0) {
+                hinhanh1 = 'noimg.png'
+            }
+            hinhanh1 = pathhinhanhtour + hinhanh1
+
+            hinhanh2 = t['hinhanh2']
+            if (hinhanh2.length == 0) {
+                hinhanh2 = 'noimg.png'
+            }
+            hinhanh2 = pathhinhanhtour + hinhanh2
+
+            hinhanh3 = t['hinhanh3']
+            if (hinhanh3.length == 0) {
+                hinhanh3 = 'noimg.png'
+            }
+            hinhanh3 = pathhinhanhtour + hinhanh3
+
+            $('#diadanh').append(`
+            <div class="row diadanh">
+                    <div class="col-sm-6">
+                        <img src="` + hinhanh + `" alt="" class="w-100 rounded" height="500">
+                    </div>
+                    <div class="col-sm-6 row">
+                        <div class="col-sm-6">
+                            <img src="` + hinhanh1 + `" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="` + hinhanh2 + `" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-12">
+                            <img src="` + hinhanh3 + `" alt="" class="w-100 rounded" height="280">
+                        </div>
+                    </div>
+                </div>
+            `)
+        })
+
+    }
+
+    function loadplace() {
+        pathhinhanhplace = "./public/img/diadiem/";
+        $.post("index.php?controller=ctour&action=getPlaceByIdTour", {
+            idTour: idTour,
+
+        }, function(data) {
+            place = JSON.parse(data);
+            for (i = 0; i < place.length; i++) {
+                nameplace = place[i]['nameplace']
+                address = place[i]['full-address']
+                in4 = place[i]['information']
+                hinhanh = place[i]['hinhanh']
+                if (hinhanh.length == 0) {
+                    hinhanh = 'noimg.png'
+                }
+                hinhanh = pathhinhanhplace + hinhanh
+
+                hinhanh1 = place[i]['hinhanh1']
+                if (hinhanh1.length == 0) {
+                    hinhanh1 = 'noimg.png'
+                }
+                hinhanh1 = pathhinhanhplace + hinhanh1
+
+                hinhanh2 = place[i]['hinhanh2']
+                if (hinhanh2.length == 0) {
+                    hinhanh2 = 'noimg.png'
+                }
+                hinhanh2 = pathhinhanhplace + hinhanh2
+
+                hinhanh3 = place[i]['hinhanh3']
+                if (hinhanh3.length == 0) {
+                    hinhanh3 = 'noimg.png'
+                }
+                hinhanh3 = pathhinhanhplace + hinhanh3
+                $('#item-place').append(`
+                <div class="place-item">
+                    <p class="nameplace">` + nameplace + `</p>
+                </div>
+                <div class="place-item d-flex">
+                    <p>Địa chỉ: </p>
+                    <p class="address">` + address + `</p>
+                </div>
+                <div class="place-item d-flex">
+                    <p>Mô tả: </p>
+                    <p class="in4">` + in4 + `</p>
+                </div>
+                <div class="places-img container">
+                    <div class="place-img">
+                        <img src="` + hinhanh + `" alt="" srcset="">
+                    </div>
+                    <div class="place-img">
+                        <img src="` + hinhanh1 + `" alt="" srcset="">
+                    </div>
+                    <div class="place-img">
+                        <img src="` + hinhanh2 + `" alt="" srcset="">
+                    </div>
+                    <div class="place-img">
+                        <img src="` + hinhanh3 + `" alt="" srcset="">
+                    </div>
+                </div>
+            `)
+
+            }
+        })
+    }
+</script>

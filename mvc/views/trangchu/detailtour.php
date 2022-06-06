@@ -14,6 +14,10 @@
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
+    <script src="./public/js/js.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
     <link rel="stylesheet" href="./public/css/trangchu/media.css">
@@ -28,7 +32,10 @@
             <li class="breadcrumb-item"><a href="#">Italy</a></li>
             <li class="breadcrumb-item active">Rome</li>
         </ul>
-        <header class="header-tour">Du lịch Cần Thơ</header>
+        <div class="hd" id="hd">
+
+        </div>
+
         <div class="stars">
             <form action="">
                 <i class="fa-solid fa-star"></i>
@@ -40,76 +47,41 @@
         </div>
         <div class="item-top">
             <div class="img-item">
-                <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                <div id="slideshow" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="3"></button>
+                    </div>
+                    <div class="carousel-inner" id="img-item">
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
             </div>
-            <div class="in4-item">
-                <div class="tuatour">
-                    <h4>Du lịch Cần Thơ</h4>
-                </div>
-                <div class="in4tour">
-                    <div class="in4-time in4">
-                        <label class="tualabel" for="text">Thời gian:</label>
-                        <label class="in4label" for="text">2 ngày 1 đêm</label>
-                    </div>
-                    <div class="in4-go in4">
-                        <label class="tualabel" for="text">Khởi hành:</label>
-                        <label class="in4label" for="text">Thứ 7 hàng tuần</label>
-                    </div>
-                    <div class="in4-bus in4">
-                        <label class="tualabel" for="text">Vận chuyển:</label>
-                        <label class="in4label" for="text">Xe du lịch</label>
-                    </div>
-                    <div class="in4-xuatphat in4">
-                        <label class="tualabel" for="text">Xuất phát:</label>
-                        <label class="in4label" for="text">Từ Hồ Chí Minh</label>
-                    </div>
-                </div>
-                <div class="book">
-                    <p class="price text-start">Giá từ: 2000000đ</p>
-                    <button class="btn-book">Đặt ngay</button>
-                </div>
+            <div class="in4-item" id="in4-item">
+
             </div>
         </div>
         <div class="down">
             <div class="diemnhan">
                 <p class="headerr">Điểm nhấn hành trình</p>
-                <div class="item-diemnhan">
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Hành trình:</label>
-                        <label class="in4label1" for="text"></label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Lịch trình:</label>
-                        <label class="in4label1" for="text">2 ngày 1 đêm</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Ngày khỏi hành:</label>
-                        <label class="in4label1" for="text">Thứ 7 hàng tuần</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Vận chuyển:</label>
-                        <label class="in4label1" for="text">Từ Hồ Chí Minh</label>
-                    </div>
-                    <p>Đôi nét về chuyến du lịch</p>
+                <div class="item-diemnhan" id="diemnhan">
+
+
                 </div>
             </div>
-            <div class="lichtrinh">
-                <p class="headerr">Lịch trình</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
+            <div class="lichtrinh" id="lichtrinh">
+
             </div>
-            <div class="dichvu">
-                <p class="headerr">Dịch vụ bao gồm và không bao gồm</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
+            <div class="dichvu" id="dichvu">
+
             </div>
             <div class="ghichu">
                 <p class="headerr">Ghi chú</p>
@@ -165,3 +137,135 @@
 </body>
 
 </html>
+<script>
+    var idtour = <?= $_GET['idtour'] ?>;
+
+    document.onload = loadtour()
+
+    function loadtour() {
+        path = "./public/img/tour/";
+        $.post('index.php?controller=ctour&action=getin4TourbyIdtour', {
+                idtour: idtour
+            },
+            function(data) {
+                tour = JSON.parse(data);
+                t = tour[0];
+                nametour = t['nametour']
+                timeday = t['numberday']
+                timenight = t['numbernight']
+                daystart = t['day-start']
+                transport = t['transport']
+                $.ajax({
+                    url: 'https://provinces.open-api.vn/api/p/' + t['place_start'] + '?depth=1',
+                    method: "GET",
+                    success: function(data) {
+                        $('#in4-xuatphat').append(`
+                        <label class="tualabel" for="text">Xuất phát:</label>
+                        <label class="in4label" for="text">` + data['name'] + `</label>
+                        `)
+                        $('#diemnhan-in4').append(`
+                        <label class="tualabel1" for="text">Vận chuyển:</label>
+                        <label class="in4label1" for="text">Từ ` + data['name'] + `</label>
+                        `)
+                    }
+                })
+                price = t['price']
+                in4 = t['information']
+                lichtrinh = t['schedule']
+                dichvu = t['service_not_include']
+                hinhanh = t['hinhanh']
+                if (hinhanh.length == 0) {
+                    hinhanh = 'noimg.png'
+                }
+                hinhanhtour = path + hinhanh
+
+                hinhanh1 = t['hinhanh1']
+                if (hinhanh1.length == 0) {
+                    hinhanh1 = hinhanh
+                }
+                hinhanhtour1 = path + hinhanh1
+
+                hinhanh2 = t['hinhanh2']
+                if (hinhanh2.length == 0) {
+                    hinhanh2 = hinhanh
+                }
+                hinhanhtour2 = path + hinhanh2
+
+                hinhanh3 = t['hinhanh3']
+                if (hinhanh3.length == 0) {
+                    hinhanh3 = hinhanh
+                }
+                hinhanhtour3 = path + hinhanh3
+                $('#hd').append(`
+                <header class="header-tour">Du lịch ` + nametour + `</header>
+                `)
+                $('#img-item').append(`
+                <div class="carousel-item active">
+                    <img src="` + hinhanhtour + `" class="d-block" style="width:100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="` + hinhanhtour1 + `" class="d-block" style="width:100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="` + hinhanhtour2 + `" class="d-block" style="width:100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="` + hinhanhtour3 + `" class="d-block" style="width:100%">
+                        </div>
+                `)
+                $('#in4-item').append(`
+                <div class="tuatour">
+                    <h4>` + nametour + `</h4>
+                </div>
+                <div class="in4tour">
+                    <div class="in4-time in4">
+                        <label class="tualabel" for="text">Thời gian:</label>
+                        <label class="in4label" for="text">` + timeday + ` ngày ` + timenight + ` đêm</label>
+                    </div>
+                    <div class="in4-go in4">
+                        <label class="tualabel" for="text">Khởi hành:</label>
+                        <label class="in4label" for="text">` + daystart + `</label>
+                    </div>
+                    <div class="in4-bus in4">
+                        <label class="tualabel" for="text">Vận chuyển:</label>
+                        <label class="in4label" for="text">` + transport + `</label>
+                    </div>
+                    <div class="in4-xuatphat in4" id="in4-xuatphat">
+                        
+                    </div>
+                </div>
+                <div class="book">
+                    <p class="price text-start">Giá từ: ` + price + `đ</p>
+                    <button class="btn-book"> <a href="index.php?controller=chome&action=home&page=oder&idtour=` + idtour + `">Đặt ngay</a> </button>
+                </div>
+                `)
+                $('#diemnhan').append(`
+                <div class="diemnhan-in4">
+                        <label class="tualabel1" for="text">Hành trình:</label>
+                        <label class="in4label1" for="text"> ` + nametour + `</label>
+                    </div>
+                    <div class="diemnhan-in4">
+                        <label class="tualabel1" for="text">Lịch trình:</label>
+                        <label class="in4label1" for="text">` + timeday + ` ngày ` + timenight + ` đêm</label>
+                    </div>
+                    <div class="diemnhan-in4">
+                        <label class="tualabel1" for="text">Ngày khỏi hành:</label>
+                        <label class="in4label1" for="text">` + daystart + `</label>
+                    </div>
+                    <div class="diemnhan-in4" id="diemnhan-in4">
+                       
+                    </div>
+                    <span>Đôi nét về chuyến du lịch:</span>
+                    <span>` + in4 + `</span>           
+                `)
+                $('#lichtrinh').append(`
+                <p class="headerr">Lịch trình</p>
+                <p>` + lichtrinh + `</p>
+                `)
+                $('#dichvu').append(`
+                <p class="headerr">Dịch vụ bao gồm và không bao gồm</p>
+                <p>` + dichvu + `</p>
+                `)
+            })
+    }
+</script>

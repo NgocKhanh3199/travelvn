@@ -18,7 +18,8 @@
                     <th style="width: 1%">Stt</th>
                     <th style="width: 6%">Hình ảnh</th>
                     <th style="width: 10%">Tên tour</th>
-                    <th style="width: 2%">Giá</th>
+                    <th style="width: 2%">Giá người lớn</th>
+                    <th style="width: 2%">Giá trẻ em</th>
                     <th style="width: 3%">Ngày bắt đầu</th>
                     <th style="width: 3%">Ngày kết thúc</th>
                     <th style="width: 1%"></th>

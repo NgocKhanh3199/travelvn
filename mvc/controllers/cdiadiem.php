@@ -18,14 +18,15 @@ class cdiadiem extends controller
     {
         $this->viewadmin("diadiem", "edit");
     }
-    public function detail()
-    {
-        $this->viewadmin("diadiem", "detail");
-    }
+
     public function getDiadiemByIddiadiem()
     {
         $iddiadanh = $_POST['iddiadiem'];
         echo json_encode($this->diadiem->getDiadanhByIddiadanh($iddiadanh));
+    }
+    public function getAlldiadiem()
+    {
+        echo json_encode($this->diadiem->getAllDiadiem());
     }
 
     // //load table san pham
@@ -44,8 +45,31 @@ class cdiadiem extends controller
             $img = strlen($dd['hinhanh']) > 0 ? $dd['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
 
-            $view = '<a href="?controller=cdiadiem&action=detail&iddiadiem=' . $iddiadiem . '" class="a-view">Xem</a>';
+            $view = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=detail&iddiadiem=' . $iddiadiem . '" class="a-view">Xem</a>';
             $edit = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=edit&iddiadiem=' . $iddiadiem . '" class ="a-edit" onclick="editPlace(' . $iddiadiem . ')">Sửa</a>';
+            $delete = '<a href="" class = "a-delete" onclick="deleteDiadiem(' . $iddiadiem . ')">Xóa</a>';
+            $row = [$stt, $hinhanh, $tendiadiem, $diachi, $view, $edit, $delete];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadTableDiadiemcompany()
+    {
+        $diadiem = $this->diadiem->getAllDiadiem();
+        $stt = 0;
+        $data = [];
+        $path = "./public/img/diadiem/";
+        foreach ($diadiem as $dd) {
+            $stt++;
+            $iddiadiem = $dd['idplace'];
+            $tendiadiem = $dd['nameplace'];
+            $diachi = $dd['full-address'];
+            // load img
+            $img = strlen($dd['hinhanh']) > 0 ? $dd['hinhanh'] : 'delivery.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
+
+            $view = '<a href="index.php?controller=chome&action=company&path=diadiem&page=detail&iddiadiem=' . $iddiadiem . '" class="a-view">Xem</a>';
+            $edit = '<a href="index.php?controller=chome&action=company&path=diadiem&page=edit&iddiadiem=' . $iddiadiem . '" class ="a-edit" onclick="editPlace(' . $iddiadiem . ')">Sửa</a>';
             $delete = '<a href="" class = "a-delete" onclick="deleteDiadiem(' . $iddiadiem . ')">Xóa</a>';
             $row = [$stt, $hinhanh, $tendiadiem, $diachi, $view, $edit, $delete];
             $data[] = $row;
@@ -66,7 +90,7 @@ class cdiadiem extends controller
         $namehuyen = $_POST['namehuyen'];
         $namexa = $_POST['namexa'];
         $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
-        $data = $this->diadiem->addplace($idplace,$hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull);
+        $data = $this->diadiem->addplace($idplace, $hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull);
         echo $data;
     }
 
@@ -93,5 +117,9 @@ class cdiadiem extends controller
     {
         echo json_encode($this->diadiem->getAllDiadiem());
     }
-  
+    public function getDiadiembyTinh()
+    {
+        $tinh = $_POST['tinh'];
+        echo json_encode($this->diadiem->getAllDiadiembyTinh($tinh));
+    }
 }

@@ -1,4 +1,4 @@
-<div class="pt-2 menu mt-5 ">
+<div class="pt-2 menu ">
       <div class="row">
           <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
               <a class="text-decoration-none" href="#">TravelVN</a>
@@ -79,7 +79,7 @@
       </div>
   </div>
 
-  <script>
+  <!-- <script>
       var header = document.getElementById('header');
       var logomenutop = document.getElementById('logo-menutop');
       var logomenutop1 = document.getElementById('logo-menutop1');
@@ -113,4 +113,4 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</span>
+</span> -->

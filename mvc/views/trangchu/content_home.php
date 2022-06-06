@@ -15,6 +15,11 @@
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
 
+    <script src="./public/js/js.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <link rel="stylesheet" href="./public/css/trangchu/trangchu.css">
     <link rel="stylesheet" href="./public/css/trangchu/media.css">
 </head>
@@ -53,6 +58,7 @@
             </button>
         </div>
     </div>
+
     <div class="container tournoibat">
         <div class="header-tournoibat justify-content-between d-sm-flex">
             <div class="tuade">
@@ -62,9 +68,9 @@
             <a class="align-items-center d-flex xemthem">Xem thêm tour</a>
         </div>
         <div class="content-tournoibat">
-            <div class="row">
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
+            <div class="row" id="tournoibat">
+                <!-- <div class="col-sm-3 item-wrap"> -->
+                <!-- <div class="khungchuaimg">
                         <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
                     </div>
                     <div class="item-meta">
@@ -82,65 +88,8 @@
                         <div class="d-flex justify-content-between">
                             <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1"><a class="item-header" href="#">Du lịch banana</a></p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">900.000</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> Hằng ngày
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -150,8 +99,8 @@
             <p class="header-h">Những điểm du lịch đặc sắc</p>
         </div>
         <div class="content-diemdulichdacsac">
-            <div class="hihi">
-                <div class="item-dacsac">
+            <div class="hihi" id="diemdulich">
+                <!-- <div class="item-dacsac">
                     <a class="item-content-dacsac" href="">
                         <img class="item-img-dacsac" src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
                     </a>
@@ -183,10 +132,10 @@
                     <div class="overlay">
                         <div class="item_header-overlay">Hội An tươi đẹp</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-        
+
     </div>
     <div class="hotel-h">
         <div class="hotel">
@@ -336,7 +285,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-2 blog">
@@ -344,7 +293,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-3 blog">
@@ -352,7 +301,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-4 blog">
@@ -360,7 +309,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-5 blog">
@@ -368,7 +317,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-6 blog">
@@ -376,7 +325,7 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
             </div>
             <div class="blog-7 blog">
@@ -384,11 +333,94 @@
                     <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
                 </div>
                 <div class="blog-1-hd">
-                <p class="tua-blog">mẹo du lịch</p> 
+                    <p class="tua-blog">mẹo du lịch</p>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    document.onload = load()
+
+    function load() {
+        loadtour()
+        loaddiadiem()
+    }
+
+    function loadtour() {
+        path = "./public/img/tour/";
+        $.post('index.php?controller=ctour&action=getAlltour', {},
+            function(data) {
+                tour = JSON.parse(data);
+                for (let i = 0; i < 4; i++) {
+                    t = tour[i];
+                    idtour = t['idtour']
+                    hinhanh = t['hinhanh']
+                    if (hinhanh.length == 0) {
+                        hinhanh = 'noimg.png'
+                    }
+                    hinhanhtour = path + hinhanh
+                    nametour = t['nametour']
+                    price = t['price']
+                    daystart = t['day-start']
+                    $('#tournoibat').append(`
+                    <div class="col-sm-3 item-wrap">
+                    <div class="khungchuaimg">
+                        <img src="` + hinhanhtour + `" alt="" style="width:100%">
+                    </div>
+                    <div class="item-meta">
+                        <p class="item-tua mb-1">
+                            <a class="item-header" href="#">` + nametour + `</a>
+                        </p>
+                        <p class="item-price md-1">
+                            <span class="amount" data-price="900000">` + price + `</span>
+                            <span>VNĐ</span>
+                        </p>
+                        <p class="item-khoihanh mb-1">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Khởi hành:</span> ` + daystart + `
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour&idtour=`+idtour+`">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    </div>
+                    `)
+                }
+            })
+    }
+
+    function loaddiadiem() {
+        pathplace = "./public/img/diadiem/";
+        $.post('index.php?controller=cdiadiem&action=getAlldiadiem', {},
+            function(data) {
+                place = JSON.parse(data);
+                for (let i = 0; i < 6; i++) {
+                    p = place[i];
+                    idplace = p['idplace']
+                    nameplace = p['nameplace']
+                    hinhanh = p['hinhanh']
+                    // console.log(nameplace)
+                    if (hinhanh.length == 0) {
+                        hinhanh = 'noimg.png'
+                    }
+                    hinhanhplace = pathplace + hinhanh
+                    $('#diemdulich').append(`
+                        <div class="item-dacsac">
+                            <a class="item-content-dacsac" href="">
+                                <img class="item-img-dacsac" src="` + hinhanhplace + `" alt="" style="width:100%">
+                            </a>
+                            <div class="ten-dacsac">
+                                <p>` + nameplace + `</p>
+                            </div>
+                            <div class="overlay">
+                                <div class="item_header-overlay">` + nameplace + `</div>
+                            </div>
+                         </div>
+                    `)
+                }
+            })
+    }
+</script>

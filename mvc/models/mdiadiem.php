@@ -6,6 +6,11 @@ class mdiadiem extends database
         $qr = "SELECT * FROM `place`";
         return $this->select($qr);
     }
+    public function getAllDiadiembyTinh($tinh)
+    {
+        $qr = "SELECT * FROM `place` WHERE city ='$tinh'";
+        return $this->select($qr);
+    }
     public function getDiadanhByIddiadanh($iddiadanh)
     {
         $qr = "SELECT * FROM `place` WHERE idplace='$iddiadanh'";

@@ -11,8 +11,16 @@
             <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
         </div>
         <div class="input-group">
-            <span class="">Giá</span>
-            <input id="price" type="text" class="form-control" placeholder="Nhập Giá">
+            <span class="">Số hành khách</span>
+            <input type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
+        </div>
+        <div class="input-group">
+            <span class="">Giá người lớn</span>
+            <input id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
+        </div>
+        <div class="input-group">
+            <span class="">Giá trẻ em</span>
+            <input id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
         </div>
         <div class="input-group">
             <span class="">Ngày Bắt Đầu</span>
@@ -36,7 +44,10 @@
         </div>
         <div class="input-group">
             <span class="">Nơi xuất phát</span>
-            <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
+            <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
+
+            </select>
+            <!-- <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát"> -->
         </div>
         <div class="input-group">
             <span class="">Mô Tả</span>
@@ -51,14 +62,21 @@
             <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
         <div class="input-group">
+            <span>Lọc điểm đến theo tỉnh</span>
+            <select id="tinhdiemden" onchange="locdiemdentheotinh()">
+
+            </select>
+        </div>
+        <div class="input-group">
             <span class="">Điểm đến</span>
             <select multiple id="dgb" style="width: 250px;" size="5">
 
             </select>
         </div>
+
         <div class="input-group ">
             <div id="totalAddress">
-               
+
             </div>
 
             <p id="writeroot"></p>
@@ -79,12 +97,43 @@
     ten_tinh = null;
     id_huyen = null;
 
+    document.onload = get()
 
-    document.onload = loadDiadiem()
+    function get() {
+        get_tinhtour()
 
-    function loadDiadiem() {
-        $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
+    }
+
+    function get_tinhtour() {
+        id_tinh = null
+        id_tinh =
+            $.ajax({
+                url: 'https://provinces.open-api.vn/api/?depth=3',
+                method: "GET",
+                data: {},
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $('#start_place').append(
+                            `
+                    <option id='tinhtour' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                    `
+                        )
+                        $('#tinhdiemden').append(`
+                        <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                        `)
+                    }
+
+                }
+            })
+    }
+
+    function locdiemdentheotinh() {
+        tinh = $('#tinhdiemden').val()
+        $.post("index.php?controller=cdiadiem&action=getDiadiembyTinh", {
+            tinh: tinh,
+        }, function(data) {
             diadiem = JSON.parse(data)
+            // $(`#dgb option:selected` ).children().remove()
             for (i = 0; i < diadiem.length; i++) {
                 iddiadiem = diadiem[i]['idplace']
                 tendiadiem = diadiem[i]['nameplace']
@@ -92,10 +141,6 @@
             }
         })
     }
-
-
-
-
 
     var counter = 0;
 
@@ -127,28 +172,13 @@
 
     function moreFields() {
         counter++;
-        // var newFields = document.getElementById('diemden').cloneNode(true);
-        // newFields.id = '';
-        // newFields.style.display = 'block';
-        // var newField = newFields.childNodes;
-        // for (var i = 0; i < newField.length; i++) {
-        //     var attributeId = newField[i].id
-        //     if (attributeId) {
-        //         newField[i].id = attributeId + counter;
-        //     }
-        // }
-        // var insertHere = document.getElementById('writeroot');
-        // insertHere.parentNode.insertBefore(newFields, insertHere);
+
         renderField(counter, $('#totalAddress'))
         get_tinh(counter);
-        // get_huyen();
-        // get_id_huyen();
 
     }
 
     document.onload = moreFields()
-    // document.onload = get_tinh()
-
 
     function get_tinh(counter) {
         id_tinh = null
@@ -187,11 +217,7 @@
 
             },
             success: function(data) {
-                // num = 0;
-                // collection = document.querySelectorAll('.adddiemden').length;
-                // for (i = 1; i < collection; i++) {
-                //     num = i;
-                // }
+
                 $(`#diemden-${counter} #district`).children().remove()
 
                 for (i = 0; i < data['districts'].length; i++) {
@@ -215,12 +241,6 @@
             },
             success: function(data) {
 
-                // num = 0;
-                // collection = document.querySelectorAll('.adddiemden').length;
-                // for (i = 1; i < collection; i++) {
-                //     num = i;
-                // }
-
                 $(`#diemden-${counter} #ward`).children().remove()
 
                 for (i = 0; i < data['wards'].length; i++) {
@@ -240,9 +260,11 @@
         _temp = $(this).val() || [];
     }).click('option', function(e) {
         var currVal = e.currentTarget.value;
-
+        //nếu k có vị trí phần tử curVal trong mảng temp thì mảng temp 
+        //sẽ bằng những phần tử k bằng curVal, không thì thêm currVal vào mảng
         if (_temp.indexOf(currVal) !== -1) {
             _temp = _temp.filter(function(v) {
+                // v là hàm kiểm tra phần tử
                 return v != currVal;
             });
         } else {
@@ -253,6 +275,7 @@
             $(v).prop('selected', (_temp.indexOf(v.value) !== -1));
         });
     });
+
 
     function getLastDayOfMonth(year, month) {
         return new Date(year, month, 0);
@@ -308,44 +331,12 @@
     numberday = $('#number-day').val();
     numbernight = $('#number-night').val();
 
-    // async function luu() {
-    //     const count = $('#totalAddress')[0].childElementCount;
-    //     let rs = []
-    //     for (let i = 0; i < count; i++) {
-    //         hinhanh = $(`#diemden-${i+1} #hinhanh`).get(0).files;
-    //         link = uploadFile(hinhanh, 'diadiem');
-    //         rs = [
-    //             ...rs, {
-    //                 link,
-    //                 nameplace: $(`#diemden-${i+1} ` + '#nameplace').val(),
-    //                 in4: $(`#diemden-${i+1} ` + '#in4').val(),
-    //                 address: $(`#diemden-${i+1} ` + '#address').val(),
-    //                 tinh: $(`#diemden-${i+1} ` + '#city').val(),
-    //                 huyen: $(`#diemden-${i+1} ` + '#district').val(),
-    //                 xa: $(`#diemden-${i+1} ` + '#ward').val(),
-    //                 nametinh: $(`#diemden-${i+1} ` + '#city').find('option:selected').text(),
-    //                 namehuyen: $(`#diemden-${i+1} ` + '#district').find('option:selected').text(),
-    //                 namexa: $(`#diemden-${i+1} ` + '#ward').find('option:selected').text()
-    //             }
-    //         ]
-    //     }
-    //     $.post("index.php?controller=cdiadiem&action=addplace2", {
-    //         rs: rs,
-    //     }, function(data) {
-    //         console.log(data);
-    //         // const data = JSON.parse(rs)
-    //         // if (data.status) {
-    //         //     alert(data.message)
-    //         // }
-    //     })
-    // }
-
     function add() {
         const count = $('#totalAddress')[0].childElementCount;
         let rs = []
         for (let i = 0; i < count; i++) {
             hinhanhplace = $(`#diemden-${i+1} #hinhanhplace`).get(0).files;
-            linkplace = uploadFile(hinhanh, 'diadiem');
+            linkplace = uploadFile(hinhanhplace, 'diadiem');
             rs = [
                 ...rs, {
                     linkplace,
@@ -364,7 +355,9 @@
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
         nametour = $('#nametour').val();
-        pricetour = $('#price').val();
+        totalguest =$('#total-guest').val();
+        priceadult = $('#price-adult').val();
+        pricechild = $('#price-child').val();
         dayend = $('#day-end').val();
         daystrart = $('#day-star').val();
         in4tour = $('#infotour').val();
@@ -379,7 +372,9 @@
             idplace: Date.now(),
             hinhanh: link,
             nametour: nametour,
-            pricetour: pricetour,
+            totalguest:totalguest,
+            priceadult: priceadult,
+            pricechild: pricechild,
             dayend: dayend,
             daystar: daystrart,
             numberday: numberday,
@@ -396,6 +391,7 @@
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
+                window.location = "index.php?controller=chome&action=company&path=tour"
             }
         })
     }

@@ -1,0 +1,247 @@
+.body {
+    display: flex;
+    flex-direction: row;
+}
+.hd-order1 {
+    font-weight: 700;
+    font-size: 30px;
+    /* color: rgb(61, 66, 114); */
+    background: -webkit-linear-gradient(50deg, #000c66 , #7ac6e7 97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+.hd {
+    margin-top: 80px;
+}
+
+.order {
+
+    font-family: Bookman;
+    flex-basis: 70%;
+}
+
+.thongtinorder {
+    font-family: Bookman;
+    flex-basis: 30%; 
+    margin: 20px 20px 10px 0;
+}
+.div{
+    font-family: Bookman;
+    border: 1px solid gainsboro;
+    padding: 20px 0;
+}
+
+.hd-order {
+    font-weight: 600;
+    font-size: 30px;
+    color: rgb(61, 66, 114);
+    text-align: center;
+    padding: 20px;
+}
+
+.hd-lienlac, .hd-soluonghanhkhach, .hd-ttkhachhang {
+    font-weight: 600;
+    font-size: 22px;
+    margin: 10px 30px;
+}
+
+.hd-nguoilon, .hd-treem {
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+.lienlac, .soluonghanhkhach, .quydinhnguoi, .thongtinkh {
+    color: rgb(61, 66, 114);
+}
+
+.item-lienlac {
+    background-color: rgb(240, 245, 249);
+    margin: 0 20px;
+    border-radius: 15px;
+    padding: 30px 20px;
+}
+
+.item-soluonghk {
+
+    margin: 0 30px;
+    border-radius: 15px;
+    padding: 0 20px;
+}
+
+.in4nguoilon, .in4treem {
+    margin: 20px 30px;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+
+.item-nguoilon, .item-treem {
+    background-color: rgb(240, 245, 249);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 20px;
+}
+
+.name, .phone, .address, .email, .gioitinh, .ngaysinh {
+    padding: 5px 20px;
+}
+
+.ip-name, .ip-phone, .ip-address, .ip-email {
+    border: 1px solid rgb(171, 171, 171);
+    width: 100%;
+    border-radius: 4px;
+    height: 35px;
+    line-height: 35px;
+    padding: 10px;
+}
+
+#gioitinh, #ngaysinh {
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid rgb(171, 171, 171);
+    border-radius: 4px;
+    width: 100%;
+    color: rgb(61, 66, 114);
+    padding-left: 10px;
+}
+
+.slnguoilon, .sltreem {
+    border: 3px solid rgb(36, 88, 200);
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    color: rgb(4, 4, 137);
+}
+
+.ip-slnguoilon, .ip-sltreem {
+    width: 15%;
+    height: 30px;
+    border: 1px solid rgb(36, 88, 200);
+    color: rgb(4, 4, 137);
+    text-align: center;
+}
+
+.quydinhnguoi {
+    background-color: rgb(240, 245, 249);
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.luuy {
+    padding: 20px;
+    margin: 20px;
+}
+
+#content-luuy {
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: Tahoma;
+}
+
+.hd-note {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 20px;
+    color: #2d4271;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.hd-ttorder {
+    font-weight: 600;
+    font-size: 25px;
+    color: rgb(61, 66, 114);
+    text-align: center;
+    padding: 0 20px 10px 20px;
+}
+
+.tt-order {
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+    position: relative;
+}
+
+.total-price {
+    border-top: 1px solid gainsboro;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 10px 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+.thongtin {
+    flex-basis: 50%;
+    font-size: 18px;
+}
+
+.thucte {
+    position: absolute;
+    right: 20px;
+    font-size: 17px;
+}
+
+.hd-tt {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d4271;
+}
+
+.total {
+    color: #2d4271;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.price-total {
+    background: -webkit-linear-gradient(45deg, #e20505 50%, #a412dd );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    font-weight: 700;
+}
+.btn{
+    margin-left: 10%;
+    width: 80%;
+    margin-top: 30px;
+}
+.btn-order{
+    background-image: linear-gradient(to right, rgb(228, 15, 15), pink);
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    font-family: Arial;
+}
+.thanhtoan{
+    padding-bottom: 20px;
+}
+.hd-thanhtoan{
+    font-weight: 600;
+    font-size: 19px;
+    color: rgb(61, 66, 114);
+    padding: 0 20px 5px 20px;
+}
+.onl{
+    flex-basis: 50%;
+    font-size: 18px;
+}
+.tructiep{
+    font-size: 18px;
+}

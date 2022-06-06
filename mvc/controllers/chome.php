@@ -24,4 +24,12 @@ class chome extends controller{
     {
         return $this->view("trangchu","detailtour");
     }
+    public function order()
+    {
+        return $this->view("trangchu","oder");
+    }
+    public function vnpay()
+    {
+       return $this->view("","vn_pay");
+    }
 }

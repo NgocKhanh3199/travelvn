@@ -11,7 +11,17 @@ class mtour extends database
         $qr = "SELECT * FROM `detail_place`, `place`, `tour` WHERE detail_place.idtour=tour.idtour AND detail_place.idplace=place.idplace AND tour.idtour=$idTour";
         return $this->select($qr);
     }
-    public function add($idtour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
+    public function getin4TourbyIdtour($idtour)
+    {
+        $qr = "SELECT * FROM `tour` WHERE idtour='$idtour'";
+        return $this->select($qr);
+    }
+    public function getPlaceByIdTour($idTour)
+    {
+        $qr = "SELECT * FROM `detail_place`, `place` WHERE detail_place.idtour=$idTour AND detail_place.idplace = place.idplace";
+        return $this->select($qr);
+    }
+    public function add($idtour, $hinhanh, $nametour,$totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
     {
 
         $qr = "INSERT INTO `tour`(`idtour` ,";
@@ -25,7 +35,7 @@ class mtour extends database
             $qr .= "$column[$i]";
             $qr .= ",";
         }
-        $qr .= "`nametour`, `price`, `day-start`, `day-end`, `numberday`, `numbernight`, `transport`, `place_start`, `service_not_include`, `schedule`, `idcompany`, `information`)";
+        $qr .= "`nametour`,`total-guest`, `price-adult`, `price-child`, `day-start`, `day-end`, `numberday`, `numbernight`, `transport`, `place_start`, `service_not_include`, `schedule`, `idcompany`, `information`)";
         $qr .= " VALUES ('$idtour',";
         for ($j = 0; $j < count($hinhanh); $j++) {
             $value[$j] = $hinhanh[$j];
@@ -33,15 +43,15 @@ class mtour extends database
             $qr .= "'$value[$j]'";
             $qr .= ",";
         }
-        $qr .= "' $nametour', '$pricetour', '$dayend', '$daystar', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','1','$in4tour')";
-        // return $qr;
+        $qr .= "' $nametour','$totalguest', '$priceadult', '$pricechild', '$dayend', '$daystar', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','1','$in4tour')";
         return $this->insert($qr);
     }
     public function addDetailplace($idtour, $nameplace)
     {
-        $qr="INSERT INTO `detail_place`(`idtour`, `idplace`) VALUES ('$idtour','$nameplace')";
+        $qr = "INSERT INTO `detail_place`(`idtour`, `idplace`) VALUES ('$idtour','$nameplace')";
         return $this->insert($qr);
     }
+
     public function addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull)
     {
         $qr = "INSERT INTO `place`( `idplace`,";
@@ -64,10 +74,9 @@ class mtour extends database
             $qr .= ",";
         }
         $qr .= "'$nameplace','$in4','$address','$tinh','$huyen','$xa',' $diachifull')";
-        // echo $qr;
         return $this->insert($qr);
     }
-    public function edit($idTour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
+    public function edit($idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
     {
 
         $qr = "UPDATE `tour` SET";
@@ -83,10 +92,11 @@ class mtour extends database
             $qr .= "'$hinhanh[$i]' ";
             $qr .= ",";
         }
-        $qr .= " `nametour`='$nametour',`price`=' $pricetour',`day-start`=' $daystar',`day-end`=' $dayend',`numberday`='$numberday',`numbernight`='$numbernight',`transport`='$transport',`place_start`='$start_place',`service_not_include`='$service',`schedule`='$schedule',`idcompany`='1',`information`='$in4tour'";
-        $qr .= " WHERE idtour = '$idTour'";
+        $qr .= " `nametour`='$nametour',`total-guest`='$totalguest',`price-adult`='$priceadult',`price-child`='$pricechild',`day-start`=' $daystar',`day-end`=' $dayend',`numberday`='$numberday',`numbernight`='$numbernight',`transport`='$transport',`place_start`='$start_place',`service_not_include`='$service',`schedule`='$schedule',`idcompany`='1',`information`='$in4tour'";
+        $qr .= " WHERE idtour = '$idtour'";
         return $this->update($qr);
     }
+    
     public function deleteTourByIdtour($idTour)
     {
 

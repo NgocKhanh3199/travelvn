@@ -1,0 +1,17 @@
+
+.total-price {
+    /* background-color: yellowgreen; */
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.total, .money_refund, .money_received {
+    flex-basis: 50%;
+    text-align: left;
+}
+.thucte{
+    position: absolute;
+    right: 20px;
+    font-size: 17px;
+}

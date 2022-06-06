@@ -1,0 +1,135 @@
+body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 24, 162, 1) 14%, rgba(0, 212, 255, 1) 100%);
+    font-family: Trebuchet;
+}
+
+.detail_order {
+    box-sizing: content-box;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 30px;
+    border: 3px solid blue;
+    margin: 30px 20%;
+    background-color: rgb(241, 241, 247);
+    border-radius: 20px;
+}
+
+.hd_detail {
+    color: rgb(36, 45, 213);
+    text-align: center;
+    font-weight: 600;
+}
+
+.hd_in4_tour, .hd_in4_khachhang {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 24, 162, 1) 14%, rgba(0, 212, 255, 1) 100%);
+    border-radius: 5px;
+}
+
+.hd_tour, .hd_khachhang {
+    color: aliceblue;
+    padding: 10px;
+    font-size: 21px;
+}
+
+.in4_detail_order {
+
+    margin: 20px;
+}
+
+.item_time {
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.roww {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 15px 0;
+}
+
+.in4_total_price {
+    background: rgb(195, 34, 34);
+    background: linear-gradient(90deg, rgba(195, 34, 34, 0.5746673669467788) 16%, rgba(253, 45, 154, 0.16010154061624648) 100%);
+    border-radius: 5px;
+}
+
+.total_price {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+}
+
+.lb_price {
+    color: rgb(128, 1, 1);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.tt_price {
+    color: rgb(234, 0, 0);
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+.label {
+    flex-basis: 40%;
+    position: absolute;
+    left: 5%;
+}
+
+.tt {
+    position: absolute;
+    left: 45%;
+}
+
+.sl_hk {
+    position: absolute;
+    left: 10%;
+    padding: 5px;
+}
+
+.adult, .child {
+    margin: 20px 20px;
+}
+
+.hd_in4_adult, .hd_in4_child {
+    color: blueviolet;
+    margin: 20px 42px;
+}
+
+.in4_adult, .in4_child {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 62px;
+}
+
+.name_adult, .name_child {
+    flex-basis: 50%;
+}
+
+.birth_adult, .birth_child {
+    flex-basis: 30%;
+}
+
+.gender_adult, .gender_child {
+    flex-basis: 20%;
+}
+
+.in4_pttt {
+    position: relative;
+}
+
+.pttt {
+    position: absolute;
+    right: 5%;
+}
+
+.lb_pttt {
+    padding: 0 5px;
+}

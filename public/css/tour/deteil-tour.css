@@ -5,13 +5,23 @@
     font-family: serif;
     margin-left: 10px;
 }
-.header-tour-company{
+
+.header-tour-company {
     text-align: center;
     color: rgb(94, 4, 104);
     font-size: 40px;
     font-weight: 600;
     font-family: serif;
 }
+
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-item img {
+    object-fit: contain;
+}
+
 .item-top {
     padding: 0 100px;
     /* background-color: rebeccapurple ; */
@@ -24,7 +34,7 @@
 .img-item {
     float: left;
     flex-basis: 65%;
-    background-color: aqua;
+    background-color: rgb(174, 181, 213);
 }
 
 .img-item img {
@@ -103,37 +113,43 @@
     display: flex;
     padding: 3px;
 }
-.item-danhgiakh{
+
+.item-danhgiakh {
     border-bottom: 1px solid rgb(215, 222, 215);
     margin-left: 20px;
     display: flex;
 }
-.tenkh{
+
+.tenkh {
     color: rgb(120, 0, 120);
 }
-.logokh{
-    
+
+.logokh {
+
     float: left;
 }
-.logokh img{
+
+.logokh img {
     border-radius: 50%;
     height: 40px;
     width: 40px;
     object-fit: cover;
 }
-.info{
+
+.info {
     margin-left: 10px;
 }
+
 .tualabel1 {
     float: left;
     flex-basis: 20%;
 }
-.stars{
+
+.stars {
     margin-left: 10px;
 }
-.fa-star{
-    color: rgb(243, 218, 54);  
+
+.fa-star {
+    color: rgb(243, 218, 54);
     font-size: 12px;
 }
-
-

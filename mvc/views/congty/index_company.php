@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark fixed-top mt-4">
+    <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid navbar-menu">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                         <a class="nav-link" href="index.php?controller=chome&action=company&path=donhang">Đơn Hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?controller=chome&action=company&path=giaodichu">Địa điểm</a>
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=diadiem">Địa điểm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?controller=chome&action=company&path=giaodich">Giao Dịch</a>

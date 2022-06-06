@@ -1,0 +1,73 @@
+body {
+    background: rgb(12, 26, 223);
+    background: linear-gradient(90deg, rgba(12, 26, 223, 0.13769257703081228) 16%, rgba(45, 164, 253, 0.022846638655462215) 100%);
+    
+}
+.add_diadiem{
+    box-sizing: content-box;
+    border: 3px solid rebeccapurple;
+    padding: 40px;
+}
+
+.frame{
+    font-family: Trebuchet;
+
+}
+.page-title {
+    color: rgb(9, 22, 174);
+    font-family: Trebuchet;
+}
+
+.input-group {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.lb-span {
+    flex-basis: 15%;
+    text-align: left;
+    font-size: 18px;
+    color: rgb(5, 5, 93);
+}
+
+.ip_name {
+    flex-basis: 85%;
+    /* border: 1px solid rgb(183, 182, 247); */
+    height: 40px;
+    line-height: 40px;
+    padding: 10px;
+    border: 1px solid blue;
+}
+
+.ip {
+    border: 1px solid blue;
+}
+
+.tinh, .huyen, .xa {
+    width: 18%;
+
+}
+
+.btn_thoat, .btn_add, .btn_edit {
+    background: rgb(12, 26, 223);
+    background: linear-gradient(90deg, rgba(12, 26, 223, 1) 16%, rgba(45, 196, 253, 1) 100%);
+    width: 20%;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 40px;
+    font-family: Trebuchet;
+}
+
+.btn_thoat a {
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Trebuchet;
+}

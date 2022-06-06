@@ -37,7 +37,7 @@
     }
 
     function loadTableTourAdmin() {
-        $.post('index.php?controller=ctour&action=loadTableTourAdmin', {}, function(data) {
+        $.post('index.php?controller=ctour&action=loadTableTour', {}, function(data) {
             data = JSON.parse(data);
             $('#tbTourAdmin').DataTable({
                 data: data

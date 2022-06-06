@@ -1,38 +1,42 @@
+<link rel="stylesheet" href="./public/css/add_diadiem.css">
 <script src="./public/js/js.js"></script>
 <div class="container">
     <h4 class="page-title">THÊM ĐỊA ĐIỂM</h4>
     <div class="frame">
         <div class="input-group">
-            <span class="">Hình ảnh</span>
-            <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
+            <label class="lb-span">Hình ảnh:</label>
+            <input class="ip_img" type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
         </div>
         <div class="input-group">
-            <span class="">Tên địa điểm</span>
-            <input id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <label class="lb-span">Tên địa điểm:</label>
+            <input class="ip_name" id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
-            <span class="">Địa chỉ</span>
-            <input id="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="form-select" aria-label="Default select example">
+            <label class="lb-span">Địa chỉ:</label>
+            <input id="address" type="text" class="form-control address ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+
+        </div>
+        <div class="input-group">
+            <div class="lb-span"></div>
+            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
 
             </select>
-            <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="form-select" aria-label="Default select example">
+            <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="iphuyen" aria-label="Default select example">
 
             </select>
-            <select id="ward" name="hotel_name2" class="form-select" aria-label="Default select example">
+            <select id="ward" name="hotel_name2" class="ipxa" aria-label="Default select example">
 
             </select>
         </div>
-
         <div class="input-group">
-            <span class="">Mô tả</span>
+            <label class="lb-span">Mô tả:</label>
 
-            <textarea id="in4" class="form-control" aria-label="With textarea"></textarea>
+            <textarea id="in4" class="form-control ip" aria-label="With textarea"></textarea>
         </div>
 
         <div class="button-group">
-            <button class="btn btn-primary" type="button" onclick="addplace()">Thêm</button>
-            <button class="btn btn-primary" type="button"><a href="?folder=diadiem">Thoát</a> </button>
+            <button class=" btn_add" type="button" onclick="addplace()">Thêm địa điểm</button>
+            <button class=" btn_thoat" type="button"><a href="?folder=diadiem">Thoát</a> </button>
         </div>
     </div>
 </div>

@@ -27,7 +27,7 @@ class database
         $connect = $this->connect();
         $data = [];
         $result = mysqli_query($connect,$qr);
-        while($row = $result ->fetch_array())
+        while($row = $result ->fetch_assoc())
         {
             $data[] = $row;
         }
