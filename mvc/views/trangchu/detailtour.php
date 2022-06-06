@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="detail-tour">
+    <div class="detail-tour mt-5 pt-2">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Photos</a></li>
             <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
@@ -165,3 +165,10 @@
 </body>
 
 </html>
+<script>
+    document.onload = loadDetailTour()
+    function loadDetailTour()
+    {
+        $.post("index.php?controller=c")
+    }
+</script>
