@@ -23,7 +23,7 @@
 
 <body>
     <input type="checkbox" id="nav-toggle">
-    <div class="slidebar mt-5">
+    <div class="slidebar">
         <div class="slidebar-brand">
             <h3><span class="logo"><img src="./public/img/admin/TRAVELVN.png" alt=""></span><span>Travel VN</span></h3>
         </div>
@@ -69,12 +69,17 @@
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Giao Dịch</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=list">
+                        <span><i class="fa-solid fa-location-crosshairs"></i></span><span>Chăm sóc khách hàng</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 
-    <div class="main-content mt-5">
-        <header class="mt-5">
+    <div class="main-content">
+        <header class="">
             <h4 class="header-title">
                 <label for="nav-toggle">
                     <span><i class="fa-solid fa-bars"></i></span>

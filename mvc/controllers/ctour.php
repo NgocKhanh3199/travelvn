@@ -10,9 +10,13 @@ class ctour extends controller
     {
         return $this->viewcongty("tour", "add");
     }
-    public function getAlltour()
+    // public function getAlltour()
+    // {
+    //     echo json_encode($this->tour->getAlltour());
+    // }
+    public function getAllTour()
     {
-        echo json_encode($this->tour->getAlltour());
+        echo json_encode($this->tour->getAllTour());
     }
     public function getTourByIdTour()
     {
@@ -213,4 +217,145 @@ class ctour extends controller
         $data = $this->tour->duyetTourByIdtour($idTour);
         echo $data;
     }
+
+    public function search()
+    {
+        $name = $_POST['name'];
+        $data = $this->tour->search($name);
+        echo json_encode($data);
+    }
+    public function getInformationByNamePlace()
+    {
+        $name = $_POST['name'];
+        $data = $this->tour->getInformationByNamePlace($name);
+        echo json_encode($data);
+    }
+    public function getPlaceByUniqueName()
+    {
+        $name = $_POST['name'];
+        $data = $this->tour->getPlaceByUniqueName($name);
+        echo json_encode($data);
+    }
+    public function getCityById()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getCityById($idplace);
+        echo json_encode($data);
+    }
+    public function getCityByIdAndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getCityByIdAndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getCityByIdAndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getCityByIdAndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
+    }
+    public function getAllTourOrderById()
+    {
+        $data = $this->tour->getAllTourOrderById();
+        echo json_encode($data);
+    }
+    public function getAllTourOrderByPrice()
+    {
+        $data = $this->tour->getAllTourOrderByPrice();
+        echo json_encode($data);
+    }
+    public function getAllTourOrderByNumberDay()
+    {
+        $data = $this->tour->getAllTourOrderByNumberDay();
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround1To3()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getAllTourByNumberDayAround1To3($idplace);
+        echo json_encode($data);
+    } 
+    public function getAllTourByNumberDayAround4To7()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getAllTourByNumberDayAround4To7($idplace);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround8To14()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getAllTourByNumberDayAround8To14($idplace);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayOver14()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getAllTourByNumberDayOver14($idplace);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround1To3AndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getAllTourByNumberDayAround1To3AndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround1To3AndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getAllTourByNumberDayAround1To3AndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround4To7AndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getAllTourByNumberDayAround4To7AndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround4To7AndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getAllTourByNumberDayAround4To7AndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround8To14AndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getAllTourByNumberDayAround8To14AndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayAround8To14AndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getAllTourByNumberDayAround8To14AndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayOver14AndMinPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $minprice = $_POST['minprice'];
+        $data = $this->tour->getAllTourByNumberDayOver14AndMinPrice($idplace, $minprice);
+        echo json_encode($data);
+    }
+    public function getAllTourByNumberDayOver14AndMaxPrice()
+    {
+        $idplace = $_POST['idplace'];
+        $maxprice = $_POST['maxprice'];
+        $data = $this->tour->getAllTourByNumberDayOver14AndMaxPrice($idplace, $maxprice);
+        echo json_encode($data);
+    }
+    public function getInformationByIdCity()
+    {
+        $idplace = $_POST['idplace'];
+        $data = $this->tour->getInformationByIdCity($idplace);
+        echo json_encode($data);
+    }
+
 }

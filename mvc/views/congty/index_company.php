@@ -56,7 +56,7 @@
                     </li>
                     <li class="nav-item">
                         <form class="form-search d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name">
                             <button class="btn btn-outline-light" type="submit">Search</button>
                         </form>
                     </li>

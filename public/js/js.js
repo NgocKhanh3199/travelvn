@@ -33,5 +33,3 @@ function uploadFile(hinhanh, folder) {
     return arrName
     
 }
-
-

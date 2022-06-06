@@ -154,8 +154,7 @@
                     <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
 
                     <input id="address" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-
-                    <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
+<select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
                     </select>
 
                     <select id="district" name="district" onchange="get_id_huyen(${number})" class="form-select" aria-label="Default select example">

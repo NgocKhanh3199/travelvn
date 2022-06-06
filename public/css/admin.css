@@ -76,15 +76,18 @@
 }
 
 .slidebar-menu {
+    height: 100%;
     box-shadow: 4px 4px 10px rgba(119, 117, 117, 0.3);
 }
 
 .slidebar-menu li {
     width: 100%;
-    margin-bottom: 1.3rem;
+    /* margin-bottom: 1.3rem; */
     font-family: Rockwell;
     /* padding: 0 20px 0 0; */
-    height: 50px;
+    height: 60px;
+    padding: 5px 0;
+    line-height: 100%;
     display: flex;
     align-items: center;
     /* padding-left: 1rem; */

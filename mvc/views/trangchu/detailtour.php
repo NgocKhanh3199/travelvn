@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <div class="detail-tour">
+    <div class="detail-tour mt-5 pt-2">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Photos</a></li>
             <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
@@ -138,6 +138,7 @@
 
 </html>
 <script>
+<<<<<<< HEAD
     var idtour = <?= $_GET['idtour'] ?>;
 
     document.onload = loadtour()
@@ -267,5 +268,11 @@
                 <p>` + dichvu + `</p>
                 `)
             })
+=======
+    document.onload = loadDetailTour()
+    function loadDetailTour()
+    {
+        $.post("index.php?controller=c")
+>>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
     }
 </script>

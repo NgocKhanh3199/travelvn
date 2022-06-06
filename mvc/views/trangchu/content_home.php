@@ -13,6 +13,7 @@
     <!-- end_link bootstrap 5 -->
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- end-link icon -->
 
     <script src="./public/js/js.js"></script>
@@ -68,9 +69,15 @@
             <a class="align-items-center d-flex xemthem">Xem thêm tour</a>
         </div>
         <div class="content-tournoibat">
+<<<<<<< HEAD
             <div class="row" id="tournoibat">
                 <!-- <div class="col-sm-3 item-wrap"> -->
                 <!-- <div class="khungchuaimg">
+=======
+            <div class="row" id="tour">
+                <!-- <div class="col-sm-3 item-wrap" id="tour">
+                    <div class="khungchuaimg">
+>>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
                         <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
                     </div>
                     <div class="item-meta">
@@ -88,8 +95,14 @@
                         <div class="d-flex justify-content-between">
                             <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>
                         </div>
+<<<<<<< HEAD
                     </div> -->
                 <!-- </div> -->
+=======
+                    </div> 
+                </div>-->
+
+>>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
             </div>
         </div>
     </div>
@@ -342,6 +355,7 @@
 
 </html>
 <script>
+<<<<<<< HEAD
     document.onload = load()
 
     function load() {
@@ -422,5 +436,43 @@
                     `)
                 }
             })
+=======
+    window.onload = loadTour()
+
+    function loadTour() {
+        $('#tamp').remove()
+        $('#temp').remove()
+        $('#showimg').append('<div id="tamp"></div>')
+        $('#hinhanh').append('<div id="temp"></div>')
+        $.post("index.php?controller=ctour&action=getAllTour", {}, function(data) {
+            var tour = JSON.parse(data)
+            path = "./public/img/tour/"
+            for (var i = 0; i < tour.length; i++) {
+                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
+                src = path + img
+                $('#tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
+                    '<div class="khungchuaimg">' +
+                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
+                    ' <div class="item-meta">' +
+                    '  <p class="item-tua mb-1">' +
+                    ' <a class="item-header" href="#">'+tour[i]['nametour']+'</a>' +
+                    '  </p>' +
+                    ' <p class="item-price md-1">' +
+                    '  <span class="amount" data-price="900000">'+tour[i]['price']+'</span>' +
+                    '  <span>VNĐ</span>' +
+                    '  </p>' +
+                    ' <p class="item-khoihanh mb-1">' +
+                    '     <i class="fa-solid fa-clock"></i>' +
+                    '     <span>Khởi hành:</span> '+tour[i]['day-start']+' ' +
+                    ' </p>' +
+                    '  <div class="d-flex justify-content-between">' +
+                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                    '</div>' +
+                    '</div>' +
+                    ' </div>')
+            }
+
+        })
+>>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
     }
 </script>
