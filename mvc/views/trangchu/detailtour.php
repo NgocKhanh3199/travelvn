@@ -138,7 +138,6 @@
 
 </html>
 <script>
-<<<<<<< HEAD
     var idtour = <?= $_GET['idtour'] ?>;
 
     document.onload = loadtour()
@@ -268,11 +267,5 @@
                 <p>` + dichvu + `</p>
                 `)
             })
-=======
-    document.onload = loadDetailTour()
-    function loadDetailTour()
-    {
-        $.post("index.php?controller=c")
->>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
     }
 </script>
