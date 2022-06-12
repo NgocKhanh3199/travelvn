@@ -37,4 +37,19 @@ class mcompany extends database{
         $qr = "UPDATE `company` SET `password`='$newPassword' WHERE idcompany = '$idcompany'";
         return $this->update($qr);
     }
+    public function getAllCompany()
+    {
+        $qr="SELECT * FROM `company`";
+        return $this->select($qr);
+    }
+    public function loadDetailCompanyByIdCompany($idcompany)
+    {
+        $qr = "SELECT * FROM `company` WHERE idcompany = '$idcompany'";
+        return $this->select($qr);
+    }
+    public function loadTourByIdCompany($idcompany)
+    {
+        $qr = "SELECT * FROM tour WHERE idcompany = '$idcompany'";
+        return $this->select($qr);
+    }
 }

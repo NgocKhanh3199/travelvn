@@ -356,18 +356,18 @@
                     ' <img src="' + src + '" alt="" style="width:100%"></div>' +
                     ' <div class="item-meta">' +
                     '  <p class="item-tua mb-1">' +
-                    ' <a class="item-header" href="#">'+tour[i]['nametour']+'</a>' +
+                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
                     '  </p>' +
                     ' <p class="item-price md-1">' +
-                    '  <span class="amount" data-price="900000">'+tour[i]['price']+'</span>' +
+                    '  <span class="amount" data-price="900000">' + tour[i]['price'] + '</span>' +
                     '  <span>VNĐ</span>' +
                     '  </p>' +
                     ' <p class="item-khoihanh mb-1">' +
                     '     <i class="fa-solid fa-clock"></i>' +
-                    '     <span>Khởi hành:</span> '+tour[i]['day-start']+' ' +
+                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
                     ' </p>' +
                     '  <div class="d-flex justify-content-between">' +
-                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                    '   <a class="item-chitiet" href="http://localhost/luanvan1/index.php?controller=chome&action=home&page=detailtour&idtour=' + tour[i]['idtour'] + '">Xem chi tiết</a>' +
                     '</div>' +
                     '</div>' +
                     ' </div>')

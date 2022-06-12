@@ -1,21 +1,13 @@
-/**
- * @license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * SPDX-License-Identifier: Apache-2.0
- */
- function initMap() {
-    const myLatLng = { lat: -25.363, lng: 131.044 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: myLatLng,
-    });
-  
-    new google.maps.Marker({
-      position: myLatLng,
-      map,
-      title: "Hello World!",
-    });
-  }
-  
-  window.initMap = initMap;
-  
+let mapOptions = {
+  center:[9.99404, 105.74857],
+  zoom:10
+}
+
+
+let map = new L.map('map' , mapOptions);
+
+let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+map.addLayer(layer);
+
+let marker = new L.Marker([9.99404, 105.74857]);
+marker.addTo(map);

@@ -5,12 +5,15 @@ class ctour extends controller
     public function __construct()
     {
         $this->tour = $this->model("mtour");
-        // $this->diadiem = $this->model("mdiadiem");
     }
     public function addtour()
     {
         return $this->viewcongty("tour", "add");
     }
+    // public function getAlltour()
+    // {
+    //     echo json_encode($this->tour->getAlltour());
+    // }
     public function getAllTour()
     {
         echo json_encode($this->tour->getAllTour());
@@ -20,13 +23,25 @@ class ctour extends controller
         $idTour = $_POST['idTour'];
         echo json_encode($this->tour->getTourByIdTour($idTour));
     }
+    public function getin4TourbyIdtour()
+    {
+        $idtour = $_POST['idtour'];
+        echo json_encode($this->tour->getin4TourbyIdtour($idtour));
+    }
+    public function getPlaceByIdTour()
+    {
+        $idTour = $_POST['idTour'];
+        echo json_encode($this->tour->getPlaceByIdTour($idTour));
+    }
     public function add()
     {
         $idtour = $_POST['idtour'];
         $idplace = $_POST['idplace'];
         $hinhanh = $_POST['hinhanh'];
         $nametour = $_POST['nametour'];
-        $pricetour = $_POST['pricetour'];
+        $totalguest = $_POST['totalguest'];
+        $priceadult = $_POST['priceadult'];
+        $pricechild = $_POST['pricechild'];
         $dayend = $_POST['dayend'];
         $daystar = $_POST['daystar'];
         $numberday = $_POST['numberday'];
@@ -39,7 +54,7 @@ class ctour extends controller
         $end_place = $_POST['end_place'];
         $rs = $_POST['rs'];
 
-        $data = $this->tour->add($idtour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
+        $data = $this->tour->add($idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
         $result = [
             "message" => "Thêm thất bại !",
             "status" => false,
@@ -69,7 +84,7 @@ class ctour extends controller
                     $in4 = $rs[$i]["in4"];
                     $address = $rs[$i]["address"];
                     $tinh = $rs[$i]["tinh"];
-                    $huyen = $rs[$i]["huyen"];
+$huyen = $rs[$i]["huyen"];
                     $xa = $rs[$i]["xa"];
                     $nametinh = $rs[$i]["nametinh"];
                     $namehuyen = $rs[$i]["namehuyen"];
@@ -99,10 +114,12 @@ class ctour extends controller
 
     public function edit()
     {
-        $idTour = $_POST['idTour'];
+        $idtour = $_POST['idtour'];
         $hinhanh = $_POST['hinhanh'];
         $nametour = $_POST['nametour'];
-        $pricetour = $_POST['pricetour'];
+        $totalguest = $_POST['totalguest'];
+        $priceadult = $_POST['priceadult'];
+        $pricechild = $_POST['pricechild'];
         $dayend = $_POST['dayend'];
         $daystar = $_POST['daystar'];
         $numberday = $_POST['numberday'];
@@ -112,9 +129,22 @@ class ctour extends controller
         $service = $_POST['service'];
         $schedule = $_POST['schedule'];
         $start_place = $_POST['start_place'];
-        $data = $this->tour->edit($idTour, $hinhanh, $nametour, $pricetour, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
-        echo $data;
+
+
+        $data = $this->tour->edit($idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
+        $result = [
+            "message" => "Cập nhật thất bại !",
+            "status" => false,
+        ];
+        if ($data > 0) {
+            $result = [
+                "message" => "Cập nhật thành công !",
+                "status" => true,
+            ];
+        }
+        echo json_encode($result);
     }
+
     public function loadTableTour()
     {
         $tour = $this->tour->getAllTour();
@@ -125,7 +155,8 @@ class ctour extends controller
             $stt++;
             $idTour = $t['idtour'];
             $tenTour = $t['nametour'];
-            $giaTour = $t['price'];
+            $giaTourAd = $t['price-adult'];
+            $giaTourCh = $t['price-child'];
             $day_start = $t['day-start'];
             $day_end = $t['day-end'];
             // load img
@@ -135,7 +166,7 @@ class ctour extends controller
             $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
             $edit = '<a href="index.php?controller=chome&action=company&path=tour&page=edit&idTour=' . $idTour . '" class ="a-edit" onclick="editPlace(' . $idTour . ')">Sửa</a>';
             $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
-            $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+            $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
             $data[] = $row;
         }
         echo json_encode($data);
@@ -150,7 +181,8 @@ class ctour extends controller
             $stt++;
             $idTour = $t['idtour'];
             $tenTour = $t['nametour'];
-            $giaTour = $t['price'];
+            $giaTourAd = $t['price-adult'];
+            $giaTourCh = $t['price-child'];
             $day_start = $t['day-start'];
             $day_end = $t['day-end'];
             $status = $t['status'];
@@ -158,16 +190,16 @@ class ctour extends controller
             $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
             if ($status == 1) {
-                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
-                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
-                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view nav-link text-success">Xem</a>';
+                $edit = '<a href="" class ="a-edit nav-link" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
+                $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             } else if ($status == 0) {
-                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
-                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
-                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view nav-link text-success">Xem</a>';
+                $edit = '<a href="" class ="a-edit nav-link" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
+                $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             }
         }
@@ -190,7 +222,7 @@ class ctour extends controller
     public function search()
     {
         $name = $_POST['name'];
-        $data = $this->tour->search($name);
+$data = $this->tour->search($name);
         echo json_encode($data);
     }
     public function getInformationByNamePlace()
@@ -278,9 +310,9 @@ class ctour extends controller
         $data = $this->tour->getAllTourByNumberDayAround1To3AndMaxPrice($idplace, $maxprice);
         echo json_encode($data);
     }
-    public function getAllTourByNumberDayAround4To7AndMinPrice()
+public function getAllTourByNumberDayAround4To7AndMinPrice()
     {
-        $idplace = $_POST['idplace'];
+$idplace = $_POST['idplace'];
         $minprice = $_POST['minprice'];
         $data = $this->tour->getAllTourByNumberDayAround4To7AndMinPrice($idplace, $minprice);
         echo json_encode($data);
@@ -326,5 +358,25 @@ class ctour extends controller
         $data = $this->tour->getInformationByIdCity($idplace);
         echo json_encode($data);
     }
-
+    public function permitComment()
+    {
+        $iduser = $_POST['iduser'];
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->permitComment($iduser, $idtour);
+        echo json_encode($data);
+    }
+    public function addComment()
+    {
+        $content = $_POST['content'];
+        $iduser = $_POST['iduser'];
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->addComment($content,$iduser, $idtour);
+        echo json_encode($data);
+    }
+    public function loadAllComment()
+    {
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->loadAllComment($idtour);
+        echo json_encode($data);
+    }
 }

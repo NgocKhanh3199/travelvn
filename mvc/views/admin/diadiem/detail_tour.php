@@ -99,13 +99,13 @@
         </div>
 
         <div class="button-group">
-            <a href="index.php?controller=chome&action=admin&path=tour" class="btn btn-primary" type="button">Thoát</a>
+            <a href="?controller=chome&action=admin&path=diadiem&page=detail&iddiadiem=<?php echo $_GET['iddiadiem']?>" class="btn btn-primary" type="button">Thoát</a>
         </div>
 </body>
 
 </html>
 <script>
-    var idTour = <?= $_GET['idTour'] ?>;
+    var idTour = <?= $_GET['idtour'] ?>;
     document.onload = load()
 
     function load() {

@@ -40,5 +40,10 @@ class mdiadiem extends database
     {
         $qr = "DELETE FROM `place` WHERE idplace='$iddiadiem'";
         return $this->delete($qr);
-    }   
+    } 
+    public function loadTableTourByIdPlace($idplace)
+    {
+        $qr = "SELECT tour.idtour,tour.hinhanh,tour.nametour, `price-adult`, `price-child`, `day-start`, `day-end` FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.idplace = '$idplace'";
+        return $this->select($qr);
+    } 
 }

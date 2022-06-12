@@ -5,6 +5,31 @@
     <div id="info"></div>
     <h5 style="font-style: italic; text-align:start; margin: 20px; border-bottom: 1px solid black">Thông Tin Đơn Hàng</h5>
     <input type="hidden" name="idorder" id="idorder" value="<?php echo $_GET['idorder'] ?>">
+    <input type="hidden" name="iduser" id="iduser" value="<?php echo $_GET['iduser'] ?>">
+    <!-- <div class="page-table">
+        <table id="tableDetailOrder" class="display">
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Tên khách hàng</th>
+                    <th>Điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Người lớn</th>
+                    <th>Trẻ em</th>
+                    <th>Ghi chú</th>
+                    <th>Thành tiền</th>
+                    <th>Thanh toán</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div> -->
     <div class="container content-detail-order text-start d-flex justify-content-around p-2">
 
     </div>
@@ -26,16 +51,18 @@
             </tbody>
         </table>
     </div>
-    <button class="admin-button"><a href="index.php?controller=chome&action=admin&path=donhang">Trở Lại</a></button>
+    <button class="admin-button"><a href="index.php?controller=chome&action=admin&path=nguoidung&page=detail&idUser=<?php echo $_GET['iduser'] ?>">Trở Lại</a></button>
 </div>
 
 <script>
     var idorder = $('#idorder').val()
+    var iduser = $('#iduser').val()
     document.onload = load()
 
     function load() {
         loadTableDetailOrder()
         loadTableTour()
+        loadNameOfUser()
     }
 
     function loadTableDetailOrder() {
@@ -77,13 +104,24 @@
     }
 
     function loadTableTour() {
-        $.post("index.php?controller=corder&action=loadTableTourByIdOrder", {
-            idorder: idorder
+        $.post("index.php?controller=cuser&action=loadTableTourByIdOrder", {
+            idorder: idorder,
+            iduser: iduser
         }, function(data) {
             data = JSON.parse(data)
             $('#tbTour').DataTable({
                 data: data
             })
+        })
+    }
+
+    function loadNameOfUser()
+    {
+        $.post("index.php?controller=cuser&action=findUserById", {
+            iduser: iduser
+        }, function(data){
+            data = JSON.parse(data)
+            $('#info').append('<h6>Tên khách hàng: <span class="fw-bold">'+data[0]['name']+'</span></h6>')
         })
     }
 </script>

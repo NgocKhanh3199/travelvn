@@ -116,4 +116,63 @@ class ccompany extends controller{
         $data = $this->company->updatePassword($idcompany, $password);
         echo $data;
     }
+    public function loadTableCompany()
+    {
+        $company = $this->company->getAllCompany();
+        $data = [];
+        $stt = 0;
+        $path = "./public/img/congty/";
+        foreach ($company as $c) {
+            $stt++;
+            $idcompany = $c['idcompany'];
+            $username = $c['username'];
+            $namecompany = $c['namecompany'];
+            $email = $c['email'];
+            $phone = $c['phone'];
+            $address = $c['address'];
+            $street = $c['street'];
+            $ward = $c['ward'];
+            $district = $c['district'];
+            $city = $c['city'];
+            // load img
+            $img = strlen($c['image']) > 0 ? $c['image'] : 'việt tour.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" width="50px" height="50px" alt=""></button>';
+            $view = '<a href="index.php?controller=chome&action=admin&path=congty&page=detail&idcompany=' . $idcompany .'" class="a-view nav-link text-success">Xem</a>';
+            $row = [$stt,$hinhanh, $username, $namecompany, $email, $phone, $view];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadDetailCompanyByIdCompany()
+    {
+        $idcompany = $_POST['idcompany'];
+        $data = $this->company->loadDetailCompanyByIdCompany($idcompany);
+        echo json_encode($data);
+    }
+    public function loadTableTourByIdCompany()
+    {
+        $idcompany = $_POST['idcompany'];
+        $tour = $this->company->loadTourByIdCompany($idcompany);
+        $stt = 0;
+        $data = [];
+        $path = "./public/img/tour/";
+        foreach ($tour as $t) {
+            $stt++;
+            $idTour = $t['idtour'];
+            $tenTour = $t['nametour'];
+            $giaTourAd = $t['price-adult'];
+            $giaTourCh = $t['price-child'];
+            $day_start = $t['day-start'];
+            $day_end = $t['day-end'];
+            // load img
+            $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
+
+            $view = '<a href="index.php?controller=chome&action=admin&path=congty&page=detail_tour&idTour=' . $idTour . '&idcompany='.$idcompany.'" class="a-view nav-link text-success">Xem</a>';
+            $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+            $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $delete];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
 }

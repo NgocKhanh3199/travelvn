@@ -59,5 +59,20 @@ class muser extends database{
         $qr = "SELECT question.content, question.answer, user.name,question.status  FROM `question`, user WHERE question.iduser = user.iduser";
         return $this->select($qr);
     }
-    
+    public function getOrderByIdUser($iduser)
+    {
+        $qr = "SELECT order.idorder, order.idtour, order.iduser,`price-total`, `payment-method` FROM `order` WHERE iduser = '$iduser'";
+        return $this->select($qr);
+    }
+    public function getDetailOrderByIdOrder($idorder)
+    {
+        $qr = "SELECT order.idorder, order.idtour, order.daystart, order.dayend, `name-customer`, `email-customer`, `phone-customer`, `address-customer`, `number-adult`, `number-child`, order.note, `price-total`, `payment-method`, user.name FROM `order`, user WHERE order.iduser = user.iduser AND order.idorder = '$idorder'";
+        return $this->select($qr);
+    }
+
+    public function loadTableTourByIdOrder($idorder)
+    {
+        $qr = "SELECT tour.idtour,tour.hinhanh,tour.nametour, `price-adult`, `price-child`, `day-start`, `day-end` FROM `order`, tour WHERE order.idtour = tour.idtour AND idorder = '$idorder'";
+        return $this->select($qr);
+    }
 }

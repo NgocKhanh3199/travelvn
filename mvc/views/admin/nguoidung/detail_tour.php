@@ -99,7 +99,7 @@
         </div>
 
         <div class="button-group">
-            <a href="index.php?controller=chome&action=admin&path=tour" class="btn btn-primary" type="button">Thoát</a>
+            <a href="index.php?controller=chome&action=admin&path=nguoidung&page=detail_order&idorder=<?php echo $_GET['idorder'] ?>&iduser=<?php echo $_GET['iduser']?>" class="btn btn-primary" type="button">Thoát</a>
         </div>
 </body>
 
