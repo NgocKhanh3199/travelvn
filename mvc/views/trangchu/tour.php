@@ -110,7 +110,14 @@
                         </div>
                     </div>
                 </div>
+                <?php 
+                    if(isset($_GET['name']))
+                    {
+                ?>
                 <input type="hidden" name="" id="tukhoa" value="<?php echo $_GET['name'] ?>">
+                <?php
+                    }
+                ?>
                 <div class="item-tour row" id="item-tour">
 
 
