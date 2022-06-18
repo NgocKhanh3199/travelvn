@@ -47,7 +47,7 @@
             <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
 
             </select>
-            <!-- <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát"> -->
+
         </div>
         <div class="input-group">
             <span class="">Mô Tả</span>
@@ -61,27 +61,34 @@
             <span class="">Lịch trình</span>
             <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
         </div>
-        <div class="input-group">
-            <span>Lọc điểm đến theo tỉnh</span>
-            <select id="tinhdiemden" onchange="locdiemdentheotinh()">
+        <div class="gr-place">
+            <div class="input-group it-tinh">
+                <span>Chọn tỉnh</span>
+                <select id="tinhdiemden" onchange="locdiemdentheotinh()">
 
-            </select>
+                </select>
+            </div>
+            <div class="input-group it-place">
+                <span class="">Điểm đến</span>
+                <select multiple id="dgb" style="width: 250px;" size="5">
+
+                </select>
+            </div>
         </div>
+
+
         <div class="input-group">
-            <span class="">Điểm đến</span>
-            <select multiple id="dgb" style="width: 250px;" size="5">
+            <div class="addplace">
+                <span>Thêm điểm đến</span>
+                <div id="totalAddress">
 
-            </select>
-        </div>
-
-        <div class="input-group ">
-            <div id="totalAddress">
-
+                </div>
+                <p id="writeroot"></p>
             </div>
 
-            <p id="writeroot"></p>
-            <input type="button" onclick="moreFields()" value="Thêm điểm đến" />
-            <button class="btn btn-primary" onclick="luu()" type="button">Lưu</button>
+
+
+            <input class="btnaddgrplace" type="button" onclick="moreFields()" value="Thêm điểm đến" />
         </div>
 
         <div class="button-group">
@@ -93,6 +100,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    var idcompany = <?= $_GET['idcompany'] ?>;
     id_tinh = null;
     ten_tinh = null;
     id_huyen = null;
@@ -104,27 +112,25 @@
 
     }
 
+
     function get_tinhtour() {
         id_tinh = null
-        id_tinh =
-            $.ajax({
-                url: 'https://provinces.open-api.vn/api/?depth=3',
-                method: "GET",
-                data: {},
-                success: function(data) {
-                    for (i = 0; i < data.length; i++) {
-                        $('#start_place').append(
-                            `
-                    <option id='tinhtour' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
-                    `
-                        )
-                        $('#tinhdiemden').append(`
-                        <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/?depth=3',
+            method: "GET",
+            data: {},
+            success: function(data) {
+                for (i = 0; i < data.length; i++) {
+                    $('#start_place').append(`
+                            <option id='tinhtour' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
                         `)
-                    }
-
+                    $('#tinhdiemden').append(`
+                            <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                        `)
                 }
-            })
+
+            }
+        })
     }
 
     function locdiemdentheotinh() {
@@ -147,14 +153,14 @@
     const renderField = (number, root) => {
         root.append(`
             <div>
-                <span>Thêm điểm đến</span>
+                
                 <div class="frame adddiemden" id="diemden-${number}">
                     <input type="file" id="hinhanhplace" name="hinhanh[]" multiple="multiple">
 
                     <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
 
                     <input id="address" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-<select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
+                    <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
                     </select>
 
                     <select id="district" name="district" onchange="get_id_huyen(${number})" class="form-select" aria-label="Default select example">
@@ -171,7 +177,6 @@
 
     function moreFields() {
         counter++;
-
         renderField(counter, $('#totalAddress'))
         get_tinh(counter);
 
@@ -354,7 +359,7 @@
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
         nametour = $('#nametour').val();
-        totalguest =$('#total-guest').val();
+        totalguest = $('#total-guest').val();
         priceadult = $('#price-adult').val();
         pricechild = $('#price-child').val();
         dayend = $('#day-end').val();
@@ -367,11 +372,12 @@
         end_place = $('#dgb').val();
 
         $.post("index.php?controller=ctour&action=add", {
+            idcompany: idcompany,
             idtour: Date.now(),
             idplace: Date.now(),
             hinhanh: link,
             nametour: nametour,
-            totalguest:totalguest,
+            totalguest: totalguest,
             priceadult: priceadult,
             pricechild: pricechild,
             dayend: dayend,
@@ -390,7 +396,7 @@
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
-                window.location = "index.php?controller=chome&action=company&path=tour"
+                window.location = "index.php?controller=chome&action=company&path=tour&idcompany="+idcompany
             }
         })
     }

@@ -15,6 +15,7 @@
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
     <link rel="stylesheet" href="./public/css/order.css">
+    
     <script src="./public/js/js.js"></script>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -271,9 +272,7 @@
                 }
             ]
         }
-        // slnguoilon = $('#slnguoilon').val();
-        // console.log(rs_adult);
-        // console.log(slnguoilon);
+
         $.post("index.php?controller=ctour&action=getTourByIdTour", {
             idTour: idtour,
         }, function(data) {
@@ -299,40 +298,37 @@
                 thanhtoan = $('#tructiep').val();
             }
             $.post("index.php?controller=corder&action=addOrder", {
-                // idorder: Date.now(),
-                // idtour: idtour,
-                // iduser: iduser,
-                // daystart: daystart,
-                // dayend: dayend,
-                // slchild: slchild,
-                // slnguoilon: slnguoilon,
-                // totalguest: totalguest,
-                // name: name,
-                // email: email,
-                // phone: phone,
-                // address: address,
-                // pricetotal: pricetotal,
-                // note: note,
+                idorder: Date.now(),
+                idtour: idtour,
+                iduser: iduser,
+                daystart: daystart,
+                dayend: dayend,
+                slchild: slchild,
+                slnguoilon: slnguoilon,
+                totalguest: totalguest,
+                name: name,
+                email: email,
+                phone: phone,
+                address: address,
+                pricetotal: pricetotal,
+                note: note,
                 thanhtoan: thanhtoan,
-                // rs_adult: rs_adult,
-                // rs_child: rs_child,
+                rs_adult: rs_adult,
+                rs_child: rs_child,
             }, function(data) {
-                // rs = JSON.parse(data);
-                console.log(data)
-                if(data == 1)
-                {
-                    location.href = "index.php?controller=chome&action=vnpay"
+                rs = JSON.parse(data);
+                data = rs[0]
+                idorde = rs[1];
+                if (data == 2) {
+                    location.href = "index.php?controller=chome&action=vnpay&idorder=" + idorde
+                } else if (data == 1) {
+                    alert("Đặt tour thành công")
+                    window.location = "index.php?controller=chome&action=home&page=detail_order&idorder=" + idorde
+                } else if (data == -1) {
+                    alert("Đặt tour thất bại")
+                } else if (data == -2) {
+                    alert("Không đủ số lượng người")
                 }
-                // data = rs[0]
-                // idorder = rs[1];
-                // if (data > 0) {
-                //     alert("Đặt tour thành công")
-                //     window.location = "index.php?controller=chome&action=home&page=detail_order&idorder=" + idorder
-                // } else if (data == -1) {
-                //     alert("Đặt tour thất bại")
-                // } else if (data == -2) {
-                //     alert("Không đủ số lượng người")
-                // }
             })
         })
     }

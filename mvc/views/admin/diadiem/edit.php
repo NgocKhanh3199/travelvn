@@ -14,6 +14,14 @@
             <input id="nameplace" type="text" class="form-control ip" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
+            <label class="lb-span">Kinh độ:</label>
+            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <label class="lb-span">Vĩ độ:</label>
+            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
             <span class="">Địa chỉ</span>
             <input id="address" onchange="get_tinh()" type="text" class="form-control ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
             <div class="input-group">
@@ -34,8 +42,8 @@
         </div>
 
         <div class="button-group">
-            <button class="btn_edit" type="button">Cập nhật</button>
-            <button class="btn_thoat" type="button"><a href="?folder=diadiem">Thoát</a> </button>
+            <button class="btn_edit" onclick="editplace()" type="button">Cập nhật</button>
+            <button class="btn_thoat" type="button"><a href="index.php?controller=chome&action=admin&path=diadiem">Thoát</a> </button>
         </div>
     </div>
 </div>
@@ -52,6 +60,8 @@
             dd = diadiem[0];
             $('#nameplace').val(dd['nameplace'])
             $('#address').val(dd['address'])
+            $('#kinhdo').val(dd['longitude'])
+            $('#vido').val(dd['latitude'])
             path3 = 'https://provinces.open-api.vn/api/w/' + dd['ward'] + '?depth=1'
             $.ajax({
                 url: path3,
@@ -83,6 +93,46 @@
 
             $('#in4').val(dd['infomation'])
 
+        })
+    }
+
+    function editplace() {
+        hinhanh = $('#hinhanh').get(0).files;
+        link = uploadFile(hinhanh, 'diadiem');
+        nameplace = $('#nameplace').val();
+        in4 = $('#in4').val();
+        address = $('#address').val();
+        tinh = $('#city').val();
+        huyen = $('#district').val();
+        xa = $('#ward').val();
+        nametinh = $('#city').find('option:selected').text();
+        namehuyen = $('#district').find('option:selected').text()
+        namexa = $('#ward').find('option:selected').text()
+        kinhdo = $('#kinhdo').val();
+        vido = $('#vido').val();
+
+        $.post("index.php?controller=cdiadiem&action=editplace", {
+            iddiadiem:iddiadiem,
+            hinhanh: link,
+            nameplace: nameplace,
+            in4: in4,
+            address: address,
+            nametinh: nametinh,
+            namehuyen: namehuyen,
+            namexa: namexa,
+            tinh: tinh,
+            huyen: huyen,
+            xa: xa,
+            kinhdo: kinhdo,
+            vido: vido,
+
+        }, function(data) {
+            if (data > 0) {
+                alert('sucess');
+                window.location.href = "index.php?controller=chome&action=admin&path=diadiem";
+            } else if (data <= 0) {
+                alert("Không thành công")
+            }
         })
     }
 

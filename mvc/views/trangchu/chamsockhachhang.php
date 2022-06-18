@@ -21,16 +21,8 @@
     <div class="col col-10 mx-auto">
         <p class="fs-5">Danh sách câu hỏi</p>
     </div>
-    <ul class="col col-10 list-group mx-auto list-group-numbered">
-        <li class="list-group-item list-group-item-primary list-group-item-action" data-bs-toggle="collapse"
-            href="#cauhoi1" role="button">Làm cách nào để đặt tour?</li>
-        <div class="collapse" id="cauhoi1">
-            <div class="card card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed
-                when the user activates the relevant trigger.
-            </div>
-        </div>
-        <li class="list-group-item list-group-item-warning list-group-item-action" data-bs-toggle="collapse"
+    <ul class="col col-10 list-group mx-auto list-group-numbered" id="display">
+        <!-- <li class="list-group-item list-group-item-warning list-group-item-action" data-bs-toggle="collapse"
             href="#cauhoi2" role="button">Làm cách nào để huỷ tour?</li>
         <div class="collapse" id="cauhoi2">
             <div class="card card-body">
@@ -78,7 +70,7 @@
                 Some placeholder content for the collapse component. This panel is hidden by default but revealed
                 when the user activates the relevant trigger.
             </div>
-        </div>
+        </div> -->
     </ul>
     <input type="hidden" value="<?php if($_SESSION['iduser']){echo $_SESSION['iduser'];}?>" id="iduser">
 </div>
@@ -91,8 +83,13 @@
     }
     else
     {
-        window.onload = function()
+        window.onload = load()
+        function load()
         {
+            loadQuestionsByUser()
+            loadQuestionsDisplayed()
+        }
+        function loadQuestionsByUser(){
             $.post("index.php?controller=cuser&action=getQuestionAndAnswer", {
                 iduser: iduser
             }, function(data){
@@ -109,7 +106,7 @@
                                 <li class="list-group-item list-group-item-primary list-group-item-action" data-bs-toggle="collapse" href="#cautraloi`+i+`" role="button" id="cauhoicuaban"> ` + ndcauhoi + `
                                 </li>
                                 <div class="collapse" id="cautraloi`+i+`">
-                                    <div class="card card-body">
+                                    <div class="card card-body bg-light">
                                         Chưa có câu trả lời
                                     </div>
                                 </div>
@@ -123,13 +120,32 @@
                                 <li class="list-group-item list-group-item-primary list-group-item-action" data-bs-toggle="collapse" href="#cautraloi`+i+`" role="button" id="cauhoicuaban"> ` + ndcauhoi + `
                                 </li>
                                 <div class="collapse" id="cautraloi`+i+`">
-                                <div class="card card-body">
+                                <div class="card card-body bg-light">
                                     ` + ndtraloi + `
                                 </div>
                                 </div>
                             </ul>
                         `)
                     }
+                }
+            })
+        }
+        function loadQuestionsDisplayed()
+        {
+            $.post("index.php?controller=cuser&action=loadQuestionsDisplayed",
+            {}, function(data){
+                data = JSON.parse(data)
+                for(var i=0; i<data.length; i++)
+                {
+                    $('#display').append(`
+                    <li class="list-group-item list-group-item-warning list-group-item-action" data-bs-toggle="collapse"
+                        href="#cauhoi`+i+`" role="button">`+data[i]['content']+`</li>
+                    <div class="collapse" id="cauhoi`+i+`">
+                        <div class="card card-body bg-light">
+                            `+data[i]['answer']+`
+                        </div>
+                    </div>
+                    `)
                 }
             })
         }
@@ -148,6 +164,7 @@
                     if(data == 1)
                     {
                         alert("Nội dung đã được gửi, cảm ơn bạn!")
+                        window.location.reload()
                     }
                     else
                     {

@@ -14,7 +14,7 @@
                     <th style="width: 3%">Giới tính</th>
                     <th style="width: 3%">Ngày sinh</th>
                     <th style="width: 1%"></th>
-                    <th style="width: 1%"></th>
+                    <!-- <th style="width: 1%"></th> -->
                 </thead>
                 <tbody>
                 </tbody>
@@ -40,35 +40,20 @@
             })
         })
     }
-    // function duyetTour(idTour) {
-    //     choice = confirm("Duyệt tour để tour hiển thị trên trang chủ người dùng.!");
-    //     if (choice) {
-    //         $.post("index.php?controller=ctour&action=duyetTourByIdtour", {
-    //             idTour: idTour
-    //         }, function(data) {
-    //             if (data > 0) {
-    //                 alert("Duyệt thành công !");
-    //                 loadTableTour();
-    //             } else if (data < 0) {
-    //                 alert("Duyệt thất bại !");
-    //             }
-    //         })
-    //     }
-    // }
 
-    // function deleteTour(idTour) {
-    //     choice = confirm("Có chắc muốn xóa địa danh này ?");
-    //     if (choice) {
-    //         $.post("index.php?controller=ctour&action=deleteTourByIdtour", {
-    //             idTour: idTour
-    //         }, function(data) {
-    //             if (data > 0) {
-    //                 alert("Xóa thành công !");
-    //                 loadTableTour();
-    //             } else if (data < 0) {
-    //                 alert("Xóa thất bại !");
-    //             }
-    //         })
-    //     }
-    // }
+    function deleteUser(iduser) {
+        choice = confirm("Có chắc muốn xóa người dùng này?");
+        if (choice) {
+            $.post("index.php?controller=cuser&action=deleteUser", {
+                iduser: iduser
+            }, function(data) {
+                if (data == 1) {
+                    alert("Xóa thành công!");
+                    window.location.reload()
+                } else {
+                    alert("Xóa thất bại!");
+                }
+            })
+        }
+    }
 </script>

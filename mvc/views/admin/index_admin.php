@@ -30,48 +30,48 @@
         <div class="slidebar-menu" id="slidebar-menu">
             <ul>
                 <li class="menu-item">
-                    <a href="index.php">
+                    <a href="index.php" class="menu-link">
                         <span><i class="fa-solid fa-house"></i></span> <span>Trang Chủ</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=tour">
+                    <a href="index.php?controller=chome&action=admin&path=tour" class="menu-link">
                         <span><i class="fa-solid fa-umbrella-beach"></i></span><span> Quản Lý Tour</span>
                     </a>
                 </li>
-                <li class="menu-item active">
-                    <a href="index.php?controller=chome&action=admin&path=nguoidung">
+                <li class="menu-item">
+                    <a href="index.php?controller=chome&action=admin&path=nguoidung" class="menu-link">
                         <span><i class="fa-solid fa-users"></i></span><span> Quản Lý Người Dùng</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=diadiem">
+                    <a href="index.php?controller=chome&action=admin&path=diadiem" class="menu-link">
                         <span><i class="fa-solid fa-location-dot"></i></span><span> Quản Lý Địa Điểm</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=donhang">
+                    <a href="index.php?controller=chome&action=admin&path=donhang" class="menu-link">
                         <span><i class="fa-solid fa-clipboard-list"></i></span><span> Quản Lý Đơn Hàng</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=congty">
+                    <a href="index.php?controller=chome&action=admin&path=congty" class="menu-link">
                         <span><i class="fa-solid fa-building"></i></span><span> Quản Lý Công Ty</span>
                     </a>
                 </li>
-                <!-- <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=diachi">
-                        <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Địa Chỉ</span>
-                    </a>
-                </li> -->
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=congty&page=loinhuanthang">
+                    <a href="index.php?controller=chome&action=admin&path=giaodich&page=loinhuanthang" class="menu-link">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Giao Dịch</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=list">
+                    <a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=list" class="menu-link">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span>Chăm sóc khách hàng</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="index.php?controller=chome&action=admin" class="menu-link">
+                        <span><i class="fa-solid fa-clipboard-list"></i></span><span> Thống kê </span>
                     </a>
                 </li>
             </ul>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="main-content">
-        <header class="">
+        <header class="" style="background-color: white;">
             <h4 class="header-title">
                 <label for="nav-toggle">
                     <span><i class="fa-solid fa-bars"></i></span>
@@ -90,13 +90,27 @@
                 <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 <input type="search" name="" id="" placeholder="Tìm Kiếm">
             </div>
-            <div class="user-wrapper">
+            <div class="user-wrapper dropdown">
                 <img src="./public/img/default-user-image.png" width="50" height="50" alt="">
                 <div>
-                    <h6>Thao Tran</h6>
+                    <?php 
+                        if(isset($_SESSION['name'])) {
+                    ?>
+                    <h6><?php echo $_SESSION['name']?></h6>
                     <small>Super admin</small>
+                    <?php
+                        }
+                        else{
+                    ?>
+                    <META http-equiv="refresh" content="0;URL=index.php?controller=cuser&action=loginpage">
+                    <?php } ?>
+                </div>
+                <div class="dropdown-content">
+                    <a href="index.php?controller=chome&action=admin&page=doimatkhau"><i class="fa-solid fa-user"></i>Đổi Mật Khẩu</a>
+                    <a href="index.php?controller=cuser&action=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất</a>
                 </div>
             </div>
+            
         </header>
         <main>
         <?php
@@ -140,18 +154,28 @@
         console.log(menu);
         var items = menu.getElementsByClassName('menu-item')
         console.log(items)
+        var a = menu.getElementsByClassName('menu-link')
+        console.log(a)
+
+        // for (var i = 0; i < items.length; i++) {
+        //     items[i].addEventListener("click", function() {
+        //         var current = document.getElementsByClassName("active");
+
+        //         // If there's no active class
+        //         if (current.length > 0) {
+        //             current[0].className = current[0].className.replace("active", " ");
+        //         }
+
+        //         // Add the active class to the current/clicked button
+        //         this.className += " active";
+        //     });
+        // }
 
         for (var i = 0; i < items.length; i++) {
             items[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("active");
-
-                // If there's no active class
-                if (current.length > 0) {
-                    current[0].className = current[0].className.replace("active", " ");
-                }
-
-                // Add the active class to the current/clicked button
-                this.className += " active";
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
             });
         }
     </script>

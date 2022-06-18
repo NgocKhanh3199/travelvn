@@ -10,7 +10,7 @@
 
     <div class="page-table">
         <div class="sp-them">
-            <a href="index.php?controller=chome&action=company&path=tour&page=add"><button id="themtour" style="color:white">Thêm tour</button></a>
+            <a href="index.php?controller=chome&action=company&path=tour&page=add&idcompany=<?php echo $_SESSION['idcompany']?>"><button id="themtour" style="color:white">Thêm tour</button></a>
         </div>
         <div class="dd-content">
             <table id="tbTour" class="display">
@@ -33,6 +33,7 @@
     </div>
 </div>
 <script>
+    var idcompany = <?= $_GET['idcompany'] ?>;
     document.onload = load()
 
     function load() {
@@ -40,7 +41,9 @@
     }
 
     function loadTableTour() {
-        $.post('index.php?controller=ctour&action=loadTableTour', {}, function(data) {
+        $.post('index.php?controller=ctour&action=loadTableTour', {
+            idcompany: idcompany,
+        }, function(data) {
             data = JSON.parse(data);
             $('#tbTour').DataTable({
                 data: data

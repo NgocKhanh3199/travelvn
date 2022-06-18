@@ -40,19 +40,22 @@
                 <div class="navbar-brand d-flex menu-bar" href="#">
                 <ul class="d-flex me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?controller=chome&action=company&path=tour">Trang chủ</a>
+                        <a class="nav-link active" aria-current="page" href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany']?>">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?controller=chome&action=company&path=tour">Quản Lý Tour</a>
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany']?>">Quản Lý Tour</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?controller=chome&action=company&path=donhang">Đơn Hàng</a>
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=donhang&idcompany=<?php echo $_SESSION['idcompany']?>">Đơn Hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?controller=chome&action=company&path=diadiem">Địa điểm</a>
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=diadiem&idcompany=<?php echo $_SESSION['idcompany']?>">Địa điểm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?controller=chome&action=company&path=giaodich">Giao Dịch</a>
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=giaodich&idcompany=<?php echo $_SESSION['idcompany']?>">Giao Dịch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?controller=chome&action=company&path=thongke&idcompany=<?php echo $_SESSION['idcompany']?>">Thống kê</a>
                     </li>
                     <li class="nav-item">
                         <form class="form-search d-flex">

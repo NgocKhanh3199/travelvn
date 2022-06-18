@@ -32,19 +32,39 @@ class morder extends database
         $qr = "SELECT * FROM `order`";
         return $this->select($qr);
     }
+    public function getAllOrdercp($idcompany)
+    {
+        $qr = "SELECT * FROM `order`, tour WHERE `order`.`idtour`=tour.idtour AND tour.idcompany ='$idcompany'";
+        return $this->select($qr);
+    }
     public function duyetOrderByIdorder($idorder)
     {
         $qr = "UPDATE `order` SET `status`='1' WHERE idorder ='$idorder'";
         return $this->insert($qr);
     }
-    public function addbill($idorder, $pricetotal, $thanhtoan)
+    public function addbill($idorder, $total_bill)
     {
-        $qr = "INSERT INTO `bill`(`idoder`, `price`, `status_pay`) VALUES ('$idorder','$pricetotal','$thanhtoan')";
+        $qr = "INSERT INTO `bill`(`idoder`, `price`, `status_pay`) VALUES ('$idorder','$total_bill','0')";
         return $this->insert($qr);
     }
     public function getOrderbyIdorder($idorder)
     {
         $qr = "SELECT * FROM `order`, `customer` WHERE customer.idorder = `order`.`idorder` AND `order`.`idorder`='$idorder'";
+        return $this->select($qr);
+    }
+    public function getOrderbyIdordercp($idorder)
+    {
+        $qr = "SELECT * FROM `order` WHERE `idorder`='$idorder'";
+        return $this->select($qr);
+    }
+    public function loadTableTourByIdOrder($idorder)
+    {
+        $qr = "SELECT tour.idtour,tour.hinhanh,tour.nametour, `price-adult`, `price-child`, `day-start`, `day-end` FROM `order`, tour WHERE order.idtour = tour.idtour AND idorder = '$idorder'";
+        return $this->select($qr);
+    }
+    public function loadOrderLimit5()
+    {
+        $qr = "SELECT `order`.`idorder`,tour.nametour, user.name FROM `order`, tour, user WHERE `order`.idtour = tour.idtour AND `order`.`iduser` = user.iduser LIMIT 5";
         return $this->select($qr);
     }
 }

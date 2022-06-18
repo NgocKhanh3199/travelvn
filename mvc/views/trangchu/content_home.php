@@ -66,7 +66,7 @@
                 <img class="header-img" src="./public/img/trangchu/destination.png" alt="">
                 <p class="header-h">Tour nổi bật</p>
             </div>
-            <a class="align-items-center d-flex xemthem">Xem thêm tour</a>
+            <a class="align-items-center d-flex xemthem" href="index.php?controller=chome&action=home&page=tour">Xem thêm tour</a>
         </div>
         <div class="content-tournoibat">
             <div class="row" id="tournoibat">
@@ -352,7 +352,7 @@
 
     function loadtour() {
         path = "./public/img/tour/";
-        $.post('index.php?controller=ctour&action=getAlltour', {},
+        $.post('index.php?controller=ctour&action=getAllTour', {},
             function(data) {
                 tour = JSON.parse(data);
                 for (let i = 0; i < 4; i++) {
@@ -364,7 +364,7 @@
                     }
                     hinhanhtour = path + hinhanh
                     nametour = t['nametour']
-                    price = t['price']
+                    price = t['price-adult']
                     daystart = t['day-start']
                     $('#tournoibat').append(`
                     <div class="col-sm-3 item-wrap">
@@ -384,7 +384,15 @@
                             <span>Khởi hành:</span> ` + daystart + `
                         </p>
                         <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour&idtour=`+idtour+`">Xem chi tiết</a>
+
+            <!-- ---------------------- Xử lý khi chưa có session iduser------------------------ -->
+
+                            <a class="item-chitiet" href="<?php if(isset($_SESSION['iduser'])) { ?>
+                            index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `
+                            <?php } else{ ?>
+                            index.php?controller=cuser&action=loginpage
+                            <?php } ?>
+                            ">Xem chi tiết</a>
                         </div>
                     </div>
                     </div>

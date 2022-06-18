@@ -1,12 +1,20 @@
-.body1{
+body {
+    background-color: #fdf6fc;
+
+}
+
+.body1 {
     padding-top: 82px;
 }
+
 .carousel-item {
     height: 500px;
 }
-.carousel-item img{
+
+.carousel-item img {
     object-fit: cover;
 }
+
 .tournoibat {
     margin-top: 30px;
 }
@@ -31,6 +39,7 @@
 
 .item-meta .item-header {
     text-decoration: none;
+    color: #530165;
 }
 
 .item-meta .item-tua {
@@ -45,11 +54,18 @@
 .item-meta .item-price {
     font-size: 16px;
     font-weight: 600;
-    color: #dc0303;
+    color: #D62400;
+    margin-bottom: 5px;
 }
 
 .item-meta .item-khoihanh {
     font-size: 13px;
+    color: #563B5A;
+    margin: 20px 0 15px 0;
+}
+.item-meta .item-khoihanh i {
+    font-size: 13px;
+    color: #6c5c91;
 }
 
 .khungchuaimg {
@@ -62,6 +78,8 @@
     transform: scale(1);
     transition: all 0.5s;
     height: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .item-wrap img:hover {
@@ -69,16 +87,18 @@
 }
 
 .item-chitiet {
-    color: #000;
+    color: rgb(97, 5, 94);
     font-weight: 400;
-    border: 1px solid #000;
+    border: 1px solid rgb(241, 185, 251);
+    border-radius: 5px;
     padding: 3px 15px;
     text-decoration: none;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
 }
 
-.mb-1 {
+/* .mb-1 {
     margin-bottom: 0.25rem !important;
-}
+} */
 
 .header-img {
     position: relative;
@@ -400,11 +420,11 @@
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
+    color: rgb(11, 11, 11);
+    padding: 12px 30px;
     text-decoration: none;
     display: block;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .dropdown:hover .dropdown-content {

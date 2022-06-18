@@ -32,4 +32,8 @@ class chome extends controller{
     {
        return $this->view("","vn_pay");
     }
+    public function returnthanhtoan()
+    {
+        return $this->view("","thanhtoan");
+    }
 }

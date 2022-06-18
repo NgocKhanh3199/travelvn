@@ -17,6 +17,14 @@
 
         </div>
         <div class="input-group">
+            <label class="lb-span">Kinh độ:</label>
+            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <label class="lb-span">Vĩ độ:</label>
+            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
             <div class="lb-span"></div>
             <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
 
@@ -36,7 +44,7 @@
 
         <div class="button-group">
             <button class=" btn_add" type="button" onclick="addplace()">Thêm địa điểm</button>
-            <button class=" btn_thoat" type="button"><a href="?folder=diadiem">Thoát</a> </button>
+            <button class=" btn_thoat" type="button"><a href="index.php?controller=chome&action=admin&path=diadiem">Thoát</a> </button>
         </div>
     </div>
 </div>
@@ -139,6 +147,8 @@
         nametinh = $('#city').find('option:selected').text();
         namehuyen = $('#district').find('option:selected').text()
         namexa = $('#ward').find('option:selected').text()
+        kinhdo = $('#kinhdo').val();
+        vido = $('#vido').val();
 
         $.post("index.php?controller=cdiadiem&action=addplace", {
             idplace: Date.now(),
@@ -152,10 +162,13 @@
             tinh: tinh,
             huyen: huyen,
             xa: xa,
+            kinhdo: kinhdo,
+            vido: vido,
+
         }, function(data) {
             if (data > 0) {
                 alert('sucess');
-                // window.location.href = "index.php?controller=chome&action=admin&path=diadiem";
+                window.location.href = "index.php?controller=chome&action=admin&path=diadiem";
             } else if (data <= 0) {
                 alert("Không thành công")
             }

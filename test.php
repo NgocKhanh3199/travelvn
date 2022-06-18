@@ -24,7 +24,7 @@
     </select>
     <!-- <button onclick="get_id_tinh()">ok</button> -->
 
-
+    $('#item-tour').children().remove()
 </body>
 
 </html>

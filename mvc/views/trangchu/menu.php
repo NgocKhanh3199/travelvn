@@ -1,12 +1,12 @@
-<div class="pt-2 menu">
-    <div class="row">
+<div class=" menu">
+    <div class="row flex">
         <div class="col-md-4 col-4 logo"><i id="logo-menutop" class="fa-solid fa-bars text-center"></i>
             <a class="text-decoration-none" href="#">TravelVN</a>
         </div>
         <div class="col-md-4 col-2">
             <nav class="navbar navbar-light">
-                <div class="container-fluid">
-                    <form class="d-flex" action="index.php">
+                <div class="containe">
+                    <form class="from" action="index.php">
                         <input type="hidden" name="controller" value="chome">
                         <input type="hidden" name="action" value="home">
                         <!-- <input type="hidden" name="path" value="trangchu"> -->
@@ -20,8 +20,9 @@
         <?php
         if (isset($_SESSION['iduser'])) {
         ?>
-            <div class="col-md-2 dropdown col-3 text-center">
-                <a class="dangnhap" href="#">
+            <div class="col-md-4 dropdown">
+                <a class="nameuser" href="#">
+                    <i class="fa-solid fa-user"></i>
                     Xin chào, <?php
                                 if (isset($_SESSION['name'])) {
                                     $name = $_SESSION['name'];
@@ -30,19 +31,21 @@
                                 ?>
                 </a>
                 <div class="dropdown-content">
-                    <a href="index.php?controller=cuser&action=account">Tài Khoản</a>
-                    <a href="index.php?controller=cuser&action=logout">Đăng Xuất</a>
+                    <a href="index.php?controller=cuser&action=account"><i class="fa-solid fa-user"></i> Tài Khoản</a>
+                    <a href="index.php?controller=cuser&action=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất</a>
                 </div>
             </div>
 
         <?php
         } else {
         ?>
-            <div class="col-md-2 col-3 text-center">
-                <a class="dangnhap" href="index.php?controller=cuser&action=loginpage">Đăng nhập</a>
-            </div>
-            <div id="dangky" class="col-md-1 text-center">
-                <a href="index.php?controller=cuser&action=registerPage" class="dangky">Đăng ký</a>
+            <div class="dndk col-md-4">
+                <div class="text-center">
+                    <a class="dangnhap" href="index.php?controller=cuser&action=loginpage"> <i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a>
+                </div>
+                <div id="dangky" class="text-center">
+                    <a href="index.php?controller=cuser&action=registerPage" class="dangky"><i class="fa-solid fa-registered"></i> Đăng ký</a>
+                </div>
             </div>
         <?php
         }
@@ -98,8 +101,7 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-  <!-- <script>
+<!-- <script>
       var header = document.getElementById('header');
       var logomenutop = document.getElementById('logo-menutop');
       var logomenutop1 = document.getElementById('logo-menutop1');
@@ -116,25 +118,6 @@
           overlay.style.display = 'none';
           header.style.transform = 'translateX(-100%)';
       }
-=======
-<script>
-    var header = document.getElementById('header');
-    var logomenutop = document.getElementById('logo-menutop');
-    var logomenutop1 = document.getElementById('logo-menutop1');
-    var overlay = document.getElementById('phu');
-    logomenutop.onclick = function() {
-        overlay.style.display = 'block';
-        header.style.transform = 'translateX(0%)';
-    }
-    logomenutop1.onclick = function() {
-        overlay.style.display = 'none';
-        header.style.transform = 'translateX(-100%)';
-    }
-    overlay.onclick = function() {
-        overlay.style.display = 'none';
-        header.style.transform = 'translateX(-100%)';
-    }
->>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
 
     //   function googleTranslateElementInit() {
     //       new google.translate.TranslateElement({

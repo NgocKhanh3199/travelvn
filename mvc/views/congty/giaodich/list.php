@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -56,6 +56,7 @@
     </div>
 </div>
 <script>
+       var idcompany = <?= $_GET['idcompany'] ?>;
     document.onload = load()
 
     function load() {
@@ -64,7 +65,9 @@
     }
 
     function loadTableGiaodich() {
-        $.post('index.php?controller=cgiaodich&action=loadTableGiaodich', {}, function(data) {
+        $.post('index.php?controller=cgiaodich&action=loadTableGiaodich', {
+            idcompany: idcompany,
+        }, function(data) {
             data = JSON.parse(data);
             $('#tbGiaodich').DataTable({
                 data: data
@@ -82,7 +85,7 @@
         let year = d.getFullYear();
         let month = d.getMonth() + 1;
         let day = d.getDate();
-        date_payment = day + '/' + month + '/' + year
+        date_payment = year + '-' + month + '-' + day
         time_payment = d.getSeconds() + ":" + d.getHours() + ":" + d.getMinutes()
         money_received = $('#money_received').val();
         money_refund = $('#money_refund').val();
@@ -101,5 +104,4 @@
             }
         })
     }
-
 </script>

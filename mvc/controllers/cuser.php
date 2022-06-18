@@ -87,7 +87,7 @@ class cuser extends controller
     {
         $iduser = $_POST['iduser'];
         $data = $this->user->deleteUser($iduser);
-        echo $data;
+        echo json_encode($data);
     }
 
     public function checkPassword()
@@ -128,10 +128,9 @@ class cuser extends controller
             $email = $u['email'];
             $gioitinh = $u['gender'];
             $birthday = $u['birthday'];
-       
-            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail&idUser=' . $iduser . '" class="a-view">Xem</a>';
-            $delete = '<a href="" class = "a-delete" onclick="deleteUser(' . $iduser . ')">Xóa</a>';
-            $row = [$stt, $tenuser, $taikhoan, $sdt, $email, $gioitinh, $birthday,$view,$delete];
+            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail&idUser=' . $iduser . '" class="a-view nav-link text-success">Xem</a>';
+            // $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteUser(' . $iduser . ')">Xóa</a>';
+            $row = [$stt, $tenuser, $taikhoan, $sdt, $email, $gioitinh, $birthday,$view];
             $data[] = $row;
         }
         echo json_encode($data);
@@ -157,23 +156,117 @@ class cuser extends controller
         foreach($question as $q)
         {
             $stt++;
+            $idquestion = $q['idquestion'];
             $content = $q['content'];
             $nameuser = $q['name'];
             $status = $q['status'];
             if($status === 'Chưa trả lời')
             {
-                $response = '<a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=add" class="a-view">Trả Lời</a>';
-                $delete = '<a href="" class = "link-danger" onclick="">Xóa</a>';
+                $response = '<a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=add&idquestion='.$idquestion.'" class="a-view nav-link">Trả Lời</a>';
+                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion('.$idquestion.')">Xóa</a>';
+                $edit = '';
             }
             else
             {
-                $response = '<a href="" class="a-view">Xem</a>';
-                $delete = '<a href="" class = "link-danger" onclick="">Xóa</a>';
+                $response = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=detail&idquestion='.$idquestion.'" class="a-view nav-link link-success">Xem</a>';
+                $edit = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=edit&idquestion='.$idquestion.'" class="a-view nav-link">Sửa</a>';
+                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion('.$idquestion.')">Xóa</a>';
             }
-            $row = [$stt, $content, $nameuser, $status, $response ,$delete];
+            $display = $q['display'];
+            if($display==0)
+            {
+                $display = 'Không';
+            }
+            else
+            {
+                $display = 'Có';
+            }
+            $row = [$stt, $content, $nameuser, $status, $display, $response , $edit, $delete];
             $data[] = $row;
         }
         echo json_encode($data);
     }
-    
+    public function loadTableOrderByIdUser()
+    {
+        $iduser = $_POST['iduser'];
+        $order = $this->user->getOrderByIdUser($iduser);
+        $stt = 0;
+        $data = [];
+        foreach ($order as $o) {
+            $stt++;
+            $idorder = $o['idorder'];
+            $idtour = $o['idtour'];
+            $iduser = $o['iduser'];
+            $priceTotal = $o['price-total'];
+            $paymentMethod = $o['payment-method'];
+            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail_order&idorder=' . $idorder . '&iduser='.$iduser.'" class="a-view nav-link text-success">Xem</a>';
+            $cancel = '<a href="" class = "a-delete nav-link text-danger" onclick="delete(' . $iduser . ')">Huỷ</a>';
+            $row = [$stt, $idorder, $idtour, $iduser, $priceTotal, $paymentMethod, $view, $cancel];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadTableDetailOrderByIdOrder()
+    {
+        $idorder = $_POST['idorder'];
+        $order = $this->user->getDetailOrderByIdOrder($idorder);
+        
+        echo json_encode($order);
+    }
+    public function loadTableTourByIdOrder()
+    {
+        $iduser = $_POST['iduser'];
+        $idorder = $_POST['idorder'];
+        $tour = $this->user->loadTableTourByIdOrder($idorder);
+        $data = [];
+        $path = "./public/img/tour/";
+        foreach ($tour as $t) {
+            $idTour = $t['idtour'];
+            $tenTour = $t['nametour'];
+            $giaTourAd = $t['price-adult'];
+            $giaTourCh = $t['price-child'];
+            $day_start = $t['day-start'];
+            $day_end = $t['day-end'];
+            // load img
+            $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
+            $view = '<a href="index.php?controller=chome&action=admin&path=nguoidung&page=detail_tour&idTour=' . $idTour.'&idorder='.$idorder.'&iduser='.$iduser.'" class="a-view nav-link text-success">Xem</a>';
+            $row = [$idTour, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    //---------------------------------themcautraloi--------------------------------------
+    public function sendAnswer()
+    {
+        $idquestion = $_POST['idquestion'];
+        $answer = $_POST['answer'];
+        $data = $this->user->sendAnswer($idquestion,$answer);
+        echo $data;
+    }
+    public function loadCauTraLoiByIdCauHoi()
+    {
+        $idquestion = $_POST['idquestion'];
+        $data = $this->user->loadCauTraLoiByIdCauHoi($idquestion);
+        echo json_encode($data);
+    }
+    public function deleteCauHoiByIdCauHoi()
+    {
+        $idquestion = $_POST['idquestion'];
+        $data = $this->user->deleteCauHoiByIdCauHoi($idquestion);
+        echo json_encode($data);
+    }
+    public function loadQuestionsDisplayed()
+    {
+        $data = $this->user->loadQuestionsDisplayed();
+        echo json_encode($data);
+    }
+    public function displayQuestion()
+    {
+        $idquestion = $_POST['idquestion'];
+        $answer = $_POST['answer'];
+        $option = $_POST['option'];
+        $data = $this->user->displayQuestion($idquestion,$answer, $option);
+        echo $data;
+    }
 }

@@ -1,4 +1,4 @@
-.menu{
+.menu {
     position: fixed;
     top: 0;
     left: 0;
@@ -7,22 +7,55 @@
     background-color: rgb(249, 238, 250);
     padding: 0 50px;
 }
+
 .logo {
     font-size: 25px;
 }
-.logo2{
+
+.logo2 {
     color: white;
     font-size: 30px;
 }
 
-.eng ,.dangnhap, .dangky {
-    font-size: 16px;
+.eng, .dangnhap, .dangky {
+    font-size: 19px;
     text-decoration: none;
-    color: blueviolet;
+    color: #A5072C;
+}
+
+.nameuser {
+    font-size: 19px;
+    text-decoration: none;
+    color: #A5072C;
+}
+
+.dndk {
+    display: flex;
+    justify-content: end;
+}
+
+.text-center {
+    margin: 0 20px;
+}
+
+.flex {
+    align-items: center;
+    padding: 15px 0;
+}
+
+.containe {
+    display: flex;
+    align-items: center;
+}
+
+.from {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
 }
 
 .header {
-    background-color: rgb(186, 135, 234);
+    background-color: #BF9CE1;
     position: fixed;
     top: 0;
     left: 0;
@@ -34,8 +67,10 @@
 
 .menutop {
     padding: 20px;
+  
 }
-.menudown{
+
+.menudown {
     display: block;
     background-color: rgb(228, 209, 246);
     position: fixed;
@@ -43,6 +78,7 @@
     left: 0;
     z-index: 4;
 }
+
 .menudown li {
     display: inline-block;
     padding: 0 24px;
@@ -56,14 +92,18 @@
 .menutop li a {
     color: white;
     font-size: 20px;
+  
 }
 
 .menudown li a {
     font-size: 18px;
     line-height: 20px;
     color: rgb(79, 14, 79);
+    font-family: Verdana;
 }
-
+.menudown li a:hover{
+    color: rgb(167, 9, 167);
+}
 .overlay-phu {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -77,20 +117,24 @@
 
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: end;
     z-index: 100;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    top: 30px;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dropdown:hover .dropdown-content {
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
+    background-color: #D9C7DE;
+    width: 200px;
+    border-radius: 5px;
+}

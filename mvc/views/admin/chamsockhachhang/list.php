@@ -11,6 +11,8 @@
                     <th>Tên người dùng</th>
                     <!-- <th style="width: 2%">Nội Dung Trả Lời</th> -->
                     <th>Trạng Thái</th>
+                    <th>Hiển Thị</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </thead>
@@ -36,5 +38,25 @@
         })
     }
 
+    function deleteQuestion(idquestion)
+    {
+        choice = confirm("Có chắc muốn xóa câu hỏi này ?");
+        if(choice)
+        {
+            $.post("index.php?controller=cuser&action=deleteCauHoiByIdCauHoi", {
+            idquestion: idquestion
+            }, function(data){
+                if(data == 1)
+                {
+                    
+                    alert("Xoá thành công!")
+                }
+                else
+                {
+                    alert("Xoá thất bại!")
+                }
+            })
+        }
+    }
     
 </script>
