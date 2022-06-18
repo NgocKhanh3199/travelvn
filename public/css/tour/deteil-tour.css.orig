@@ -1,5 +1,6 @@
 body {
     font-family: roboto, sans-serif;
+<<<<<<< HEAD
 }
 
 .breadcrumb a{
@@ -62,6 +63,68 @@ text-decoration: none;
 .btn-order:hover{
     color: rgba(44, 0, 44, 0.163);
 }
+=======
+}
+
+.breadcrumb a{
+text-decoration: none;
+}
+
+.detail-tour {
+    margin-top: 100px;
+}
+
+.content-tour {
+    background-color: #EEE6FF;
+    padding: 40px 0;
+}
+
+.roww {
+
+    padding: 0 2%;
+}
+
+.header-tour {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hd-tour {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2d4271;
+    line-height: 30px;
+    margin-bottom: 12px;
+    max-width: 100%;
+}
+
+.button-order {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-order {
+    background: linear-gradient(64.4deg, #fd5056 21.33%, #fe2214 67.61%);
+    border-radius: 5px;
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 192px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-decoration: none;
+    margin-left: 16px;
+}
+
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
 .fa-cart-shopping:before {
     content: "\f07a";
 }
@@ -113,6 +176,7 @@ text-decoration: none;
     font-size: 22px;
     color: #fd5056;
     padding-right: 5px;
+<<<<<<< HEAD
 }
 
 .img-tour {
@@ -131,6 +195,26 @@ text-decoration: none;
     padding-top: 20px;
 }
 
+=======
+}
+
+.img-tour {
+    padding: 20px;
+}
+
+.img-fluid {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.big {
+    padding-top: 20px;
+}
+
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
 .box-in4 {
     background-color: #fff;
     border-radius: 10px;
@@ -139,6 +223,7 @@ text-decoration: none;
     flex-direction: column;
     padding: 15px 30px;
     margin-left: 20px;
+<<<<<<< HEAD
 }
 
 .box-in4 p {
@@ -146,6 +231,15 @@ text-decoration: none;
     margin: 5px 0;
 }
 
+=======
+}
+
+.box-in4 p {
+    color: #2d4271;
+    margin: 5px 0;
+}
+
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
 .group-in4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -166,6 +260,7 @@ text-decoration: none;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+<<<<<<< HEAD
 }
 
 .item i {
@@ -258,6 +353,100 @@ text-decoration: none;
 
 .text {
 
+=======
+}
+
+.item i {
+    font-size: 25px;
+    color: #4d4aef;
+    margin-bottom: 5px;
+}
+
+.item label {
+    margin-bottom: 5px;
+    font-weight: 700;
+font-size: 15px;
+}
+
+.item p {
+    margin: 0;
+    font-size: 13px;
+    color: #0f2451;
+}
+
+.day {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+@media (max-width: 600px) {
+    .calendar, .dichvu {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+}
+
+.calendar, .dichvu {
+    padding: 0 10%;
+}
+
+.hd-calendar, .hd-dichvu {
+    font-weight: 600;
+}
+
+.content-in4 p {
+    color: #2d4271;
+}
+
+.item-day {
+    padding: 40px;
+}
+
+.in4-day {
+    padding-left: 33px;
+    max-width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+    line-height: 24px;
+}
+
+.line {
+    height: calc(100% - 16px);
+    border-left: 0.5px dashed #4d4aef;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.line::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #4d4aef;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: -3px;
+    z-index: 1;
+}
+
+.line::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #4d4aef;
+    border-radius: 50%;
+    position: absolute;
+    top: 100%;
+    left: -3px;
+    z-index: 1;
+}
+
+.text {
+
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 25px;
@@ -265,4 +454,8 @@ text-decoration: none;
     height: 75px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26

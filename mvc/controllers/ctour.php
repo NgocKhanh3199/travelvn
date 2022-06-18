@@ -85,7 +85,7 @@ class ctour extends controller
                     $in4 = $rs[$i]["in4"];
                     $address = $rs[$i]["address"];
                     $tinh = $rs[$i]["tinh"];
-                    $huyen = $rs[$i]["huyen"];
+$huyen = $rs[$i]["huyen"];
                     $xa = $rs[$i]["xa"];
                     $nametinh = $rs[$i]["nametinh"];
                     $namehuyen = $rs[$i]["namehuyen"];
@@ -224,7 +224,7 @@ class ctour extends controller
     public function search()
     {
         $name = $_POST['name'];
-        $data = $this->tour->search($name);
+$data = $this->tour->search($name);
         echo json_encode($data);
     }
     public function getInformationByNamePlace()
@@ -312,9 +312,9 @@ class ctour extends controller
         $data = $this->tour->getAllTourByNumberDayAround1To3AndMaxPrice($idplace, $maxprice);
         echo json_encode($data);
     }
-    public function getAllTourByNumberDayAround4To7AndMinPrice()
+public function getAllTourByNumberDayAround4To7AndMinPrice()
     {
-        $idplace = $_POST['idplace'];
+$idplace = $_POST['idplace'];
         $minprice = $_POST['minprice'];
         $data = $this->tour->getAllTourByNumberDayAround4To7AndMinPrice($idplace, $minprice);
         echo json_encode($data);
@@ -360,7 +360,6 @@ class ctour extends controller
         $data = $this->tour->getInformationByIdCity($idplace);
         echo json_encode($data);
     }
-
     public function permitComment()
     {
         $iduser = $_POST['iduser'];

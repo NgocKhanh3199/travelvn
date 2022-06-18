@@ -37,7 +37,6 @@ class mcompany extends database{
         $qr = "UPDATE `company` SET `password`='$newPassword' WHERE idcompany = '$idcompany'";
         return $this->update($qr);
     }
-
     public function getAllCompany()
     {
         $qr="SELECT * FROM `company`";

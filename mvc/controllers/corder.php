@@ -2,7 +2,6 @@
 class corder extends controller
 {
     private $order;
-
     public function __construct()
     {
         $this->order = $this->model("morder");

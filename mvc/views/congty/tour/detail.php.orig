@@ -14,16 +14,23 @@
     <!-- link icon -->
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="./public/css/company.css">
     <script src="./public/js/js.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+=======
+    <link rel="stylesheet" href="../../../../public/css/company.css">
+    <!-- <link rel="stylesheet" href="./public/css/trangchu/menu1.css"> -->
+    <!-- <link rel="stylesheet" href="./public/css/tour/detail-tour-company.css"> -->
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
 </head>
 
 <body>
     <div class="container">
         <div class="nd">
             <div class="thongtinchung" id="diadanh">
+<<<<<<< HEAD
                 <!-- <div class="row diadanh">
                     <div class="col-sm-6">
                         <img src="./public/img/tour/2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="400px">
@@ -40,6 +47,24 @@
                         </div>
                     </div>
                 </div> -->
+=======
+                <div class="row diadanh">
+                    <div class="col-sm-6">
+                        <img src="../../../../public/img/tour/2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="400px">
+                    </div>
+                    <div class="col-sm-6 row">
+                        <div class="col-sm-6">
+                            <img src="../../../../public/img/tour/4b7c23abd16c3f271fde1222fc3bff9f_2_45_39_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="../../../../public/img/tour/3a0bd5fbd3e6432d665deab43a33c345_2_44_24_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
+                        <div class="col-sm-12">
+                            <img src="../../../../public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_2_22_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
+                        </div>
+                    </div>
+                </div>
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
             </div>
         </div>
         <div class="container container-form">
@@ -91,19 +116,49 @@
             </div>
         </div>
         <div class="place text-start">
-        
-        <h4 class="header-place">Điểm đến: </h4>
+<<<<<<< HEAD
+            <h4 class="header-place">Điểm đến: </h4>
             <div class="item-place" id="item-place">
                 
             </div>
 
         </div>
 
+=======
+            <h5>Điểm đến: </h5>
+            <div class="place-item">
+                <p>Đà Nẵng</p>
+            </div>
+            <div class="place-item d-flex">
+                <p>Địa chỉ: </p>
+                <p>Đà Nẵng</p>
+            </div>
+            <div class="place-item d-flex">
+                <p>Mô tả: </p>
+                <p>Đà Nẵng</p>
+            </div>
+        </div>
+        <div class="places-img container">
+            <div class="place-img">
+                <img src="../../../../public/img/tour/4b7c23abd16c3f271fde1222fc3bff9f_2_45_39_20_5_2022.jpg" alt="" srcset="">
+            </div>
+            <div class="place-img">
+                <img src="../../../../public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_3_6_24_20_5_2022.jpg" alt="" srcset="">
+            </div>
+            <div class="place-img">
+                <img src="../../../../public/img/tour/2b95fc58931487994632121fc1f00833_2_7_36_20_5_2022.jpg" alt="" srcset="">
+            </div>
+            <div class="place-img">
+                <img src="../../../../public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_2_19_53_20_5_2022.jpg" alt="" srcset="">
+            </div>
+        </div>
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26
         <div class="button-group">
             <a href="index.php?controller=chome&action=company&path=tour" class="btn btn-primary" type="button">Thoát</a>
         </div>
 </body>
 
+<<<<<<< HEAD
 </html>
 <script>
     var idTour = <?= $_GET['idTour'] ?>;
@@ -248,3 +303,6 @@
         })
     }
 </script>
+=======
+</html>
+>>>>>>> d93c1d16240b6e3eb0ff642dc55970e235d1dd26

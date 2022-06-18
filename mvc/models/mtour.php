@@ -101,7 +101,6 @@ class mtour extends database
         $qr .= " WHERE idtour = '$idtour'";
         return $this->update($qr);
     }
-
     public function deleteTourByIdtour($idTour)
     {
 
@@ -226,7 +225,6 @@ class mtour extends database
         $qr = "SELECT information FROM `place` WHERE city = '$idplace'";
         return $this->select($qr);
     }
-
     public function permitComment($iduser, $idtour)
     {
         $qr = "SELECT * FROM `order` WHERE iduser = '$iduser' AND idtour = '$idtour'";

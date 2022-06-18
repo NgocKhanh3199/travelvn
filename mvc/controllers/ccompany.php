@@ -117,7 +117,6 @@ class ccompany extends controller{
         $data = $this->company->updatePassword($idcompany, $password);
         echo $data;
     }
-
     public function loadTableCompany()
     {
         $company = $this->company->getAllCompany();
