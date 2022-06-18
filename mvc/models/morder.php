@@ -62,4 +62,9 @@ class morder extends database
         $qr = "SELECT tour.idtour,tour.hinhanh,tour.nametour, `price-adult`, `price-child`, `day-start`, `day-end` FROM `order`, tour WHERE order.idtour = tour.idtour AND idorder = '$idorder'";
         return $this->select($qr);
     }
+    public function loadOrderLimit5()
+    {
+        $qr = "SELECT `order`.`idorder`,tour.nametour, user.name FROM `order`, tour, user WHERE `order`.idtour = tour.idtour AND `order`.`iduser` = user.iduser LIMIT 5";
+        return $this->select($qr);
+    }
 }

@@ -2,7 +2,6 @@
 class corder extends controller
 {
     private $order;
-
     public function __construct()
     {
         $this->order = $this->model("morder");
@@ -107,7 +106,7 @@ class corder extends controller
             } else if ($status == 0) {
                 $edit = "Chưa thanh toán";
             }
-            $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idorder . '" class="a-view">Xem</a>';
+            $view = '<a href="index.php??controller=chome&action=admin&path=donhang&page=detail&idorder=' . $idorder . '" class="a-view nav-link text-success">Xem</a>';
             $row = [$stt, $tenkh, $phone, $email, $address, $total_bill, $edit,  $view];
             $data[] = $row;
         }
@@ -182,6 +181,11 @@ class corder extends controller
             $row = [$idTour, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view];
             $data[] = $row;
         }
+        echo json_encode($data);
+    }
+    public function loadOrderLimit5()
+    {
+        $data = $this->order->loadOrderLimit5();
         echo json_encode($data);
     }
 }

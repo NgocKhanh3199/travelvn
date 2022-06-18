@@ -48,4 +48,20 @@
             })
         })
     }
+
+    function deleteTour(idtour) {
+        choice = confirm("Có chắc muốn xóa tour này?");
+        if (choice) {
+            $.post("index.php?controller=ctour&action=deleteTour", {
+                idtour: idtour
+            }, function(data) {
+                if (data == 1) {
+                    alert("Xóa thành công!");
+                    window.location.reload()
+                } else {
+                    alert("Xóa thất bại!");
+                }
+            })
+        }
+    }
 </script>

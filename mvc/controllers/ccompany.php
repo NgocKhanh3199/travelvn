@@ -117,7 +117,6 @@ class ccompany extends controller{
         $data = $this->company->updatePassword($idcompany, $password);
         echo $data;
     }
-
     public function loadTableCompany()
     {
         $company = $this->company->getAllCompany();
@@ -175,6 +174,110 @@ class ccompany extends controller{
             $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $delete];
             $data[] = $row;
         }
+        echo json_encode($data);
+    }
+    //--------------------------------------chức năng giao dịch tháng-------------------------------------
+    public function loadTableGiaoDichVnpayGroupByTime()
+    {
+        $idcompany = $_POST['idcompany'];
+        $giaodich= $this->company->getAllGiaoDichVnpayGroupByTime($idcompany);
+        $stt = 0;
+        $data = [];
+        foreach ($giaodich as $g) {
+            $stt++;
+            $time = $g['time'];
+            $total = $g['total'];
+            $total = number_format($total);
+            $view = '<a href="index.php?controller=chome&action=admin&path=congty&page=loinhuanthang&idcompany='.$idcompany.'&time=' . $time . '" class="a-view btn btn-primary">Xem</a>';
+            $row = [$stt, $time, $total, $view];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadTableGiaoDichVnpay()
+    {
+        $idcompany = $_POST['idcompany'];
+        $time = $_POST['time'];
+        $giaodich = $this->company->getAllGiaoDichVnpayByTime($idcompany,$time);
+        $stt = 0;
+        $data = [];
+        foreach ($giaodich as $g) {
+            $stt++;
+            $idtrans = $g['idransaction'];
+            $idorder = $g['idorder'];
+            $idtour = $g['idtour'];
+            $namecompany = $g['namecompany'];
+            $transtatus = $g['status'];
+            if($transtatus == 0)
+            {
+                $transtatus = "Chưa thanh toán";
+            }
+            else
+            {
+                $transtatus = "Đã thanh toán";
+            }
+            $pricepay = $g['price_pay'];
+            $time_pay = $g['time_payment'];
+
+            if ($transtatus == 1) {
+                $status_pay = "Thanh toán thành công";
+                $thanhtoan = '<a href="" class ="a-edit" ></a>';
+            } else if ($transtatus == 0) {
+                $status_pay = "Chưa thanh toán";
+                $thanhtoan = '<a href="" class ="a-edit" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="thanhtoan(' . $idtrans . ')">Thanh toán</a>';
+            }
+
+            // $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idgiaodich . '" class="a-view">Xem</a>';
+            $row = [$stt, $idtrans, $idorder,  $idtour, $namecompany, $transtatus, $pricepay, $time_pay];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadTableGiaoDichVnpayByDay()
+    {
+        $idcompany = $_POST['idcompany'];
+        $startday = $_POST['startday'];
+        $endday = $_POST['endday'];
+        $giaodich = $this->company->getGiaoDichVnpayBySelectTime($idcompany,$startday, $endday);
+        $stt = 0;
+        $data = [];
+        foreach ($giaodich as $g) {
+            $stt++;
+            $idtrans = $g['idransaction'];
+            $idorder = $g['idorder'];
+            $idtour = $g['idtour'];
+            $namecompany = $g['namecompany'];
+            $transtatus = $g['status'];
+            $pricepay = $g['price_pay'];
+            $time_pay = $g['time_payment'];
+
+            if ($transtatus == 1) {
+                $status_pay = "Thanh toán thành công";
+                $thanhtoan = '<a href="" class ="a-edit" ></a>';
+            } else if ($transtatus == 0) {
+                $status_pay = "Chưa thanh toán";
+                $thanhtoan = '<a href="" class ="a-edit" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="thanhtoan(' . $idtrans . ')">Thanh toán</a>';
+            }
+
+            // $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idgiaodich . '" class="a-view">Xem</a>';
+            $row = [$stt, $idtrans, $idorder,  $idtour, $namecompany, $transtatus, $pricepay, $time_pay];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+    public function loadTongGiaoDich()
+    {
+        $idcompany = $_POST['idcompany'];
+        $time = $_POST['time'];
+        $data = $this->company->getAllGiaoDichVnpayByTime($idcompany,$time);
+        echo json_encode($data);
+    }
+    public function loadTongGiaoDichByDay()
+    {
+        $idcompany = $_POST['idcompany'];
+        $startday = $_POST['startday'];
+        $endday = $_POST['endday'];
+        $data = $this->company->getGiaoDichVnpayBySelectTime($idcompany,$startday, $endday);
         echo json_encode($data);
     }
 }

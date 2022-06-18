@@ -36,28 +36,12 @@
     <div class="border border-dark p-4 mt-4">
         <h5 class="" style="font-style: italic; text-align:start; margin: 20px; border-bottom: 1px solid black">Lợi Nhuận Tháng</h5>
         <div class="page-table pt-4" style="margin-top:20px">
-            <table id="myTable1" class="display">
+            <table id="tbLoiNhuan" class="display">
                 <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Thời Gian</th>
-                        <th>Lợi Nhuận</th>
-                        <th>Trạng Thái</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                    
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>02/2022</td>
-                        <td>15.000.000đ</td>
-                        <td>Chưa Thanh Toán</td>
-                        <td><button class="admin-button"><a href="?controller=chome&action=admin&path=congty&page=loinhuanthang">Chi Tiết</a></button></td>
-                        <td><button class="admin-button"><a href="">Thanh Toán</a></button></td>
-                        <td><button class="admin-button"><a href="">Huỷ</a></button></td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -72,6 +56,7 @@
     function load() {
         loadDetailCompany()
         loadTour()
+        loadTableLoiNhuan()
     }
 
     function loadDetailCompany() {
@@ -105,6 +90,19 @@
         }, function(data) {
             data = JSON.parse(data);
             $('#tbTour').DataTable({
+                data: data
+            })
+        })
+    }
+
+    function loadTableLoiNhuan()
+    {
+        $.post("index.php?controller=ccompany&action=loadTableGiaoDichVnpayGroupByTime", {
+            idcompany: idcompany
+        }
+        ,function(data){
+            data = JSON.parse(data);
+            $('#tbLoiNhuan').DataTable({
                 data: data
             })
         })

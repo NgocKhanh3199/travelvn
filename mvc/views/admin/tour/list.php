@@ -53,7 +53,7 @@
             }, function(data) {
                 if (data > 0) {
                     alert("Xóa thành công !");
-                    loadTableTour();
+                    window.location.reload()
                 } else if (data < 0) {
                     alert("Xóa thất bại !");
                 }

@@ -209,15 +209,15 @@ class ctour extends controller
             $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
             if ($status == 1) {
-                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
-                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view nav-link text-success">Xem</a>';
+                $edit = '<a href="" class ="a-edit nav-link" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
+                $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
                 $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             } else if ($status == 0) {
-                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
-                $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view nav-link text-success">Xem</a>';
+                $edit = '<a href="" class ="a-edit nav-link" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
+                $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
                 $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             }
@@ -377,6 +377,40 @@ class ctour extends controller
         $data = $this->tour->getInformationByIdCity($idplace);
         echo json_encode($data);
     }
+    // public function permitComment()
+    // {
+    //     $iduser = $_POST['iduser'];
+    //     $idtour = $_POST['idtour'];
+    //     $data = $this->tour->permitComment($iduser, $idtour);
+    //     echo json_encode($data);
+    // }
+    // public function addComment()
+    // {
+    //     $content = $_POST['content'];
+    //     $iduser = $_POST['iduser'];
+    //     $idtour = $_POST['idtour'];
+    //     $data = $this->tour->addComment($content, $iduser, $idtour);
+    //     echo json_encode($data);
+    // }
+    // public function loadAllComment()
+    // {
+    //     $idtour = $_POST['idtour'];
+    //     $data = $this->tour->loadAllComment($idtour);
+    //     echo json_encode($data);
+    // }
+    //-----------------------------------------pagination---------------------------------
+    public function getAllTourPagination()
+    {
+        $startnum = $_POST['startnum'];
+        $data = $this->tour->getAllTourPagination($startnum);
+        echo json_encode($data);
+    }
+    public function getAllTourOrderByIdPagination()
+    {
+        $startnum = $_POST['startnum'];
+        $data = $this->tour->getAllTourOrderByIdPagination($startnum);
+        echo json_encode($data);
+    }
 
     public function permitComment()
     {
@@ -452,6 +486,15 @@ class ctour extends controller
     {
         $iduser = $_POST['iduser'];
         $data = $this->tour->getTouryeuthich($iduser);
+        echo json_encode($data);
+    }
+    //------------------------------------------rating-------------------------------
+    public function addRatingStar()
+    {
+        $idtour = $_POST['idtour'];
+        $iduser = $_POST['iduser'];
+        $star = $_POST['star'];
+        $data = $this->tour->addRatingStar($idtour, $iduser, $star);
         echo json_encode($data);
     }
 }

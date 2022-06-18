@@ -39,7 +39,7 @@
                         <span><i class="fa-solid fa-umbrella-beach"></i></span><span> Quản Lý Tour</span>
                     </a>
                 </li>
-                <li class="menu-item active">
+                <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=nguoidung" class="menu-link">
                         <span><i class="fa-solid fa-users"></i></span><span> Quản Lý Người Dùng</span>
                     </a>
@@ -59,19 +59,19 @@
                         <span><i class="fa-solid fa-building"></i></span><span> Quản Lý Công Ty</span>
                     </a>
                 </li>
-                <!-- <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=diachi">
-                        <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Địa Chỉ</span>
-                    </a>
-                </li> -->
                 <li class="menu-item">
-                    <a href="index.php?controller=chome&action=admin&path=congty&page=loinhuanthang" class="menu-link">
+                    <a href="index.php?controller=chome&action=admin&path=giaodich&page=loinhuanthang" class="menu-link">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span> Quản Lý Giao Dịch</span>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=list" class="menu-link">
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span>Chăm sóc khách hàng</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="index.php?controller=chome&action=admin" class="menu-link">
+                        <span><i class="fa-solid fa-clipboard-list"></i></span><span> Thống kê </span>
                     </a>
                 </li>
             </ul>
@@ -90,13 +90,27 @@
                 <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 <input type="search" name="" id="" placeholder="Tìm Kiếm">
             </div>
-            <div class="user-wrapper">
+            <div class="user-wrapper dropdown">
                 <img src="./public/img/default-user-image.png" width="50" height="50" alt="">
                 <div>
-                    <h6>Thao Tran</h6>
+                    <?php 
+                        if(isset($_SESSION['name'])) {
+                    ?>
+                    <h6><?php echo $_SESSION['name']?></h6>
                     <small>Super admin</small>
+                    <?php
+                        }
+                        else{
+                    ?>
+                    <META http-equiv="refresh" content="0;URL=index.php?controller=cuser&action=loginpage">
+                    <?php } ?>
+                </div>
+                <div class="dropdown-content">
+                    <a href="index.php?controller=chome&action=admin&page=doimatkhau"><i class="fa-solid fa-user"></i>Đổi Mật Khẩu</a>
+                    <a href="index.php?controller=cuser&action=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất</a>
                 </div>
             </div>
+            
         </header>
         <main>
         <?php

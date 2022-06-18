@@ -45,9 +45,9 @@ class cdiadiem extends controller
             $img = strlen($dd['hinhanh']) > 0 ? $dd['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
 
-            $view = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=detail&iddiadiem=' . $iddiadiem . '" class="a-view">Xem</a>';
-            $edit = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=edit&iddiadiem=' . $iddiadiem . '" class ="a-edit" onclick="editPlace(' . $iddiadiem . ')">Sửa</a>';
-            $delete = '<a href="" class = "a-delete" onclick="deleteDiadiem(' . $iddiadiem . ')">Xóa</a>';
+            $view = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=detail&iddiadiem=' . $iddiadiem . '" class="a-view nav-link link-success">Xem</a>';
+            $edit = '<a href="index.php?controller=chome&action=admin&path=diadiem&page=edit&iddiadiem=' . $iddiadiem . '" class ="a-edit nav-link" onclick="editPlace(' . $iddiadiem . ')">Sửa</a>';
+            $delete = '<a href="" class = "a-delete nav-link link-danger" onclick="deleteDiadiem(' . $iddiadiem . ')">Xóa</a>';
             $row = [$stt, $hinhanh, $tendiadiem, $diachi, $view, $edit, $delete];
             $data[] = $row;
         }

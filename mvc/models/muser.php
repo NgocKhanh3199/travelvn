@@ -56,7 +56,7 @@ class muser extends database{
     }
     public function getAllQuestion()
     {
-        $qr = "SELECT question.content, question.answer, user.name,question.status  FROM `question`, user WHERE question.iduser = user.iduser";
+        $qr = "SELECT question.idquestion,question.content, question.answer, user.name,question.status, question.display  FROM `question`, user WHERE question.iduser = user.iduser AND xoa=0 order BY idquestion DESC";
         return $this->select($qr);
     }
     public function getOrderByIdUser($iduser)
@@ -74,5 +74,30 @@ class muser extends database{
         $qr = "SELECT tour.idtour,tour.hinhanh,tour.nametour, `price-adult`, `price-child`, `day-start`, `day-end` FROM `order`, tour WHERE order.idtour = tour.idtour AND idorder = '$idorder'";
         return $this->select($qr);
     }
-    
+    //---------------------------------------themcautraloi------------------------------------------
+    public function sendAnswer($idquestion,$answer)
+    {
+        $qr = "UPDATE `question` SET `answer`='$answer',`status`='Đã trả lời' WHERE idquestion = '$idquestion'";
+        return $this->update($qr);
+    }
+    public function loadCauTraLoiByIdCauHoi($idquestion)
+    {
+        $qr = "SELECT * FROM `question` WHERE idquestion = '$idquestion'";
+        return $this->select($qr);
+    }
+    public function deleteCauHoiByIdCauHoi($idquestion)
+    {
+        $qr = "UPDATE `question` SET xoa=1 WHERE idquestion = '$idquestion'";
+        return $this->update($qr);
+    }
+    public function loadQuestionsDisplayed()
+    {
+        $qr = "SELECT * FROM `question` WHERE display = 1";
+        return $this->select($qr);
+    }
+    public function displayQuestion($idquestion,$answer, $option)
+    {
+        $qr = "UPDATE `question` SET `answer`='$answer',`status`='Đã trả lời', `display`='$option' WHERE idquestion = '$idquestion'";
+        return $this->update($qr);
+    }
 }

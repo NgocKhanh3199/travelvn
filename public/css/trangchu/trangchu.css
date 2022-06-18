@@ -73,7 +73,6 @@ body {
     height: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    object-fit: cover;
 }
 
 .item-wrap img:hover {
