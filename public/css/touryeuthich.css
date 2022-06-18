@@ -1,0 +1,113 @@
+.touryeuthich {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.item-tour{
+    flex-basis: 33%;
+    padding: 10px;
+}
+.img-tour-detail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.img-tour{
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+ 
+}
+.img-tour:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease; 
+}
+.iconyeuthich {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50px;
+    background-color: rgb(234, 237, 236);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    color: #666;
+}
+.yeuthich{
+    color: red;
+}
+.time-slot{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: rgb(234, 237, 236);
+}
+.content-tour-detail{
+    padding: 10px;
+    font-size: 1.3rem;
+    border: 1px solid #d1d1d1;
+}
+.title-content-tour{
+    min-height: 38px;
+}
+.title-content-tour a{
+    color: #000;
+    font-size: 17px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 10px 0;
+    height: 55px;
+}
+.list-content-tour{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.item-left{
+    color: #484848;
+    flex-basis: 60%;
+}
+.list_tour_price{
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 17px;
+}
+.list_tour_price p{
+    font-size: 17px;
+    color: #666;
+    margin-bottom: 0;
+}
+.list_tour_price span{
+    color: #c8781d;
+    font-size: 17px;
+}
+.btn{
+    display: block;
+    padding: 3px 10px;
+    width: 100%;
+    background-color: #ff9800;
+    color: #fff;
+    border: 1px solid;
+    text-align: center;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+.list-tour_transport{
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+.list-tour_date{
+    font-size: 16px;
+}
+.list-tour_transport i, .list-tour_date i{
+    color: #3b5ba6;
+    font-size: 17px;
+    min-width: 1.5rem;
+}

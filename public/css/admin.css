@@ -12,37 +12,36 @@
 :root {
     --main-color: #dd2f6e;
 }
-.container-form .frame1{
+
+.container-form .frame1 {
     padding: 10px;
 }
-.place{
+
+.place {
     margin: 20px;
 }
 
-.places-img{
+.places-img {
     display: flex;
 }
 
-.place-img{
+.place-img {
     flex-basis: 25%;
     margin: 10px;
 }
 
-.places-img img{
+.places-img img {
     width: 100%;
     height: 80%;
 }
+
 .slidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 300px;
-    /* background: linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%); */
-    background-color: var(--main-color);
-    z-index: 100;
-    /* transition: width 300ms; */
-    /* box-shadow: 0 0 10px rgba(119, 117, 117, 0.3); */
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 }
 
 .slidebar-brand {
@@ -50,10 +49,12 @@
     padding: 1rem 0rem 0.5rem 2rem;
     display: flex;
     align-items: center;
-    color: rgb(114, 108, 108);
-    background-color: #fff;
+    color: rgb(84, 0, 67);
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 }
-
+.slidebar-brand span{
+    padding: 0 5px;
+}
 .slidebar-brand h3 {
     /* font-family: Rockwell; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -91,15 +92,19 @@
     display: flex;
     align-items: center;
     /* padding-left: 1rem; */
+
 }
 
 .slidebar-menu a {
     display: block;
-    /* font-size: 1.1rem; */
     text-decoration: none;
-    color: black;
+    color: rgb(88, 0, 97);
+    font-weight: 500;
+    font-size: 17px;
 }
-
+.slidebar-menu a:hover {
+    color: rgb(0, 0, 0);
+}
 .slidebar-menu li:first-child {
     margin-top: 10px;
 }
@@ -171,9 +176,12 @@ header h4 span {
     font-size: 1.4rem;
     padding-right: 1rem;
 }
-
+.hd{
+    background-image: linear-gradient(224deg, #fccb90 0%, #d57eeb 100%);
+}
 .search-wrapper {
     border: 1px solid #f0f0f0;
+    background-color: #f0f0f0;
     height: 50px;
     border-radius: 30px;
     display: flex;
@@ -188,11 +196,11 @@ header h4 span {
     color: rgb(43, 40, 40);
 }
 
-.search-wrapper input {
+.search-wrapper input { 
     height: 100%;
     padding: .5rem;
     border: none;
-    outline: none;
+    outline: none;   
 }
 
 .user-wrapper {
@@ -318,13 +326,14 @@ td{
 .card-header{
     /* display: flex; */
 
+
 .page-title {
     font-weight: 600;
     color: rgb(8, 8, 113);
     margin-top: 30px;
 }
 
-.iptinh, .iphuyen, .ipxa{
+.iptinh, .iphuyen, .ipxa {
     border: 1px solid blue;
     height: 40px;
     margin: 10px 0;
@@ -354,7 +363,7 @@ tr:nth-child(even) {
 
 a {
     text-decoration: none;
-    
+
 }
 
 
@@ -572,7 +581,7 @@ a {
 .container {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-   
+
 }
 
 .container .admin-button {
@@ -672,7 +681,7 @@ a {
         margin: 10px;
         font-size: 14px;
     }
-    
+
 
     .container .input-group {
         margin: 10px 0;

@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$iduser = $_SESSION['iduser'];
+if (!$iduser) {
+    $iduser = "null";
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách tour</title>
+?>
 
-    <!-- link bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- end_link bootstrap 5 -->
-    <!-- link icon -->
-    <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- end-link icon -->
 
-    <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
-    <link rel="stylesheet" href="./public/css/trangchu/media.css">
-    <link rel="stylesheet" href="./public/css/tour/tour.css">
-    <script src="./public/js/js.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="./public/css/trangchu/menu1.css">
+<link rel="stylesheet" href="./public/css/trangchu/media.css">
+<link rel="stylesheet" href="./public/css/tour/tour.css">
+<script src="./public/js/js.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -87,7 +78,9 @@
             </div>
             <div class="col-sm-9 tour">
                 <div class="header-tour" id="header-tour">
-                    <p><!--Danh sách tour du lịch tại Cần Thơ--></p>
+                    <p>
+                        <!--Danh sách tour du lịch tại Cần Thơ-->
+                    </p>
                 </div>
                 <div class="in4-tour" id="in4-tour">
                     <p> </p>
@@ -110,20 +103,23 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="" id="tukhoa" value="<?php echo $_GET['name'] ?>">
+                <?php if (isset($_GET['name'])) { ?>
+                    <input type="hidden" name="" id="tukhoa" value="<?php echo $_GET['name'] ?>">
+                <?php } ?>
+
                 <div class="item-tour row" id="item-tour">
 
 
                 </div>
                 <div class="sotrang">
                     <div class="container mt-3">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-                        </ul>
+                        <div id="myDIV">
+                            <button class="btn active">1</button>
+                            <button class="btn">2</button>
+                            <button class="btn">3</button>
+                            <button class="btn">4</button>
+                            <button class="btn">5</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,6 +129,116 @@
 
 </html>
 <script>
+    document.onload = loadtour()
+
+
+    function loadtour() {     
+        path = "./public/img/tour/";
+        $.post('index.php?controller=ctour&action=getAllTour', {},
+            function(data) {
+                tour = JSON.parse(data);
+                for (let i = 0; i < tour.length; i++) {
+                    t = tour[i];
+                    idtour = t['idtour']
+                    hinhanh = t['hinhanh']
+                    if (hinhanh.length == 0) {
+                        hinhanh = 'noimg.png'
+                    }
+                    hinhanhtour = path + hinhanh
+                    nametour = t['nametour']
+                    price = t['price-adult']
+                    daystart = t['day-start']
+                    if (<?= $iduser ?> != null) {
+                        loadyt(idtour, <?= $iduser ?>);
+                    }
+                    $('#item-tour').append(`
+                    <div class="col-sm-3 item-wrap">
+                    <div class="khungchuaimg">
+                        <img src="` + hinhanhtour + `" alt="" style="width:100%">     
+                        
+                            <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
+                      
+                    </div>
+                    <div class="item-meta">
+                        <p class="item-tua mb-1">
+                            <a class="item-header" href="#">` + nametour + `</a>
+                        </p>
+                        <p class="item-price md-1">
+                            <span class="amount" data-price="900000">` + price + `</span>
+                            <span>VNĐ</span>
+                        </p>
+                        <p class="item-khoihanh mb-1">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Khởi hành:</span> ` + daystart + `
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    </div>
+                    `)
+                }
+            })
+    }
+
+    function loadyt(idtour, iduser) {
+
+        $.post('index.php?controller=ctour&action=kiemtra', {
+            idtour: idtour,
+            iduser: iduser,
+        }, function(data) {
+            if (data > 0) {
+                nameclass = 'yeuthich';
+                var icon = document.getElementById(idtour);
+                icon.classList.add(nameclass);
+            } else {
+                nameclass = '';
+                var icon = document.getElementById(idtour);
+                icon.classList.add(nameclass);
+            }
+        })
+
+
+    }
+
+    function touryeuthich(idtour) {
+        if (<?= $iduser ?> != null) {
+            var icon = document.getElementById(idtour);
+
+            if (icon.classList.contains('yeuthich')) {
+                $.post("index.php?controller=ctour&action=xoatouryeuthich", {
+                    iduser: iduser,
+                    idtour: idtour,
+                }, function(data) {
+                    if (data >= 0) {
+                        // alert("Xoá thành công");
+                        icon.classList.remove('yeuthich');
+                    } else {
+                        alert("Xoá thất bại");
+                    }
+                })
+            } else {
+                $.post("index.php?controller=ctour&action=themtouryeuthich", {
+                    iduser: iduser,
+                    idtour: idtour,
+                }, function(rs) {
+                    const data = JSON.parse(rs)
+                    if (data.status) {
+                        // alert(data.message)
+                        icon.classList.add('yeuthich')
+                    }
+                })
+
+            }
+        } else if (<?= $iduser ?> == null) {
+            var rs = confirm("Đăng nhập để lưu vào tour yêu thích")
+            if (rs) {
+                window.location = "index.php?controller=cuser&action=loginpage"
+            }
+        }
+
+    }
+
     var min = $('#min').val()
     var max = $('#max').val()
     var name = $('#tukhoa').val()
@@ -223,21 +329,18 @@
             // })
             $.post("index.php?controller=ctour&action=getPlaceByUniqueName", {
                 name: name
-            }, function(data){
+            }, function(data) {
                 var tour = JSON.parse(data)
-                if(data == '[]')
-                {
+                if (data == '[]') {
                     $.post("index.php?controller=ctour&action=getInformationByNamePlace", {
                         name: name
-                    }, function(data){
+                    }, function(data) {
                         var tour = JSON.parse(data)
-                        if(data == '[]')
-                        {
+                        if (data == '[]') {
                             $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-warning'>Không tìm thấy kết quả</h4>")
                         }
                         //nếu có nhiều hơn 1 thì select các tour liên quan đến keyword đó
-                        else
-                        { 
+                        else {
                             path = "./public/img/tour/"
                             $('#result p').append('Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp')
                             for (var i = 0; i < tour.length; i++) {
@@ -266,9 +369,7 @@
                             }
                         }
                     })
-                }
-                else
-                {
+                } else {
                     path = "./public/img/tour/"
                     $('#result p').append('Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp')
                     $('#in4-tour p').attr('class', 'p-2')
@@ -276,27 +377,27 @@
                     $('#in4-tour p').append(tour[0]['information'])
                     $('#header-tour p').append('Danh sách tour du lịch tại ' + tour[0]['nameplace'])
                     img = tour[0]['hinhanh'].length > 0 ? tour[0]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                        src = path + img
-                        $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                            '<div class="khungchuaimg">' +
-                            ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                            ' <div class="item-meta">' +
-                            '  <p class="item-tua mb-1">' +
-                            ' <a class="item-header" href="#">' + tour[0]['nametour'] + '</a>' +
-                            '  </p>' +
-                            ' <p class="item-price md-1">' +
-                            '  <span class="amount" data-price="900000">' + tour[0]['price'] + '</span>' +
-                            '  <span>VNĐ</span>' +
-                            '  </p>' +
-                            ' <p class="item-khoihanh mb-1">' +
-                            '     <i class="fa-solid fa-clock"></i>' +
-                            '     <span>Khởi hành:</span> ' + tour[0]['day-start'] + ' ' +
-                            ' </p>' +
-                            '  <div class="d-flex justify-content-between">' +
-                            '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                            '</div>' +
-                            '</div>' +
-                            ' </div>')
+                    src = path + img
+                    $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
+                        '<div class="khungchuaimg">' +
+                        ' <img src="' + src + '" alt="" style="width:100%"></div>' +
+                        ' <div class="item-meta">' +
+                        '  <p class="item-tua mb-1">' +
+                        ' <a class="item-header" href="#">' + tour[0]['nametour'] + '</a>' +
+                        '  </p>' +
+                        ' <p class="item-price md-1">' +
+                        '  <span class="amount" data-price="900000">' + tour[0]['price'] + '</span>' +
+                        '  <span>VNĐ</span>' +
+                        '  </p>' +
+                        ' <p class="item-khoihanh mb-1">' +
+                        '     <i class="fa-solid fa-clock"></i>' +
+                        '     <span>Khởi hành:</span> ' + tour[0]['day-start'] + ' ' +
+                        ' </p>' +
+                        '  <div class="d-flex justify-content-between">' +
+                        '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                        '</div>' +
+                        '</div>' +
+                        ' </div>')
                 }
             })
         } else {
@@ -484,6 +585,7 @@
         $('#item-tour #tour').remove()
         $('#item-tour h4').remove()
         $('#in4-tour p').remove()
+        $('#item-tour').children().remove()
         var idplace = $('#diemden').val()
         //-----------------------------choose by day-----------------------
         //--1to3--
@@ -622,8 +724,7 @@
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
             } else if ($('#overfourteen').prop("checked")) {
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
-            } 
-            else if ($('#min').prop("checked")) {
+            } else if ($('#min').prop("checked")) {
                 if ($('#max').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -664,8 +765,7 @@
                         }
                     })
                 }
-            } 
-            else if ($('#max').prop("checked")) {
+            } else if ($('#max').prop("checked")) {
                 if ($('#min').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -706,8 +806,7 @@
                         }
                     })
                 }
-            } 
-            else {
+            } else {
                 $.post("index.php?controller=ctour&action=getAllTourByNumberDayAround4To7", {
                     idplace: idplace
                 }, function(data) {
@@ -744,7 +843,7 @@
                     }
                 })
             }
-        } 
+        }
         //--8to14--
         else if ($('#eighttofourteen').prop("checked")) {
             if ($('#onetothree').prop("checked")) {
@@ -753,8 +852,7 @@
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
             } else if ($('#overfourteen').prop("checked")) {
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
-            } 
-            else if ($('#min').prop("checked")) {
+            } else if ($('#min').prop("checked")) {
                 if ($('#max').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -795,8 +893,7 @@
                         }
                     })
                 }
-            } 
-            else if ($('#max').prop("checked")) {
+            } else if ($('#max').prop("checked")) {
                 if ($('#min').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -837,8 +934,7 @@
                         }
                     })
                 }
-            } 
-            else {
+            } else {
                 $.post("index.php?controller=ctour&action=getAllTourByNumberDayAround8To14", {
                     idplace: idplace
                 }, function(data) {
@@ -875,7 +971,7 @@
                     }
                 })
             }
-        } 
+        }
         //--over14---
         else if ($('#overfourteen').prop("checked")) {
             if ($('#onetothree').prop("checked")) {
@@ -884,8 +980,7 @@
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
             } else if ($('#eighttofourteen').prop("checked")) {
                 alert("Bạn chỉ được chọn duy nhất 1 khoảng thời gian!")
-            } 
-            else if ($('#min').prop("checked")) {
+            } else if ($('#min').prop("checked")) {
                 if ($('#max').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -926,8 +1021,7 @@
                         }
                     })
                 }
-            } 
-            else if ($('#max').prop("checked")) {
+            } else if ($('#max').prop("checked")) {
                 if ($('#min').prop("checked")) {
                     alert('Bạn chỉ được chọn 1 mức giá!');
                 } else {
@@ -968,8 +1062,7 @@
                         }
                     })
                 }
-            } 
-            else {
+            } else {
                 $.post("index.php?controller=ctour&action=getAllTourByNumberDayOver14", {
                     idplace: idplace
                 }, function(data) {
@@ -1129,4 +1222,13 @@
             })
         }
     })
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
 </script>

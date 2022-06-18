@@ -93,27 +93,13 @@
         <div class="place text-start">
             <h4 class="header-place">Điểm đến: </h4>
             <div class="item-place" id="item-place">
-
-                <!-- <div class="places-img container">
-                    <div class="place-img">
-                        <img src="./public/img/tour/4b7c23abd16c3f271fde1222fc3bff9f_2_45_39_20_5_2022.jpg" alt="" srcset="">
-                    </div>
-                    <div class="place-img">
-                        <img src="./public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_3_6_24_20_5_2022.jpg" alt="" srcset="">
-                    </div>
-                    <div class="place-img">
-                        <img src="./public/img/tour/2b95fc58931487994632121fc1f00833_2_7_36_20_5_2022.jpg" alt="" srcset="">
-                    </div>
-                    <div class="place-img">
-                        <img src="./public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_2_19_53_20_5_2022.jpg" alt="" srcset="">
-                    </div>
-                </div> -->
+                
             </div>
 
         </div>
 
         <div class="button-group">
-            <a href="index.php?controller=chome&action=company&path=tour" class="btn btn-primary" type="button">Thoát</a>
+            <a href="index.php?controller=chome&action=admin&path=tour" class="btn btn-primary" type="button">Thoát</a>
         </div>
 </body>
 
@@ -148,37 +134,7 @@
             $('#start_place').val(t['start_place']);
             $('#number-night').val(t['numbernight']);
             $('#number-day').val(t['numberday']);
-            $('#nameplace').val(t['nameplace']);
-            $('#address').val(t['address']);
-            path3 = 'https://provinces.open-api.vn/api/w/' + t['ward'] + '?depth=1'
-            $.ajax({
-                url: path3,
-                method: "GET",
-                data: {},
-                success: function(data) {
-                    $('#ward').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
-                }
-            })
-            path2 = 'https://provinces.open-api.vn/api/d/' + t['district'] + '?depth=1'
-            $.ajax({
-                url: path2,
-                method: "GET",
-                data: {},
-                success: function(data) {
-                    $('#district').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
-                }
-            })
-            path1 = 'https://provinces.open-api.vn/api/p/' + t['city'] + '?depth=1'
-            $.ajax({
-                url: path1,
-                method: "GET",
-                data: {},
-                success: function(data) {
-                    $('#city').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
-                }
-            })
-            $('#in4').val(t['infomation']);
-
+            
             hinhanh = t['hinhanh']
             if (hinhanh.length == 0) {
                 hinhanh = 'noimg.png'
@@ -226,13 +182,13 @@
     }
 
     function loadplace() {
+        
         pathhinhanhplace = "./public/img/diadiem/";
         $.post("index.php?controller=ctour&action=getPlaceByIdTour", {
             idTour: idTour,
 
         }, function(data) {
             place = JSON.parse(data);
-            console.log(place)
             for (i = 0; i < place.length; i++) {
                 nameplace = place[i]['nameplace']
                 address = place[i]['full-address']

@@ -14,6 +14,7 @@
             <table id="tbOrder" class="display">
                 <thead>
                     <th style="width: 1%">Stt</th>
+                    <th style="width: 15%">Mã đơn hàng</th>
                     <th style="width: 15%">Tên khách hàng</th>
                     <th style="width: 3%">Số điện thoại</th>
                     <th style="width: 5%">Email</th>
@@ -30,6 +31,7 @@
     </div>
 </div>
 <script>
+    var idcompany = <?= $_GET['idcompany'] ?>;
     document.onload = load()
 
     function load() {
@@ -37,13 +39,16 @@
     }
 
     function loadTableOrder() {
-        $.post('index.php?controller=corder&action=loadTableOrdercp', {}, function(data) {
+        $.post('index.php?controller=corder&action=loadTableOrdercp', {
+            idcompany: idcompany,
+        }, function(data) {
             data = JSON.parse(data);
             $('#tbOrder').DataTable({
                 data: data
             })
         })
     }
+
     function DuyetOrder(idorder) {
         choice = confirm("Bạn có chắc duyệt đơn hàng.!");
         if (choice) {

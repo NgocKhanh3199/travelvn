@@ -27,15 +27,15 @@
         </div>
     </div>
 
-    <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="hd-bill">TravelVN</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="total-price">
+                <div class="modal-body" id="modal-body">
+                    <!-- <div class="total-price">
                         <p class="total">Tổng tiền</p>
                         <p class="thucte" id="price-total">23056465</p>
                     </div>
@@ -49,13 +49,14 @@
                     </div>
                     <div class="hihi">
                         <button onclick="thanhtoan1()">Thanh toán</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
+    var idcompany = <?= $_GET['idcompany'] ?>;
     document.onload = load()
 
     function load() {
@@ -64,7 +65,9 @@
     }
 
     function loadTableGiaodich() {
-        $.post('index.php?controller=cgiaodich&action=loadTableGiaodich', {}, function(data) {
+        $.post('index.php?controller=cgiaodich&action=loadTableGiaodich', {
+            idcompany: idcompany,
+        }, function(data) {
             data = JSON.parse(data);
             $('#tbGiaodich').DataTable({
                 data: data
@@ -73,8 +76,34 @@
     }
     var idgiaodich1;
 
-    function thanhtoan(idgiaodich) {
+    function thanhtoan(idgiaodich, price) {
         idgiaodich1 = idgiaodich;
+        totalprice = price;
+        $('#modal-body').children().remove()
+        $('#modal-body').append(`
+        
+        <div class="total-price">
+                        <p class="total">Tổng tiền</p>
+                        <p class="thucte" id="price-total">` + totalprice + `</p>
+                    </div>
+                    <div class="total-price">
+                        <p  class="money_received">Số tiền đã nhận</p>
+                        <input onchange="tienthua(` + totalprice + `)" class="thucte" id="money_received" type="number">
+                    </div>
+                    <div class="total-price">
+                        <p class="money_refund">Tiền thừa</p>
+                        <input class="thucte" id="money_refund" type="number">
+                    </div>
+                    <div class="hihi">
+                        <button onclick="thanhtoan1()">Thanh toán</button>
+                    </div>`)
+    }
+
+    function tienthua() {
+        totalprice1 = totalprice;
+        tiennhan = $('#money_received').val();
+        tienthua = tiennhan - totalprice1;
+        $('#money_refund').val(tienthua);
     }
 
     function thanhtoan1() {
@@ -82,7 +111,7 @@
         let year = d.getFullYear();
         let month = d.getMonth() + 1;
         let day = d.getDate();
-        date_payment = day + '/' + month + '/' + year
+        date_payment = year + '-' + month + '-' + day
         time_payment = d.getSeconds() + ":" + d.getHours() + ":" + d.getMinutes()
         money_received = $('#money_received').val();
         money_refund = $('#money_refund').val();
@@ -101,5 +130,4 @@
             }
         })
     }
-
 </script>

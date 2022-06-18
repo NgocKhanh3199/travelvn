@@ -40,13 +40,13 @@
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./public/img/trangchu/dc_200914_Da Lat  (6).jpg" class="d-block" style="width:100%">
+                    <img src="./public/img/trangchu/br-3.jpg" class="d-block" style="width:100%">
                 </div>
                 <div class="carousel-item">
-                    <img src="./public/img/trangchu/tfd_220401043741_613665.jpg" class="d-block" style="width:100%">
+                    <img src="./public/img/trangchu/bn-2.jpg" class="d-block" style="width:100%">
                 </div>
                 <div class="carousel-item">
-                    <img src="./public/img/trangchu/tfd_220401044033_037108.jpg" class="d-block" style="width:100%">
+                    <img src="./public/img/trangchu/bn-1.jpg" class="d-block" style="width:100%">
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                 <img class="header-img" src="./public/img/trangchu/destination.png" alt="">
                 <p class="header-h">Tour nổi bật</p>
             </div>
-            <a class="align-items-center d-flex xemthem">Xem thêm tour</a>
+            <a class="align-items-center d-flex xemthem" href="index.php?controller=chome&action=home&page=tour">Xem thêm tour</a>
         </div>
         <div class="content-tournoibat">
             <div class="row" id="tournoibat">
@@ -98,6 +98,7 @@
         <div class="header-diemdulichdacsac tuade">
             <img class="header-img" src="./public/img/trangchu/destination.png" alt="">
             <p class="header-h">Những điểm du lịch đặc sắc</p>
+            <p class="in4-diemdulichdacsac">Xứng đáng với danh xưng “Rừng vàng biển bạc”, Việt Nam mang đến những bức họa đẹp đến nao lòng dành tặng cho du khách. Dù đang trong rừng sâu hay trầm mình cùng biển lặng, dù mơ màng với làn mây bồng bềnh ở đỉnh núi cao ngất hay hòa mình cùng làn nước đại dương xanh trong, trái tim ai kia vẫn rộn ràng những cung bậc cảm xúc khó tả Yêu lắm một Việt Nam đẹp đến vô ngần.</p>
         </div>
         <div class="content-diemdulichdacsac">
             <div class="hihi" id="diemdulich">
@@ -144,6 +145,7 @@
                 <div class="header-diemdulichdacsac tuade">
                     <img class="header-img" src="./public/img/trangchu/destination.png" alt="">
                     <p class="header-h">TravelVN.Hotel</p>
+                    <p>Các thương hiệu khách sạn đối tác hàng đầu</p>
                 </div>
                 <a class="align-items-center d-flex khamphangay">Khám phá ngay</a>
             </div>
@@ -152,118 +154,131 @@
                 <div class="row">
                     <div class="col-sm-3 item-hotel">
                         <a class="img-hotel" href="">
-                            <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                            <img src="./public/img/khachsan/z3310332035332_54ab2c28005d66c40f7b606d213f8acc.jpg" alt="" style="height: 410px;width:100%">
                         </a>
                         <div class="item-logo-hotel">
                             <div class="img-logo-hotel">
-                                <img src="./public/img/trangchu/fllc.png" alt="">
+                                <img class="img-logo" src="./public/img/khachsan/muongthanhlogo-1024x542.png" alt="">
                             </div>
                         </div>
                         <div class="item-hotel-content">
-                            <p>Chỉ từ 210k/người</p>
+                            <p>Chỉ từ 215k/người</p>
                         </div>
                         <div class="overlay-hotel">
                             <ul>
-                                <li>Dị thoi đó</li>
-                                <li>Dị thoi đó 2</li>
+                                <li>Bao trọn buổi sáng</li>
+                                <li>Khách sạn bán chạy nhất</li>
+                                <li>Phong cách đa dạng, phù hợp với mọi sở thích</li>
+                                <li>Đảm bảo giá tốt nhất</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-3 row">
                         <div class="col-sm-12 item-hotel">
                             <a class="img-hotel" href="">
-                                <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                                <img src="./public/img/khachsan/vnprir.jpg" alt="" style=" height: 200px;width:100%">
                             </a>
                             <div class="item-logo-hotel">
                                 <div class="img-logo-hotel">
-                                    <img src="./public/img/trangchu/fllc.png" alt="">
+                                    <img class="img-logo" src="./public/img/khachsan/1-vinpearl.png" alt="">
                                 </div>
                             </div>
                             <div class="item-hotel-content">
-                                <p>Chỉ từ 210k/người</p>
+                                <p>Chỉ từ 418k/người</p>
                             </div>
                             <div class="overlay-hotel">
                                 <ul>
-                                    <li>Dị thoi đó</li>
-                                    <li>Dị thoi đó 2</li>
+                                    <li>Giá độc quyền tốt nhất</li>
+                                    <li>Khu vui chơi: Safari, VinWonder, Grand World</li>
+                                    <li>Chính sách hoàn hủy linh hoạt</li>
+                                    <li>Combo Du lịch đa dạng</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-12 item-hotel">
                             <a class="img-hotel" href="">
-                                <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                                <img src="./public/img/khachsan/K4xngVWLTJu6awPcUUfUdg-63-228033380.jpeg" alt="" style=" height: 200px;width:100%">
                             </a>
                             <div class="item-logo-hotel">
                                 <div class="img-logo-hotel">
-                                    <img src="./public/img/trangchu/fllc.png" alt="">
+                                    <img class="img-logo" src="./public/img/khachsan/all-accor-live-limitless-logo_optimized.png" alt="">
                                 </div>
                             </div>
                             <div class="item-hotel-content">
-                                <p>Chỉ từ 210k/người</p>
+                                <p>Chỉ từ 320k/người</p>
                             </div>
                             <div class="overlay-hotel">
                                 <ul>
-                                    <li>Dị thoi đó</li>
-                                    <li>Dị thoi đó 2</li>
+                                <li>Miễn phí phụ thu trẻ em</li>
+                                    <li>Bao trọn bữa sáng</li>
+                                    <li>Tập đoàn khách sạn hàng đầu thế giới</li>
+                                    <li>Khách sạn cao cấp bán chạy</li>
+                                  
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-3 item-hotel">
                         <a class="img-hotel" href="">
-                            <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                            <img src="./public/img/khachsan/42831_BRFY3DIS86_overview-2_24665838868_o.jpg" alt="" style="height: 410px;width:100%">
                         </a>
                         <div class="item-logo-hotel">
                             <div class="img-logo-hotel">
-                                <img src="./public/img/trangchu/fllc.png" alt="">
+                                <img class="img-logo" src="./public/img/khachsan/flc.png" alt="">
                             </div>
                         </div>
                         <div class="item-hotel-content">
-                            <p>Chỉ từ 210k/người</p>
+                            <p>Chỉ từ 620k/người</p>
                         </div>
                         <div class="overlay-hotel">
                             <ul>
-                                <li>Dị thoi đó</li>
-                                <li>Dị thoi đó 2</li>
+                                <li>Bao trọn bữa sáng</li>
+                                <li>Khách sạn, resort cao cấp bán chạy</li>
+                                <li>Đảm bảo giá tốt nhất </li>
+                                <li>Voucher du lịch siêu tiết kiệm</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-3 row">
                         <div class="col-sm-12 item-hotel">
                             <a class="img-hotel" href="">
-                                <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                                <img src="./public/img/khachsan/171d9204.jpg" alt="" style=" height: 200px;width:100%">
                             </a>
                             <div class="item-logo-hotel">
                                 <div class="img-logo-hotel">
-                                    <img src="./public/img/trangchu/fllc.png" alt="">
+                                    <img class="img-logo" src="./public/img/khachsan/inter-continental_optimized.png" alt="">
                                 </div>
                             </div>
                             <div class="item-hotel-content">
-                                <p>Chỉ từ 210k/người</p>
+                                <p>Chỉ từ 1.000k/người</p>
                             </div>
                             <div class="overlay-hotel">
                                 <ul>
-                                    <li>Dị thoi đó</li>
-                                    <li>Dị thoi đó 2</li>
+                                    <li>Bữa sáng 5 sao chuẩn quốc tế</li>
+                                    <li>Tiện nghi sang trọng</li>
+                                    <li>Miễn phí 2 trẻ em dưới 6 tuổi</li>
+                                    <li>Khu nghỉ dưỡng lãng mạn nhất Việt Nam</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-12 item-hotel">
                             <a class="img-hotel" href="">
-                                <img src="./public/img/trangchu/tour-ba-na-6.png" alt="" style="width:100%">
+                                <img src="./public/img/khachsan/44729725f510bd968a16ad91e943c926.jpg" alt="" style=" height: 200px;width:100%">
                             </a>
                             <div class="item-logo-hotel">
                                 <div class="img-logo-hotel">
-                                    <img src="./public/img/trangchu/fllc.png" alt="">
+                                    <img class="img-logo" src="./public/img/khachsan/fusion.png" alt="">
                                 </div>
                             </div>
                             <div class="item-hotel-content">
-                                <p>Chỉ từ 210k/người</p>
+                                <p>Chỉ từ 580k/người</p>
                             </div>
                             <div class="overlay-hotel">
                                 <ul>
-                                    <li>Dị thoi đó</li>
-                                    <li>Dị thoi đó 2</li>
+                                <li>Ăn sáng tiêu chuẩn quốc tế</li>
+                                    <li>Hồ bơi vô cực</li>
+                                    <li>Đặt phòng kết hợp với Spa độc đáo</li>
+                                    <li>Bar Club ngắm hoàng hôn</li>
                                 </ul>
                             </div>
                         </div>
@@ -351,8 +366,9 @@
     }
 
     function loadtour() {
+
         path = "./public/img/tour/";
-        $.post('index.php?controller=ctour&action=getAlltour', {},
+        $.post('index.php?controller=ctour&action=getAllTour', {},
             function(data) {
                 tour = JSON.parse(data);
                 for (let i = 0; i < 4; i++) {
@@ -364,7 +380,7 @@
                     }
                     hinhanhtour = path + hinhanh
                     nametour = t['nametour']
-                    price = t['price']
+                    price = t['price-adult']
                     daystart = t['day-start']
                     $('#tournoibat').append(`
                     <div class="col-sm-3 item-wrap">
@@ -384,7 +400,7 @@
                             <span>Khởi hành:</span> ` + daystart + `
                         </p>
                         <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour&idtour=`+idtour+`">Xem chi tiết</a>
+                            <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
                         </div>
                     </div>
                     </div>
@@ -398,7 +414,7 @@
         $.post('index.php?controller=cdiadiem&action=getAlldiadiem', {},
             function(data) {
                 place = JSON.parse(data);
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < 7; i++) {
                     p = place[i];
                     idplace = p['idplace']
                     nameplace = p['nameplace']

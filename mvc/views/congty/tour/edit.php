@@ -1,66 +1,98 @@
 <script src="./public/js/js.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<div class="container container-form">
+<div class="container-form">
     <h4 class="page-title">SỬA TOUR</h4>
     <form class="frame" action="" method="">
-        <div class="input-group">
-            <span class="">Tên Tour</span>
-            <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
-        </div>
-        <div class="input-group">
-            <span class="">Số hành khách</span>
-            <input type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
-        </div>
-        <div class="input-group">
-            <span class="">Hình ảnh</span>
-            <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
-        </div>
-        <div class="input-group">
-            <span class="">Giá người lớn</span>
-            <input id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
-        </div>
-        <div class="input-group">
-            <span class="">Giá trẻ em</span>
-            <input id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
-        </div>
-        <div class="input-group">
-            <span class="">Ngày Bắt Đầu</span>
-            <input id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
-        </div>
-        <div class="input-group">
-            <span class="">Ngày Kết Thúc</span>
-            <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
-        </div>
-        <div class="input-group" id="number-day1">
-            <span class="">Số Lượng Ngày</span>
-            <input value="" type="number" id="number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
-        </div>
-        <div class="input-group" id="number-night2">
-            <span class="">Số Lượng Đêm</span>
-            <input value="" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
-        </div>
-        <div class="input-group">
-            <span class="">Vận chuyển</span>
-            <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
-        </div>
-        <div class="input-group">
-            <span class="">Nơi xuất phát</span>
-            <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
+        <div class="content-tour">
+            <div class="gr-item">
+                <div class="input-group hinhanh">
+                    <span class="">Hình ảnh</span>
+                    <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
+                </div>
+
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp">
+                    <span class="">Tên Tour</span>
+                    <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
+                </div>
+                <div class="input-groupp">
+                    <span class="">Nơi xuất phát</span>
+                    <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
+
+                    </select>
+                </div>
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp">
+                    <span class="">Giá người lớn</span>
+                    <input id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
+                </div>
+                <div class="input-groupp">
+                    <span class="">Giá trẻ em</span>
+                    <input id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
+                </div>
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp">
+                    <span class="">Ngày Bắt Đầu</span>
+                    <input onchange="kiemtra()" id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
+                </div>
+                <div class="input-groupp">
+                    <span class="">Ngày Kết Thúc</span>
+                    <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
+                </div>
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp" id="number-day1">
+                    <span class="">Số Lượng Ngày</span>
+                    <input value="` + numberday + `" type="number" id="number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+                </div>
+                <div class="input-groupp" id="number-night1">
+                    <span class="">Số Lượng Đêm</span>
+                    <input value="` + numberday + `" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
+                </div>
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp">
+                    <span class="">Vận chuyển</span>
+                    <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
+                </div>
+                <div class="input-groupp">
+                    <span class="">Số hành khách</span>
+                    <input type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
+                </div>
+            </div>
+
+            <div class="input-groupp p">
+                <span class="text">Mô Tả</span>
+                <textarea id="infotour" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+            </div>
+            <div class="input-groupp p">
+                <span class="text dichvu">Dịch vụ bao gồm và không bao gồm</span>
+                <textarea id="service" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+            </div>
+            <div class="input-groupp p">
+                <span class="text">Lịch trình</span>
+                <textarea id="schedule" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+            </div>
+            <div class="gr-item">
+                <div class="input-groupp it-tinh">
+                    <span>Chọn tỉnh</span>
+                    <select id="tinhdiemden" class="start_place" onchange="locdiemdentheotinh()">
+
+                    </select>
+                </div>
+                <div class="input-groupp it-place">
+                    <span class="">Điểm đến</span>
+                    <select multiple id="dgb" style="width: 250px;" size="4">
+
+                    </select>
+                </div>
+            </div>
         </div>
 
-        <div class="input-group">
-            <span class="">Mô Tả</span>
-            <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
-        <div class="input-group">
-            <span class="">Dịch vụ bao gồm và không bao gồm</span>
-            <textarea id="service" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
-        <div class="input-group">
-            <span class="">Lịch trình</span>
-            <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
         <div class="input-group ">
             <div id="totalAddress">
 
@@ -71,24 +103,42 @@
 
         <div class="button-group">
             <button class="btn btn-primary" onclick="edit()" type="button">Cập nhật</button>
-            <a href="index.php?controller=chome&action=company&path=tour" class="btn btn-primary" type="button">Thoát </a>
+            <a href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>" class="btn btn-primary" type="button">Thoát </a>
         </div>
     </form>
 </div>
 <script>
+    var id_tinh = null
     var idTour = <?= $_GET['idTour'] ?>;
+    var idcompany = <?= $_SESSION['idcompany'] ?>;
     document.onload = load()
 
     function load() {
-        loadDiadiem()
+        // loadDiadiem()
         loadTourByIdtour()
         loadplace()
 
     }
 
-    function loadDiadiem() {
-        $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
+    // function loadDiadiem() {
+    //     $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
+    //         diadiem = JSON.parse(data)
+    //         for (i = 0; i < diadiem.length; i++) {
+    //             iddiadiem = diadiem[i]['idplace']
+    //             tendiadiem = diadiem[i]['nameplace']
+    //             $('#dgb').append('<option value="' + iddiadiem + '">' + tendiadiem + '</option>')
+    //         }
+    //     })
+    // }
+
+
+    function locdiemdentheotinh() {
+        tinh = $('#tinhdiemden').val()
+        $.post("index.php?controller=cdiadiem&action=getDiadiembyTinh", {
+            tinh: tinh,
+        }, function(data) {
             diadiem = JSON.parse(data)
+            // $(`#dgb option:selected` ).children().remove()
             for (i = 0; i < diadiem.length; i++) {
                 iddiadiem = diadiem[i]['idplace']
                 tendiadiem = diadiem[i]['nameplace']
@@ -105,6 +155,9 @@
             <div class="frame adddiemden" id="diemden-${number}">
 
                 <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
+                
+                <input id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+                <input id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ" aria-label="Username" aria-describedby="basic-addon1">
 
                 <input id="address" onchange="get_tinh(${number})" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
 
@@ -192,6 +245,7 @@
         }, function(data) {
             Tour = JSON.parse(data);
             t = Tour[0];
+            console.log(t);
             $('#nametour').val(t['nametour']);
             $('#total-guest').val(t['total-guest']);
             $('#price-adult').val(t['price-adult']);
@@ -199,13 +253,26 @@
             $('#price').val(t['price']);
             $('#day-end').val(t['day-end']);
             $('#day-star').val(t['day-start']);
-            $('#infotour').val(t['infomation']);
+            $('#infotour').val(t['information']);
             $('#transport').val(t['transport']);
-            $('#service').val(t['service']);
+            $('#service').val(t['service_not_include']);
             $('#schedule').val(t['schedule']);
-            $('#start_place').val(t['start_place']);
             $('#number-night').val(t['numbernight']);
             $('#number-day').val(t['numberday']);
+            $.ajax({
+                url: 'https://provinces.open-api.vn/api/?depth=3',
+                method: "GET",
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $('#start_place').append(`
+                            <option id='tinh' ${data[i].code === +t['place_start'] ? "selected" : ""} value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                        `)
+                        $('#tinhdiemden').append(`
+                            <option value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
+                        `)
+                    }
+                }
+            })
         })
     }
 
@@ -217,26 +284,26 @@
             place = JSON.parse(data);
             num = 0;
             idplace = [];
+
             for (i = 0; i < place.length; i++) {
                 num++
                 const p = place[i];
+                console.log(p);
                 const id_detailplace = p.id_detailplace
-                const city = p.city;
-                const district = p.district;
-                const ward = p.ward;
-                renderField(num, $('#totalAddress'), city, district, ward)
-                $(`#diemden-${num} #nameplace`).val(p['nameplace']);
-                $(`#diemden-${num} #address`).val(p['address']);
-                $(`#diemden-${num} #in4`).val(p['information']);
+                $('#dgb').append(
+                    `<option id='place' ${+dgb === id_detailplace ? "selected" : ""} value="` + p['idplace'] + `">` + p['nameplace'] + `</option>
+                    `
+                )
             }
         })
     }
 
-    function edit() {
+    function edit() { 
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
+        console.log(link);
         nametour = $('#nametour').val();
-        totalguest =$('#total-guest').val();
+        totalguest = $('#total-guest').val();
         priceadult = $('#price-adult').val();
         pricechild = $('#price-child').val();
         dayend = $('#day-end').val();
@@ -246,12 +313,14 @@
         service = $('#service').val();
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
-      
-        $.post("index.php?controller=ctour&action=edit", {          
+        end_place = $('#dgb').val();
+
+        $.post("index.php?controller=ctour&action=edit", {
+            idcompany: idcompany,
             idtour: idTour,
             hinhanh: link,
             nametour: nametour,
-            totalguest:totalguest,
+            totalguest: totalguest,
             priceadult: priceadult,
             pricechild: pricechild,
             dayend: dayend,
@@ -263,13 +332,13 @@
             service: service,
             schedule: schedule,
             start_place: start_place,
-         
+            end_place: end_place,
+
         }, function(rs) {
-            console.log(rs);
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
-                window.location="index.php?controller=chome&action=company&path=tour";
+                window.location = "index.php?controller=chome&action=company&path=tour&idcompany=" + idcompany;
             }
         })
 
@@ -301,6 +370,22 @@
         return new Date(year, month, 0);
     }
 
+    function kiemtra() {
+        var day = new Date();
+        daystar = $('#day-star').val();
+        get_start_date = new Date(daystar);
+        if (get_start_date.getDate() <= day.getDate()) {
+            if ((get_start_date.getMonth() + 1) <= (day.getMonth() + 1)) {
+                alert("Chọn ngày bắt đầu sau ngày hiện tại");
+                $('#day-star').val('');
+            }
+        } else {
+            if ($('#day-end').val() != '') {
+                total();
+            }
+        }
+    }
+
     function total() {
         daystar = $('#day-star').val();
         dayend = $('#day-end').val();
@@ -323,7 +408,8 @@
             numberday = end_date - start_date;
             numbernight = numberday - 1;
             if (numberday < 0) {
-                alert("lỗi rồi ngu")
+                alert("Chọn ngày kết thúc sau ngày bắt đầu")
+                $('#day-end').val('');
                 numberday = null;
                 numbernight = null;
             }
@@ -331,23 +417,23 @@
             numberday = (total_startdayofmonth - start_date) + end_date;
             numbernight = numberday - 1;
             if (numberday < 0) {
-                alert("lỗi rồi ngu")
+                alert("Chọn ngày kết thúc sau ngày bắt đầu")
+                $('#day-end').val('');
                 numberday = null;
                 numbernight = null;
             }
         }
-        $('#number-day').empty()
-        $('#number-night').empty()
-        $('#number-day').append(`
+        $('#number-day1').empty()
+        $('#number-night1').empty()
+        $('#number-day1').append(`
         <span class="">Số Lượng Ngày</span>
             <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
         `)
-        $('#number-night').append(`
+        $('#number-night1').append(`
         <span class="">Số Lượng Đêm</span>
         <input value="` + numbernight + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đêm">
         `)
+        numberday = $('#number-day1').val();
+        numbernight = $('#number-night1').val();
     }
-
-    numberday = $('#number-day').val();
-    numbernight = $('#number-night').val();
 </script>

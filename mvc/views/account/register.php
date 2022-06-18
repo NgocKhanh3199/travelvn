@@ -69,7 +69,7 @@
                     <div class="register-input mt-4">
                         <label for="nhaplaimatkhau" class="form-label">Nhập Lại Mật Khẩu</label>
                         <input type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
-                        <div id="eye1">
+                        <div id="eye">
                             <i class="fa-solid fa-eye"></i>
                         </div>
                     </div>

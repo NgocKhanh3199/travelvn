@@ -3,7 +3,7 @@ class mcompany extends database{
 
     public function register($username, $passwordhash, $namecompany, $email, $phone, $address, $street, $ward, $district, $city)
     {
-        $qr = "INSERT INTO `company`(`username`, `password`, `namecompany`, `email`, `phone`, `address`, `street`, `ward`, `district`, `city`) VALUES ('$username','$passwordhash','$namecompany','$email','$phone','$address','$street','$ward','$district','$city')";
+        $qr = "INSERT INTO `company`(`username`, `password`, `namecompany`, `email`, `phone`, `address`, `street`, `ward`, `district`, `city`, `position`) VALUES ('$username','$passwordhash','$namecompany','$email','$phone','$address','$street','$ward','$district','$city', '2')";
         return $this->insert($qr); 
     }
     public function login($taikhoan){
@@ -36,5 +36,21 @@ class mcompany extends database{
     {
         $qr = "UPDATE `company` SET `password`='$newPassword' WHERE idcompany = '$idcompany'";
         return $this->update($qr);
+    }
+
+    public function getAllCompany()
+    {
+        $qr="SELECT * FROM `company`";
+        return $this->select($qr);
+    }
+    public function loadDetailCompanyByIdCompany($idcompany)
+    {
+        $qr = "SELECT * FROM `company` WHERE idcompany = '$idcompany'";
+        return $this->select($qr);
+    }
+    public function loadTourByIdCompany($idcompany)
+    {
+        $qr = "SELECT * FROM tour WHERE idcompany = '$idcompany'";
+        return $this->select($qr);
     }
 }

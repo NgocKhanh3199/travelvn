@@ -1,6 +1,6 @@
 
 <?php
-     if(session_status() != 2){
+    if(session_status() != 2){
         session_start();
     }
 
@@ -16,7 +16,10 @@
             header("Location:index.php?controller=chome&action=admin&iduser=".$_SESSION['iduser']);
         }
         else if($_SESSION['position'] == 2){
-            header("Location:index.php?controller=chome&action=company&iduser=".$_SESSION['iduser']);
+            header("Location:index.php?controller=chome&action=company&idcompany=".$_SESSION['idcompany']);
         }
     }
+    // else if($_SESSION['position'] == 2){
+    //     header("Location:index.php?controller=chome&action=company&iduser=".$_SESSION['iduser']);
+    // }
 ?>

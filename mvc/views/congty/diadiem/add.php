@@ -1,39 +1,50 @@
 <link rel="stylesheet" href="./public/css/add_diadiem.css">
 <script src="./public/js/js.js"></script>
-<div class="container add_diadiem">
+<div class="add_diadiem">
     <h4 class="page-title">THÊM ĐỊA ĐIỂM</h4>
     <div class="frame">
-        <div class="input-group">
-            <label class="lb-span">Hình ảnh:</label>
+        <div class="input-groupp">
+            <label class="lb-span">Hình ảnh</label>
             <input class="ip_img" type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
         </div>
-        <div class="input-group">
-            <label class="lb-span">Tên địa điểm:</label>
+        <div class="input-groupp">
+            <label class="lb-span">Tên địa điểm</label>
             <input class="ip_name" id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-        <div class="input-group">
-            <label class="lb-span">Địa chỉ:</label>
-            <input id="address" type="text" class="form-control address ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="ip tinh" aria-label="Default select example">
+        <div class="input-groupp">
+            <label class="lb-span">Kinh độ</label>
+            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-groupp">
+            <label class="lb-span">Vĩ độ</label>
+            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-diachi">
+            <label class="lb-span">Địa chỉ</label>
+            <div class="diachi">
+                <input id="address" type="text" class="form-control addressplace ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+                <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="ip tinh" aria-label="Default select example">
 
-            </select>
-            <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="ip huyen" aria-label="Default select example">
+                </select>
+                <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="ip huyen" aria-label="Default select example">
 
-            </select>
-            <select id="ward" name="hotel_name2" class="ip xa" aria-label="Default select example">
+                </select>
+                <select id="ward" name="hotel_name2" class="ip xa" aria-label="Default select example">
 
-            </select>
+                </select>
+            </div>
+
         </div>
 
-        <div class="input-group">
-            <label class="lb-span">Mô tả:</label>
+        <div class="input-groupp">
+            <label class="lb-span">Mô tả</label>
 
-            <textarea id="in4" class="form-control ip" aria-label="With textarea"></textarea>
+            <textarea id="in4" class="form-control ip ip_text" aria-label="With textarea"></textarea>
         </div>
 
         <div class="button-group">
             <button class=" btn_add" type="button" onclick="addplace()">Thêm địa điểm</button>
-            <button class=" btn_thoat" type="button"><a href="?folder=diadiem">Thoát</a> </button>
+            <button class=" btn_thoat" type="button"><a href="index.php?controller=chome&action=company&path=diadiem">Thoát</a> </button>
         </div>
     </div>
 </div>
@@ -54,27 +65,26 @@
 
     function get_tinh() {
         id_tinh = null
-        id_tinh =
-            $.ajax({
-                url: 'https://provinces.open-api.vn/api/?depth=3',
-                method: "GET",
-                data: {
-                    // id_account: id_account,
-                },
-                success: function(data) {
-                    // console.log(d)
-                    for (i = 0; i < data.length; i++) {
-                        // huyen = data[i]['districts'][0]['name'];
-                        // xa = ['districts'][0]['wards'][1]['name']
-                        $('#city').append(
-                            `
+        $.ajax({
+            url: 'https://provinces.open-api.vn/api/?depth=3',
+            method: "GET",
+            data: {
+                // id_account: id_account,
+            },
+            success: function(data) {
+                // console.log(d)
+                for (i = 0; i < data.length; i++) {
+                    // huyen = data[i]['districts'][0]['name'];
+                    // xa = ['districts'][0]['wards'][1]['name']
+                    $('#city').append(
+                        `
                     <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
                     `
-                        )
-                    }
-
+                    )
                 }
-            })
+
+            }
+        })
     }
 
     function get_huyen() {
@@ -136,6 +146,8 @@
         nametinh = $('#city').find('option:selected').text();
         namehuyen = $('#district').find('option:selected').text()
         namexa = $('#ward').find('option:selected').text()
+        kinhdo = $('#kinhdo').val();
+        vido = $('#vido').val();
 
         $.post("index.php?controller=cdiadiem&action=addplace", {
             idplace: Date.now(),
@@ -149,10 +161,12 @@
             tinh: tinh,
             huyen: huyen,
             xa: xa,
+            kinhdo: kinhdo,
+            vido: vido,
         }, function(data) {
             if (data > 0) {
                 alert('sucess');
-                // window.location.href = "index.php?controller=chome&action=admin&path=diadiem";
+                window.location.href = "index.php?controller=chome&action=company&path=diadiem";
             } else if (data <= 0) {
                 alert("Không thành công")
             }

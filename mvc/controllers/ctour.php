@@ -35,6 +35,7 @@ class ctour extends controller
     }
     public function add()
     {
+        $idcompany = $_POST['idcompany'];
         $idtour = $_POST['idtour'];
         $idplace = $_POST['idplace'];
         $hinhanh = $_POST['hinhanh'];
@@ -54,7 +55,7 @@ class ctour extends controller
         $end_place = $_POST['end_place'];
         $rs = $_POST['rs'];
 
-        $data = $this->tour->add($idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
+        $data = $this->tour->add($idcompany, $idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
         $result = [
             "message" => "Thêm thất bại !",
             "status" => false,
@@ -82,6 +83,8 @@ class ctour extends controller
                     $hinhanhplace = $rs[$i]["linkplace"];
                     $nameplace = $rs[$i]["nameplace"];
                     $in4 = $rs[$i]["in4"];
+                    $kinhdo = $rs[$i]["kinhdo"];
+                    $vido = $rs[$i]["vido"];
                     $address = $rs[$i]["address"];
                     $tinh = $rs[$i]["tinh"];
                     $huyen = $rs[$i]["huyen"];
@@ -90,7 +93,7 @@ class ctour extends controller
                     $namehuyen = $rs[$i]["namehuyen"];
                     $namexa = $rs[$i]["namexa"];
                     $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
-                    $data = $this->tour->addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull);
+                    $data = $this->tour->addplace($idplace, $hinhanhplace, $nameplace, $in4, $kinhdo, $vido, $address, $tinh, $huyen, $xa, $diachifull);
                     if ($data > 0) {
                         $result = [
                             "message" => "Thêm tour thành công, thêm đia điểm thành công",
@@ -114,6 +117,7 @@ class ctour extends controller
 
     public function edit()
     {
+        $idcompany = $_POST['idcompany'];
         $idtour = $_POST['idtour'];
         $hinhanh = $_POST['hinhanh'];
         $nametour = $_POST['nametour'];
@@ -129,16 +133,30 @@ class ctour extends controller
         $service = $_POST['service'];
         $schedule = $_POST['schedule'];
         $start_place = $_POST['start_place'];
+        $end_place = $_POST['end_place'];
 
 
-        $data = $this->tour->edit($idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
+        $data = $this->tour->edit($idcompany, $idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place);
         $result = [
             "message" => "Cập nhật thất bại !",
             "status" => false,
         ];
         if ($data > 0) {
+            $delete = $this->tour->deleteDetailplace($idtour);
+            if ($delete > 0) {
+                $row = 0;
+                for ($i = 0; $i < count($end_place); $i++) {
+                    $nameplace = $end_place[$i];
+                    $row += $this->tour->addDetailplace($idtour, $nameplace);
+                    $result = [
+                        "message" => "Cập nhật thành công!",
+                        "status" => true,
+                    ];
+                }
+            }
+        } else if ($data < 0) {
             $result = [
-                "message" => "Cập nhật thành công !",
+                "message" => "Cập nhật thất bại place!",
                 "status" => true,
             ];
         }
@@ -147,7 +165,8 @@ class ctour extends controller
 
     public function loadTableTour()
     {
-        $tour = $this->tour->getAllTour();
+        $idcompany = $_POST['idcompany'];
+        $tour = $this->tour->getAllTourcompany($idcompany);
         $stt = 0;
         $data = [];
         $path = "./public/img/tour/";
@@ -181,7 +200,8 @@ class ctour extends controller
             $stt++;
             $idTour = $t['idtour'];
             $tenTour = $t['nametour'];
-            $giaTour = $t['price'];
+            $giaTourAd = $t['price-adult'];
+            $giaTourCh = $t['price-child'];
             $day_start = $t['day-start'];
             $day_end = $t['day-end'];
             $status = $t['status'];
@@ -189,16 +209,16 @@ class ctour extends controller
             $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
             if ($status == 1) {
-                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
                 $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
                 $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
-                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             } else if ($status == 0) {
-                $view = '<a href="index.php?controller=chome&action=company&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
+                $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view">Xem</a>';
                 $edit = '<a href="" class ="a-edit" onclick="duyetTour(' . $idTour . ')">Duyệt tour</a>';
                 $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
-                $row = [$stt, $hinhanh, $tenTour, $giaTour, $day_start, $day_end,  $view, $edit, $delete];
+                $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
             }
         }
@@ -276,7 +296,7 @@ class ctour extends controller
         $idplace = $_POST['idplace'];
         $data = $this->tour->getAllTourByNumberDayAround1To3($idplace);
         echo json_encode($data);
-    } 
+    }
     public function getAllTourByNumberDayAround4To7()
     {
         $idplace = $_POST['idplace'];
@@ -358,4 +378,80 @@ class ctour extends controller
         echo json_encode($data);
     }
 
+    public function permitComment()
+    {
+        $iduser = $_POST['iduser'];
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->permitComment($iduser, $idtour);
+        echo json_encode($data);
+    }
+    public function addComment()
+    {
+        $content = $_POST['content'];
+        $iduser = $_POST['iduser'];
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->addComment($content, $iduser, $idtour);
+        echo json_encode($data);
+    }
+    public function loadAllComment()
+    {
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->loadAllComment($idtour);
+        echo json_encode($data);
+    }
+    public function themtouryeuthich()
+    {
+        $idtour = $_POST['idtour'];
+        $iduser = $_POST['iduser'];
+        $result = [
+            "message" => "Thêm thất bại !",
+            "status" => false,
+        ];
+        $row = $this->tour->kiemtra($idtour, $iduser);
+        if (count($row) > 0) {
+            $result = [
+                "message" => "Đã thêm vào tour yêu thích !",
+                "status" => true,
+            ];
+        } else {
+            $data = $this->tour->themtouryeuthich($idtour, $iduser);
+            if ($data > 0) {
+                $result = [
+                    "message" => "Thêm thành công !",
+                    "status" => true,
+                ];
+            } else {
+                $result = [
+                    "message" => "Thêm thất bại !",
+                    "status" => false,
+                ];
+            }
+        }
+        echo json_encode($result);
+    }
+    public function xoatouryeuthich()
+    {
+        $idtour = $_POST['idtour'];
+        $iduser = $_POST['iduser'];
+        $data = $this->tour->xoatouryeuthich($idtour, $iduser);
+        echo json_encode($data);
+    }
+    public function kiemtra()
+    {
+        $idtour = $_POST['idtour'];
+        $iduser = $_POST['iduser'];
+        $data = $this->tour->kiemtra($idtour, $iduser);
+        if (count($data) > 0) {
+            $row = 1;
+        } else {
+            $row = 0;
+        }
+        echo json_encode($row);
+    }
+    public function getTouryeuthich()
+    {
+        $iduser = $_POST['iduser'];
+        $data = $this->tour->getTouryeuthich($iduser);
+        echo json_encode($data);
+    }
 }

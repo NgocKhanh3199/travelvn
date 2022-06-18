@@ -1,4 +1,3 @@
-
 .total-price {
     /* background-color: yellowgreen; */
     display: flex;
@@ -10,8 +9,50 @@
     flex-basis: 50%;
     text-align: left;
 }
-.thucte{
+
+.thucte {
     position: absolute;
     right: 20px;
     font-size: 17px;
+}
+
+.ngaybatdau, .ngayketthuc {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+}
+
+.hd-ngaybatdau, .hd-ngayketthuc {
+    font-size: 18px;
+    padding-right: 10px;
+    font-weight: 600;
+}
+#total{
+    position: relative;
+}
+.total {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10%;
+}
+
+.totaldoanhthu, .totaldoanhthuday {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+    
+}
+
+.btn {
+    border: none;
+    color: rgb(46, 0, 185);
+    font-size: 20px;
+}
+
+#doanhthunam, #doanhthuday {
+    color: rgb(172, 14, 33);
+    font-size: 20px;
 }

@@ -55,6 +55,7 @@ class cdiadiem extends controller
     }
     public function loadTableDiadiemcompany()
     {
+       
         $diadiem = $this->diadiem->getAllDiadiem();
         $stt = 0;
         $data = [];
@@ -90,10 +91,30 @@ class cdiadiem extends controller
         $namehuyen = $_POST['namehuyen'];
         $namexa = $_POST['namexa'];
         $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
-        $data = $this->diadiem->addplace($idplace, $hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull);
+        $kinhdo = $_POST['kinhdo'];
+        $vido = $_POST['vido'];
+        $data = $this->diadiem->addplace($idplace, $hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull, $kinhdo, $vido);
         echo $data;
     }
-
+    public function editplace()
+    {
+        $iddiadiem = $_POST['iddiadiem'];
+        $hinhanh = $_POST['hinhanh'];
+        $nameplace = $_POST['nameplace'];
+        $in4 = $_POST['in4'];
+        $address = $_POST['address'];
+        $tinh = $_POST['tinh'];
+        $huyen = $_POST['huyen'];
+        $xa = $_POST['xa'];
+        $nametinh = $_POST['nametinh'];
+        $namehuyen = $_POST['namehuyen'];
+        $namexa = $_POST['namexa'];
+        $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
+        $kinhdo = $_POST['kinhdo'];
+        $vido = $_POST['vido'];
+        $data = $this->diadiem->editplace($iddiadiem,$hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull, $kinhdo, $vido);
+        echo $data;
+    }
     public function updateDiadiemByIddiadiem()
     {
         $hinhanh = $_POST['hinhanh'];
@@ -103,7 +124,10 @@ class cdiadiem extends controller
         $tinh = $_POST['tinh'];
         $huyen = $_POST['huyen'];
         $xa = $_POST['xa'];
-        $diachifull = $address . ", " . $xa . ", " . $huyen . ", " . $tinh;
+        $nametinh = $_POST['nametinh'];
+        $namehuyen = $_POST['namehuyen'];
+        $namexa = $_POST['namexa'];
+        $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
         $data = $this->diadiem->updateplace($hinhanh, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull);
         echo $data;
     }
@@ -121,5 +145,31 @@ class cdiadiem extends controller
     {
         $tinh = $_POST['tinh'];
         echo json_encode($this->diadiem->getAllDiadiembyTinh($tinh));
+    }
+
+    public function loadTableTourByIdPlace()
+    {
+        $idplace = $_POST['iddiadiem'];
+        $tour = $this->diadiem->loadTableTourByIdPlace($idplace);
+        $stt = 0;
+        $data = [];
+        $path = "./public/img/tour/";
+        foreach ($tour as $t) {
+            $stt++;
+            $idtour = $t['idtour'];
+            $nametour = $t['nametour'];
+            $priceAdult = $t['price-adult'];
+            $priceChild = $t['price-child'];
+            $dayStart = $t['day-start'];
+            $dayEnd = $t['day-end'];
+            // load img
+            $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
+            $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" width="100px" height="100px" alt=""></button>';
+
+            $view = '<a href="?controller=chome&action=admin&path=diadiem&page=detail_tour&idtour=' . $idtour . '&iddiadiem='.$idplace.'" class="a-view">Xem</a>';
+            $row = [$stt, $idtour, $hinhanh, $nametour, $priceAdult, $priceChild, $dayStart, $dayEnd ,$view];
+            $data[] = $row;
+        }
+        echo json_encode($data);
     }
 }

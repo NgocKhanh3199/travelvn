@@ -1,146 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$iduser = $_SESSION['iduser'];
+if (!$iduser) {
+    $iduser = "null";
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
+?>
 
-    <!-- link bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- end_link bootstrap 5 -->
-    <!-- link icon -->
-    <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
-    <!-- end-link icon -->
-    <script src="./public/js/js.js"></script>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="./public/js/js.js"></script>
 
-    <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
-    <link rel="stylesheet" href="./public/css/trangchu/media.css">
-    <link rel="stylesheet" href="./public/css/tour/deteil-tour.css">
-</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<link rel="stylesheet" href="./public/css/trangchu/menu1.css">
+<link rel="stylesheet" href="./public/css/trangchu/media.css">
+<link rel="stylesheet" href="./public/css/tour/deteil-tour.css">
+
 
 <body>
-    <div class="detail-tour mt-5 pt-2">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Photos</a></li>
-            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
-            <li class="breadcrumb-item"><a href="#">Italy</a></li>
-            <li class="breadcrumb-item active">Rome</li>
+    <div class="detail-tour pt-2">
+        <ul class="breadcrumb" id="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
+            <li class="breadcrumb-item active"> <?php echo $_GET['page'] ?></li>
+
         </ul>
-        <div class="hd" id="hd">
-
-        </div>
-
-        <div class="stars">
-            <form action="">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </form>
-        </div>
-        <div class="item-top">
-            <div class="img-item">
-                <div id="slideshow" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="3"></button>
+        <div class="content-tour">
+            <div class="hd roww row">
+                <div class="header-tour col-sm-6 row">
+                    <div id="hd-tour">
+                        <!-- <header class="hd-tour col-sm-12">Di Linh-Tà Nung-Đà Lạt-Thác Bobla-KDL Thúy Thuận-Đồi Chè Cầu Đất-Làng Cù Lần</header> -->
                     </div>
-                    <div class="carousel-inner" id="img-item">
-
+                    <div class="rate">
+                        <i class="fa-solid fa-heart"></i>
+                        <label>126</label>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
+                </div>
+
+                <div class="button-order col-sm-6">
+                    <div class="price" id="price">
+                        <!-- <p><span class="price-tour">3.000.000đ</span> /người</p> -->
+                    </div>
+                    <a href="index.php?controller=chome&action=home&page=oder&idtour=<?php echo $_GET['idtour'] ?>" class="btn-order">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <label>Đặt ngay</label>
+                    </a>
                 </div>
             </div>
-            <div class="in4-item" id="in4-item">
-
-            </div>
-        </div>
-        <div class="down">
-            <div class="diemnhan">
-                <p class="headerr">Điểm nhấn hành trình</p>
-                <div class="item-diemnhan" id="diemnhan">
-
-
-                </div>
-            </div>
-            <div class="lichtrinh" id="lichtrinh">
-
-            </div>
-            <div class="dichvu" id="dichvu">
-
-            </div>
-            <div class="ghichu">
-                <p class="headerr">Ghi chú</p>
-                <p>Sản phẩm Áo thun nam cổ tròn 100% giống mô tả.
-                    - Cam kết 100% đổi size nếu sản phẩm khách đặt không vừa (hỗ trợ đổi size trong vòng 7 ngày).
-                    - Hỗ trợ đổi trả sản phẩm, hoàn tiền nếu lỗi do nhà sản xuất
-                    - Nếu có bất kì khiếu nại cần Shop hỗ trợ về sản phẩm, khi mở sản phẩm các Chị vui lòng quay lại video quá trình mở sản phẩm để được đảm bảo 100% đổi lại sản phẩm mới nếu Shop giao bị lỗi.
-                    - Sản phẩm đầy đủ tem, mác, bao bì cao cấp.
-                    - Quý khách nhận được sản phẩm, hãy lòng đánh giá giúp Shop để hưởng thêm nhiều ưu đãi hơn nhé.</p>
-            </div>
-            <div class="danhgiadukhach">
-                <p class="headerr">Đánh giá của du khách</p>
-                <div class="item-danhgiakh">
-                    <div class="logokh">
-                        <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+            <div class="content">
+                <div class="img-tour row" id="img-tour">
+                    <!-- <div class="col-sm-7">
+                        <img class="img-fluid" src="./public/img/tour/tour.jpg" alt="">
                     </div>
-                    <div class="info">
-                        <label class="tenkh" for="">Ngọc Khánh</label>
-                        <div class="stars2">
-                            <form action="">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </form>
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour1.jpg" alt=""></div>
+                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour.jpg" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 big"><img class="img-fluid " src="./public/img/tour/tour1.jpg" alt=""></div>
                         </div>
-                        <P>DU LỊCH THẤY CŨNG ĐƯỢC</P>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="item-danhgiakh">
-                    <div class="logokh">
-                        <img src="./public/img/trangchu/fllc.png" alt="">
-                    </div>
-                    <div class="info">
-                        <label class="tenkh" for="">Thanh Thảo</label>
-                        <div class="stars2">
-                            <form action="">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </form>
+                <div class="content-tour">
+                    <div class="in4-tour">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="box-in4" id="box-in4">
+                                    <!-- <p>
+                                        Ngày khởi hành: <b>23/5/2022</b>
+                                    </p>
+                                    <p>
+                                        Ngày kết thúc: <b>26/5/2022</b>
+                                    </p>
+                                    <p>
+                                        Nơi khởi hành: <b>Vũng Tàu</b>
+                                    </p>
+                                    <p>
+                                        Số chỗ còn nhận: <b>25</b>
+                                    </p> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="group-in4" id="group-in4">
+                                    <!-- <div class="item">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <label>Giá vé trẻ em</label>
+                                        <p>200,000đ</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <label>Giá vé người lớn</label>
+                                        <p>500,000đ</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <label>Ngày bắt đầu</label>
+                                        <p>23/5/2022</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <label>Ngày kết thúc</label>
+                                        <p>28/5/2022</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <label>Thời gian</label>
+                                        <p>4 ngày 2 đêm</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-bus"></i>
+                                        <label>Phương tiện di chuyển</label>
+                                        <p>Xe khách</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-map"></i>
+                                        <label>Điểm tham quan</label>
+                                        <p>Bến Ninh Kiều, Chợ nổi Cái Răng</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-fire"></i>
+                                        <label>Ẩm thực</label>
+                                        <p>Theo thực đơn</p>
+                                    </div> -->
+                                    <!-- <div class="item">
+                                        <i class="fa-solid fa-map"></i>
+                                        <label>Điểm tham quan</label>
+                                        <p id="place"><span>Bến Ninh Kiều,</span> <span>Chợ nổi Cái Răng,</span> </p>
+                                    </div> -->
+                                </div>
+                            </div>
                         </div>
-                        <P>Du lịch không có gì dui</P>
+                    </div>
+                    <div class="hihi">
+                        <div class="calendar">
+                            <h3 class="hd-calendar">Lịch trình</h3>
+                            <div class="item-day" id="lich">
+                                <!-- <h2 class="day">Ngày 1</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                        <div class="content-in4" style="text-align: justify;">
+                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div> -->
+                                <!-- <h2 class="day" id="day">Ngày 1</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                        <div class="content-in4" id="lichtrinh" style="text-align: justify;">
+                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </div>
+                        <div class="dichvu">
+                            <h3 class="hd-dichvu">Thông tin tour</h3>
+                            <div class="item-day">
+                                <h2 class="day">Thông tin tổng quát</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                        <div class="content-in4" id="in4" style="text-align: justify;">
+
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                                <h2 class="day">Dịch vụ bao dồm và không bao gồm</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                        <div class="content-in4" id="dichvu" style="text-align: justify;">
+
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <h2 class="day">Ghi chú</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                        <div class="content-in4" style="text-align: justify;">
+                                            <p>Tour không hoàn, không hủy, không đổi. Trường hợp hoàn, hủy, đổi tour mất 100% trên giá tour.</p>
+                                            <p>Trẻ từ 0-4 tuổi, miễn phí tối đa 2 trẻ</p>
+                                            <p> Trẻ từ 12 tuổi trở đi tính bằng giá người lớn</p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container ms-5 me-5 ps-5 pe-5">
+                        <div class="mb-2 submit-comment">
+                            <h4 class="mb-4 font-weight-light">Nhận xét Của Bạn</h4>
+                            <textarea class="form-control" id="cmtContent" rows="4" placeholder="Nhập nội dung"></textarea>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button class="btn btn-primary me-md-2" type="button" onclick="addComment()">Nhận Xét</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="mb-4 font-weight-light">Đánh Giá</h4>
+                            <div class="border border-light p-4 p-4 all-comment">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
+
 </body>
 
 </html>
+
 <script>
     var idtour = <?= $_GET['idtour'] ?>;
+    document.onload = load()
 
-    document.onload = loadtour()
+    function load() {
+        loadtour()
+        loadComment()
+    }
+
 
     function loadtour() {
         path = "./public/img/tour/";
@@ -148,30 +240,82 @@
                 idtour: idtour
             },
             function(data) {
+                var str = 0;
+                var str1 = 8;
+                var cat = "."
+                var day = "Ngày"
                 tour = JSON.parse(data);
+                place = ""
+                for (i = 0; i < tour.length; i++) {
+                    place = place + tour[i]['nameplace'] + `, `
+                }
                 t = tour[0];
                 nametour = t['nametour']
                 timeday = t['numberday']
                 timenight = t['numbernight']
                 daystart = t['day-start']
+                daystart1 = daystart.substr(8, 2) + `/` + daystart.substr(5, 2) + `/` + daystart.substr(0, 4);
+                dayend = t['day-end']
+                dayend1 = dayend.substr(8, 2) + `/` + dayend.substr(5, 2) + `/` + dayend.substr(0, 4);
                 transport = t['transport']
                 $.ajax({
                     url: 'https://provinces.open-api.vn/api/p/' + t['place_start'] + '?depth=1',
                     method: "GET",
                     success: function(data) {
-                        $('#in4-xuatphat').append(`
-                        <label class="tualabel" for="text">Xuất phát:</label>
-                        <label class="in4label" for="text">` + data['name'] + `</label>
-                        `)
-                        $('#diemnhan-in4').append(`
-                        <label class="tualabel1" for="text">Vận chuyển:</label>
-                        <label class="in4label1" for="text">Từ ` + data['name'] + `</label>
+                        $('#startplace').append(`
+                        Nơi khởi hành: <b>` + data['name'] + `</b>
                         `)
                     }
                 })
-                price = t['price']
+                tongkhach = t['total-guest']
+                priceadult = t['price-adult']
+                var priceadult1 = parseInt(priceadult);
+                priceadult1 = priceadult1.toLocaleString('vi', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
+                pricechild = t['price-child']
+                var pricechild1 = parseInt(pricechild);
+                pricechild1 = pricechild1.toLocaleString('vi', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
                 in4 = t['information']
+                for (var i = 0; i < in4.length; i++) {
+                    if (in4[i] == cat) {
+                        hi = in4.slice(str, i + 1);
+                        str = i + 2;
+                        $('#in4').append(`
+                            <p>` + hi + `</p>  
+                        `)
+                    }
+                }
                 lichtrinh = t['schedule']
+                for (i = 0; i < lichtrinh.split("Ngày").length - 1; i++) {
+                    daynumber = i + 1;
+                    $('#lich').append(`
+                         <h2 class="day">Ngày ` + daynumber + `</h2>
+                                <div class="in4-day">
+                                    <span class="line"></span>
+                                    <div>
+                                    <div class="content-in4" id="lichtrinh" style="text-align: justify;">
+                                            
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                `)
+                }
+                // console.log(lichtrinh.split("Ngày").length - 1);
+                for (var i = 0; i < lichtrinh.length; i++) {
+                    if (lichtrinh[i] == cat) {
+                        lichtrinhcat = lichtrinh.slice(str1, i + 1);
+                        str1 = i + 2;
+                        $('#lichtrinh').append(`
+                                            <p>` + lichtrinhcat + `</p>
+                        `)
+                    }
+                }
                 dichvu = t['service_not_include']
                 hinhanh = t['hinhanh']
                 if (hinhanh.length == 0) {
@@ -196,76 +340,157 @@
                     hinhanh3 = hinhanh
                 }
                 hinhanhtour3 = path + hinhanh3
-                $('#hd').append(`
-                <header class="header-tour">Du lịch ` + nametour + `</header>
+                $('#hd-tour').append(`
+                <header class="hd-tour col-sm-12">` + nametour + `</header>
+
                 `)
-                $('#img-item').append(`
-                <div class="carousel-item active">
-                    <img src="` + hinhanhtour + `" class="d-block" style="width:100%">
+                $('#img-tour').append(`
+                <div class="col-sm-7">
+                        <img class="img-fluid" src="` + hinhanhtour + `" alt="">
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6"><img class="img-fluid" src="` + hinhanhtour1 + `" alt=""></div>
+                                    <div class="col-sm-6"><img class="img-fluid" src="` + hinhanhtour2 + `" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 big"><img class="img-fluid " src="` + hinhanhtour3 + `" alt=""></div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="` + hinhanhtour1 + `" class="d-block" style="width:100%">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="` + hinhanhtour2 + `" class="d-block" style="width:100%">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="` + hinhanhtour3 + `" class="d-block" style="width:100%">
-                        </div>
+                    </div>
                 `)
-                $('#in4-item').append(`
-                <div class="tuatour">
-                    <h4>` + nametour + `</h4>
-                </div>
-                <div class="in4tour">
-                    <div class="in4-time in4">
-                        <label class="tualabel" for="text">Thời gian:</label>
-                        <label class="in4label" for="text">` + timeday + ` ngày ` + timenight + ` đêm</label>
-                    </div>
-                    <div class="in4-go in4">
-                        <label class="tualabel" for="text">Khởi hành:</label>
-                        <label class="in4label" for="text">` + daystart + `</label>
-                    </div>
-                    <div class="in4-bus in4">
-                        <label class="tualabel" for="text">Vận chuyển:</label>
-                        <label class="in4label" for="text">` + transport + `</label>
-                    </div>
-                    <div class="in4-xuatphat in4" id="in4-xuatphat">
-                        
-                    </div>
-                </div>
-                <div class="book">
-                    <p class="price text-start">Giá từ: ` + price + `đ</p>
-                    <button class="btn-book"> <a href="index.php?controller=chome&action=home&page=oder&idtour=` + idtour + `">Đặt ngay</a> </button>
-                </div>
+                $('#box-in4').append(`
+                <p>
+                                        Ngày khởi hành: <b>` + daystart1 + `</b>
+                                    </p>
+                                    <p>
+                                        Ngày kết thúc: <b>` + dayend1 + `</b>
+                                    </p>
+                                    <p id="startplace">
+                                        
+                                    </p>
+                                    <p>
+                                        Số chỗ còn nhận: <b>` + tongkhach + `</b>
+                                    </p>
                 `)
-                $('#diemnhan').append(`
-                <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Hành trình:</label>
-                        <label class="in4label1" for="text"> ` + nametour + `</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Lịch trình:</label>
-                        <label class="in4label1" for="text">` + timeday + ` ngày ` + timenight + ` đêm</label>
-                    </div>
-                    <div class="diemnhan-in4">
-                        <label class="tualabel1" for="text">Ngày khỏi hành:</label>
-                        <label class="in4label1" for="text">` + daystart + `</label>
-                    </div>
-                    <div class="diemnhan-in4" id="diemnhan-in4">
-                       
-                    </div>
-                    <span>Đôi nét về chuyến du lịch:</span>
-                    <span>` + in4 + `</span>           
-                `)
-                $('#lichtrinh').append(`
-                <p class="headerr">Lịch trình</p>
-                <p>` + lichtrinh + `</p>
+                $('#group-in4').append(`
+                <div class="item">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <label>Giá vé trẻ em</label>
+                                        <p>` + pricechild1 + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-money-bill"></i>
+                                        <label>Giá vé người lớn</label>
+                                        <p>` + priceadult1 + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <label>Ngày bắt đầu</label>
+                                        <p>` + daystart1 + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        <label>Ngày kết thúc</label>
+                                        <p>` + dayend1 + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <label>Thời gian</label>
+                                        <p>` + timeday + ` ngày ` + timenight + ` đêm</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-bus"></i>
+                                        <label>Phương tiện di chuyển</label>
+                                        <p>` + transport + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-map"></i>
+                                        <label>Điểm tham quan</label>
+                                        <p>` + place + `</p>
+                                    </div>
+                                    <div class="item">
+                                        <i class="fa-solid fa-fire"></i>
+                                        <label>Ẩm thực</label>
+                                        <p>Theo thực đơn</p>
+                                    </div>      
                 `)
                 $('#dichvu').append(`
-                <p class="headerr">Dịch vụ bao gồm và không bao gồm</p>
                 <p>` + dichvu + `</p>
                 `)
+                $('#price').append(`              
+                <p><span class="price-tour">` + priceadult1 + `</span> /người</p>
+                `)
             })
+    }
+
+    // function showCommentForm() {
+    //     $.post("index.php?controller=ctour&action=permitComment", {
+    //         idtour: idtour,
+    //         iduser: iduser
+    //     }, function(data) {
+    //         data = JSON.parse(data)
+    //         if (data != "") {
+    //             $('.submit-comment').append(`
+    //                 <h4 class="mb-4 font-weight-light">Nhận xét Của Bạn</h4>
+    //                 <textarea class="form-control" id="cmtContent" rows="4" placeholder="Nhập nội dung"></textarea>
+    //                 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+    //                     <button class="btn btn-primary me-md-2" type="button" onclick="addComment()">Nhận Xét</button>
+    //                 </div>
+    //             `)
+    //         }
+    //     })
+    // }
+
+    function addComment() {
+        if (<?= $iduser ?> != null) {
+            var iduser = <?= $iduser ?>;
+            var content = $('#cmtContent').val()
+            $.post("index.php?controller=ctour&action=addComment", {
+                content: content,
+                iduser: iduser,
+                idtour: idtour
+            }, function(data) {
+                alert(data)
+            })
+        } else if (<?= $iduser ?> == null) {
+            var rs = confirm("Đăng nhập để tiếp tục")
+            if (rs){
+                window.location="index.php?controller=cuser&action=loginpage"
+            }
+        }
+    }
+
+    function loadComment() {
+        pathhinhanhuser = "./public/img/nguoidung/";
+        $.post("index.php?controller=ctour&action=loadAllComment", {
+            idtour: idtour
+        }, function(data) {
+            data = JSON.parse(data)
+            if (data.length > 0) {
+                $('.all-comment').append(`
+                    <div class="mb-4">
+                        <div class="d-flex">
+                            <span class="img-user">
+                                <!-- <img src="./public/img/nguoidung/avatar.jpg" class="rounded-circle" alt="" width="20px" height="20px"> -->
+                            </span>         
+                            <h6 class="text-primary ms-2">` + data[0]['name'] + `</h6>
+                        </div>
+                        <p class="text-dark bg-light m-0 p-2 badge rounded-pill">` + data[0]['content'] + `</p>
+                    </div>
+                `)
+                hinhanh = data[0]['image']
+                if (hinhanh.length == 0) {
+                    hinhanh = 'avatar.jpg'
+                }
+                hinhanh = pathhinhanhuser + hinhanh
+                $('.img-user').append(`
+                    <img src="` + hinhanh + `" class="rounded-circle" alt="" width="20px" height="20px">
+                `)
+            } else {
+                $('.all-comment').append('<h6>Chưa có nhận xét</h6>')
+            }
+        })
     }
 </script>

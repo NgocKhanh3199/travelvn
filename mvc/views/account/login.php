@@ -100,12 +100,12 @@
         $.post("index.php?controller=creset_pass&action=checkemail", {
             re_email: re_email,
         }, function(data) {
-            // console.log(data)
-            if (data.length > 0) {
-                alert("Mã xác minh đã được gửi đến địa chỉ email" + re_email + "Vui lòng xác minh")
-            } else {
-                console.log(data)
-            }
+            console.log(data)
+            // if (data.length > 0) {
+            //     alert("Mã xác minh đã được gửi đến địa chỉ email " + re_email + "Vui lòng xác minh")
+            // } else {
+            //     console.log(data)
+            // }
         })
     })
 

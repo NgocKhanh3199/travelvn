@@ -1,7 +1,7 @@
 body {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 24, 162, 1) 14%, rgba(0, 212, 255, 1) 100%);
+    /* background-image: linear-gradient( 65.9deg,  rgba(85,228,224,1) 5.5%, rgba(75,68,224,0.74) 54.2%, rgba(64,198,238,1) 55.2%, rgba(177,36,224,1) 98.4% ); */
     font-family: Trebuchet;
+    background-color: rgb(241, 241, 247);
 }
 
 .detail_order {
@@ -11,7 +11,7 @@ body {
     padding: 30px;
     border: 3px solid blue;
     margin: 30px 20%;
-    background-color: rgb(241, 241, 247);
+    background-color: white;
     border-radius: 20px;
 }
 
@@ -22,13 +22,12 @@ body {
 }
 
 .hd_in4_tour, .hd_in4_khachhang {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(24, 24, 162, 1) 14%, rgba(0, 212, 255, 1) 100%);
     border-radius: 5px;
+    background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%,  rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
 }
 
 .hd_tour, .hd_khachhang {
-    color: aliceblue;
+    color: white;
     padding: 10px;
     font-size: 21px;
 }
@@ -51,8 +50,7 @@ body {
 }
 
 .in4_total_price {
-    background: rgb(195, 34, 34);
-    background: linear-gradient(90deg, rgba(195, 34, 34, 0.5746673669467788) 16%, rgba(253, 45, 154, 0.16010154061624648) 100%);
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(226,37,37,1) 0%, rgba(211,49,49,1) 82.8% );
     border-radius: 5px;
 }
 
@@ -65,13 +63,13 @@ body {
 }
 
 .lb_price {
-    color: rgb(128, 1, 1);
+    color: white;
     font-size: 25px;
     font-weight: 600;
 }
 
 .tt_price {
-    color: rgb(234, 0, 0);
+    color: white;
     font-size: 25px;
     font-weight: 600;
 
@@ -99,7 +97,7 @@ body {
 }
 
 .hd_in4_adult, .hd_in4_child {
-    color: blueviolet;
+    color: rgb(220, 69, 4);
     margin: 20px 42px;
 }
 

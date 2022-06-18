@@ -22,7 +22,10 @@
             console.log(order);
             o = order[0];
             daystart = o['daystart']
+            daystart1 = daystart.substr(8, 2) + `/` + daystart.substr(5, 2) + `/` + daystart.substr(0, 4);
             dayend = o['dayend']
+            dayend1 = dayend.substr(8, 2) + `/` + dayend.substr(5, 2) + `/` + dayend.substr(0, 4);
+            
             name = o['name-customer']
             email = o['email-customer']
             phone = o['phone-customer']
@@ -47,7 +50,7 @@
                 <h5 class="hd_tour">Thông tin tour</h5>
             </div>
             <div class="item_time">
-                <p>Thời gian diễn ra từ: ` + daystart + ` - ` + dayend + `</p>
+                <p>Thời gian diễn ra từ: ` + daystart1 + ` - ` + dayend1 + `</p>
             </div>
         </div>
         <div class="in4_khachhang">
@@ -123,12 +126,12 @@
                     gioitinh = "Nữ"
                 }
                 birth = order[i]['birthday']
-                console.log(age);
+                birth1 = birth.substr(8, 2) + `/` + birth.substr(5, 2) + `/` + birth.substr(0, 4);
                 if (age == 1) {
                     $('#adult').append(`
                     <div class="in4_adult">
                             <p class="name_adult">` + namecustoment + `</p>
-                            <p class="birth_adult">` + birth + `</p>
+                            <p class="birth_adult">` + birth1 + `</p>
                             <p class="gender_adult">` + gioitinh + `</p>
                             </div>
                     `)
@@ -136,7 +139,7 @@
                     $('#child').append(`
                         <div class="in4_child">
                             <p class="name_child">` + namecustoment + `</p>
-                            <p class="birth_child">` + birth + `</p>
+                            <p class="birth_child">` + birth1 + `</p>
                             <p class="gender_child">` + gioitinh + `</p>
                         </div>
                     `)
