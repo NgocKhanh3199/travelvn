@@ -5,11 +5,7 @@
 <div class="add_diadiem">
     <h4 class="page-title">SỬA ĐỊA ĐIỂM</h4>
     <div class="frame">
-<<<<<<< HEAD
         <div class="input-groupp">
-=======
-        <div class="input-group">
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
             <span class="lb-span">Hình ảnh</span>
             <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
         </div>
@@ -17,7 +13,6 @@
             <span class="lb-span">Tên địa điểm</span>
             <input class="ip_name" id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-<<<<<<< HEAD
         <div class="input-groupp">
             <label class="lb-span">Kinh độ</label>
             <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
@@ -37,25 +32,6 @@
                 <select id="ward" name="hotel_name2" class="ip editxa" aria-label="Default select example">
                 </select>
             </div>
-=======
-        <div class="input-group">
-            <label class="lb-span">Kinh độ:</label>
-            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group">
-            <label class="lb-span">Vĩ độ:</label>
-            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group">
-            <span class="lb-span" >Địa chỉ</span>
-            <input id="address" onchange="get_tinh()" type="text" class="form-control ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="ip tinh" aria-label="Default select example">
-            </select>
-            <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="ip huyen" aria-label="Default select example">
-            </select>
-            <select id="ward" name="hotel_name2" class="ip xa" aria-label="Default select example">
-            </select>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         </div>
 
         <div class="input-groupp">
@@ -65,11 +41,7 @@
 
         <div class="button-group">
             <button class="btn_edit" onclick="editplace()" type="button">Cập nhật</button>
-<<<<<<< HEAD
             <button class="btn_thoat" type="button"><a href="index.php?controller=chome&action=company&path=diadiem">Thoát</a> </button>
-=======
-            <button class="btn_thoat" type="button"><a href="?folder=diadiem">Thoát</a> </button>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         </div>
     </div>
 </div>
@@ -115,12 +87,6 @@
                     $('#city').append('<option value="' + data['code'] + '">' + data['name'] + '</option>')
                 }
             })
-<<<<<<< HEAD
-=======
-
-
-            $('#in4').val(dd['information'])
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 
 
             $('#in4').val(dd['information'])

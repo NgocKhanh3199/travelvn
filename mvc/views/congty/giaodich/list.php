@@ -56,11 +56,7 @@
     </div>
 </div>
 <script>
-<<<<<<< HEAD
     var idcompany = <?= $_GET['idcompany'] ?>;
-=======
-       var idcompany = <?= $_GET['idcompany'] ?>;
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
     document.onload = load()
 
     function load() {

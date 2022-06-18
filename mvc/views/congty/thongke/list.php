@@ -8,7 +8,6 @@
         <i class="fa-solid fa-plane"></i>
         <i class="fa-solid fa-plane"></i>
     </div>
-<<<<<<< HEAD
     <div class="d-flex flex-row day">
         <div class="p-2 ngaybatdau">
             <h1 class="hd-ngaybatdau">Ngày bắt đầu</h1>
@@ -17,16 +16,6 @@
         <div class="p-2"></div>
         <div class="p-2 ngayketthuc">
             <h1 class="hd-ngayketthuc">Ngày kết thúc</h1>
-=======
-    <div class="d-flex flex-row">
-        <div class="p-2">
-            <h1 style="font-size: 20px;font-weight:800">ngày bắt đầu</h1>
-            <input id="daystart" type="date" onchange="doanhthu()">
-        </div>
-        <div class="p-2"></div>
-        <div class="p-2">
-            <h1 style="font-size: 20px;font-weight:800">ngày kết thúc</h1>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
             <input id="dayend" type="date" onchange="doanhthu()">
         </div>
     </div>
@@ -51,7 +40,6 @@
                 </tbody>
             </table>
         </div>
-<<<<<<< HEAD
     </div>
     <div id="total">
         <div class="total">
@@ -74,12 +62,6 @@
 
 
 
-=======
-
-    </div>
-    <button onclick="tongdoanhthu()">Tổng doanh thu</button>
-    <button>Xem doanh thu năm</button>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 </div>
 <script>
     var idcompany = <?= $_GET['idcompany'] ?>;
@@ -156,7 +138,6 @@
         $.post('index.php?controller=cthongke&action=tongdoanhthu', {
             idcompany: idcompany,
         }, function(data) {
-<<<<<<< HEAD
             $('#doanhthunam').children().remove()
             $('#doanhthunam').append(`
             <p>` + data + `</p>
@@ -177,9 +158,6 @@
             $('#doanhthuday').append(`
             <p>` + data + `</p>
             `)
-=======
-            alert(data)
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         })
     }
 </script>

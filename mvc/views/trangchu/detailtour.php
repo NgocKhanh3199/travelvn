@@ -9,7 +9,6 @@ if (!$iduser) {
 
 <script src="./public/js/js.js"></script>
 
-<<<<<<< HEAD
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -24,29 +23,12 @@ if (!$iduser) {
             <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
             <li class="breadcrumb-item active"> <?php echo $_GET['page'] ?></li>
 
-=======
-    <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
-    <link rel="stylesheet" href="./public/css/trangchu/media.css">
-    <link rel="stylesheet" href="./public/css/tour/deteil-tour.css">
-    <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-    <div class="detail-tour pt-2">
-        <ul class="breadcrumb" id="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
-            <li class="breadcrumb-item active"> <?php echo $_GET['page'] ?></li>
-
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         </ul>
         <div class="content-tour">
             <div class="hd roww row">
                 <div class="header-tour col-sm-6 row">
                     <div id="hd-tour">
                         <!-- <header class="hd-tour col-sm-12">Di Linh-Tà Nung-Đà Lạt-Thác Bobla-KDL Thúy Thuận-Đồi Chè Cầu Đất-Làng Cù Lần</header> -->
-<<<<<<< HEAD
                     </div>
                     <div class="rate">
                         <i class="fa-solid fa-heart"></i>
@@ -196,167 +178,11 @@ if (!$iduser) {
                                     <span class="line"></span>
                                     <div>
                                         <div class="content-in4" id="dichvu" style="text-align: justify;">
-=======
-                    </div>
-                    <div class="rate">
-                        <i class="fa-solid fa-heart"></i>
-                        <label>126</label>
-                    </div>
-                </div>
-
-                <div class="button-order col-sm-6">
-                    <div class="price" id="price">
-                        <!-- <p><span class="price-tour">3.000.000đ</span> /người</p> -->
-                    </div>
-                    <a href="index.php?controller=chome&action=home&page=oder&idtour=<?php echo $_GET['idtour'] ?>" class="btn-order">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <label>Đặt ngay</label>
-                    </a>
-                </div>
-            </div>
-            <div class="content">
-                <div class="img-tour row" id="img-tour">
-                    <!-- <div class="col-sm-7">
-                        <img class="img-fluid" src="./public/img/tour/tour.jpg" alt="">
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="row">
-                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour1.jpg" alt=""></div>
-                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour.jpg" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 big"><img class="img-fluid " src="./public/img/tour/tour1.jpg" alt=""></div>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="content-tour">
-                    <div class="in4-tour">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="box-in4" id="box-in4">
-                                    <!-- <p>
-                                        Ngày khởi hành: <b>23/5/2022</b>
-                                    </p>
-                                    <p>
-                                        Ngày kết thúc: <b>26/5/2022</b>
-                                    </p>
-                                    <p>
-                                        Nơi khởi hành: <b>Vũng Tàu</b>
-                                    </p>
-                                    <p>
-                                        Số chỗ còn nhận: <b>25</b>
-                                    </p> -->
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="group-in4" id="group-in4">
-                                    <!-- <div class="item">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                        <label>Giá vé trẻ em</label>
-                                        <p>200,000đ</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                        <label>Giá vé người lớn</label>
-                                        <p>500,000đ</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-calendar"></i>
-                                        <label>Ngày bắt đầu</label>
-                                        <p>23/5/2022</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-calendar"></i>
-                                        <label>Ngày kết thúc</label>
-                                        <p>28/5/2022</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-flag"></i>
-                                        <label>Thời gian</label>
-                                        <p>4 ngày 2 đêm</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-bus"></i>
-                                        <label>Phương tiện di chuyển</label>
-                                        <p>Xe khách</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-map"></i>
-                                        <label>Điểm tham quan</label>
-                                        <p>Bến Ninh Kiều, Chợ nổi Cái Răng</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-fire"></i>
-                                        <label>Ẩm thực</label>
-                                        <p>Theo thực đơn</p>
-                                    </div> -->
-                                    <!-- <div class="item">
-                                        <i class="fa-solid fa-map"></i>
-                                        <label>Điểm tham quan</label>
-                                        <p id="place"><span>Bến Ninh Kiều,</span> <span>Chợ nổi Cái Răng,</span> </p>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hihi">
-                        <div class="calendar">
-                            <h3 class="hd-calendar">Lịch trình</h3>
-                            <div class="item-day" id="lich">
-                                <!-- <h2 class="day">Ngày 1</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" style="text-align: justify;">
-                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div> -->
-                                <!-- <h2 class="day" id="day">Ngày 1</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" id="lichtrinh" style="text-align: justify;">
-                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div> -->
-                            </div>
-
-                        </div>
-                        <div class="dichvu">
-                            <h3 class="hd-dichvu">Thông tin tour</h3>
-                            <div class="item-day">
-                                <h2 class="day">Thông tin tổng quát</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" id="in4" style="text-align: justify;">
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 
                                         </div>
                                         <br>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-
-=======
-                                <h2 class="day">Dịch vụ bao dồm và không bao gồm</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" id="dichvu" style="text-align: justify;">
-
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
-
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                                 <h2 class="day">Ghi chú</h2>
                                 <div class="in4-day">
                                     <span class="line"></span>
@@ -373,7 +199,6 @@ if (!$iduser) {
                         </div>
                     </div>
                     <div class="container ms-5 me-5 ps-5 pe-5">
-<<<<<<< HEAD
                         <div class="mb-2 submit-comment">
                             <h4 class="mb-4 font-weight-light">Nhận xét Của Bạn</h4>
                             <textarea class="form-control" id="cmtContent" rows="4" placeholder="Nhập nội dung"></textarea>
@@ -385,62 +210,12 @@ if (!$iduser) {
                             <h4 class="mb-4 font-weight-light">Đánh Giá</h4>
                             <div class="border border-light p-4 p-4 all-comment">
 
-=======
-                        <?php
-                        if (isset($_SESSION['iduser'])) {
-                        ?>
-                            <div align="center" class="mb-5 rating-form" style="background: thistle; padding:50px;">
-
-                            </div>
-                            
-                            <input type="hidden" name="" id="iduser" value="<?php echo $_SESSION['iduser'] ?>">
-                            <div class="mb-2 submit-comment">
-
-                            </div>
-                        <?php
-                        } else if (!isset($_SESSION['iduser'])) {
-                        ?>
-                            <div class="mb-2 submit-comment" data-bs-toggle="modal" data-bs-target="#myModal">
-                                <h4 class="mb-4 font-weight-light">Nhận xét Của Bạn</h4>
-                                <textarea class="form-control" id="cmtContent" rows="4" placeholder="Nhập nội dung"></textarea>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                                    <button class="btn btn-primary me-md-2" type="button" onclick="addComment()">Nhận Xét</button>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="myModal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body fs-5">
-                                            Bạn cần phải đăng nhập.!
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                        <div>
-                            <h4 class="mb-4 font-weight-light">Đánh Giá</h4>
-                            <div class="border border-light p-4 p-4 all-comment">
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         </div>
     </div>
 
@@ -450,15 +225,13 @@ if (!$iduser) {
 
 <script>
     var idtour = <?= $_GET['idtour'] ?>;
-<<<<<<< HEAD
-    document.onload = load()
+    // document.onload = load()
 
-    function load() {
-        loadtour()
-        loadComment()
-    }
+    // function load() {
+    //     loadtour()
+    //     loadComment()
+    // }
 
-=======
     var iduser = <?= $_SESSION['iduser'] ?>;
     // var iduser = $('#iduser').val()
 
@@ -470,7 +243,6 @@ if (!$iduser) {
         loadComment()
         showRatingForm()
     }
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 
     function loadtour() {
         path = "./public/img/tour/";
@@ -546,11 +318,7 @@ if (!$iduser) {
                                 </div>
                 `)
                 }
-<<<<<<< HEAD
                 // console.log(lichtrinh.split("Ngày").length - 1);
-=======
-                console.log(lichtrinh.split("Ngày").length - 1);
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                 for (var i = 0; i < lichtrinh.length; i++) {
                     if (lichtrinh[i] == cat) {
                         lichtrinhcat = lichtrinh.slice(str1, i + 1);
@@ -620,11 +388,7 @@ if (!$iduser) {
                 `)
                 $('#group-in4').append(`
                 <div class="item">
-<<<<<<< HEAD
                                         <i class="fa-solid fa-money-bill"></i>
-=======
-<i class="fa-solid fa-money-bill"></i>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                                         <label>Giá vé trẻ em</label>
                                         <p>` + pricechild1 + `</p>
                                     </div>
@@ -654,17 +418,11 @@ if (!$iduser) {
                                         <p>` + transport + `</p>
                                     </div>
                                     <div class="item">
-<<<<<<< HEAD
-                                        <i class="fa-solid fa-map"></i>
-                                        <label>Điểm tham quan</label>
-                                        <p>` + place + `</p>
-=======
                                         <a href="map.php?lng=`+lng+`&lat=`+lat+`" class="nav-link link-dark">
                                             <i class="fa-solid fa-map"></i>
                                             <label>Điểm tham quan</label>
                                             <p>` + place + `</p>
                                         </a>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                                     </div>
                                     <div class="item">
                                         <i class="fa-solid fa-fire"></i>
@@ -678,7 +436,6 @@ if (!$iduser) {
                 $('#price').append(`              
                 <p><span class="price-tour">` + priceadult1 + `</span> /người</p>
                 `)
-<<<<<<< HEAD
             })
     }
 
@@ -710,8 +467,6 @@ if (!$iduser) {
                 idtour: idtour
             }, function(data) {
                 alert(data)
-=======
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
             })
         } else if (<?= $iduser ?> == null) {
             var rs = confirm("Đăng nhập để tiếp tục")
@@ -721,37 +476,6 @@ if (!$iduser) {
         }
     }
 
-    function loadComment() {
-        pathhinhanhuser = "./public/img/nguoidung/";
-        $.post("index.php?controller=ctour&action=loadAllComment", {
-            idtour: idtour
-        }, function(data) {
-            data = JSON.parse(data)
-            if (data.length > 0) {
-                $('.all-comment').append(`
-                    <div class="mb-4">
-                        <div class="d-flex">
-                            <span class="img-user">
-                                <!-- <img src="./public/img/nguoidung/avatar.jpg" class="rounded-circle" alt="" width="20px" height="20px"> -->
-                            </span>         
-                            <h6 class="text-primary ms-2">` + data[0]['name'] + `</h6>
-                        </div>
-                        <p class="text-dark bg-light m-0 p-2 badge rounded-pill">` + data[0]['content'] + `</p>
-                    </div>
-                `)
-                hinhanh = data[0]['image']
-                if (hinhanh.length == 0) {
-                    hinhanh = 'avatar.jpg'
-                }
-                hinhanh = pathhinhanhuser + hinhanh
-                $('.img-user').append(`
-                    <img src="` + hinhanh + `" class="rounded-circle" alt="" width="20px" height="20px">
-                `)
-            } else {
-                $('.all-comment').append('<h6>Chưa có nhận xét</h6>')
-            }
-        })
-    }
 
     function showCommentForm() {
         $.post("index.php?controller=ctour&action=permitComment", {
@@ -771,16 +495,16 @@ if (!$iduser) {
         })
     }
 
-    function addComment() {
-        var content = $('#cmtContent').val()
-        $.post("index.php?controller=ctour&action=addComment", {
-            content: content,
-            iduser: iduser,
-            idtour: idtour
-        }, function(data) {
-            alert(data)
-        })
-    }
+    // function addComment() {
+    //     var content = $('#cmtContent').val()
+    //     $.post("index.php?controller=ctour&action=addComment", {
+    //         content: content,
+    //         iduser: iduser,
+    //         idtour: idtour
+    //     }, function(data) {
+    //         alert(data)
+    //     })
+    // }
 
     function loadComment() {
         pathhinhanhuser = "./public/img/nguoidung/";

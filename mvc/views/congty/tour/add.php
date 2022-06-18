@@ -9,7 +9,6 @@
                     <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
                 </div>
 
-<<<<<<< HEAD
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
@@ -101,38 +100,6 @@
                     </div>
                     <!-- <p id="writeroot"></p> -->
                 </div>
-=======
-            </select>
-
-        </div>
-        <div class="input-group">
-            <span class="">Mô Tả</span>
-            <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
-        <div class="input-group">
-            <span class="">Dịch vụ bao gồm và không bao gồm</span>
-            <textarea id="service" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
-        <div class="input-group">
-            <span class="">Lịch trình</span>
-            <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-        </div>
-        <div class="gr-place">
-            <div class="input-group it-tinh">
-                <span>Chọn tỉnh</span>
-                <select id="tinhdiemden" onchange="locdiemdentheotinh()">
-
-                </select>
-            </div>
-            <div class="input-group it-place">
-                <span class="">Điểm đến</span>
-                <select multiple id="dgb" style="width: 250px;" size="5">
-
-                </select>
-            </div>
-        </div>
-
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 
         <div class="input-group">
             <div class="addplace">
@@ -145,13 +112,7 @@
             <div class="btn-addplace">
                 <input class="btnaddgrplace" type="button" onclick="moreFields()" value="  Thêm điểm đến  " />
 
-<<<<<<< HEAD
             </div>
-=======
-
-
-            <input class="btnaddgrplace" type="button" onclick="moreFields()" value="Thêm điểm đến" />
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
         </div>
 
         <div class="button-group">
@@ -215,7 +176,6 @@
 
     const renderField = (number, root) => {
         root.append(`
-<<<<<<< HEAD
             <div class="content-add">
                 
                 <div class="adddiemden" id="diemden-${number}">
@@ -224,16 +184,6 @@
                     <input id="kinhdo" type="text" class="from-item" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
                     <input id="vido" type="text" class="from-item" placeholder="Nhập vĩ độ" aria-label="Username" aria-describedby="basic-addon1">
                     <input id="address" name="address" type="text" class="from-item" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-=======
-            <div>
-                
-                <div class="frame adddiemden" id="diemden-${number}">
-                    <input type="file" id="hinhanhplace" name="hinhanh[]" multiple="multiple">
-
-                    <input id="nameplace" name="nameplace" type="text" class="form-control" placeholder="Tên địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
-
-                    <input id="address" name="address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                     <select id="city" aria-placeholder="chon tinh" onchange="get_huyen(${number})" name="city" class="form-select" aria-label="Default select example">
                     </select>
 
@@ -491,11 +441,7 @@
             const data = JSON.parse(rs)
             if (data.status) {
                 alert(data.message)
-<<<<<<< HEAD
                 window.location = "index.php?controller=chome&action=company&path=tour&idcompany=" + idcompany
-=======
-                window.location = "index.php?controller=chome&action=company&path=tour&idcompany="+idcompany
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
             }
         })
     }

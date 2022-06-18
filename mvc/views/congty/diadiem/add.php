@@ -11,7 +11,6 @@
             <label class="lb-span">Tên địa điểm</label>
             <input class="ip_name" id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
-<<<<<<< HEAD
         <div class="input-groupp">
             <label class="lb-span">Kinh độ</label>
             <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
@@ -25,20 +24,6 @@
             <div class="diachi">
                 <input id="address" type="text" class="form-control addressplace ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
                 <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="ip tinh" aria-label="Default select example">
-=======
-        <div class="input-group">
-            <label class="lb-span">Kinh độ:</label>
-            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group">
-            <label class="lb-span">Vĩ độ:</label>
-            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group">
-            <label class="lb-span">Địa chỉ:</label>
-            <input id="address" type="text" class="form-control address ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
-            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="ip tinh" aria-label="Default select example">
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
 
                 </select>
                 <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="ip huyen" aria-label="Default select example">
@@ -80,7 +65,6 @@
 
     function get_tinh() {
         id_tinh = null
-<<<<<<< HEAD
         $.ajax({
             url: 'https://provinces.open-api.vn/api/?depth=3',
             method: "GET",
@@ -94,21 +78,6 @@
                     // xa = ['districts'][0]['wards'][1]['name']
                     $('#city').append(
                         `
-=======
-            $.ajax({
-                url: 'https://provinces.open-api.vn/api/?depth=3',
-                method: "GET",
-                data: {
-                    // id_account: id_account,
-                },
-                success: function(data) {
-                    // console.log(d)
-                    for (i = 0; i < data.length; i++) {
-                        // huyen = data[i]['districts'][0]['name'];
-                        // xa = ['districts'][0]['wards'][1]['name']
-                        $('#city').append(
-                            `
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                     <option id='tinh' value="` + data[i]['code'] + `">` + data[i]['name'] + `</option>
                     `
                     )

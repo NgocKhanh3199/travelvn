@@ -62,7 +62,6 @@
                 </div>
 
             </div>
-<<<<<<< HEAD
             <div class="gr-item-detail">
                 <div class="item_tour">
                     <span class="name-item">Dịch vụ bao gồm và không bao gồm</span>
@@ -72,14 +71,6 @@
                     <span class="name-item">Lịch trình</span>
                     <label for="text"></label>
                 </div>
-=======
-        </div>
-        <div class="place text-start">
-        
-        <h4 class="header-place">Điểm đến: </h4>
-            <div class="item-place" id="item-place">
-                
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
             </div>
             <div class="place text-start">
                 <h4 class="header-place">Điểm đến: </h4>

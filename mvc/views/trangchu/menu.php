@@ -101,11 +101,7 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <script>
-=======
-<!-- <script>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
       var header = document.getElementById('header');
       var logomenutop = document.getElementById('logo-menutop');
       var logomenutop1 = document.getElementById('logo-menutop1');
@@ -140,9 +136,4 @@
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </span> -->
-<<<<<<< HEAD
-=======
-=======
-</span>
->>>>>>> a1e9b9f4cf5a3d56e72b9ed6ae960199985a083f
 >>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba

@@ -400,19 +400,7 @@
                             <span>Khởi hành:</span> ` + daystart + `
                         </p>
                         <div class="d-flex justify-content-between">
-<<<<<<< HEAD
                             <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
-=======
-
-            <!-- ---------------------- Xử lý khi chưa có session iduser------------------------ -->
-
-                            <a class="item-chitiet" href="<?php if(isset($_SESSION['iduser'])) { ?>
-                            index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `
-                            <?php } else{ ?>
-                            index.php?controller=cuser&action=loginpage
-                            <?php } ?>
-                            ">Xem chi tiết</a>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                         </div>
                     </div>
                     </div>

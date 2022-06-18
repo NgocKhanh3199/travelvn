@@ -103,20 +103,10 @@ if (!$iduser) {
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <?php if (isset($_GET['name'])) { ?>
                     <input type="hidden" name="" id="tukhoa" value="<?php echo $_GET['name'] ?>">
                 <?php } ?>
 
-=======
-                <?php
-                if (isset($_GET['name'])) {
-                ?>
-                    <input type="hidden" name="" id="tukhoa" value="<?php echo $_GET['name'] ?>">
-                <?php
-                }
-                ?>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                 <div class="item-tour row" id="item-tour">
 
 
@@ -124,15 +114,6 @@ if (!$iduser) {
                 <div class="result-fail"></div>
                 <div class="sotrang">
                     <div class="container mt-3">
-<<<<<<< HEAD
-                        <div id="myDIV">
-                            <button class="btn active">1</button>
-                            <button class="btn">2</button>
-                            <button class="btn">3</button>
-                            <button class="btn">4</button>
-                            <button class="btn">5</button>
-                        </div>
-=======
                         <ul class="pagination justify-content-end">
                             <!-- -------------------------------------------pagination----------------------- -->
                             <?php
@@ -154,7 +135,6 @@ if (!$iduser) {
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li> -->
                         </ul>
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                     </div>
                 </div>
             </div>
@@ -164,58 +144,61 @@ if (!$iduser) {
 
 </html>
 <script>
-<<<<<<< HEAD
-    document.onload = loadtour()
+    document.onload = load()
 
-
-    function loadtour() {     
-        path = "./public/img/tour/";
-        $.post('index.php?controller=ctour&action=getAllTour', {},
-            function(data) {
-                tour = JSON.parse(data);
-                for (let i = 0; i < tour.length; i++) {
-                    t = tour[i];
-                    idtour = t['idtour']
-                    hinhanh = t['hinhanh']
-                    if (hinhanh.length == 0) {
-                        hinhanh = 'noimg.png'
-                    }
-                    hinhanhtour = path + hinhanh
-                    nametour = t['nametour']
-                    price = t['price-adult']
-                    daystart = t['day-start']
-                    if (<?= $iduser ?> != null) {
-                        loadyt(idtour, <?= $iduser ?>);
-                    }
-                    $('#item-tour').append(`
-                    <div class="col-sm-3 item-wrap">
-                    <div class="khungchuaimg">
-                        <img src="` + hinhanhtour + `" alt="" style="width:100%">     
-                        
-                            <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
-                      
-                    </div>
-                    <div class="item-meta">
-                        <p class="item-tua mb-1">
-                            <a class="item-header" href="#">` + nametour + `</a>
-                        </p>
-                        <p class="item-price md-1">
-                            <span class="amount" data-price="900000">` + price + `</span>
-                            <span>VNĐ</span>
-                        </p>
-                        <p class="item-khoihanh mb-1">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>Khởi hành:</span> ` + daystart + `
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
-                        </div>
-                    </div>
-                    </div>
-                    `)
-                }
-            })
+    function load() {
+        loadtour()
     }
+
+
+    // function loadtour() {
+    //     path = "./public/img/tour/";
+    //     $.post('index.php?controller=ctour&action=getAllTour', {},
+    //         function(data) {
+    //             tour = JSON.parse(data);
+    //             for (let i = 0; i < tour.length; i++) {
+    //                 t = tour[i];
+    //                 idtour = t['idtour']
+    //                 hinhanh = t['hinhanh']
+    //                 if (hinhanh.length == 0) {
+    //                     hinhanh = 'noimg.png'
+    //                 }
+    //                 hinhanhtour = path + hinhanh
+    //                 nametour = t['nametour']
+    //                 price = t['price-adult']
+    //                 daystart = t['day-start']
+    //                 if (<?= $iduser ?> != null) {
+    //                     loadyt(idtour, <?= $iduser ?>);
+    //                 }
+    //                 $('#item-tour').append(`
+    //                 <div class="col-sm-3 item-wrap">
+    //                 <div class="khungchuaimg">
+    //                     <img src="` + hinhanhtour + `" alt="" style="width:100%">     
+                        
+    //                         <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
+                      
+    //                 </div>
+    //                 <div class="item-meta">
+    //                     <p class="item-tua mb-1">
+    //                         <a class="item-header" href="#">` + nametour + `</a>
+    //                     </p>
+    //                     <p class="item-price md-1">
+    //                         <span class="amount" data-price="900000">` + price + `</span>
+    //                         <span>VNĐ</span>
+    //                     </p>
+    //                     <p class="item-khoihanh mb-1">
+    //                         <i class="fa-solid fa-clock"></i>
+    //                         <span>Khởi hành:</span> ` + daystart + `
+    //                     </p>
+    //                     <div class="d-flex justify-content-between">
+    //                         <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
+    //                     </div>
+    //                 </div>
+    //                 </div>
+    //                 `)
+    //             }
+    //         })
+    // }
 
     function loadyt(idtour, iduser) {
 
@@ -272,19 +255,11 @@ if (!$iduser) {
                 window.location = "index.php?controller=cuser&action=loginpage"
             }
         }
+    }
 
-=======
     var numpage = $('#numpage').val()
-    document.onload = load()
 
-    function load() {
-        loadtour()
-        pagination()
-    }
 
-    function pagination() {
-
-    }
 
     function loadtour() {
         $('#item-result').children().remove()
@@ -313,11 +288,17 @@ if (!$iduser) {
                             nametour = t['nametour']
                             price = t['price-adult']
                             daystart = t['day-start']
+                            if (<?= $iduser ?> != null) {
+                                loadyt(idtour, <?= $iduser ?>);
+                            }
                             $('#item-tour').append(`
                                 <div class="col-sm-3 item-wrap">
                                 <div class="khungchuaimg">
-                                    <img src="` + hinhanhtour + `" alt="" style="width:100%">
-                                </div>
+                                    <img src="` + hinhanhtour + `" alt="" style="width:100%">     
+                        
+                                    <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
+                      
+                                 </div>
                                 <div class="item-meta">
                                     <p class="item-tua mb-1">
                                         <a class="item-header" href="#">` + nametour + `</a>
@@ -351,16 +332,15 @@ if (!$iduser) {
                     if (numpage > 1) {
                         $('.pagination').append(`<li class="page-item" id="prev"><a class="page-link" href="index.php?controller=chome&action=home&page=tour&numpage=` + prev + `"><i class="fa-solid fa-angle-left"></i></a></li>`)
                     }
-                    for (var i = 1; i <= numberOfPage+1; i++) {
+                    for (var i = 1; i <= numberOfPage + 1; i++) {
                         $('.pagination').append(`<li class="page-item"><a class="page-link" href="index.php?controller=chome&action=home&page=tour&numpage=` + i + `">` + i + `</a></li>`)
                     }
-                    if (numpage < numberOfPage+1) {
+                    if (numpage < numberOfPage + 1) {
                         $('.pagination').append(`<li class="page-item" id="next"><a class="page-link" href="index.php?controller=chome&action=home&page=tour&numpage=` + next + `"><i class="fa-solid fa-angle-right"></i></a></li>`)
                     }
 
                 })
         }
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
     }
 
     var min = $('#min').val()
@@ -387,11 +367,7 @@ if (!$iduser) {
                     }, function(data) {
                         var tour = JSON.parse(data)
                         if (data == '[]') {
-<<<<<<< HEAD
                             $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-warning'>Không tìm thấy kết quả</h4>")
-=======
-                            // $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-warning'>Không tìm thấy kết quả</h4>")
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                         }
                         //nếu có nhiều hơn 1 thì select các tour liên quan đến keyword đó
                         else {
@@ -440,11 +416,7 @@ if (!$iduser) {
                         ' <a class="item-header" href="#">' + tour[0]['nametour'] + '</a>' +
                         '  </p>' +
                         ' <p class="item-price md-1">' +
-<<<<<<< HEAD
-                        '  <span class="amount" data-price="900000">' + tour[0]['price'] + '</span>' +
-=======
                         '  <span class="amount" data-price="900000">' + tour[0]['price-adult'] + '</span>' +
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
                         '  <span>VNĐ</span>' +
                         '  </p>' +
                         ' <p class="item-khoihanh mb-1">' +
