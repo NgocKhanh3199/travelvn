@@ -45,6 +45,19 @@
         })
     }
 
+    function duyetTour(idTour) {
+        $.post("index.php?controller=ctour&action=duyetTourByIdtour", {
+                idTour: idTour
+            }, function(data) {
+                if (data > 0) {
+                    alert("Duyệt thành công !");
+                    window.location.reload()
+                } else if (data < 0) {
+                    alert("Duyệt thất bại !");
+                }
+            })
+    }
+
     function deleteTour(idTour) {
         choice = confirm("Có chắc muốn xóa địa danh này ?");
         if (choice) {

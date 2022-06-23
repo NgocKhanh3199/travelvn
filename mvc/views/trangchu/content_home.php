@@ -429,9 +429,7 @@
                             <a class="item-content-dacsac" href="">
                                 <img class="item-img-dacsac" src="` + hinhanhplace + `" alt="" style="width:100%">
                             </a>
-                            <div class="ten-dacsac">
-                                <p>` + nameplace + `</p>
-                            </div>
+                            
                             <div class="overlay">
                                 <div class="item_header-overlay">` + nameplace + `</div>
                             </div>

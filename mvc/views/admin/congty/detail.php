@@ -28,7 +28,7 @@
                     <th style="width: 1%"></th>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -38,15 +38,18 @@
         <div class="page-table pt-4" style="margin-top:20px">
             <table id="tbLoiNhuan" class="display">
                 <thead>
-                    
+                    <th class="text-center">STT</th>
+                    <th class="text-center">Thời Gian</th>
+                    <th class="text-center">Tổng Cộng</th>
+                    <th class="text-center"></th>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
     </div>
-    
+
     <button class="admin-button mt-4"><a href="?controller=chome&action=admin&path=congty">Trở Lại</a> </button>
 </div>
 <script>
@@ -95,12 +98,10 @@
         })
     }
 
-    function loadTableLoiNhuan()
-    {
+    function loadTableLoiNhuan() {
         $.post("index.php?controller=ccompany&action=loadTableGiaoDichVnpayGroupByTime", {
             idcompany: idcompany
-        }
-        ,function(data){
+        }, function(data) {
             data = JSON.parse(data);
             $('#tbLoiNhuan').DataTable({
                 data: data

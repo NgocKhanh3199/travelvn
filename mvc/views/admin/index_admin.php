@@ -69,6 +69,7 @@
                         <span><i class="fa-solid fa-location-crosshairs"></i></span><span>Chăm sóc khách hàng</span>
                     </a>
                 </li>
+            
                 <li class="menu-item">
                     <a href="index.php?controller=chome&action=admin" class="menu-link">
                         <span><i class="fa-solid fa-clipboard-list"></i></span><span> Thống kê </span>
@@ -145,17 +146,17 @@
 
     </div>
     <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-            $('#myTable1').DataTable();
-        });
+        // $(document).ready(function() {
+        //     $('#myTable').DataTable();
+        //     $('#myTable1').DataTable();
+        // });
 
-        var menu = document.getElementById('slidebar-menu')
-        console.log(menu);
-        var items = menu.getElementsByClassName('menu-item')
-        console.log(items)
-        var a = menu.getElementsByClassName('menu-link')
-        console.log(a)
+        // var menu = document.getElementById('slidebar-menu')
+        // console.log(menu);
+        // var items = menu.getElementsByClassName('menu-item')
+        // console.log(items)
+        // var a = menu.getElementsByClassName('menu-link')
+        // console.log(a)
 
         // for (var i = 0; i < items.length; i++) {
         //     items[i].addEventListener("click", function() {
@@ -171,13 +172,13 @@
         //     });
         // }
 
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-            });
-        }
+        // for (var i = 0; i < items.length; i++) {
+        //     items[i].addEventListener("click", function() {
+        //     var current = document.getElementsByClassName("active");
+        //     current[0].className = current[0].className.replace(" active", "");
+        //     this.className += " active";
+        //     });
+        // }
     </script>
 </body>
 

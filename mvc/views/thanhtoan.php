@@ -100,7 +100,7 @@
 
 </html>
 <script>
-    var iduser = $_SESSION['iduser'];
+    var iduser = <?php echo $_SESSION['iduser'] ?>;
 
     function thoat() {
         window.location = "index.php?controller=chome&action=home&iduser=" + iduser

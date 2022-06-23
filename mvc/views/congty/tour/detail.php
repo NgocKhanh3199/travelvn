@@ -91,13 +91,13 @@
     document.onload = load()
 
     function load() {
-
         loadTourByIdtour();
         loadplace();
     }
 
     function loadTourByIdtour() {
         pathhinhanhtour = "./public/img/tour/";
+       
         $.post("index.php?controller=ctour&action=getTourByIdTour", {
             idTour: idTour,
 
@@ -169,11 +169,11 @@
                 <div class="gr-item-detail">
                     <div class="item_tour" id="number-day1">
                         <span class="name-item">Số Lượng Ngày</span>
-                        <label class="in4-item" for="text">` + t['numbernight'] + `</label>
+                        <label class="in4-item" for="text">` + t['numberday'] + `</label>
                     </div>
                     <div class="item_tour" id="number-night1">
                         <span class="name-item">Số Lượng Đêm</span>
-                        <label class="in4-item" for="text">` + t['numberday'] + `</label>
+                        <label class="in4-item" for="text">` + t['numbernight'] + `</label>
                     </div>
                 </div>
                 <div class="gr-item-detail">

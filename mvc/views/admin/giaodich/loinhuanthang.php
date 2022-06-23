@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="./public/css/listgiaodich.css">
 <div class="container">
     <h4 class="page-title">CHI TIẾT LỢI NHUẬN THÁNG</h4>
-    <?php //echo date('m') ?>
+    <?php //echo date('m') 
+    ?>
     <div class="d-flex flex-row">
         <div class="p-2">
             <h1 style="font-size: 20px;font-weight:800">ngày bắt đầu</h1>
@@ -33,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
             </tbody>
         </table>
     </div>
@@ -53,7 +54,7 @@
     }
 
     function loadTablethongke() {
-        var currentdate = new Date(); 
+        var currentdate = new Date();
         var month = currentdate.getMonth() + 1;
         var year = currentdate.getFullYear();
         $.post('index.php?controller=cgiaodich&action=loadTableGiaoDichVnpay', {
@@ -67,22 +68,21 @@
         })
     }
 
-    function loadTongGiaoDich() 
-    {
-        var currentdate = new Date(); 
+    function loadTongGiaoDich() {
+        var currentdate = new Date();
         var month = currentdate.getMonth() + 1;
         var year = currentdate.getFullYear();
         $.post("index.php?controller=cgiaodich&action=loadTongGiaoDich", {
             month: month,
             year: year
-        }, function(data){
+        }, function(data) {
             data = JSON.parse(data)
             var pricePay = 0;
-            for(var i=0; i<data.length; i++)
-            {                
-                pricePay =  parseInt(data[i]['price_pay'])
-                i++;
-                total = pricePay + parseInt(data[i]['price_pay'])
+            var total = 0;
+
+            for (var i = 0; i < data.length; i++) {
+                pricePay = parseInt(data[i]['price_pay'])
+                total = total + pricePay;
             }
             //27,800,000 2,780,000 25,020,000
             tax = total * 0.85;
@@ -92,7 +92,7 @@
                 currency: 'VND'
             });
             $('#tong').append(`
-                Tổng: <span style="border: 1px solid black; font-weight:bold">`+total+`</span>
+                Tổng: <span style="border: 1px solid black; font-weight:bold">` + total + `</span>
             `)
         })
     }
@@ -100,7 +100,7 @@
     function doanhthu() {
         $('#tong').children().remove()
         var startday = $('#daystart').val()
-        var endday = $('#dayend').val() 
+        var endday = $('#dayend').val()
         if (!startday && !endday) {
             alert("Vui lòng chọn ngày")
         } else if (startday && endday) {
@@ -109,7 +109,7 @@
                 endday: endday,
             }, function(data) {
                 data = JSON.parse(data);
-                if (data.length) { 
+                if (data.length) {
                     $('#tbThongke').remove()
                     $('#tbThongke_wrapper').remove()
                     $('.thongbao').remove()
@@ -138,14 +138,13 @@
                     $.post("index.php?controller=cgiaodich&action=loadTongGiaoDichByDay", {
                         startday: startday,
                         endday: endday
-                    }, function(data){
+                    }, function(data) {
                         data = JSON.parse(data)
+                        var total = 0;
                         var pricePay = 0;
-                        for(var i=0; i<data.length; i++)
-                        {                
-                            pricePay =  parseInt(data[i]['price_pay'])
-                            i++;
-                            total = pricePay + parseInt(data[i]['price_pay'])
+                        for (var i = 0; i < data.length; i++) {
+                            pricePay = parseInt(data[i]['price_pay'])
+                            total = total + pricePay;
                         }
                         tax = total * 0.85;
                         total = total - tax;
@@ -154,7 +153,7 @@
                             currency: 'VND'
                         });
                         $('#tong').append(`
-                            <span style="border: 1px solid black; font-weight:bold">`+total+`</span>
+                            <span style="border: 1px solid black; font-weight:bold">` + total + `</span>
                         `)
                     })
 
@@ -164,7 +163,7 @@
                     $('.dd-content').append(`
                     <p class="thongbao"><i class="fa-solid fa-circle-exclamation"></i> Không tìm thấy giao dịch <i class="fa-solid fa-circle-exclamation"></i></p>
                    `)
-                   $('#tong').append(`
+                    $('#tong').append(`
                             <span style="border: 1px solid black; font-weight:bold">0</span>
                         `)
                 }

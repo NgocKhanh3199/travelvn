@@ -116,7 +116,7 @@
                                         <p>Giá từ</p>
                                         <span>` + price1 + `</span>
                                     </div>
-                                    <a class="btn" href="#">Đặt tour</a>
+                                    <a class="btn" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Đặt tour</a>
                                 </div>
                             </div>
                         </div>

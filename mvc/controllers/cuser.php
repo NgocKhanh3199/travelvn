@@ -1,4 +1,10 @@
 <?php
+require "./public/PHPMailer-master/src/PHPMailer.php";
+require "./public/PHPMailer-master/src/SMTP.php";
+require "./public/PHPMailer-master/src/Exception.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 class cuser extends controller
 {
     private $user;
@@ -6,6 +12,35 @@ class cuser extends controller
     {
         $this->user = $this->model("muser");
     }
+    public function sendmail($email)
+    {
+        $mail = new PHPMailer(true);
+        // Email server settings
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';             //  smtp host
+        $mail->SMTPAuth = true;
+        $mail->Username = 'nhannguyen3199@gmail.com';   //  sender username
+        $mail->Password = 'jdkbmkmgpczbqobz';       // sender password
+        $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
+        $mail->Port = 587;                          // port - 587/465
+        $mail->setFrom($email, 'dulich123');
+        $mail->addAddress($email);
+        $mail->isHTML(true);                // Set email content format to HTML
+        $mail->Subject = 'Comfirm Accounts';
+        $mail->Body    = '<div style="background: #EEEEEE;text-align:center;border-radius: 10px;padding:5px">
+         <h3> Link active accounts </h3>
+            <a href="http://dulich123.com/travelvn175/index.php?controller=cuser&action=active&email='.$email.'">click to Active your accounts</a>
+     </div>';
+        //send
+        if (!$mail->send()) {
+            return "Message sent to:{$mail->ErrorInfo}\n";
+        } else {
+            return 'success';
+        }
+       
+    }
+    
     public function loginpage()
     {
         return $this->view("account", "login");
@@ -21,6 +56,10 @@ class cuser extends controller
     public function account()
     {
         return $this->view("account", "qltk");
+    }
+    public function active()
+    {
+        return $this->view("account","active");
     }
     public function favorite_place()
     {
@@ -57,8 +96,19 @@ class cuser extends controller
         $email = $_POST['email'];
         $gender = $_POST['gioitinh'];
         $birthday = $_POST['ngaysinh'];
-        $data = $this->user->register($name, $username, $passwordhash1, $phone, $email, $gender, $birthday);
-
+        $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $token = substr(str_shuffle($permitted_chars), 0, 5);
+        $data = $this->user->register($name, $username, $passwordhash1, $phone, $email, $gender, $birthday,$token);
+        if($data > 0)
+        {
+                $sendmails = $this->sendmail($email);
+        }
+        echo $data;
+    }
+    public function active_accounts()
+    {
+        $email = $_POST['email'];
+        $data = $this->user->active_accounts($email);
         echo $data;
     }
 
@@ -71,14 +121,13 @@ class cuser extends controller
     public function updateUser()
     {
         $iduser = $_POST['iduser'];
-        $image = $_POST['image'];
         $name = $_POST['name'];
         $username = $_POST['username'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $gender = $_POST['gender'];
         $birthday = $_POST['birthday'];
-        $data = $this->user->updateUser($iduser,$image, $name, $username, $phone, $email, $gender, $birthday);
+        $data = $this->user->updateUser($iduser,  $name, $username, $phone, $email, $gender, $birthday);
         // echo json_encode($data);
         echo $data;
     }
@@ -127,10 +176,15 @@ class cuser extends controller
             $sdt = $u['phone'];
             $email = $u['email'];
             $gioitinh = $u['gender'];
+            if ($gioitinh == 0) {
+                $gender = "Nữ";
+            } else if ($gioitinh == 1) {
+                $gender = "Nam";
+            }
             $birthday = $u['birthday'];
             $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail&idUser=' . $iduser . '" class="a-view nav-link text-success">Xem</a>';
-            // $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteUser(' . $iduser . ')">Xóa</a>';
-            $row = [$stt, $tenuser, $taikhoan, $sdt, $email, $gioitinh, $birthday,$view];
+            $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteUser(' . $iduser . ')">Xóa</a>';
+            $row = [$stt, $tenuser, $taikhoan, $sdt, $email, $gender, $birthday, $view,$delete];
             $data[] = $row;
         }
         echo json_encode($data);
@@ -153,35 +207,28 @@ class cuser extends controller
         $question = $this->user->getAllQuestion();
         $stt = 0;
         $data = [];
-        foreach($question as $q)
-        {
+        foreach ($question as $q) {
             $stt++;
             $idquestion = $q['idquestion'];
             $content = $q['content'];
             $nameuser = $q['name'];
             $status = $q['status'];
-            if($status === 'Chưa trả lời')
-            {
-                $response = '<a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=add&idquestion='.$idquestion.'" class="a-view nav-link">Trả Lời</a>';
-                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion('.$idquestion.')">Xóa</a>';
+            if ($status === 'Chưa trả lời') {
+                $response = '<a href="index.php?controller=chome&action=admin&path=chamsockhachhang&page=add&idquestion=' . $idquestion . '" class="a-view nav-link">Trả Lời</a>';
+                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion(' . $idquestion . ')">Xóa</a>';
                 $edit = '';
-            }
-            else
-            {
-                $response = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=detail&idquestion='.$idquestion.'" class="a-view nav-link link-success">Xem</a>';
-                $edit = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=edit&idquestion='.$idquestion.'" class="a-view nav-link">Sửa</a>';
-                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion('.$idquestion.')">Xóa</a>';
+            } else {
+                $response = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=detail&idquestion=' . $idquestion . '" class="a-view nav-link link-success">Xem</a>';
+                $edit = '<a href="?controller=chome&action=admin&path=chamsockhachhang&page=edit&idquestion=' . $idquestion . '" class="a-view nav-link">Sửa</a>';
+                $delete = '<a href="" class = "link-danger nav-link" onclick="deleteQuestion(' . $idquestion . ')">Xóa</a>';
             }
             $display = $q['display'];
-            if($display==0)
-            {
+            if ($display == 0) {
                 $display = 'Không';
-            }
-            else
-            {
+            } else {
                 $display = 'Có';
             }
-            $row = [$stt, $content, $nameuser, $status, $display, $response , $edit, $delete];
+            $row = [$stt, $content, $nameuser, $status, $display, $response, $edit, $delete];
             $data[] = $row;
         }
         echo json_encode($data);
@@ -199,7 +246,7 @@ class cuser extends controller
             $iduser = $o['iduser'];
             $priceTotal = $o['price-total'];
             $paymentMethod = $o['payment-method'];
-            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail_order&idorder=' . $idorder . '&iduser='.$iduser.'" class="a-view nav-link text-success">Xem</a>';
+            $view = '<a href="index.php??controller=chome&action=admin&path=nguoidung&page=detail_order&idorder=' . $idorder . '&iduser=' . $iduser . '" class="a-view nav-link text-success">Xem</a>';
             $cancel = '<a href="" class = "a-delete nav-link text-danger" onclick="delete(' . $iduser . ')">Huỷ</a>';
             $row = [$stt, $idorder, $idtour, $iduser, $priceTotal, $paymentMethod, $view, $cancel];
             $data[] = $row;
@@ -210,7 +257,7 @@ class cuser extends controller
     {
         $idorder = $_POST['idorder'];
         $order = $this->user->getDetailOrderByIdOrder($idorder);
-        
+
         echo json_encode($order);
     }
     public function loadTableTourByIdOrder()
@@ -230,7 +277,7 @@ class cuser extends controller
             // load img
             $img = strlen($t['hinhanh']) > 0 ? $t['hinhanh'] : 'delivery.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
-            $view = '<a href="index.php?controller=chome&action=admin&path=nguoidung&page=detail_tour&idTour=' . $idTour.'&idorder='.$idorder.'&iduser='.$iduser.'" class="a-view nav-link text-success">Xem</a>';
+            $view = '<a href="index.php?controller=chome&action=admin&path=nguoidung&page=detail_tour&idTour=' . $idTour . '&idorder=' . $idorder . '&iduser=' . $iduser . '" class="a-view nav-link text-success">Xem</a>';
             $row = [$idTour, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view];
             $data[] = $row;
         }
@@ -241,7 +288,7 @@ class cuser extends controller
     {
         $idquestion = $_POST['idquestion'];
         $answer = $_POST['answer'];
-        $data = $this->user->sendAnswer($idquestion,$answer);
+        $data = $this->user->sendAnswer($idquestion, $answer);
         echo $data;
     }
     public function loadCauTraLoiByIdCauHoi()
@@ -266,7 +313,20 @@ class cuser extends controller
         $idquestion = $_POST['idquestion'];
         $answer = $_POST['answer'];
         $option = $_POST['option'];
-        $data = $this->user->displayQuestion($idquestion,$answer, $option);
+        $data = $this->user->displayQuestion($idquestion, $answer, $option);
         echo $data;
+    }
+    public function getimgcongty()
+    {
+        $idcongty = $_POST['idcongty'];
+        $data = $this->user->getimgcongty($idcongty);
+        echo json_encode($data);
+    }
+    public function updateavataUser()
+    {
+        $iduser = $_POST['iduser'];
+        $img = $_POST['image'];
+        $data = $this->user->updateavataUser($iduser,$img);
+        echo json_encode($data);
     }
 }

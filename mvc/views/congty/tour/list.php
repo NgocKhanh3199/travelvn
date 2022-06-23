@@ -33,7 +33,7 @@
     </div>
 </div>
 <script>
-    var idcompany = <?= $_GET['idcompany'] ?>;
+    var idcompany = <?= $_SESSION['idcompany'] ?>;
     document.onload = load()
 
     function load() {

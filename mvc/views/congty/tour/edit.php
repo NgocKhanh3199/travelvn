@@ -301,7 +301,7 @@
     function edit() { 
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
-        console.log(link);
+        console.log(hinhanh);
         nametour = $('#nametour').val();
         totalguest = $('#total-guest').val();
         priceadult = $('#price-adult').val();
@@ -314,7 +314,8 @@
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
         end_place = $('#dgb').val();
-
+        numberday = $('#number-day').val();
+        numbernight = $('#number-night').val();
         $.post("index.php?controller=ctour&action=edit", {
             idcompany: idcompany,
             idtour: idTour,
@@ -427,13 +428,12 @@
         $('#number-night1').empty()
         $('#number-day1').append(`
         <span class="">Số Lượng Ngày</span>
-            <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+            <input value="` + numberday + `" type="number" id="number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
         `)
         $('#number-night1').append(`
         <span class="">Số Lượng Đêm</span>
-        <input value="` + numbernight + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đêm">
+        <input value="` + numbernight + `" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đêm">
         `)
-        numberday = $('#number-day1').val();
-        numbernight = $('#number-night1').val();
+        
     }
 </script>

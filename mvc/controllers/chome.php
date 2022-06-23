@@ -36,4 +36,5 @@ class chome extends controller{
     {
         return $this->view("","thanhtoan");
     }
+    
 }

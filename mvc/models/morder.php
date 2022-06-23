@@ -29,7 +29,7 @@ class morder extends database
     }
     public function getAllOrder()
     {
-        $qr = "SELECT * FROM `order`";
+        $qr = "SELECT * FROM `order` WHERE `status`='1'";
         return $this->select($qr);
     }
     public function getAllOrdercp($idcompany)

@@ -415,7 +415,6 @@
         schedule = $('#schedule').val();
         start_place = $('#start_place').val();
         end_place = $('#dgb').val();
-        console.log(rs);
         $.post("index.php?controller=ctour&action=add", {
             idcompany: idcompany,
             idtour: Date.now(),

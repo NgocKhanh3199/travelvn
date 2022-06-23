@@ -123,17 +123,17 @@
             var district = $('#district').val()
             var city = $('#city').val()
 
-            if (namecompany == 0) {
-                alert('Vui lòng nhập tên công ty!')
-            } else if (username == 0) {
-                alert('Tên đăng nhập không được bỏ trống!')
-            } else if (password == 0) {
-                alert('Mật khẩu không được bỏ trống!')
-            } else if (nhaplaimatkhau == 0) {
-                alert('Nhập lại mật khẩu không được bỏ trống!')
-            } else if (password != nhaplaimatkhau) {
-                alert('Mật khẩu và nhập lại mật khẩu không khớp!')
-            } else {
+            // if (namecompany == 0) {
+            //     alert('Vui lòng nhập tên công ty!')
+            // } else if (username == 0) {
+            //     alert('Tên đăng nhập không được bỏ trống!')
+            // } else if (password == 0) {
+            //     alert('Mật khẩu không được bỏ trống!')
+            // } else if (nhaplaimatkhau == 0) {
+            //     alert('Nhập lại mật khẩu không được bỏ trống!')
+            // } else if (password != nhaplaimatkhau) {
+            //     alert('Mật khẩu và nhập lại mật khẩu không khớp!')
+            // } else {
                 $.post("index.php?controller=ccompany&action=register", {
                     username: username,
                     password: password,
@@ -147,13 +147,13 @@
                     city: city
                 }, function(data) {
                     if (data > 0) {
-                        alert('Đăng ký thành công')
+                        alert('Đăng ký thành công vui lòng kiểm tra mail để kích hoạt tài khoản')
                         window.location.href = "index.php?controller=ccompany&action=loginpage"
                     } else if (data <= 0) {
                         alert('Đăng ký thất bại')
                     }
                 })
-            }
+            // }
         })
         
     </script>

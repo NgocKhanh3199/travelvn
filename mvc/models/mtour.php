@@ -3,14 +3,26 @@ class mtour extends database
 {
     public function getAllTour()
     {
-        $qr = "SELECT * FROM `tour` WHERE xoa ='0'";
+        $qr = "SELECT * FROM `tour`,`company` WHERE xoa ='0'
+        AND tour.idcompany = company.idcompany
+        AND tour.status =1
+        AND company.status = 1
+         ";
+        return $this->select($qr);
+    }
+    public function getAllTourad()
+    {
+        $qr = "SELECT tour.idtour, tour.hinhanh, tour.nametour, tour.`day-start`, `tour`.`day-end`, tour.`price-adult`, tour.`price-child`, tour.status FROM `tour`,`company` WHERE xoa ='0'
+        AND tour.idcompany = company.idcompany   
+        AND company.status = 1
+         ";
         return $this->select($qr);
     }
     public function getAllTourcompany($idcompany)
     {
         $qr = "SELECT * FROM `tour` WHERE xoa ='0'AND tour.idcompany='$idcompany'";
         return $this->select($qr);
-    }       
+    }
     public function getTourByIdTour($idTour)
     {
         $qr = "SELECT * FROM `detail_place`, `place`, `tour` WHERE detail_place.idtour=tour.idtour AND detail_place.idplace=place.idplace AND tour.idtour=$idTour AND tour.xoa ='0'";
@@ -23,7 +35,7 @@ class mtour extends database
     }
     public function getPlaceByIdTour($idTour)
     {
-        $qr = "SELECT * FROM `detail_place`, `place` WHERE detail_place.idtour=$idTour AND detail_place.idplace = place.idplace AND";
+        $qr = "SELECT * FROM `detail_place`, `place` WHERE detail_place.idtour=$idTour AND detail_place.idplace = place.idplace";
         return $this->select($qr);
     }
     public function add($idcompany, $idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
@@ -48,7 +60,7 @@ class mtour extends database
             $qr .= "'$value[$j]'";
             $qr .= ",";
         }
-        $qr .= "' $nametour','$totalguest', '$priceadult', '$pricechild', '$dayend', '$daystar', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','$idcompany','$in4tour')";
+        $qr .= "' $nametour','$totalguest', '$priceadult', '$pricechild', '$daystar', '$dayend', '$numberday', '$numbernight','$transport','$start_place','$service','$schedule','$idcompany','$in4tour')";
         return $this->insert($qr);
     }
     public function addDetailplace($idtour, $nameplace)
@@ -57,7 +69,7 @@ class mtour extends database
         return $this->insert($qr);
     }
 
-    public function addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull)
+    public function addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull, $kinhdo, $vido)
     {
         $qr = "INSERT INTO `place`( `idplace`,";
         for ($i = 0; $i < count($hinhanhplace); $i++) {
@@ -70,7 +82,7 @@ class mtour extends database
             $qr .= "$column[$i]";
             $qr .= ",";
         }
-        $qr .= "`nameplace`, `information`, `address`, `city`, `district`, `ward`, `full-address`)";
+        $qr .= "`nameplace`, `information`, `address`, `city`, `district`, `ward`, `full-address`,`longitude`, `latitude`)";
         $qr .= " VALUES ('$idplace',";
         for ($j = 0; $j < count($hinhanhplace); $j++) {
             $value[$j] = $hinhanhplace[$j];
@@ -78,7 +90,7 @@ class mtour extends database
             $qr .= "'$value[$j]'";
             $qr .= ",";
         }
-        $qr .= "'$nameplace','$in4','$address','$tinh','$huyen','$xa',' $diachifull')";
+        $qr .= "'$nameplace','$in4','$address','$tinh','$huyen','$xa',' $diachifull','$kinhdo', '$vido')";
         return $this->insert($qr);
     }
     public function edit($idcompany, $idtour, $hinhanh, $nametour, $totalguest, $priceadult, $pricechild, $dayend, $daystar, $numberday, $numbernight, $in4tour, $transport, $service, $schedule, $start_place)
@@ -244,7 +256,7 @@ class mtour extends database
     public function loadAllComment($idtour)
     {
         $qr = "SELECT rates.content, user.name, user.image FROM `rates`, user, tour WHERE rates.iduser = user.iduser AND rates.idtour = tour.idtour AND tour.idtour = '$idtour' AND tour.xoa = 0";
-        return $this->select($qr);          
+        return $this->select($qr);
     }
     public function themtouryeuthich($idtour, $iduser)
     {
@@ -253,24 +265,33 @@ class mtour extends database
     }
     public function kiemtra($idtour, $iduser)
     {
-        $qr ="SELECT * FROM `favorite` WHERE iduser='$iduser' AND idtour ='$idtour'";
+        $qr = "SELECT * FROM `favorite` WHERE iduser='$iduser' AND idtour ='$idtour'";
         return $this->select($qr);
     }
     public function xoatouryeuthich($idtour, $iduser)
     {
-        $qr ="DELETE FROM `favorite` WHERE iduser='$iduser' AND idtour='$idtour'";
+        $qr = "DELETE FROM `favorite` WHERE iduser='$iduser' AND idtour='$idtour'";
         return $this->delete($qr);
     }
     public function getTouryeuthich($iduser)
     {
-        $qr ="SELECT tour.idtour, tour.hinhanh, tour.hinhanh1, tour.hinhanh2, tour.hinhanh3, tour.nametour, tour.`price-adult`, tour.transport, tour.`day-start`, tour.numberday, tour.numbernight FROM `favorite`, tour WHERE favorite.iduser='$iduser' AND tour.idtour = favorite.idtour";
+        $qr = "SELECT tour.idtour, tour.hinhanh, tour.hinhanh1, tour.hinhanh2, tour.hinhanh3, tour.nametour, tour.`price-adult`, tour.transport, tour.`day-start`, tour.numberday, tour.numbernight 
+        FROM `favorite`, tour,`company` 
+        WHERE favorite.iduser='$iduser' 
+        AND tour.idtour = favorite.idtour
+        AND tour.idcompany = company.idcompany
+        AND company.status = 1
+        GROUP BY tour.idtour";
         return $this->select($qr);
+        
     }
-     
+
     //-----------------------------------------pagination---------------------------------
     public function getAllTourPagination($startnum)
     {
-        $qr = "SELECT * FROM `tour` WHERE xoa ='0' LIMIT $startnum,8";
+        $qr = "SELECT * FROM `tour`,`company` WHERE xoa ='0'
+        AND tour.idcompany = company.idcompany
+        AND company.status = 1 AND tour.status =1 LIMIT $startnum,8";
         return $this->select($qr);
     }
     public function getAllTourOrderByIdPagination($startnum)
@@ -284,4 +305,9 @@ class mtour extends database
     //     $qr = " ";
     //     return $this->select($qr);
     // }
+    public function getslytbyIdtour($idtour)
+    {
+        $qr = "SELECT * FROM `favorite` WHERE idtour='$idtour'";
+        return $this->select($qr);
     }
+}

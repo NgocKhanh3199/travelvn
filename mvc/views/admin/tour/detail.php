@@ -1,140 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="./public/css/company.css">
+<script src="./public/js/js.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-
-    <!-- link bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- end_link bootstrap 5 -->
-    <!-- link icon -->
-    <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
-    <!-- end-link icon -->
-    <link rel="stylesheet" href="./public/css/company.css">
-    <script src="./public/js/js.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="nd">
-            <div class="thongtinchung" id="diadanh">
-                <!-- <div class="row diadanh">
-                    <div class="col-sm-6">
-                        <img src="./public/img/tour/2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="400px">
-                    </div>
-                    <div class="col-sm-6 row">
-                        <div class="col-sm-6">
-                            <img src="./public/img/tour/4b7c23abd16c3f271fde1222fc3bff9f_2_45_39_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
-                        </div>
-                        <div class="col-sm-6">
-                            <img src="./public/img/tour/3a0bd5fbd3e6432d665deab43a33c345_2_44_24_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
-                        </div>
-                        <div class="col-sm-12">
-                            <img src="./public/img/tour/3b06a2474a4f9f659a7c1879a6946efa_2_22_10_20_5_2022.jpg" alt="" class="w-100 rounded" height="200">
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-        <div class="container container-form">
-            <div class="frame1" action="" method="">
-                <div class="input-group">
-                    <span class="">Tên Tour</span>
-                    <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
-                </div>
-                <div class="input-group">
-                    <span class="">Giá</span>
-                    <input id="price" type="text" class="form-control" placeholder="Nhập Giá">
-                </div>
-                <div class="input-group">
-                    <span class="">Ngày Bắt Đầu</span>
-                    <input id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
-                </div>
-                <div class="input-group">
-                    <span class="">Ngày Kết Thúc</span>
-                    <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
-                </div>
-                <div class="input-group" id="number-day">
-                    <span class="">Số Lượng Ngày</span>
-                    <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
-                </div>
-                <div class="input-group" id="number-night">
-                    <span class="">Số Lượng Đêm</span>
-                    <input value="` + numberday + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
-                </div>
-                <div class="input-group">
-                    <span class="">Vận chuyển</span>
-                    <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
-                </div>
-                <div class="input-group">
-                    <span class="">Nơi xuất phát</span>
-                    <input id="start_place" type="text" class="form-control" placeholder="Địa điểm xuất phát">
-                </div>
-                <div class="input-group">
-                    <span class="">Mô Tả</span>
-                    <textarea id="infotour" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-                </div>
-                <div class="input-group">
-                    <span class="">Dịch vụ bao gồm và không bao gồm</span>
-                    <textarea id="service" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-                </div>
-                <div class="input-group">
-                    <span class="">Lịch trình</span>
-                    <textarea id="schedule" aria-colspan="4" type="text" class="form-control" placeholder="Nhập Mô Tả"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="place text-start">
-            <h4 class="header-place">Điểm đến: </h4>
-            <div class="item-place" id="item-place">
-                
-            </div>
+<div class="container">
+    <div class="nd">
+        <div class="thongtinchung" id="diadanh">
 
         </div>
-
-        <div class="button-group">
-            <a href="index.php?controller=chome&action=admin&path=tour" class="btn btn-primary" type="button">Thoát</a>
+    </div>
+    <div class="container container-form">
+        <div class="frame1" id="detail-tour"  action="" method="">
+            
         </div>
-</body>
-
-</html>
+    </div>
+</div>
 <script>
     var idTour = <?= $_GET['idTour'] ?>;
     document.onload = load()
 
     function load() {
-
         loadTourByIdtour();
         loadplace();
     }
 
     function loadTourByIdtour() {
         pathhinhanhtour = "./public/img/tour/";
+       
         $.post("index.php?controller=ctour&action=getTourByIdTour", {
             idTour: idTour,
 
         }, function(data) {
             Tour = JSON.parse(data);
-            console.log(Tour)
             t = Tour[0];
-            $('#nametour').val(t['nametour']);
-            $('#price').val(t['price']);
-            $('#day-end').val(t['day-end']);
-            $('#day-star').val(t['day-start']);
-            $('#infotour').val(t['infomation']);
-            $('#transport').val(t['transport']);
-            $('#service').val(t['service']);
-            $('#schedule').val(t['schedule']);
-            $('#start_place').val(t['start_place']);
-            $('#number-night').val(t['numbernight']);
-            $('#number-day').val(t['numberday']);
-            
+
+            idtinh = t['place_start'];
+            $.ajax({
+                url: 'https://provinces.open-api.vn/api/p/' + idtinh + '?depth=1',
+                method: "GET",
+                rs: {
+
+                },
+                success: function(rs) {
+                    place_start = rs['name']
+                    $('#start_place1').append(`
+                        <span class="name-item">Nơi xuất phát</span>
+                        <label class="in4-item" for="text">` + rs['name'] + `</label>
+                    `)
+                }
+            })
             hinhanh = t['hinhanh']
             if (hinhanh.length == 0) {
                 hinhanh = 'noimg.png'
@@ -159,7 +73,77 @@
             }
             hinhanh3 = pathhinhanhtour + hinhanh3
 
+            $('#detail-tour').append(`
+             
+                <div class="gr-item-detail">
+                    <div class="item_tour">
+                        <span class="name-item">Giá người lớn</span>
+                        <label class="in4-item" for="text">` + t['price-adult'] + `</label>
+                    </div>
+                    <div class="item_tour">
+                        <span class="name-item">Giá trẻ em</span>
+                        <label class="in4-item" for="text">` + t['price-child'] + `</label>
+                    </div>
+                </div>
+                <div class="gr-item-detail">
+                    <div class="item_tour">
+                        <span class="name-item">Ngày Bắt Đầu</span>
+                        <label class="in4-item" for="text">` + t['day-start'] + `</label>
+                    </div>
+                    <div class="item_tour">
+                        <span class="name-item">Ngày Kết Thúc</span>
+                        <label class="in4-item" for="text">` + t['day-end'] + `</label>
+                    </div>
+                </div>
+                <div class="gr-item-detail">
+                    <div class="item_tour" id="number-day1">
+                        <span class="name-item">Số Lượng Ngày</span>
+                        <label class="in4-item" for="text">` + t['numberday'] + `</label>
+                    </div>
+                    <div class="item_tour" id="number-night1">
+                        <span class="name-item">Số Lượng Đêm</span>
+                        <label class="in4-item" for="text">` + t['numbernight'] + `</label>
+                    </div>
+                </div>
+                <div class="gr-item-detail">
+                    <div class="item_tour">
+                        <span class="name-item" >Vận chuyển</span>
+                        <label class="in4-item" for="text">` + t['transport'] + `</label>
+                    </div>
+                    <div class="item_tour" id="start_place1">
+                        
+                        </div>
+
+                </div>
+                <div class="item_tour">
+                        <span class="m" style="flex-basis: 15%;">Mô Tả</span>
+                        <label class="in4-itemm" for="text" >` + t['information'] + `</label>
+                    </div>
+                    
+                    <div class="item_tour">
+                        <span class="m" style="flex-basis: 15%;">Lịch trình</span>
+                        <label class="in4-itemm" for="text">` + t['schedule'] + `</label>
+                    </div>
+                    <div class="item_tour">
+                        <span class="m" style="flex-basis: 15%;">Dịch vụ bao gồm và không bao gồm</span>
+                        <label class="in4-itemm" for="text">` + t['service_not_include'] + `</label>
+                    </div>
+              
+                <div class="place text-start">
+                    <h4 class="header-place">Điểm đến: </h4>
+                    <div class="item-place" id="item-place">
+
+                    </div>
+
+                </div>
+
+                <div class="button-group">
+                    <a href="index.php?controller=chome&action=admin&path=tour&iduser=<?php echo $_SESSION['iduser'] ?>" class="btn btn-primary" type="button">Thoát</a>
+                </div>
+            `)
+
             $('#diadanh').append(`
+            <label class="in4-item-name" for="text">` + t['nametour'] + `</label>
             <div class="row diadanh">
                     <div class="col-sm-6">
                         <img src="` + hinhanh + `" alt="" class="w-100 rounded" height="500">
@@ -182,7 +166,7 @@
     }
 
     function loadplace() {
-        
+        console.log(idTour);
         pathhinhanhplace = "./public/img/diadiem/";
         $.post("index.php?controller=ctour&action=getPlaceByIdTour", {
             idTour: idTour,

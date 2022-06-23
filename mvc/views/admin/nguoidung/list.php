@@ -12,9 +12,9 @@
                     <th style="width: 2%">Số điện thoại</th>
                     <th style="width: 3%">Email</th>
                     <th style="width: 3%">Giới tính</th>
-                    <th style="width: 3%">Ngày sinh</th>
+                    <th style="width: 7%">Ngày sinh</th>
                     <th style="width: 1%"></th>
-                    <!-- <th style="width: 1%"></th> -->
+                    <th style="width: 1%"></th>
                 </thead>
                 <tbody>
                 </tbody>
@@ -42,6 +42,7 @@
     }
 
     function deleteUser(iduser) {
+        // console.log(iduser);
         choice = confirm("Có chắc muốn xóa người dùng này?");
         if (choice) {
             $.post("index.php?controller=cuser&action=deleteUser", {

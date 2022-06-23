@@ -63,7 +63,7 @@
                 <a href="#" class="nav-link "><i class="fa-solid fa-people-group"></i> Về chúng tôi</a>
             </li>
             <li>
-                <a href="index.php?controller=chome&action=home&page=tour&iduser=<?php echo $_SESSION['iduser']?>" class="nav-link"><i class="fa-solid fa-plane-departure"></i> Tour du lịch</a>
+                <a href="index.php?controller=chome&action=home&page=tour" class="nav-link"><i class="fa-solid fa-plane-departure"></i> Tour du lịch</a>
             </li>
             <li>
                 <a href="#" class="nav-link "><i class="fa-solid fa-hotel"></i> Khách sạn</a>
@@ -136,4 +136,4 @@
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </span> -->
->>>>>>> bd98c47acd04da3faab44cb2c4bd7651831067ba
+

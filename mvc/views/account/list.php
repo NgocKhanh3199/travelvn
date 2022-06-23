@@ -2,14 +2,19 @@
 <form action="" class="row">
     <h3 class="text-center my-profile">HỒ SƠ CỦA TÔI</h3>
 
-    <!-- <label for="file"></label> -->
-    <div class="avata pt-2 pb-2 ps-1 text-center" id="showimg">
+    <label for="file">
+        <div class="avata pt-2 pb-2 ps-1 text-center" id="showimg">
+            <!-- <img class="rounded-circle" width="80" height="80" src="./public/img/nguoidung/việt tour.png" alt=""> -->
+        </div>
 
-    </div>
+    </label>
     <!-- <input type="file" class="bg-dark" name="file" id="file" class="inputfile" /> -->
     <h6 class="text-center" id="tennd">
         <!-- Tran Thao -->
     </h6>
+    <div class="btndoihinhanh">
+        <button class="btnavata" type="button" onclick="doiavata()">Thay đổi</button>
+    </div>
     <div class="user-input col-lg-5 mx-auto">
         <label for="tennguoidung" class="form-label">Tên người dùng</label>
         <input type="text" class="form-control" id="tnd" placeholder="Nhập tên người dùng" value="">
@@ -35,7 +40,8 @@
         <label for="gioitinh" class="form-label">Giới tính</label>
         <input type="text" class="form-control" id="gioitinh" placeholder="Nhập giới tính" value="Nữ">
     </div>
-    <div class="user-input col-lg-5 ms-5">
+
+    <div class="user-input  col-lg-5 ms-5 ip-img" style="display: none">
         <label for="image" class="form-label">Hình ảnh</label>
         <input class="form-control" type="file" name="file" id="file" class="inputfile">
     </div>
@@ -46,19 +52,42 @@
 </form>
 
 <script>
-    function updateUser() {
+    function doiavata() {
         hinhanh = $('#file').get(0).files;
         link = uploadFile(hinhanh, 'nguoidung')[0];
+        $.post("index.php?controller=cuser&action=updateavataUser", {
+            iduser: iduser,
+            image: link,
+        }, function(data) {
+            if (data == 1) {
+                alert('Cập nhật thành công!')
+                location.reload()
+            } else if (data == 0 || data == -1) {
+                alert("Cập nhật thất bại!")
+            } else {
+                console.log(data)
+            }
+        })
+    }
+
+    function updateUser() {
+
         var name = $('#tnd').val()
         var username = $('#tendangnhap').val()
         var email = $('#email').val()
         var phone = $('#sodienthoai').val()
         var birthday = $('#ngaysinh').val()
-        var gender = $('#gioitinh').val()
+        var gioitinh = $('#gioitinh').val()
+        if (gioitinh == "Nữ") {
+            gender = 0;
+        }else if(gioitinh == "Nam"){
+            gender = 1;
+        }
+        // var gender = $('#gioitinh').val()
         // console.log(link);
         $.post('index.php?controller=cuser&action=updateUser', {
             iduser: iduser,
-            image: link,
+     
             name: name,
             username: username,
             email: email,

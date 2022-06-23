@@ -27,20 +27,20 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex img-logo">
+            <img src="./public/img/admin/TRAVELVN.png" width="40" height="40" alt="">
+            <div class="brand-name">TravelPN</div>
+        </div>
         <div class="navbar-menu">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-brand brand-wrapper" href="">
-                <img src="./public/img/admin/TRAVELVN.png" width="40" height="40" alt="">
-                <div class="brand-name">
-                    <h6>TravelVN</h6>
-                    <h6>The best solution for your company</h6>
-                </div>
+            <div class="navbar-brand brand-wrapper header" href="">
+
                 <div class="navbar-brand d-flex menu-bar" href="#">
                     <ul class="d-flex me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>">Trang chủ</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>">Quản Lý Tour</a>
@@ -57,37 +57,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=chome&action=company&path=thongke&idcompany=<?php echo $_SESSION['idcompany'] ?>">Thống kê</a>
                         </li>
-                        <li class="nav-item">
-                        <form class="form-search d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name">
-                            <button class="btn btn-outline-light" type="submit">Search</button>
-                        </form>
-                    </li>
-
-                        <div class="user-wrapper dropdown text-light">
-                            <?php
-                            if (isset($_SESSION['idcompany'])) {
-                            ?>
-                                <img src="./public/img/nguoidung/việt tour.png" width="30" height="30" alt="">
-                                <div>
-                                    <h6>Việt Tour</h6>
-                                    <small>My Company</small>
-                                    <div class="dropdown-content">
-                                        <a class=" text-dark" href="index.php?controller=ccompany&action=account">Tài Khoản</a>
-                                        <a class=" text-dark" href="index.php?controller=ccompany&action=logout">Đăng Xuất</a>
-                                    </div>
-                                </div>
-                            <?php
-                            } else {
-                            ?>
-                                <div>
-                                    <a class="dangnhap me-2" href="index.php?controller=ccompany&action=loginpage">Đăng nhập</a>
-                                    <a class="ms-2" href="index.php?controller=ccompany&action=registerpage" class="dangky">Đăng ký</a>
-                                </div>
-                            <?php
-                            }
-                            ?>
-                        </div>
 
                     </ul>
                 </div>
@@ -96,10 +65,7 @@
                 <div class="offcanvas-header">
                     <div class="navbar-brand brand-wrapper" href="">
                         <img src="./public/img/admin/TRAVELVN.png" width="40" height="40" alt="">
-                        <div class="brand-name text-dark">
-                            <h6>TravelVN</h6>
-                            <h6>The best solution for your company</h6>
-                        </div>
+                        <div class="brand-name">TravelPN</div>
                     </div>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
@@ -121,12 +87,38 @@
                             <a class="nav-link" href="index.php?controller=chome&action=company&path=giaodich">Giao Dịch</a>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex mt-4">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
                 </div>
             </div>
+        </div>
+        <div class="user-wrapper dropdown text-light">
+            <?php
+            if (isset($_SESSION['idcompany'])) {
+                $idcongty = $_SESSION['idcompany'];
+            ?>
+                <div id="img">
+
+                </div>
+
+                <div>
+                    <h6>
+                        <?php echo $_SESSION['namecompany'] ?>
+                    </h6>
+                    <small>My Company</small>
+                    <div class="dropdown-content">
+                        <a class=" text-dark" href="index.php?controller=ccompany&action=account">Tài Khoản</a>
+                        <a class=" text-dark" href="index.php?controller=ccompany&action=logout">Đăng Xuất</a>
+                    </div>
+                </div>
+            <?php
+            } else {
+            ?>
+                <div>
+                    <a class="dangnhap me-2" href="index.php?controller=ccompany&action=loginpage">Đăng nhập</a>
+                    <a class="ms-2" href="index.php?controller=ccompany&action=registerpage" class="dangky">Đăng ký</a>
+                </div>
+            <?php
+            }
+            ?>
         </div>
     </nav>
     <div class="company-page">
@@ -154,6 +146,26 @@
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
+
+        document.onload = loadimg()
+
+        function loadimg() {
+            path = "./public/img/congty/";
+            idcongty = <?= $idcongty ?>;
+            $.post('index.php?controller=cuser&action=getimgcongty', {
+                idcongty: idcongty,
+            }, function(data) {
+                tour = JSON.parse(data);
+                if (tour[0]['image']) {
+                    img = path + tour[0]['image']
+                } else {
+                    img = "./public/img/congty/company.png"
+                }
+                $('#img').append(`
+                    <img src="` + img + `" width="30" height="30" alt="">
+                `)
+            })
+        }
     </script>
 
 </body>

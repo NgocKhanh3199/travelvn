@@ -1,14 +1,21 @@
 <?php
 class muser extends database{
 
-    public function register($name, $username, $passwordhash1, $phone, $email, $gender, $birthday)
+    public function register($name, $username, $passwordhash1, $phone, $email, $gender, $birthday,$token)
     {
-        $qr = "INSERT INTO `user`(`name`, `username`, `password`, `phone`, `email`, `gender`, `birthday`) VALUES ('$name','$username','$passwordhash1','$phone','$email','$gender','$birthday')";
-        return $this->insert($qr); 
+        $qr = "INSERT INTO `user`(`name`, `username`, `password`, `phone`, `email`, `gender`, `birthday`,`token`) VALUES ('$name','$username','$passwordhash1','$phone','$email','$gender','$birthday','$token')";
+       return $this->insert($qr); 
+    }
+    public function active_accounts($email)
+    {
+        $qr = "UPDATE `user` SET `status`= 1 WHERE email = '$email'";
+        return $this->update($qr);
     }
     public function login($taikhoan){
 
-        $qr = "SELECT * FROM `user` WHERE username = '$taikhoan'";
+        $qr = "SELECT * FROM `user` WHERE username = '$taikhoan'
+        AND status = 1;
+        ";
         return $this->select($qr);
         
     }
@@ -17,16 +24,17 @@ class muser extends database{
         $qr = "SELECT * FROM `user` WHERE iduser='$iduser'";
         return $this->select($qr);
     }
-    public function updateUser($iduser, $image, $name, $username, $phone, $email, $gender, $birthday)
+    public function updateUser($iduser,  $name, $username, $phone, $email, $gender, $birthday)
     {
-        $qr = "UPDATE `user` SET `image`='$image', `name`='$name',`username`='$username',`phone`='$phone',`email`='$email',`gender`='$gender',`birthday`='$birthday' WHERE iduser = '$iduser'";
+        $qr = "UPDATE `user` SET `name`='$name',`username`='$username',`phone`='$phone',`email`='$email',`gender`='$gender',`birthday`='$birthday' WHERE iduser = '$iduser'";
         return $this->update($qr);
-        // return $qr;
+        
     }
     public function deleteUser($iduser)
     {
-        $qr = "DELETE FROM `user` WHERE iduser = '$iduser'";
-        return $this->delete($qr);
+        $qr = "UPDATE `user` SET `status`= 0 WHERE iduser = '$iduser' ";
+        return $this->update($qr);
+      
     }
     public function checkPassword($iduser)
     {
@@ -40,7 +48,7 @@ class muser extends database{
     }
     public function getAllUser()
     {
-        $qr = "SELECT * FROM `user`";
+        $qr = "SELECT * FROM `user` where status = 1";
         return $this->select($qr);
         
     }
@@ -98,6 +106,16 @@ class muser extends database{
     public function displayQuestion($idquestion,$answer, $option)
     {
         $qr = "UPDATE `question` SET `answer`='$answer',`status`='Đã trả lời', `display`='$option' WHERE idquestion = '$idquestion'";
+        return $this->update($qr);
+    }
+    public function getimgcongty($idcongty)
+    {
+        $qr = "SELECT `image` FROM `company` WHERE idcompany='$idcongty'";
+        return $this->select($qr);
+    }
+    public function updateavataUser($iduser,$img)
+    {
+        $qr = "UPDATE `user` SET `image`='$img' WHERE iduser='$iduser'";
         return $this->update($qr);
     }
 }

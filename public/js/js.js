@@ -15,7 +15,7 @@ function uploadFile(hinhanh, folder) {
     arrName = [];
     for (i = 0; i < hinhanh.length; i++) {
         data = new FormData()
-        nameSave = getfilenameupload(hinhanh[0].name)
+        nameSave = getfilenameupload(hinhanh[i].name)
         data.append('file', hinhanh[i])
         data.append('name', nameSave)
         data.append('folder', folder)

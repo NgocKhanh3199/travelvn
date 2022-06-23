@@ -30,9 +30,8 @@ if (!$iduser) {
                     <div id="hd-tour">
                         <!-- <header class="hd-tour col-sm-12">Di Linh-Tà Nung-Đà Lạt-Thác Bobla-KDL Thúy Thuận-Đồi Chè Cầu Đất-Làng Cù Lần</header> -->
                     </div>
-                    <div class="rate">
-                        <i class="fa-solid fa-heart"></i>
-                        <label>126</label>
+                    <div class="rate" id="slyt">
+
                     </div>
                 </div>
 
@@ -232,16 +231,31 @@ if (!$iduser) {
     //     loadComment()
     // }
 
-    var iduser = <?= $_SESSION['iduser'] ?>;
+
     // var iduser = $('#iduser').val()
 
     document.onload = load()
 
     function load() {
+        loadslyt()
         loadtour()
         showCommentForm()
         loadComment()
         showRatingForm()
+    }
+
+    function loadslyt() {
+        $.post('index.php?controller=ctour&action=getslytbyIdtour', {
+                idtour: idtour
+            },
+            function(data) {
+                tour = JSON.parse(data);
+                slyt = tour.length;
+                $('#slyt').append(`
+                <i class="fa-solid fa-heart"></i>
+                        <label>` + slyt + `</label>
+                `)
+            })
     }
 
     function loadtour() {
@@ -318,7 +332,7 @@ if (!$iduser) {
                                 </div>
                 `)
                 }
-                // console.log(lichtrinh.split("Ngày").length - 1);
+
                 for (var i = 0; i < lichtrinh.length; i++) {
                     if (lichtrinh[i] == cat) {
                         lichtrinhcat = lichtrinh.slice(str1, i + 1);
@@ -328,7 +342,12 @@ if (!$iduser) {
                         `)
                     }
                 }
+
                 dichvu = t['service_not_include']
+                dichvubaogom = dichvu.substring(10, dichvu.indexOf("Không bao gồm"))
+                dichvukhongbaogom = dichvu.substring((dichvu.indexOf("Không bao gồm") + 15), dichvu.length)
+
+
                 hinhanh = t['hinhanh']
                 if (hinhanh.length == 0) {
                     hinhanh = 'noimg.png'
@@ -418,7 +437,7 @@ if (!$iduser) {
                                         <p>` + transport + `</p>
                                     </div>
                                     <div class="item">
-                                        <a href="map.php?lng=`+lng+`&lat=`+lat+`" class="nav-link link-dark">
+                                        <a href="map.php?lng=` + lng + `&lat=` + lat + `" class="nav-link link-dark">
                                             <i class="fa-solid fa-map"></i>
                                             <label>Điểm tham quan</label>
                                             <p>` + place + `</p>
@@ -431,7 +450,10 @@ if (!$iduser) {
                                     </div>      
                 `)
                 $('#dichvu').append(`
-                <p>` + dichvu + `</p>
+                <p>Dịch vụ bao gồm:</p>
+                <p>` + dichvubaogom + `</p>
+                <p>Dịch vụ không bao gồm:</p>
+                <p>` + dichvukhongbaogom + `</p>
                 `)
                 $('#price').append(`              
                 <p><span class="price-tour">` + priceadult1 + `</span> /người</p>
@@ -470,8 +492,8 @@ if (!$iduser) {
             })
         } else if (<?= $iduser ?> == null) {
             var rs = confirm("Đăng nhập để tiếp tục")
-            if (rs){
-                window.location="index.php?controller=cuser&action=loginpage"
+            if (rs) {
+                window.location = "index.php?controller=cuser&action=loginpage"
             }
         }
     }
@@ -610,21 +632,18 @@ if (!$iduser) {
 
     function saveToTheDB() {
         $.post("index.php?controller=", {
-        		ratedIndex: ratedIndex + 1,
-        		blogid: blogid,
-        		userid: userid
-        	}, function(data){
-        		console.log(data)
-        		if(data != "")
-        		{
-        			alert("Cảm ơn đánh giá của bạn!")
-        			window.location.reload ()
-        		}
-        		else
-        		{
-        			alert("Đánh giá không thành công!")
-        		}
-        	}) 
+            ratedIndex: ratedIndex + 1,
+            blogid: blogid,
+            userid: userid
+        }, function(data) {
+            console.log(data)
+            if (data != "") {
+                alert("Cảm ơn đánh giá của bạn!")
+                window.location.reload()
+            } else {
+                alert("Đánh giá không thành công!")
+            }
+        })
     }
 
     function setStars(max) {

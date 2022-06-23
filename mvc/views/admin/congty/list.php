@@ -18,6 +18,8 @@
                     <th>Quận/Huyện</th>
                     <th>Tỉnh/Thành Phố</th> -->
                     <th></th>
+                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +44,19 @@
             $('#tbCongty').DataTable({
                 data: data
             })
+        })
+    }
+    function deleteCompany(idCompany)
+    {
+        $.ajax({
+            url:"index.php?controller=ccompany&action=deleteCompany",
+            method:"post",
+            data:{
+                idCompany:idCompany
+            },success:function(data)
+            {
+                    alert(data)
+            }
         })
     }
 </script>

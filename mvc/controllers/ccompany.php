@@ -1,9 +1,43 @@
 <?php
+require "./public/PHPMailer-master/src/PHPMailer.php";
+require "./public/PHPMailer-master/src/SMTP.php";
+require "./public/PHPMailer-master/src/Exception.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 class ccompany extends controller{
     private $company;
     public function __construct()
     {
         $this->company = $this->model("mcompany");
+    }
+    public function sendmail($email)
+    {
+        $mail = new PHPMailer(true);
+        // Email server settings
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';             //  smtp host
+        $mail->SMTPAuth = true;
+        $mail->Username = 'nhannguyen3199@gmail.com';   //  sender username
+        $mail->Password = 'jdkbmkmgpczbqobz';       // sender password
+        $mail->SMTPSecure = 'tls';                  // encryption - ssl/tls
+        $mail->Port = 587;                          // port - 587/465
+        $mail->setFrom($email, 'dulich123');
+        $mail->addAddress($email);
+        $mail->isHTML(true);                // Set email content format to HTML
+        $mail->Subject = 'Comfirm Accounts';
+        $mail->Body    = '<div style="background: #EEEEEE;text-align:center;border-radius: 10px;padding:5px">
+         <h3> Link active accounts </h3>
+            <a href="http://dulich123.com/travelvn175/index.php?controller=ccompany&action=activePage&email='.$email.'">click to Active your accounts</a>
+     </div>';
+        //send
+        if (!$mail->send()) {
+            return "Message sent to:{$mail->ErrorInfo}\n";
+        } else {
+            return 'success';
+        }
+       
     }
     public function loginpage()
     {
@@ -24,6 +58,10 @@ class ccompany extends controller{
     public function logout()
     {
         return $this->viewcongty("", "logout");
+    }
+    public function activePage()
+    {
+        return $this->viewcongty("", "active");
     }
 
     public function login()
@@ -47,6 +85,13 @@ class ccompany extends controller{
         echo $row;
     }
 
+    public function active_accounts()
+    {
+        $email = $_POST['email'];
+        $data = $this->company->active_accounts($email);
+        echo $data;
+    }
+
     public function register()
     {
         $username = $_POST['username'];
@@ -61,6 +106,10 @@ class ccompany extends controller{
         $district = $_POST['district'];
         $city = $_POST['city'];
         $data = $this->company->register($username, $passwordhash,$namecompany ,$email, $phone, $address, $street, $ward, $district, $city);
+        if($data > 0)
+        {
+                $sendmails = $this->sendmail($email);
+        }
         echo $data;
     }
 
@@ -74,7 +123,7 @@ class ccompany extends controller{
     public function updateCompany()
     {
         $idcompany = $_POST['idcompany'];
-        $image = $_POST['image'];
+     
         $namecompany = $_POST['namecompany'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
@@ -83,13 +132,13 @@ class ccompany extends controller{
         $ward = $_POST['ward'];
         $district = $_POST['district'];
         $city = $_POST['city'];
-        $data = $this->company->updateCompany($idcompany,$image, $namecompany, $email, $phone , $address, $street, $ward, $district, $city);
+        $data = $this->company->updateCompany($idcompany, $namecompany, $email, $phone , $address, $street, $ward, $district, $city);
         // echo json_encode($data);
         echo $data;
     }
     public function deleteCompany()
     {
-        $idcompany = $_POST['idcompany'];
+        $idcompany = $_POST['idCompany'];
         $data = $this->company->deleteCompany($idcompany);
         echo $data;
     }
@@ -139,11 +188,13 @@ class ccompany extends controller{
             $img = strlen($c['image']) > 0 ? $c['image'] : 'việt tour.png';
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" width="50px" height="50px" alt=""></button>';
             $view = '<a href="index.php?controller=chome&action=admin&path=congty&page=detail&idcompany=' . $idcompany .'" class="a-view nav-link text-success">Xem</a>';
-            $row = [$stt,$hinhanh, $username, $namecompany, $email, $phone, $view];
+            $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteCompany(' . $idcompany . ')">Xóa</a>';
+            $row = [$stt,$hinhanh, $username, $namecompany, $email, $phone, $view,$delete];
             $data[] = $row;
         }
         echo json_encode($data);
     }
+
     public function loadDetailCompanyByIdCompany()
     {
         $idcompany = $_POST['idcompany'];
@@ -278,6 +329,13 @@ class ccompany extends controller{
         $startday = $_POST['startday'];
         $endday = $_POST['endday'];
         $data = $this->company->getGiaoDichVnpayBySelectTime($idcompany,$startday, $endday);
+        echo json_encode($data);
+    }
+    public function updateavataCompany()
+    {
+        $idcompany = $_POST['idcompany'];
+        $img = $_POST['image'];
+        $data = $this->company->updateavataCompany($idcompany,$img);
         echo json_encode($data);
     }
 }

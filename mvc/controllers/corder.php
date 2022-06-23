@@ -95,19 +95,15 @@ class corder extends controller
             $idorder = $o['idorder'];
             $tenkh = $o['name-customer'];
             $phone = $o['phone-customer'];
-            $email = $o['email-customer'];
-            $address = $o['address-customer'];
             $total_bill = $o['price-total'];
-            $status = $o['status'];
-            // $payment_method = $o['payment-method'];
-
-            if ($status == 1) {
-                $edit = "Đã thanh toán";
-            } else if ($status == 0) {
-                $edit = "Chưa thanh toán";
+            $payment_method = $o['payment-method'];
+            if ($payment_method == 1) {
+                $thanhtoan = "Thanh toán online";
+            } else {
+                $thanhtoan = "Thanh toán trực tiếp";
             }
             $view = '<a href="index.php??controller=chome&action=admin&path=donhang&page=detail&idorder=' . $idorder . '" class="a-view nav-link text-success">Xem</a>';
-            $row = [$stt, $tenkh, $phone, $email, $address, $total_bill, $edit,  $view];
+            $row = [$stt, $idorder, $tenkh, $phone, $total_bill, $thanhtoan, $view];
             $data[] = $row;
         }
         echo json_encode($data);

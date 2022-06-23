@@ -16,7 +16,7 @@ if (!$iduser) {
 </head>
 
 <body>
-    <div class="list-tour m-5 p-2">
+    <div class="list-tour p-2">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Photos</a></li>
             <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
@@ -174,9 +174,9 @@ if (!$iduser) {
     //                 <div class="col-sm-3 item-wrap">
     //                 <div class="khungchuaimg">
     //                     <img src="` + hinhanhtour + `" alt="" style="width:100%">     
-                        
+
     //                         <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
-                      
+
     //                 </div>
     //                 <div class="item-meta">
     //                     <p class="item-tua mb-1">
@@ -221,14 +221,17 @@ if (!$iduser) {
     }
 
     function touryeuthich(idtour) {
+        iduser = <?= $iduser ?>;
         if (<?= $iduser ?> != null) {
             var icon = document.getElementById(idtour);
 
             if (icon.classList.contains('yeuthich')) {
+
                 $.post("index.php?controller=ctour&action=xoatouryeuthich", {
                     iduser: iduser,
                     idtour: idtour,
                 }, function(data) {
+                    console.log(data);
                     if (data >= 0) {
                         // alert("Xoá thành công");
                         icon.classList.remove('yeuthich');
@@ -237,11 +240,13 @@ if (!$iduser) {
                     }
                 })
             } else {
+
                 $.post("index.php?controller=ctour&action=themtouryeuthich", {
                     iduser: iduser,
                     idtour: idtour,
                 }, function(rs) {
                     const data = JSON.parse(rs)
+                    console.log(data)
                     if (data.status) {
                         // alert(data.message)
                         icon.classList.add('yeuthich')
@@ -288,6 +293,7 @@ if (!$iduser) {
                             nametour = t['nametour']
                             price = t['price-adult']
                             daystart = t['day-start']
+
                             if (<?= $iduser ?> != null) {
                                 loadyt(idtour, <?= $iduser ?>);
                             }
@@ -312,15 +318,7 @@ if (!$iduser) {
                                         <span>Khởi hành:</span> ` + daystart + `
                                     </p>
                                     <div class="d-flex justify-content-between">
-
-                                    <!-- ---------------------- Xử lý khi chưa có session iduser------------------------ -->
-                                    <a class="item-chitiet" href="<?php if (isset($_SESSION['iduser'])) { ?>
-                                    index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `
-                                    <?php } else { ?>
-                                    index.php?controller=cuser&action=loginpage
-                                    <?php } ?>
-                                    ">Xem chi tiết</a>
-
+                                    <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
                                     </div>
                                 </div>
                                 </div>
@@ -367,7 +365,7 @@ if (!$iduser) {
                     }, function(data) {
                         var tour = JSON.parse(data)
                         if (data == '[]') {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-warning'>Không tìm thấy kết quả</h4>")
+                            $('#item-tour').append("<h4 class=''></h4>")
                         }
                         //nếu có nhiều hơn 1 thì select các tour liên quan đến keyword đó
                         else {

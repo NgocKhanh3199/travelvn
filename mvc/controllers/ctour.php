@@ -93,7 +93,7 @@ class ctour extends controller
                     $namehuyen = $rs[$i]["namehuyen"];
                     $namexa = $rs[$i]["namexa"];
                     $diachifull = $address . ", " . $namexa . ", " . $namehuyen . ", " . $nametinh;
-                    $data = $this->tour->addplace($idplace, $hinhanhplace, $nameplace, $in4, $kinhdo, $vido, $address, $tinh, $huyen, $xa, $diachifull);
+                    $data = $this->tour->addplace($idplace, $hinhanhplace, $nameplace, $in4, $address, $tinh, $huyen, $xa, $diachifull,$kinhdo, $vido);
                     if ($data > 0) {
                         $result = [
                             "message" => "Thêm tour thành công, thêm đia điểm thành công",
@@ -192,7 +192,7 @@ class ctour extends controller
     }
     public function loadTableTourAdmin()
     {
-        $tour = $this->tour->getAllTour();
+        $tour = $this->tour->getAllTourad();
         $stt = 0;
         $data = [];
         $path = "./public/img/tour/";
@@ -210,7 +210,7 @@ class ctour extends controller
             $hinhanh = '<button class="table-img"><img src="' . $path . $img . '" alt=""></button>';
             if ($status == 1) {
                 $view = '<a href="index.php?controller=chome&action=admin&path=tour&page=detail&idTour=' . $idTour . '" class="a-view nav-link text-success">Xem</a>';
-                $edit = '<a href="" class ="a-edit nav-link" onclick="duyetTour(' . $idTour . ')">Đã duyệt</a>';
+                $edit = '<a href="" class ="a-edit nav-link">Đã duyệt</a>';
                 $delete = '<a href="" class = "a-delete nav-link text-danger" onclick="deleteTour(' . $idTour . ')">Xóa</a>';
                 $row = [$stt, $hinhanh, $tenTour, $giaTourAd, $giaTourCh, $day_start, $day_end,  $view, $edit, $delete];
                 $data[] = $row;
@@ -495,6 +495,12 @@ class ctour extends controller
         $iduser = $_POST['iduser'];
         $star = $_POST['star'];
         $data = $this->tour->addRatingStar($idtour, $iduser, $star);
+        echo json_encode($data);
+    }
+    public function getslytbyIdtour()
+    {
+        $idtour = $_POST['idtour'];
+        $data = $this->tour->getslytbyIdtour($idtour);
         echo json_encode($data);
     }
 }

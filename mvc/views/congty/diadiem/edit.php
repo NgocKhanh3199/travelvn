@@ -167,7 +167,7 @@
         }, function(data) {
             if (data > 0) {
                 alert('sucess');
-                window.location.href = "index.php?controller=chome&action=admin&path=diadiem";
+                window.location.href = "index.php?controller=chome&action=company&path=diadiem";
             } else if (data <= 0) {
                 alert("Không thành công")
             }

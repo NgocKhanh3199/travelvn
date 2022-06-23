@@ -8,23 +8,16 @@
                 <tr>
                     <th>STT</th>
                     <th>Mã đơn hàng</th>
-                    <th>Mã tour</th>
-                    <th>Mã khách hàng</th>
-                    <th>Thành tiền</th>
-                    <th>Phương thức thanh toán</th>
-                    <th></th>
+                    <th>Tên khách hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Tổng đơn hàng</th>
+                    <th>Phương thức thanh toán</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>#dh0123456</td>
-                    <td>01/01/2022</td>
-                    <td>50.000đ</td>
-                    <td>Thành công</td>
-                    <td></td>
-                    <td></td>
+          
                 </tr>
             </tbody>
         </table>

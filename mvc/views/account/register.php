@@ -89,7 +89,6 @@
     </div>
 
     <script>
-
         $(document).ready(function() {
             $('#eye').click(function() {
                 $(this).toggleClass('open');
@@ -111,34 +110,35 @@
             var tendangnhap = $('#tendangnhap').val()
             var matkhau = $('#matkhau').val()
             var nhaplaimatkhau = $('#nhaplaimatkhau').val()
-            if (tennguoidung == 0) {
-                alert('Vui lòng nhập tên người dùng!')
-            } else if (tendangnhap == 0) {
-                alert('Tên đăng nhập không được bỏ trống!')
-            } else if (matkhau == 0) {
-                alert('Mật khẩu không được bỏ trống!')
-            } else if (nhaplaimatkhau == 0) {
-                alert('Mật khẩu không được bỏ trống!')
-            } else if (matkhau != nhaplaimatkhau) {
-                alert('Mật khẩu và nhập lại mật khẩu không khớp!')
-            } else {
-                $.post("index.php?controller=cuser&action=register", {
-                    tendangnhap: tendangnhap,
-                    matkhau: matkhau,
-                    tennguoidung: tennguoidung,
-                    email: email,
-                    sodienthoai: sodienthoai,
-                    gioitinh: gioitinh,
-                    ngaysinh: ngaysinh
-                }, function(data) {
-                    if (data > 0) {
-                        alert('Đăng ký thành công')
-                        window.location.href = "index.php?controller=cuser&action=loginpage"
-                    } else if (data <= 0) {
-                        alert('Đăng ký thất bại')
-                    }
-                })
-            }
+            // if (tennguoidung == 0) {
+            //     alert('Vui lòng nhập tên người dùng!')
+            // } else if (tendangnhap == 0) {
+            //     alert('Tên đăng nhập không được bỏ trống!')
+            // } else if (matkhau == 0) {
+            //     alert('Mật khẩu không được bỏ trống!')
+            // } else if (nhaplaimatkhau == 0) {
+            //     alert('Mật khẩu không được bỏ trống!')
+            // } else if (matkhau != nhaplaimatkhau) {
+            //     alert('Mật khẩu và nhập lại mật khẩu không khớp!')
+            // } else {
+            $.post("index.php?controller=cuser&action=register", {
+                tendangnhap: tendangnhap,
+                matkhau: matkhau,
+                tennguoidung: tennguoidung,
+                email: email,
+                sodienthoai: sodienthoai,
+                gioitinh: gioitinh,
+                ngaysinh: ngaysinh
+            }, function(data) {
+                console.log(data);
+                if (data > 0) {
+                    alert('Đăng ký thành công vui lòng kiểm tra mail để kích hoạt tài khoản')
+                    // window.location.href = "index.php?controller=cuser&action=loginpage"
+                } else if (data <= 0) {
+                    alert('Đăng ký thất bại')
+                }
+            })
+            // }
         })
     </script>
 

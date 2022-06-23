@@ -45,7 +45,7 @@
                         </h6>
                     </div>
                     <div class="align-self-center">
-                        <a href="index.php?controller=chome&action=company"><button class="btn btn-home btn-dark bg-dark text-primary"><i class="fas fa-home"></i></button></a>
+                        <a href="index.php?controller=chome&action=company&path=tour"><button class="btn btn-home btn-dark bg-dark text-primary"><i class="fas fa-home"></i></button></a>
                     </div>
                 </div>
                 <ul class="user-menu navbar-nav mb-lg-0 w-100">
@@ -109,8 +109,8 @@
             $('#quan').val(company[0]['district'])
             $('#xaphuongthitran').val(company[0]['ward'])
             $('#soduong').val(company[0]['street'])
-            path = "./public/img/nguoidung/"
-            img = company[0]['image'].length > 0 ? company[0]['image'] : "việt tour.png"
+            path = "./public/img/congty/"
+            img = company[0]['image'].length > 0 ? company[0]['image'] : "company.png"
             src = path + img
             $('#tamp').append('<img class="rounded-circle" width="80" height="80" src="' + src + '" alt="">')
             $('#temp').append('<img class="rounded-circle" width="50" height="50" src="' + src + '" alt="">')

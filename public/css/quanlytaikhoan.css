@@ -226,3 +226,15 @@
 .card-info{
     font-size: 16px;
 }
+.btndoihinhanh{
+    text-align: center;
+}
+.btnavata{
+    border: none;
+    color: rgb(94, 94, 243);
+    background-color: white;
+    text-align: center;
+}
+.ip-img{
+    display: none;
+}

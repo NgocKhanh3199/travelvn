@@ -6,10 +6,14 @@
         <div class="avata pb-2 ps-1 text-center" id="showimg">
             <!-- <img class="rounded-circle" width="80" height="80" src="./public/img/nguoidung/việt tour.png" alt=""> -->
         </div>
+
     </label>
     <h6 class="text-center" id="tenct">
         <!-- Việt Tour -->
     </h6>
+    <div class="btndoihinhanh">
+        <button class="btnavata" type="button" onclick="doiavata()">Thay đổi</button>
+    </div>
     <div class="form-content">
         <div class="form-content-left">
             <div class="user-input">
@@ -54,9 +58,9 @@
                 <label for="soduong" class="form-label">Số Đường</label>
                 <input type="text" class="form-control" id="soduong" placeholder="Nhập số đường" value="20 Trần Hưng Đạo">
             </div>
-            <div class="user-input">
+            <div class="user-input ip-img">
                 <label for="image" class="form-label">Hình ảnh</label>
-                <input class="form-control" type="file" name="file" id="file" class="inputfile">
+                <input  class="form-control" type="file" name="file" id="file" class="inputfile">
             </div>
         </div>
         <!-- <div class="form-content-right">      
@@ -160,34 +164,14 @@
 
 
     var idcompany = $('#idcompany').val()
-    function updateCongTy()
-    {
+
+    function doiavata() {
         hinhanh = $('#file').get(0).files;
-        link = uploadFile(hinhanh, 'nguoidung')[0];
-        var namecompany = $('#tct').val()
-        var email = $('#email').val()
-        var phone = $('#sodienthoai').val()
-        var address = $('#diachi').val()
-        var city = $('#thanhpho').val()
-        var district = $('#quan').val()
-        var ward = $('#xaphuongthitran').val()
-        var street = $('#soduong').val()
-        if(link == null)
-        {
-            alert("Bạn phải chọn hình ảnh");
-        }
-        $.post("index.php?controller=ccompany&action=updateCompany", {
-            idcompany: idcompany, 
+        link = uploadFile(hinhanh, 'congty')[0];
+        $.post("index.php?controller=ccompany&action=updateavataCompany", {
+            idcompany: idcompany,
             image: link,
-            namecompany: namecompany,
-            email: email, 
-            phone: phone,
-            address: address,
-            city: city,
-            district: district,
-            ward: ward, 
-            street: street
-        }, function(data){
+        }, function(data) {
             if (data == 1) {
                 alert('Cập nhật thành công!')
                 location.reload()
@@ -199,8 +183,39 @@
         })
     }
 
-    function deleteCongTy()
-    {
+    function updateCongTy() {
+        var namecompany = $('#tct').val()
+        var email = $('#email').val()
+        var phone = $('#sodienthoai').val()
+        var address = $('#diachi').val()
+        var city = $('#thanhpho').val()
+        var district = $('#quan').val()
+        var ward = $('#xaphuongthitran').val()
+        var street = $('#soduong').val()
+      
+        $.post("index.php?controller=ccompany&action=updateCompany", {
+            idcompany: idcompany,
+            namecompany: namecompany,
+            email: email,
+            phone: phone,
+            address: address,
+            city: city,
+            district: district,
+            ward: ward,
+            street: street
+        }, function(data) {
+            if (data == 1) {
+                alert('Cập nhật thành công!')
+                location.reload()
+            } else if (data == 0 || data == -1) {
+                alert("Cập nhật thất bại!")
+            } else {
+                console.log(data)
+            }
+        })
+    }
+
+    function deleteCongTy() {
         var text = 'Bạn có chắc chắn muốn xoá tài khoản? Tài khoản sẽ không thể khôi phục trong tương lai!!'
         if (confirm(text) == true) {
             $.post("index.php?controller=ccompany&action=deleteCompany", {
@@ -212,5 +227,5 @@
         } else {
             location.reload()
         }
-    }    
+    }
 </script>

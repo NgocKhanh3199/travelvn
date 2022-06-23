@@ -12,11 +12,11 @@
         <div class="mk-input-group">
             <label for="nhaplaimatkhau" class="form-label">Nhập Lại Mật Khẩu Mới</label>
             <input type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu mới" value="">
-            <div class="text-center mt-2"><a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#myModal">Quên mật khẩu?</a></div>
+            <!-- <div class="text-center mt-2"><a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#myModal">Quên mật khẩu?</a></div> -->
         </div>
 
         <!-- The Modal -->
-        <div class="modal" id="myModal">
+        <!-- <div class="modal" id="myModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <a href="#" class="backmodel"><i data-bs-dismiss="modal" class="fa-solid fa-arrow-left"></i></a>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="mk-button-group">
             <button class="btn btn-outline-primary" type="button" onclick="checkPassword()">Thay Đổi</button>
             <button class="btn btn-outline-primary" type="button" onclick="cancel()">Huỷ</button>
