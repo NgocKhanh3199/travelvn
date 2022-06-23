@@ -49,6 +49,18 @@
                     `)
                 }
             })
+            $('#nametour').val(t['nametour']);
+            $('#price').val(t['price-adult']);
+            $('#day-end').val(t['day-end']);
+            $('#day-star').val(t['day-start']);
+            $('#infotour').val(t['information']);
+            $('#transport').val(t['transport']);
+            $('#service').val(t['service']);
+            $('#schedule').val(t['schedule']);
+            $('#start_place').val(t['start_place']);
+            $('#number-night').val(t['numbernight']);
+            $('#number-day').val(t['numberday']);
+            
             hinhanh = t['hinhanh']
             if (hinhanh.length == 0) {
                 hinhanh = 'noimg.png'

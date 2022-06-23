@@ -79,7 +79,6 @@
             data = JSON.parse(data)
             var pricePay = 0;
             var total = 0;
-
             for (var i = 0; i < data.length; i++) {
                 pricePay = parseInt(data[i]['price_pay'])
                 total = total + pricePay;
