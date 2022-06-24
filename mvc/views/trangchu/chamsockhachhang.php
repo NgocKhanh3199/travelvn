@@ -1,4 +1,4 @@
-<div class="container-fluid m-5 p-5" id="content">
+<div class="container-fluid p-2" id="content">
     <div class="col col-10 mx-auto">
         <p class="fs-2 text-center">Chăm Sóc Khách Hàng</p>
     </div>

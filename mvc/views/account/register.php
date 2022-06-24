@@ -18,7 +18,7 @@
 
 <body>
     <div class="container-register">
-        <div class="form row g-3">
+        <form class="form row g-3 needs-validation" novalidate>
             <!-- <div class="register-close">
                 <button><i class="fa-solid fa-xmark"></i></button>
             </div> -->
@@ -29,19 +29,19 @@
                 <div class="register-by-account">
                     <div class="register-input mt-4">
                         <label for="tennguoidung" class="form-label">Tên Người Dùng</label>
-                        <input type="text" class="form-control" id="tennguoidung" placeholder="Nhập tên người dùng">
+                        <input required type="text" class="form-control" id="tennguoidung" placeholder="Nhập tên người dùng">
                     </div>
                     <div class="register-input mt-4">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                        <input required type="email" class="form-control" id="email" placeholder="Nhập email">
                     </div>
                     <div class="register-input mt-4">
                         <label for="ngaysinh" class="form-label">Ngày sinh</label>
-                        <input type="date" class="form-control" id="ngaysinh" placeholder="Nhập ngày sinh">
+                        <input required type="date" class="form-control" id="ngaysinh" placeholder="Nhập ngày sinh">
                     </div>
                     <div class="register-input mt-4">
                         <label for="matkhau" class="form-label">Mật Khẩu</label>
-                        <input type="password" class="form-control" id="matkhau" placeholder="Nhập mật khẩu">
+                        <input required type="password" class="form-control" id="matkhau" placeholder="Nhập mật khẩu">
                         <div id="eye">
                             <i class="fa-solid fa-eye"></i>
                         </div>
@@ -51,11 +51,11 @@
                 <div class="register-by-account">
                     <div class="register-input mt-4">
                         <label for="sodienthoai" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" id="sodienthoai" placeholder="Nhập số điện thoại">
+                        <input required type="text" class="form-control" id="sodienthoai" placeholder="Nhập số điện thoại">
                     </div>
                     <div class="register-input mt-4">
                         <label for="gioitinh" class="form-label">Giới Tính</label>
-                        <select class="form-select" aria-label="Default select example" id="gioitinh">
+                        <select required class="form-select" aria-label="Default select example" id="gioitinh">
                             <option selected>Chọn Giới Tính</option>
                             <option value="Nam">Nam</option>
                             <option value="Nữ">Nữ</option>
@@ -64,11 +64,11 @@
                     </div>
                     <div class="register-input mt-4">
                         <label for="tendangnhap" class="form-label">Tên Đăng Nhập</label>
-                        <input type="text" class="form-control" id="tendangnhap" placeholder="Nhập tên đăng nhập">
+                        <input required type="text" class="form-control" id="tendangnhap" placeholder="Nhập tên đăng nhập">
                     </div>
                     <div class="register-input mt-4">
                         <label for="nhaplaimatkhau" class="form-label">Nhập Lại Mật Khẩu</label>
-                        <input type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
+                        <input required type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
                         <div id="eye">
                             <i class="fa-solid fa-eye"></i>
                         </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="button-group mt-4">
-                <button class="btn btn-outline-dark" id="dangky">Đăng Ký</button>
+                <button class="btn btn-outline-dark btn-dangky" id="dangky">Đăng Ký</button>
                 <button class="btn btn-outline-dark">Huỷ</button>
             </div>
             <div class="end-register">
@@ -85,10 +85,24 @@
                     <a href="index.php?controller=cuser&action=loginpage">Đăng nhập</a>
                 </span>
             </div>
-        </div>
+        </form>
     </div>
 
     <script>
+        var forms = document.querySelectorAll('.needs-validation')
+        $('.btn-dangky').on('click', function(event) {
+            Array.prototype.slice.call(forms)
+                .forEach(function(e) {
+                    if (!e.checkValidity()) {
+                        e.classList.add('was-validated')
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        dangky()
+                    }
+                })
+        });
+
         $(document).ready(function() {
             $('#eye').click(function() {
                 $(this).toggleClass('open');
@@ -101,7 +115,7 @@
             });
         });
 
-        $('#dangky').on('click', function() {
+        function dangky() {
             var tennguoidung = $('#tennguoidung').val()
             var sodienthoai = $('#sodienthoai').val()
             var email = $('#email').val()
@@ -110,36 +124,28 @@
             var tendangnhap = $('#tendangnhap').val()
             var matkhau = $('#matkhau').val()
             var nhaplaimatkhau = $('#nhaplaimatkhau').val()
-            // if (tennguoidung == 0) {
-            //     alert('Vui lòng nhập tên người dùng!')
-            // } else if (tendangnhap == 0) {
-            //     alert('Tên đăng nhập không được bỏ trống!')
-            // } else if (matkhau == 0) {
-            //     alert('Mật khẩu không được bỏ trống!')
-            // } else if (nhaplaimatkhau == 0) {
-            //     alert('Mật khẩu không được bỏ trống!')
-            // } else if (matkhau != nhaplaimatkhau) {
-            //     alert('Mật khẩu và nhập lại mật khẩu không khớp!')
-            // } else {
-            $.post("index.php?controller=cuser&action=register", {
-                tendangnhap: tendangnhap,
-                matkhau: matkhau,
-                tennguoidung: tennguoidung,
-                email: email,
-                sodienthoai: sodienthoai,
-                gioitinh: gioitinh,
-                ngaysinh: ngaysinh
-            }, function(data) {
-                console.log(data);
-                if (data > 0) {
-                    alert('Đăng ký thành công vui lòng kiểm tra mail để kích hoạt tài khoản')
-                    // window.location.href = "index.php?controller=cuser&action=loginpage"
-                } else if (data <= 0) {
-                    alert('Đăng ký thất bại')
-                }
-            })
-            // }
-        })
+            if (matkhau != nhaplaimatkhau) {
+                alert('Mật khẩu và nhập lại mật khẩu không khớp!')
+            } else {
+                $.post("index.php?controller=cuser&action=register", {
+                    tendangnhap: tendangnhap,
+                    matkhau: matkhau,
+                    tennguoidung: tennguoidung,
+                    email: email,
+                    sodienthoai: sodienthoai,
+                    gioitinh: gioitinh,
+                    ngaysinh: ngaysinh
+                }, function(data) {
+                    console.log(data);
+                    if (data > 0) {
+                        alert('Đăng ký thành công vui lòng kiểm tra mail để kích hoạt tài khoản')
+                        // window.location.href = "index.php?controller=cuser&action=loginpage"
+                    } else if (data <= 0) {
+                        alert('Đăng ký thất bại')
+                    }
+                })
+            }
+        }
     </script>
 
 </body>

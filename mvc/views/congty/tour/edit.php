@@ -3,23 +3,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <div class="container-form">
     <h4 class="page-title">SỬA TOUR</h4>
-    <form class="frame" action="" method="">
+    <form class="frame needs-validation" novalidate>
         <div class="content-tour">
             <div class="gr-item">
                 <div class="input-group hinhanh">
                     <span class="">Hình ảnh</span>
-                    <input type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
+                    <input required type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
                 </div>
 
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Tên Tour</span>
-                    <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
+                    <input required id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
                 </div>
                 <div class="input-groupp">
                     <span class="">Nơi xuất phát</span>
-                    <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
+                    <select required id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
 
                     </select>
                 </div>
@@ -27,55 +27,55 @@
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Giá người lớn</span>
-                    <input id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
+                    <input required id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
                 </div>
                 <div class="input-groupp">
                     <span class="">Giá trẻ em</span>
-                    <input id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
+                    <input required id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Ngày Bắt Đầu</span>
-                    <input onchange="kiemtra()" id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
+                    <input required onchange="kiemtra()" id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
                 </div>
                 <div class="input-groupp">
                     <span class="">Ngày Kết Thúc</span>
-                    <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
+                    <input required onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp" id="number-day1">
                     <span class="">Số Lượng Ngày</span>
-                    <input value="` + numberday + `" type="number" id="number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+                    <input required value="` + numberday + `" type="number" id="number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
                 </div>
                 <div class="input-groupp" id="number-night1">
                     <span class="">Số Lượng Đêm</span>
-                    <input value="` + numberday + `" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
+                    <input required value="` + numberday + `" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Vận chuyển</span>
-                    <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
+                    <input required id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
                 </div>
                 <div class="input-groupp">
                     <span class="">Số hành khách</span>
-                    <input type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
+                    <input required type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
                 </div>
             </div>
 
             <div class="input-groupp p">
                 <span class="text">Mô Tả</span>
-                <textarea id="infotour" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea required id="infotour" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="input-groupp p">
                 <span class="text dichvu">Dịch vụ bao gồm và không bao gồm</span>
-                <textarea id="service" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea required id="service" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="input-groupp p">
                 <span class="text">Lịch trình</span>
-                <textarea id="schedule" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea required id="schedule" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="gr-item">
                 <div class="input-groupp it-tinh">
@@ -102,35 +102,36 @@
         </div>
 
         <div class="button-group">
-            <button class="btn btn-primary" onclick="edit()" type="button">Cập nhật</button>
+            <button class="btn btn-primary btn-edittour" type="button">Cập nhật</button>
             <a href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>" class="btn btn-primary" type="button">Thoát </a>
         </div>
     </form>
 </div>
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-edittour').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    edit()
+                }
+            })
+    });
+
     var id_tinh = null
     var idTour = <?= $_GET['idTour'] ?>;
     var idcompany = <?= $_SESSION['idcompany'] ?>;
     document.onload = load()
 
     function load() {
-        // loadDiadiem()
         loadTourByIdtour()
         loadplace()
 
     }
-
-    // function loadDiadiem() {
-    //     $.post("index.php?controller=cdiadiem&action=getDiadiem", {}, function(data) {
-    //         diadiem = JSON.parse(data)
-    //         for (i = 0; i < diadiem.length; i++) {
-    //             iddiadiem = diadiem[i]['idplace']
-    //             tendiadiem = diadiem[i]['nameplace']
-    //             $('#dgb').append('<option value="' + iddiadiem + '">' + tendiadiem + '</option>')
-    //         }
-    //     })
-    // }
-
 
     function locdiemdentheotinh() {
         tinh = $('#tinhdiemden').val()
@@ -298,7 +299,7 @@
         })
     }
 
-    function edit() { 
+    function edit() {
         hinhanh = $('#hinhanh').get(0).files;
         link = uploadFile(hinhanh, 'tour');
         console.log(hinhanh);
@@ -434,6 +435,6 @@
         <span class="">Số Lượng Đêm</span>
         <input value="` + numbernight + `" type="number" id="number-night" class="form-control" placeholder="Chọn Số Lượng Đêm">
         `)
-        
+
     }
 </script>

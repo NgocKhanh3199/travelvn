@@ -6,10 +6,6 @@ body {
     text-decoration: none;
 }
 
-.detail-tour {
-    margin-top: 100px;
-}
-
 .content-tour {
     background-color: #EEE6FF;
     padding: 40px 0;
@@ -273,17 +269,12 @@ body {
     text-decoration: none;
 }
 
-.detail-tour {
-    margin-top: 100px;
-}
-
 .content-tour {
     background-color: #EEE6FF;
     padding: 40px 0;
 }
 
 .roww {
-
     padding: 0 2%;
 }
 

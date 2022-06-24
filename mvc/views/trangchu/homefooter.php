@@ -39,11 +39,21 @@
                     <a class="icon-fb" href="#"><i class="fa-brands fa-facebook-square fa-2x"></i></a>
                     <a class="tw" href="#"><i class="fa-brands fa-twitter-square fa-2x"></i></a>
                     <a class="in" href="#"><i class="fa-brands fa-instagram-square fa-2x"></i></a>
+                    <span class="doinn" >    
+                        <div class="translate" id="google_translate_element">ENG</div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'en'
+                                }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 

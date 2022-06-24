@@ -1,7 +1,7 @@
 <script src="./public/js/js.js"></script>
 <div class="container-form">
     <h4 class="page-title">THÊM TOUR MỚI</h4>
-    <form class="frame" action="" method="">
+    <form class="frame needs-validation" novalidate>
         <div class="content-tour">
             <div class="gr-item">
                 <div class="input-group hinhanh">
@@ -12,12 +12,12 @@
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
-                    <span class="">Tên Tour</span>
-                    <input id="nametour" type="text" class="form-control" placeholder="Nhập Tên Tour">
+                    <span for="nametour" class="">Tên Tour</span>
+                    <input id="nametour" type="text" required class="form-control" placeholder="Nhập Tên Tour">
                 </div>
                 <div class="input-groupp">
                     <span class="">Nơi xuất phát</span>
-                    <select id="start_place" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example">
+                    <select id="start_place" aria-placeholder="chon tinh" required name="hotel_name" class="form-select" aria-label="Default select example">
 
                     </select>
                 </div>
@@ -25,55 +25,55 @@
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Giá người lớn</span>
-                    <input id="price-adult" type="text" class="form-control" placeholder="Nhập Giá">
+                    <input id="price-adult" type="text" class="form-control" required placeholder="Nhập Giá">
                 </div>
                 <div class="input-groupp">
                     <span class="">Giá trẻ em</span>
-                    <input id="price-child" type="text" class="form-control" placeholder="Nhập Giá">
+                    <input id="price-child" type="text" class="form-control" required placeholder="Nhập Giá">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Ngày Bắt Đầu</span>
-                    <input onchange="kiemtra()" id="day-star" type="date" class="form-control" placeholder="Chọn Ngày Bắt Đầu">
+                    <input onchange="kiemtra()" id="day-star" type="date" required class="form-control" placeholder="Chọn Ngày Bắt Đầu">
                 </div>
                 <div class="input-groupp">
                     <span class="">Ngày Kết Thúc</span>
-                    <input onchange="total()" id="day-end" type="date" class="form-control" placeholder="Chọn Ngày Kết Thúc">
+                    <input onchange="total()" id="day-end" type="date" required class="form-control" placeholder="Chọn Ngày Kết Thúc">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp" id="number-day">
                     <span class="">Số Lượng Ngày</span>
-                    <input value="` + numberday + `" type="number" id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
+                    <input value="` + numberday + `" type="number" required id="form-control number-day" class="form-control" placeholder="Chọn Số Lượng Ngày">
                 </div>
                 <div class="input-groupp" id="number-night">
                     <span class="">Số Lượng Đêm</span>
-                    <input value="` + numberday + `" type="number" id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
+                    <input value="` + numberday + `" type="number" required id="form-control number-night" class="form-control" placeholder="Chọn Số Lượng Đên">
                 </div>
             </div>
             <div class="gr-item">
                 <div class="input-groupp">
                     <span class="">Vận chuyển</span>
-                    <input id="transport" type="text" class="form-control" placeholder="Loại xe di chuyển">
+                    <input id="transport" type="text" class="form-control" required placeholder="Loại xe di chuyển">
                 </div>
                 <div class="input-groupp">
                     <span class="">Số hành khách</span>
-                    <input type="number" id="total-guest" min="1" class="form-control" placeholder="Số lượng hành khách">
+                    <input type="number" id="total-guest" min="1" class="form-control" required placeholder="Số lượng hành khách">
                 </div>
             </div>
 
             <div class="input-groupp p">
                 <span class="text">Mô Tả</span>
-                <textarea id="infotour" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea id="infotour" aria-colspan="4" type="text" required class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="input-groupp p">
                 <span class="text dichvu">Dịch vụ bao gồm và không bao gồm</span>
-                <textarea id="service" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea id="service" aria-colspan="4" type="text" required class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="input-groupp p">
                 <span class="text">Lịch trình</span>
-                <textarea id="schedule" aria-colspan="4" type="text" class="form-control t" placeholder="Nhập Mô Tả"></textarea>
+                <textarea id="schedule" aria-colspan="4" type="text" required class="form-control t" placeholder="Nhập Mô Tả"></textarea>
             </div>
             <div class="gr-item">
                 <div class="input-groupp it-tinh">
@@ -101,29 +101,43 @@
                     <!-- <p id="writeroot"></p> -->
                 </div>
 
-        <div class="input-group">
-            <div class="addplace">
-                <span>Thêm điểm đến</span>
-                <div id="totalAddress">
+                <div class="input-group">
+                    <div class="addplace">
+                        <span>Thêm điểm đến</span>
+                        <div id="totalAddress">
 
+                        </div>
+                        <p id="writeroot"></p>
+                    </div>
+                    <div class="btn-addplace">
+                        <input class="btnaddgrplace" type="button" onclick="moreFields()" value="  Thêm điểm đến  " />
+
+                    </div>
                 </div>
-                <p id="writeroot"></p>
-            </div>
-            <div class="btn-addplace">
-                <input class="btnaddgrplace" type="button" onclick="moreFields()" value="  Thêm điểm đến  " />
 
-            </div>
-        </div>
-
-        <div class="button-group">
-            <button class="btnn" onclick="add()" type="button">Thêm tour</button>
-            <a href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>" class="btnn" type="button">Thoát </a>
-        </div>
+                <div class="button-group">
+                    <button class="btnn btn-themtour"  type="button">Thêm tour</button>
+                    <a href="index.php?controller=chome&action=company&path=tour&idcompany=<?php echo $_SESSION['idcompany'] ?>" class="btnn" type="button">Thoát </a>
+                </div>
     </form>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-themtour').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    add()
+                }
+            })
+    });
+
     var idcompany = <?= $_GET['idcompany'] ?>;
     id_tinh = null;
     ten_tinh = null;
@@ -136,6 +150,9 @@
 
     }
 
+    function check() {
+
+    }
 
     function get_tinhtour() {
         id_tinh = null
