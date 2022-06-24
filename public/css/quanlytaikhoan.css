@@ -238,3 +238,6 @@
 .ip-img{
     display: none;
 }
+.display tr img {
+    max-width: 100%;
+}

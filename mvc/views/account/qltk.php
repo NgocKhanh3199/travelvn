@@ -55,6 +55,9 @@
                         <a class="nav-link text-dark" href="?controller=cuser&action=account&page=doimatkhau">Đổi mật khẩu</a>
                     </li>
 
+                    <li class="nav-item border-bottom pt-2 ps-2">
+                        <a class="nav-link text-dark" href="?controller=cuser&action=account&page=donhang">Đơn hàng của bạn</a>
+                    </li>
                 </ul>
             </div>
 

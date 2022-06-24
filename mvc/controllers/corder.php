@@ -184,4 +184,24 @@ class corder extends controller
         $data = $this->order->loadOrderLimit5();
         echo json_encode($data);
     }
+    public function loadTableOrderByIdUser()
+    {
+        $iduser = $_POST['iduser'];
+        $order = $this->order->getOrderByIdUser($iduser);
+        $stt = 0;
+        $data = [];
+        foreach ($order as $o) {
+            $stt++;
+            $idorder = $o['idorder'];
+            $idtour = $o['idtour'];
+            $iduser = $o['iduser'];
+            $priceTotal = $o['price-total'];
+            $paymentMethod = $o['payment-method'];
+            $view = '<a href="index.php?controller=cuser&action=account&page=detail_order&idorder=' . $idorder . '&iduser=' . $iduser . '" class="a-view nav-link text-success">Xem</a>';
+            $cancel = '<a href="" class = "a-delete nav-link text-danger" onclick="delete(' . $iduser . ')">Huỷ</a>';
+            $row = [$stt, $idorder, $idtour, $iduser, $priceTotal, $paymentMethod, $view, $cancel];
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
 }
