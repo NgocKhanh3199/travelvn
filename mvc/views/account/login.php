@@ -18,7 +18,7 @@
 
 <body>
     <div class="container-login">
-        <form class="row g-3">
+        <form class="row g-3 needs-validation" novalidate>
             <div class="login-close">
                 <button><i class="ti-close"></i></button>
             </div>
@@ -35,17 +35,17 @@
             <div class="login-by-account">
                 <p class="text-center mt-0 mb-0">Hoặc đăng nhập bằng tên đăng nhập</p>
                 <div class="login-input">
-                    <input type="text" class="form-control" id="tendangnhap" placeholder="Nhập tên đăng nhập">
+                    <input type="text" class="form-control" id="tendangnhap" required placeholder="Nhập tên đăng nhập">
                 </div>
                 <div class="login-input">
-                    <input type="password" class="form-control" id="matkhau" placeholder="Nhập mật khẩu">
+                    <input type="password" class="form-control" id="matkhau" required placeholder="Nhập mật khẩu">
                     <div id="eye">
                         <i class="fa-solid fa-eye"></i>
                     </div>
                 </div>
             </div>
             <div class="end-login">
-                <button class="btn btn-outline-dark w-100" type="button" onclick="login()">Đăng nhập</button>
+                <button class="btn btn-outline-dark w-100 btn-dangnhap" type="button">Đăng nhập</button>
                 <div class="forgot-pass"><a href="" data-bs-toggle="modal" data-bs-target="#myModal">Quên mật khẩu?</a></div>
                 <!-- The Modal -->
                 <div class="modal" id="myModal">
@@ -82,6 +82,20 @@
 </html>
 
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-dangnhap').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    login()
+                }
+            })
+    });
+
     $(document).ready(function() {
         $('#eye').click(function() {
             $(this).toggleClass('open');
@@ -115,12 +129,12 @@
         token = $('#token').val();
         $.post("index.php?controller=creset_pass&action=checktoken", {
             re_email: re_email,
-            token:token
+            token: token
         }, function(data) {
             // console.log(data)
             if (data > 0) {
                 alert("sucess")
-                window.location.href = "index.php?controller=chome&action=reset_pass&iduser="+data
+                window.location.href = "index.php?controller=chome&action=reset_pass&iduser=" + data
             } else {
                 alert("Sai mã xác minh")
             }

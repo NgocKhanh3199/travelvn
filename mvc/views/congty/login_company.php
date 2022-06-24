@@ -18,7 +18,7 @@
 
 <body>
     <div class="container-login">
-        <form class="row g-3">
+        <form class="row g-3 needs-validation" novalidate>
             <div class="login-close">
                 <button><i class="ti-close"></i></button>
             </div>
@@ -28,14 +28,14 @@
             <a href="index.php?controller=cuser&action=loginpage" class="text-center link-dark">Đăng nhập với tài khoản người dùng</a>
             <div class="login-by-account">
                 <div class="login-input">
-                    <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập">
+                    <input required type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập">
                 </div>
                 <div class="login-input mt-4">
-                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                    <input required type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
                 </div>
             </div>
             <div class="end-login">
-                <button class="btn btn-outline-dark w-100" onclick="login()">Đăng nhập</button>
+                <button class="btn btn-outline-dark w-100 btn-dangnhap">Đăng nhập</button>
                 <a href="index.php" class="btn btn-outline-dark w-100 mt-2">Huỷ</a>
                 <div class="forgot-pass"><a href="" data-bs-toggle="modal" data-bs-target="#myModal">Quên mật khẩu?</a></div>
                 <div class="modal" id="myModal">
@@ -70,6 +70,21 @@
 </html>
 
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-dangnhap').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    login()
+                }
+            })
+    });
+
+
     $(document).ready(function() {
         $('#eye').click(function() {
             $(this).toggleClass('open');

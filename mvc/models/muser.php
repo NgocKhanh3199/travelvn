@@ -59,7 +59,7 @@ class muser extends database{
     }
     public function getQuestionAndAnswer($iduser)
     {
-        $qr = "SELECT * FROM `question` WHERE iduser = '$iduser'";
+        $qr = "SELECT * FROM `question` WHERE iduser = '$iduser' AND xoa ='0'";
         return $this->select($qr);
     }
     public function getAllQuestion()

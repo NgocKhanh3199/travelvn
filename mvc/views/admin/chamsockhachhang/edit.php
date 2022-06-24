@@ -1,8 +1,8 @@
-<div class="container">
+<form class="container needs-validation" novalidate>
     <h3>Sửa câu trả lời</h3>
     <input type="hidden" name="" id="idquestion" value="<?php echo $_GET['idquestion'] ?>">
     <div class="mb-5 mt-5">
-        <textarea class="form-control" id="answer" rows="8" placeholder="Nhập câu trả lời"></textarea>
+        <textarea required class="form-control" id="answer" rows="8" placeholder="Nhập câu trả lời"></textarea>
     </div>
     <h6 class="mb-3"><span class="badge rounded-pill bg-info text-dark">Hiển Thị</span></h6>
     <div class="form-check form-check-inline">
@@ -14,11 +14,25 @@
         <label class="form-check-label" for="inlineRadio2">Không</label>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-        <button class="btn btn-primary me-md-2" type="button" onclick="traloi()">Sửa</button>
+        <button class="btn btn-primary me-md-2 btn-traloi" type="button">Sửa</button>
         <a class="btn btn-primary" href="?controller=chome&action=admin&path=chamsockhachhang" type="button">Huỷ</a>
     </div>
-</div>
+    </form>
 <script>
+var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-traloi').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    traloi()
+                }
+            })
+    });
+
     idquestion = $('#idquestion').val()
     document.onload = loadCauTraLoi()
 

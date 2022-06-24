@@ -1,12 +1,3 @@
-<?php
-$iduser = $_SESSION['iduser'];
-if (!$iduser) {
-    $iduser = "null";
-}
-
-?>
-
-
 <script src="./public/js/js.js"></script>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -19,16 +10,11 @@ if (!$iduser) {
 
 <body>
     <div class="detail-tour pt-2">
-        <ul class="breadcrumb" id="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
-            <li class="breadcrumb-item active"> <?php echo $_GET['page'] ?></li>
-
-        </ul>
         <div class="content-tour">
             <div class="hd roww row">
                 <div class="header-tour col-sm-6 row">
                     <div id="hd-tour">
-                        <!-- <header class="hd-tour col-sm-12">Di Linh-Tà Nung-Đà Lạt-Thác Bobla-KDL Thúy Thuận-Đồi Chè Cầu Đất-Làng Cù Lần</header> -->
+
                     </div>
                     <div class="rate" id="slyt">
 
@@ -37,7 +23,7 @@ if (!$iduser) {
 
                 <div class="button-order col-sm-6">
                     <div class="price" id="price">
-                        <!-- <p><span class="price-tour">3.000.000đ</span> /người</p> -->
+
                     </div>
                     <a href="index.php?controller=chome&action=home&page=oder&idtour=<?php echo $_GET['idtour'] ?>" class="btn-order">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -47,87 +33,19 @@ if (!$iduser) {
             </div>
             <div class="content">
                 <div class="img-tour row" id="img-tour">
-                    <!-- <div class="col-sm-7">
-                        <img class="img-fluid" src="./public/img/tour/tour.jpg" alt="">
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="row">
-                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour1.jpg" alt=""></div>
-                                    <div class="col-sm-6"><img class="img-fluid" src="./public/img/tour/tour.jpg" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 big"><img class="img-fluid " src="./public/img/tour/tour1.jpg" alt=""></div>
-                        </div>
-                    </div> -->
+
                 </div>
                 <div class="content-tour">
                     <div class="in4-tour">
                         <div class="row">
                             <div class="col-sm-5">
                                 <div class="box-in4" id="box-in4">
-                                    <!-- <p>
-                                        Ngày khởi hành: <b>23/5/2022</b>
-                                    </p>
-                                    <p>
-                                        Ngày kết thúc: <b>26/5/2022</b>
-                                    </p>
-                                    <p>
-                                        Nơi khởi hành: <b>Vũng Tàu</b>
-                                    </p>
-                                    <p>
-                                        Số chỗ còn nhận: <b>25</b>
-                                    </p> -->
+
                                 </div>
                             </div>
                             <div class="col-sm-7">
                                 <div class="group-in4" id="group-in4">
-                                    <!-- <div class="item">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                        <label>Giá vé trẻ em</label>
-                                        <p>200,000đ</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-money-bill"></i>
-                                        <label>Giá vé người lớn</label>
-                                        <p>500,000đ</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-calendar"></i>
-                                        <label>Ngày bắt đầu</label>
-                                        <p>23/5/2022</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-calendar"></i>
-                                        <label>Ngày kết thúc</label>
-                                        <p>28/5/2022</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-flag"></i>
-                                        <label>Thời gian</label>
-                                        <p>4 ngày 2 đêm</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-bus"></i>
-                                        <label>Phương tiện di chuyển</label>
-                                        <p>Xe khách</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-map"></i>
-                                        <label>Điểm tham quan</label>
-                                        <p>Bến Ninh Kiều, Chợ nổi Cái Răng</p>
-                                    </div>
-                                    <div class="item">
-                                        <i class="fa-solid fa-fire"></i>
-                                        <label>Ẩm thực</label>
-                                        <p>Theo thực đơn</p>
-                                    </div> -->
-                                    <!-- <div class="item">
-                                        <i class="fa-solid fa-map"></i>
-                                        <label>Điểm tham quan</label>
-                                        <p id="place"><span>Bến Ninh Kiều,</span> <span>Chợ nổi Cái Răng,</span> </p>
-                                    </div> -->
+
                                 </div>
                             </div>
                         </div>
@@ -136,26 +54,7 @@ if (!$iduser) {
                         <div class="calendar">
                             <h3 class="hd-calendar">Lịch trình</h3>
                             <div class="item-day" id="lich">
-                                <!-- <h2 class="day">Ngày 1</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" style="text-align: justify;">
-                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div> -->
-                                <!-- <h2 class="day" id="day">Ngày 1</h2>
-                                <div class="in4-day">
-                                    <span class="line"></span>
-                                    <div>
-                                        <div class="content-in4" id="lichtrinh" style="text-align: justify;">
-                                            <p>Nhà ga có phong cách kiến trúc độc đáo, có ba mái hình chóp, là cách điệu ba đỉnh núi Langbiang hoặc nhà rông Tây Nguyên (không bao gồm vé xe lửa).</p>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div> -->
+
                             </div>
 
                         </div>
@@ -221,18 +120,15 @@ if (!$iduser) {
 </body>
 
 </html>
-
+<?php
+if (isset($_SESSION['iduser'])) {
+    $iduser = $_SESSION['iduser'];
+} else {
+    $iduser = "null";
+}
+?>
 <script>
     var idtour = <?= $_GET['idtour'] ?>;
-    // document.onload = load()
-
-    // function load() {
-    //     loadtour()
-    //     loadComment()
-    // }
-
-
-    // var iduser = $('#iduser').val()
 
     document.onload = load()
 
@@ -461,24 +357,6 @@ if (!$iduser) {
             })
     }
 
-    // function showCommentForm() {
-    //     $.post("index.php?controller=ctour&action=permitComment", {
-    //         idtour: idtour,
-    //         iduser: iduser
-    //     }, function(data) {
-    //         data = JSON.parse(data)
-    //         if (data != "") {
-    //             $('.submit-comment').append(`
-    //                 <h4 class="mb-4 font-weight-light">Nhận xét Của Bạn</h4>
-    //                 <textarea class="form-control" id="cmtContent" rows="4" placeholder="Nhập nội dung"></textarea>
-    //                 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-    //                     <button class="btn btn-primary me-md-2" type="button" onclick="addComment()">Nhận Xét</button>
-    //                 </div>
-    //             `)
-    //         }
-    //     })
-    // }
-
     function addComment() {
         if (<?= $iduser ?> != null) {
             var iduser = <?= $iduser ?>;
@@ -517,16 +395,6 @@ if (!$iduser) {
         })
     }
 
-    // function addComment() {
-    //     var content = $('#cmtContent').val()
-    //     $.post("index.php?controller=ctour&action=addComment", {
-    //         content: content,
-    //         iduser: iduser,
-    //         idtour: idtour
-    //     }, function(data) {
-    //         alert(data)
-    //     })
-    // }
 
     function loadComment() {
         pathhinhanhuser = "./public/img/nguoidung/";

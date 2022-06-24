@@ -6,27 +6,28 @@
 </div>
 
 <script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "100435832105990");
-  chatbox.setAttribute("attribution", "biz_inbox");
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "100435832105990");
+    chatbox.setAttribute("attribution", "biz_inbox");
 </script>
 
 <!-- Your SDK code -->
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : 'v14.0'
-    });
-  };
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v14.0'
+        });
+    };
 
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 
 <!DOCTYPE html>
@@ -55,6 +56,18 @@
 
 <body>
 
+    <ul class="breadcrumb" id="breadcrumb" style="margin-top: 130px;">
+        <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
+        <li class="breadcrumb-item active">
+            <?php
+            if (isset($_GET['page'])) {                
+                echo $_GET['page'];
+            }else{
+                echo "";
+            }
+            ?>
+        </li>
+    </ul>
     <?php
     $this->view('trangchu', 'menu');
     ?>

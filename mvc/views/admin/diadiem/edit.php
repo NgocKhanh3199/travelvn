@@ -2,7 +2,7 @@
 <script src="./public/js/js.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<div class="container">
+<form class="container needs-validation" novalidate>
     <h4 class="page-title">SỬA ĐỊA ĐIỂM</h4>
     <div class="frame">
         <div class="input-group">
@@ -11,26 +11,26 @@
         </div>
         <div class="input-group">
             <span class="lb-span">Tên địa điểm</span>
-            <input id="nameplace" type="text" class="form-control ip" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="nameplace" type="text" class="form-control ip_name" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
             <label class="lb-span">Kinh độ:</label>
-            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+            <input required class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
             <label class="lb-span">Vĩ độ:</label>
-            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
+            <input required class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group">
             <span class="">Địa chỉ</span>
-            <input id="address" onchange="get_tinh()" type="text" class="form-control ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="address" onchange="get_tinh()" type="text" class="form-control ip_name" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
             <div class="input-group">
                 <div class="lb-span"></div>
-                <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
+                <select required id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
                 </select>
-                <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="iphuyen" aria-label="Default select example">
+                <select required id="district" name="hotel_name1" onchange="get_id_huyen()" class="iphuyen" aria-label="Default select example">
                 </select>
-                <select id="ward" name="hotel_name2" class="ipxa" aria-label="Default select example">
+                <select required id="ward" name="hotel_name2" class="ipxa" aria-label="Default select example">
                 </select>
             </div>
         </div>
@@ -38,16 +38,30 @@
         <div class="input-group">
             <span class="lb-span">Mô tả</span>
             <!-- <span class="input-group-text" id="basic-addon1">Xã/phường/thị trấn</span> -->
-            <textarea id="in4" class="form-control ip" aria-label="With textarea"></textarea>
+            <textarea required id="in4" class="form-control ip" aria-label="With textarea"></textarea>
         </div>
 
         <div class="button-group">
-            <button class="btn_edit" onclick="editplace()" type="button">Cập nhật</button>
+            <button class="btn_edit" type="button">Cập nhật</button>
             <button class="btn_thoat" type="button"><a href="index.php?controller=chome&action=admin&path=diadiem">Thoát</a> </button>
         </div>
     </div>
-</div>
+</form>
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn_edit').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    editplace()
+                }
+            })
+    });
+
     var iddiadiem = <?= $_GET['iddiadiem'] ?>;
     document.onload = loadDiadanhByIddiadanh();
 
@@ -91,7 +105,7 @@
             })
 
 
-            $('#in4').val(dd['infomation'])
+            $('#in4').val(dd['information'])
 
         })
     }
@@ -112,7 +126,7 @@
         vido = $('#vido').val();
 
         $.post("index.php?controller=cdiadiem&action=editplace", {
-            iddiadiem:iddiadiem,
+            iddiadiem: iddiadiem,
             hinhanh: link,
             nameplace: nameplace,
             in4: in4,

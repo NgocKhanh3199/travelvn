@@ -1,14 +1,4 @@
-<?php
-$iduser = $_SESSION['iduser'];
-if (!$iduser) {
-    $iduser = "null";
-}
 
-?>
-
-
-<link rel="stylesheet" href="./public/css/trangchu/menu1.css">
-<link rel="stylesheet" href="./public/css/trangchu/media.css">
 <link rel="stylesheet" href="./public/css/tour/tour.css">
 <script src="./public/js/js.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -17,12 +7,6 @@ if (!$iduser) {
 
 <body>
     <div class="list-tour p-2">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Photos</a></li>
-            <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
-            <li class="breadcrumb-item"><a href="#">Italy</a></li>
-            <li class="breadcrumb-item active">Rome</li>
-        </ul>
         <div class="row">
             <div class="col-sm-3 seach">
                 <div class="header-seach">
@@ -129,11 +113,6 @@ if (!$iduser) {
                             <?php
                             }
                             ?>
-                            <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -143,62 +122,19 @@ if (!$iduser) {
 </body>
 
 </html>
+<?php
+if (isset($_SESSION['iduser'])) {
+    $iduser = $_SESSION['iduser'];
+} else {
+    $iduser = "null";
+}
+?>
 <script>
     document.onload = load()
 
     function load() {
         loadtour()
     }
-
-
-    // function loadtour() {
-    //     path = "./public/img/tour/";
-    //     $.post('index.php?controller=ctour&action=getAllTour', {},
-    //         function(data) {
-    //             tour = JSON.parse(data);
-    //             for (let i = 0; i < tour.length; i++) {
-    //                 t = tour[i];
-    //                 idtour = t['idtour']
-    //                 hinhanh = t['hinhanh']
-    //                 if (hinhanh.length == 0) {
-    //                     hinhanh = 'noimg.png'
-    //                 }
-    //                 hinhanhtour = path + hinhanh
-    //                 nametour = t['nametour']
-    //                 price = t['price-adult']
-    //                 daystart = t['day-start']
-    //                 if (<?= $iduser ?> != null) {
-    //                     loadyt(idtour, <?= $iduser ?>);
-    //                 }
-    //                 $('#item-tour').append(`
-    //                 <div class="col-sm-3 item-wrap">
-    //                 <div class="khungchuaimg">
-    //                     <img src="` + hinhanhtour + `" alt="" style="width:100%">     
-
-    //                         <i class="fa-2x fa-solid fa-heart" id="` + idtour + `" onclick="touryeuthich(` + idtour + `)"></i>                        
-
-    //                 </div>
-    //                 <div class="item-meta">
-    //                     <p class="item-tua mb-1">
-    //                         <a class="item-header" href="#">` + nametour + `</a>
-    //                     </p>
-    //                     <p class="item-price md-1">
-    //                         <span class="amount" data-price="900000">` + price + `</span>
-    //                         <span>VNĐ</span>
-    //                     </p>
-    //                     <p class="item-khoihanh mb-1">
-    //                         <i class="fa-solid fa-clock"></i>
-    //                         <span>Khởi hành:</span> ` + daystart + `
-    //                     </p>
-    //                     <div class="d-flex justify-content-between">
-    //                         <a class="item-chitiet" href="index.php?controller=chome&action=home&page=detailtour&idtour=` + idtour + `">Xem chi tiết</a>
-    //                     </div>
-    //                 </div>
-    //                 </div>
-    //                 `)
-    //             }
-    //         })
-    // }
 
     function loadyt(idtour, iduser) {
 
@@ -233,7 +169,6 @@ if (!$iduser) {
                 }, function(data) {
                     console.log(data);
                     if (data >= 0) {
-                        // alert("Xoá thành công");
                         icon.classList.remove('yeuthich');
                     } else {
                         alert("Xoá thất bại");
@@ -248,7 +183,6 @@ if (!$iduser) {
                     const data = JSON.parse(rs)
                     console.log(data)
                     if (data.status) {
-                        // alert(data.message)
                         icon.classList.add('yeuthich')
                     }
                 })

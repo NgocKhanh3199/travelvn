@@ -1,19 +1,19 @@
 <div class="container dmk-container">
-    <input type="hidden" name="" id="iduser" value="<?php echo $_SESSION['iduser']?>">
-    <form>
+    <input type="hidden" name="" id="iduser" value="<?php echo $_SESSION['iduser'] ?>">
+    <form class="needs-validation" novalidate>
         <h3 class="text-center dmk-title mb-3">ĐỔI MẬT KHẨU</h3>
         <div class="container text-start p-4 border border-secondary">
             <div class="mk-input-group mb-4">
                 <label for="matkhaucu" class="form-label">Mật Khẩu Cũ</label>
-                <input type="password" class="form-control" placeholder="Nhập mật khẩu cũ" value="" id="matkhaucu">
+                <input required type="password" class="form-control" placeholder="Nhập mật khẩu cũ" value="" id="matkhaucu">
             </div>
             <div class="mk-input-group mb-4">
                 <label for="matkhaumoi" class="form-label">Mật Khẩu Mới</label>
-                <input type="password" class="form-control" id="matkhaumoi" placeholder="Nhập mật khẩu mới" value="">
+                <input required type="password" class="form-control" id="matkhaumoi" placeholder="Nhập mật khẩu mới" value="">
             </div>
             <div class="mk-input-group">
                 <label for="nhaplaimatkhau" class="form-label">Nhập Lại Mật Khẩu Mới</label>
-                <input type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu mới" value="">
+                <input required type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu mới" value="">
                 <div class="text-center mt-2"><a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#myModal">Quên mật khẩu?</a></div>
             </div>
         </div>
@@ -38,13 +38,28 @@
             </div>
         </div>
         <div class="mk-button-group mt-3">
-            <button class="btn btn-outline-primary" type="button" onclick="checkPassword()">Thay Đổi</button>
+            <button class="btn btn-outline-primary btn-doimatkhau" type="button">Thay Đổi</button>
             <a class="btn btn-outline-primary" href="index.php?controller=chome&action=admin">Huỷ</a>
         </div>
     </form>
 </div>
 
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-doimatkhau').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    checkPassword()
+                }
+            })
+    });
+
+
     var iduser = $('#iduser').val()
 
     function checkPassword() {
@@ -78,13 +93,10 @@
             iduser: iduser,
             newPassword: newPassword
         }, function(data) {
-            if(data == 1)
-            {
+            if (data == 1) {
                 alert("Đổi mật khẩu thành công!")
                 window.location.replace("index.php?controller=chome&action=admin")
-            }
-            else
-            {
+            } else {
                 alert("Đổi mật khẩu thất bại!")
             }
         })

@@ -3,10 +3,6 @@ body {
 
 }
 
-.body1 {
-    padding-top: 82px;
-}
-
 .carousel-item {
     height: 500px;
 }
@@ -56,6 +52,7 @@ body {
     color: #563B5A;
     margin: 20px 0 15px 0;
 }
+
 .item-meta .item-khoihanh i {
     font-size: 13px;
     color: #6c5c91;
@@ -134,9 +131,11 @@ body {
     margin: 10px 5px;
 
 }
-.in4-diemdulichdacsac{
+
+.in4-diemdulichdacsac {
     padding: 10px 40px;
 }
+
 .item-img-dacsac, .img-hotel {
     height: 100%;
     border-radius: 5px;
@@ -426,4 +425,8 @@ body {
 
 .dropdown-content a:hover {
     background-color: #f1f1f1;
+}
+
+#content {
+    margin-bottom: 40px;
 }

@@ -13,73 +13,57 @@
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
 </head>
 <div class="container dmk-container">
-    <form action="">
+    <form class="needs-validation" novalidate>
         <h3 class="text-center dmk-title">TẠO LẠI MẬT KHẨU</h3>
         <div class="mk-input-group">
             <label for="matkhaumoi" class="form-label">Mật Khẩu Mới</label>
-            <input type="text" class="form-control" id="matkhaumoi" placeholder="Nhập mật khẩu mới" value="">
+            <input required type="text" class="form-control" id="matkhaumoi" placeholder="Nhập mật khẩu mới" value="">
         </div>
         <div class="mk-input-group">
             <label for="nhaplaimatkhau" class="form-label">Nhập Lại Mật Khẩu Mới</label>
-            <input type="text" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu mới" value="">
+            <input required type="text" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu mới" value="">
         </div>
         <div class="mk-button-group">
-            <button type="button" class="btn btn-outline-primary" onclick="change_pass()">TIẾP THEO</button>
+            <button type="button" class="btn btn-outline-primary btn-doimatkhau">Thay đổi</button>
             <button class="btn btn-outline-primary">Huỷ</button>
         </div>
     </form>
 </div>
 
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn-doimatkhau').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    change_pass()
+                }
+            })
+    });
     iduser = <?= $_GET['iduser'] ?>
 
     function change_pass() {
         newpass = $('#matkhaumoi').val();
         newpass2 = $('#nhaplaimatkhau').val();
         if (newpass == newpass2) {
-            $.post("index.php?controller=creset_pass&action=checkpass", {
+            $.post("index.php?controller=creset_pass&action=reset", {
                 newpass: newpass,
+                newpass2: newpass2,
                 iduser: iduser,
             }, function(data) {
-                if (data == 0) {
-                    $.post("index.php?controller=creset_pass&action=reset", {
-                        newpass: newpass,
-                        newpass2: newpass2,
-                        iduser: iduser,
-                    }, function(data) {
-                        if (data > 0) {
-                            alert("sucess")
-                            window.location.href = "index.php?controller=cuser&action=loginpage"
-                        } else {
-                            console.log(data)
-                        }
-                    })
-                } else if (data == 1) {
-                    alert("Mật khẩu đã tồn tại")
+                if (data > 0) {
+                    alert("Đổi mật khẩu thành công")
+                    window.location.href = "index.php?controller=cuser&action=loginpage"
+                } else {
+                    console.log(data)
                 }
             })
         } else {
             alert("Mật khẩu không trùng khớp")
         }
-
     }
-    //     // $('#change_pass1').click(function(){
-    //     // //  old_pass = $('#matkhaucu').val()
-    //     // //  new_pass = $('#matkhaumoi').val()
-    //     // //  renew_pass = $('#nhaplaimatkhau').val()
-    //     //  alert(iduser)
-    //     // //  $.ajax({
-    //     // //      url:"index.php?controller=creset_pass&action=change_pass",
-    //     // //      method:"POST",
-    //     // //      data:{
-    //     // //          old_pass:old_pass,
-    //     // //          new_pass:new_pass,
-    //     // //          renew_pass:renew_pass
-    //     // //      },
-    //     // //      success:function(data)
-    //     // //      {
-    //     // //          console.log(data)
-    //     // //      }
-    //     // //  })
-    //  })
 </script>

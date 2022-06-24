@@ -1,56 +1,71 @@
 <link rel="stylesheet" href="./public/css/add_diadiem.css">
 <script src="./public/js/js.js"></script>
-<div class="container">
+<form class="container needs-validation" novalidate>
     <h4 class="page-title">THÊM ĐỊA ĐIỂM</h4>
     <div class="frame">
         <div class="input-group">
             <label class="lb-span">Hình ảnh:</label>
-            <input class="ip_img" type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
+            <input required class="ip_img" type="file" id="hinhanh" name="hinhanh[]" multiple="multiple">
         </div>
         <div class="input-group">
             <label class="lb-span">Tên địa điểm:</label>
-            <input class="ip_name" id="nameplace" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="nameplace" type="text" class="form-control ip_name" placeholder="Username">
         </div>
         <div class="input-group">
             <label class="lb-span">Địa chỉ:</label>
-            <input id="address" type="text" class="form-control address ip" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="address" type="text" class="form-control ip_name address" placeholder="Address">
 
         </div>
         <div class="input-group">
             <label class="lb-span">Kinh độ:</label>
-            <input class="ip_name" id="kinhdo" type="text" class="form-control" placeholder="Nhập kinh độ" aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="kinhdo" type="text" class="form-control ip_name" placeholder="Nhập kinh độ">
         </div>
         <div class="input-group">
             <label class="lb-span">Vĩ độ:</label>
-            <input class="ip_name" id="vido" type="text" class="form-control" placeholder="Nhập vĩ độ " aria-label="Username" aria-describedby="basic-addon1">
+            <input required id="vido" type="text" class="form-control ip_name" placeholder="Nhập vĩ độ ">
         </div>
         <div class="input-group">
             <div class="lb-span"></div>
-            <select id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
+            <select required id="city" aria-placeholder="chon tinh" onchange="get_huyen()" name="hotel_name" class="iptinh" aria-label="Default select example">
 
             </select>
-            <select id="district" name="hotel_name1" onchange="get_id_huyen()" class="iphuyen" aria-label="Default select example">
+            <select required id="district" name="hotel_name1" onchange="get_id_huyen()" class="iphuyen" aria-label="Default select example">
 
             </select>
-            <select id="ward" name="hotel_name2" class="ipxa" aria-label="Default select example">
+            <select required id="ward" name="hotel_name2" class="ipxa" aria-label="Default select example">
 
             </select>
         </div>
         <div class="input-group">
             <label class="lb-span">Mô tả:</label>
 
-            <textarea id="in4" class="form-control ip" aria-label="With textarea"></textarea>
+            <textarea required id="in4" class="form-control ip" aria-label="With textarea"></textarea>
         </div>
 
         <div class="button-group">
-            <button class=" btn_add" type="button" onclick="addplace()">Thêm địa điểm</button>
+            <button class=" btn_add" type="button">Thêm địa điểm</button>
             <button class=" btn_thoat" type="button"><a href="index.php?controller=chome&action=admin&path=diadiem">Thoát</a> </button>
         </div>
     </div>
-</div>
+</form>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+    var forms = document.querySelectorAll('.needs-validation')
+    $('.btn_add').on('click', function(event) {
+        Array.prototype.slice.call(forms)
+            .forEach(function(e) {
+                if (!e.checkValidity()) {
+                    e.classList.add('was-validated')
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    addplace()
+                }
+            })
+    });
+
+
     id_tinh = null;
     ten_tinh = null;
     id_huyen = null;
