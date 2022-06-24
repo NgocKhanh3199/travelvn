@@ -60,7 +60,7 @@
                 <a href="index.php?controller=chome&action=home" class="nav-link"><i class="fa-solid fa-house"></i> Trang chủ</a>
             </li>
             <li>
-                <a href="#" class="nav-link "><i class="fa-solid fa-people-group"></i> Về chúng tôi</a>
+                <a href="?page=vechungtoi" class="nav-link "><i class="fa-solid fa-people-group"></i> Về chúng tôi</a>
             </li>
             <li>
                 <a href="index.php?controller=chome&action=home&page=tour" class="nav-link"><i class="fa-solid fa-plane-departure"></i> Tour du lịch</a>
@@ -69,7 +69,7 @@
                 <a href="#" class="nav-link "><i class="fa-solid fa-hotel"></i> Khách sạn</a>
             </li>
             <li>
-                <a href="#" class="nav-link "><i class="fa-solid fa-note-sticky"></i> Kinh nghiệm du lịch</a>
+                <a href="?page=blogdulich" class="nav-link "><i class="fa-solid fa-note-sticky"></i> Kinh nghiệm du lịch</a>
             </li>
             <li>
                 <a href="index.php?controller=chome&action=home&page=chamsockhachhang" class="nav-link "><i class="fa-solid fa-circle-question"></i> Liên Hệ</a>
@@ -83,16 +83,16 @@
                 <a href="index.php?controller=chome&action=home" class="nav-link">Trang chủ</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link ">Về chúng tôi</a>
+                <a href="?page=vechungtoi" class="nav-link ">Về chúng tôi</a>
             </li>
             <li class="nav-item">
                 <a href="index.php?controller=chome&action=home&page=tour" class="nav-link">Tour du lịch</a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link ">Khách sạn</a>
-            </li>
+            </li> 
             <li class="nav-item">
-                <a href="#" class="nav-link ">Kinh nghiệm du lịch</a>
+                <a href="?page=blogdulich" class="nav-link ">Kinh nghiệm du lịch</a>
             </li>
             <li>
                 <a href="index.php?controller=chome&action=home&page=chamsockhachhang" class="nav-link "><i class="fa-solid fa-notebook"></i>Liên Hệ</a>
