@@ -17,7 +17,7 @@
 
                     </div>
                     <div class="rate" id="slyt">
-
+                        
                     </div>
                 </div>
 
@@ -165,10 +165,8 @@ if (isset($_SESSION['iduser'])) {
                 var cat = "."
                 var day = "Ngày"
                 tour = JSON.parse(data);
-                place = ""
-                for (i = 0; i < tour.length; i++) {
-                    place = place + tour[i]['nameplace'] + `, `
-                }
+                
+               
                 t = tour[0];
                 nametour = t['nametour']
                 timeday = t['numberday']
@@ -178,8 +176,7 @@ if (isset($_SESSION['iduser'])) {
                 dayend = t['day-end']
                 dayend1 = dayend.substr(8, 2) + `/` + dayend.substr(5, 2) + `/` + dayend.substr(0, 4);
                 transport = t['transport']
-                lat = t['latitude']
-                lng = t['longitude']
+
                 $.ajax({
                     url: 'https://provinces.open-api.vn/api/p/' + t['place_start'] + '?depth=1',
                     method: "GET",
@@ -333,11 +330,11 @@ if (isset($_SESSION['iduser'])) {
                                         <p>` + transport + `</p>
                                     </div>
                                     <div class="item">
-                                        <a href="map.php?lng=` + lng + `&lat=` + lat + `" class="nav-link link-dark">
-                                            <i class="fa-solid fa-map"></i>
-                                            <label>Điểm tham quan</label>
-                                            <p>` + place + `</p>
-                                        </a>
+                                    <i class="fa-solid fa-map"></i>
+                                    <label>Điểm tham quan</label>
+                                    <p id="place-map">
+                                   
+                                    </p>
                                     </div>
                                     <div class="item">
                                         <i class="fa-solid fa-fire"></i>
@@ -345,6 +342,7 @@ if (isset($_SESSION['iduser'])) {
                                         <p>Theo thực đơn</p>
                                     </div>      
                 `)
+                
                 $('#dichvu').append(`
                 <p>Dịch vụ bao gồm:</p>
                 <p>` + dichvubaogom + `</p>
@@ -354,7 +352,19 @@ if (isset($_SESSION['iduser'])) {
                 $('#price').append(`              
                 <p><span class="price-tour">` + priceadult1 + `</span> /người</p>
                 `)
+                for (i = 0; i < tour.length; i++) {
+                    place = tour[i]['nameplace']
+                    lat = tour[i]['latitude']
+                    lng = tour[i]['longitude']
+                    $('#place-map').append(`
+                    <a href="map.php?lng=` + lng + `&lat=` + lat + `" class="nav-link link-dark">
+                                            ` + place + `
+                                        </a>
+                    `)
+                    console.log(lat);
+                }
             })
+            
     }
 
     function addComment() {

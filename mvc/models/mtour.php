@@ -133,109 +133,109 @@ class mtour extends database
     }
     public function search($name)
     {
-        $qr = "SELECT * FROM `tour` WHERE nametour LIKE '%$name%' AND xoa ='0'";
+        $qr = "SELECT * FROM `tour` WHERE nametour LIKE '%$name%' AND xoa ='0' AND tour.`status` = 1";
         //$qr = "SELECT tour.hinhanh, tour.idtour, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.numberday, tour.schedule, tour.information, place.information FROM `tour`, place, detail_place WHERE tour.nametour LIKE '%$name%' AND tour.xoa = 0 AND tour.idtour = detail_place.idtour AND place.idplace = detail_place.idplace";
         return $this->select($qr);
     }
     public function getInformationByNamePlace($name)
     {
         // $qr = "SELECT place.information, place.idplace, detail_place.idplace, tour.idtour FROM `place`, detail_place, tour WHERE place.nameplace LIKE '%$name%' AND place.idplace =detail_place.idplace AND tour.idtour = detail_place.idtour";
-        $qr = "SELECT place.information, place.idplace, place.nameplace,detail_place.idplace, tour.idtour, tour.nametour, tour.hinhanh, tour.`price-adult`, 'tour.day-start', tour.xoa FROM `place`, detail_place, tour WHERE place.nameplace LIKE '%$name%' AND place.idplace =detail_place.idplace AND tour.idtour = detail_place.idtour AND tour.xoa = 0";
+        $qr = "SELECT place.information, place.idplace, place.nameplace,detail_place.idplace, tour.idtour, tour.nametour, tour.hinhanh, tour.`price-adult`, 'tour.day-start', tour.xoa FROM `place`, detail_place, tour WHERE tour.`status` = 1 AND place.nameplace LIKE '%$name%' AND place.idplace =detail_place.idplace AND tour.idtour = detail_place.idtour AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getPlaceByUniqueName($name)
     {
-        $qr = "SELECT place.information, place.idplace, place.nameplace,detail_place.idplace, tour.idtour, tour.nametour, tour.hinhanh, tour.`price-adult`, 'tour.day-start', tour.xoa FROM `place`, detail_place, tour WHERE place.nameplace LIKE '$name' AND place.idplace =detail_place.idplace AND tour.idtour = detail_place.idtour AND tour.xoa = 0";
+        $qr = "SELECT place.information, place.idplace, place.nameplace,detail_place.idplace, tour.idtour, tour.nametour, tour.hinhanh, tour.`price-adult`, 'tour.day-start', tour.xoa FROM `place`, detail_place, tour WHERE tour.`status` = 1 AND place.nameplace LIKE '$name' AND place.idplace =detail_place.idplace AND tour.idtour = detail_place.idtour AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getCityById($idplace)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, place.nameplace,place.information FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, place.nameplace,place.information FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND tour.place_start = '$idplace' AND tour.xoa = 0 GROUP BY tour.idtour";
         return $this->select($qr);
     }
     public function getCityByIdAndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` > '$minprice' AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` > '$minprice' AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getCityByIdAndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` < '$maxprice' AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` < '$maxprice' AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourOrderById()
     {
-        $qr = "SELECT * FROM `tour` WHERE xoa='0' ORDER BY idtour DESC";
+        $qr = "SELECT * FROM `tour` WHERE xoa='0' AND `status` =1 ORDER BY idtour DESC";
         return $this->select($qr);
     }
     public function getAllTourOrderByPrice()
     {
-        $qr = "SELECT * FROM `tour` WHERE xoa='0' ORDER BY `price-adult` DESC";
+        $qr = "SELECT * FROM `tour` WHERE xoa='0' AND `status` =1  ORDER BY `price-adult` DESC";
         return $this->select($qr);
     }
     public function getAllTourOrderByNumberDay()
     {
-        $qr = "SELECT * FROM `tour` WHERE xoa='0' ORDER BY numberday DESC";
+        $qr = "SELECT * FROM `tour` WHERE xoa='0' AND `status` =1  ORDER BY numberday DESC";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround1To3($idplace)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround4To7($idplace)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround8To14($idplace)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayOver14($idplace)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround1To3AndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, tour.`day-start`, tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.`price-adult` > $minprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, tour.`day-start`, tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.`price-adult` < $minprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround1To3AndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.`price-adult` < $maxprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 1 AND tour.numberday <=3 AND tour.`price-adult` > $maxprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround4To7AndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.`price-adult` > $minprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.`price-adult` < $minprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround4To7AndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.`price-adult` < $maxprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 4 AND tour.numberday <=7 AND tour.`price-adult` > $maxprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround8To14AndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.`price-adult` > $minprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.`price-adult` < $minprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayAround8To14AndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.`price-adult` < $maxprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday >= 8 AND tour.numberday <=14 AND tour.`price-adult` > $maxprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayOver14AndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.`price-adult` > $minprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.`price-adult` < $minprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getAllTourByNumberDayOver14AndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.`price-adult` < $maxprice AND tour.xoa = 0";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour, tour.numberday FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.numberday > 14 AND tour.`price-adult` > $maxprice AND tour.xoa = 0";
         return $this->select($qr);
     }
     public function getInformationByIdCity($idplace)

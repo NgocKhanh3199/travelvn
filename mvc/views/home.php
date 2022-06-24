@@ -47,7 +47,7 @@
     <!-- end-link icon -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <link rel="stylesheet" href="./public/css/trangchu/trangchu.css">
+    <!-- <link rel="stylesheet" href="./public/css/trangchu/trangchu.css"> -->
     <link rel="stylesheet" href="./public/css/trangchu/fooder.css">
     <link rel="stylesheet" href="./public/css/trangchu/menu1.css">
     <link rel="stylesheet" href="./public/css/trangchu/media.css">
@@ -56,21 +56,23 @@
 
 <body>
 
+    
+    <?php
+    $this->view('trangchu', 'menu');
+    ?>
     <ul class="breadcrumb" id="breadcrumb" style="margin-top: 130px;">
-        <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">Travelvn</a></li>
+        <li class="breadcrumb-item"><a href="index.php?controller=chome&action=home">PNTravel
+            </a></li>
         <li class="breadcrumb-item active">
             <?php
-            if (isset($_GET['page'])) {                
+            if (isset($_GET['page'])) {
                 echo $_GET['page'];
-            }else{
+            } else {
                 echo "";
             }
             ?>
         </li>
     </ul>
-    <?php
-    $this->view('trangchu', 'menu');
-    ?>
     <?php
 
     if (isset($_GET['path'])) {

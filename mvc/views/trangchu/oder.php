@@ -15,6 +15,7 @@
     <script src="https://kit.fontawesome.com/5f22631803.js" crossorigin="anonymous"></script>
     <!-- end-link icon -->
     <link rel="stylesheet" href="./public/css/order.css">
+    <link rel="stylesheet" href="./public/css/menu.css">
     
     <script src="./public/js/js.js"></script>
 

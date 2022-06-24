@@ -526,3 +526,7 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+
+#place-map a {
+    padding: 0 0;
+}

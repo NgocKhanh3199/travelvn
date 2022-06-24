@@ -551,7 +551,7 @@ if (isset($_SESSION['iduser'])) {
         $('#item-tour h4').remove()
         $('#in4-tour p').remove()
         $('#item-tour').children().remove()
-        var idplace = $('#diemden').val()
+        var idplace = $('#diemdi').val()
         //-----------------------------choose by day-----------------------
         //--1to3--
         if ($('#onetothree').prop("checked")) {
