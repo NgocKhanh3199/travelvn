@@ -92,7 +92,8 @@
             </div>
         </div>
         <div class="btn">
-            <button class="btn_thoat" onclick="thoat()">Thoát</button>
+            <button class="btn_thoat" ><a style="color: white;
+    text-decoration: none;" href="index.php?controller=chome&action=home">Thoát</a></button>
         </div>
     </div>
 
@@ -102,9 +103,6 @@
 <script>
     var iduser = <?php echo $_SESSION['iduser'] ?>;
 
-    function thoat() {
-        window.location = "index.php"
-    }
 
     date_pay = time_pay.substr(0, 4) + '/' + time_pay.substr(4, 2) + '/' + time_pay.substr(6, 2) + ' ' + time_pay.substr(8, 2) + ':' + time_pay.substr(10, 2) + ':' + time_pay.substr(12, 2);
     document.onload = add_vnpay()
