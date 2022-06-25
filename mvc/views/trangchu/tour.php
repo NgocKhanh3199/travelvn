@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="./public/css/tour/tour.css">
 <script src="./public/js/js.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -16,10 +15,6 @@
                     <div class="item-seach-go">
                         <label for="sel1" class="form-label go">Điểm đi</label>
                         <select id="diemdi" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example"></select>
-                    </div>
-                    <div class="item-seach-stan">
-                        <label for="sel1" class="form-label stan">Điểm đến</label>
-                        <select id="diemden" aria-placeholder="chon tinh" name="hotel_name" class="form-select" aria-label="Default select example"></select>
                     </div>
                     <div class="item-seach-day">
                         <label for="text" class="dayy">Số ngày</label>
@@ -298,68 +293,16 @@ if (isset($_SESSION['iduser'])) {
                         name: name
                     }, function(data) {
                         var tour = JSON.parse(data)
-                        if (data == '[]') {
+                        if (data.length === 0) {
                             $('#item-tour').append("<h4 class=''></h4>")
                         }
                         //nếu có nhiều hơn 1 thì select các tour liên quan đến keyword đó
                         else {
-                            path = "./public/img/tour/"
-                            $('#result p').append('Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp')
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
+                            renderTour(tour, false)
                         }
                     })
                 } else {
-                    path = "./public/img/tour/"
-                    $('#result p').append('Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp')
-                    $('#in4-tour p').attr('class', 'p-2')
-                    // $('#in4-tour p').append('Địa điểm: <b>' + tour[0]['nameplace'] + '</b><br>' + tour[0]['information'])
-                    $('#in4-tour p').append(tour[0]['information'])
-                    $('#header-tour p').append('Danh sách tour du lịch tại ' + tour[0]['nameplace'])
-                    img = tour[0]['hinhanh'].length > 0 ? tour[0]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                    src = path + img
-                    $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                        '<div class="khungchuaimg">' +
-                        ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                        ' <div class="item-meta">' +
-                        '  <p class="item-tua mb-1">' +
-                        ' <a class="item-header" href="#">' + tour[0]['nametour'] + '</a>' +
-                        '  </p>' +
-                        ' <p class="item-price md-1">' +
-                        '  <span class="amount" data-price="900000">' + tour[0]['price-adult'] + '</span>' +
-                        '  <span>VNĐ</span>' +
-                        '  </p>' +
-                        ' <p class="item-khoihanh mb-1">' +
-                        '     <i class="fa-solid fa-clock"></i>' +
-                        '     <span>Khởi hành:</span> ' + tour[0]['day-start'] + ' ' +
-                        ' </p>' +
-                        '  <div class="d-flex justify-content-between">' +
-                        '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                        '</div>' +
-                        '</div>' +
-                        ' </div>')
+                    renderTour(tour)
                 }
             })
         } else {
@@ -405,106 +348,19 @@ if (isset($_SESSION['iduser'])) {
         if (value == 'idtour') {
             $.post("index.php?controller=ctour&action=getAllTourOrderById", {}, function(data) {
                 tour = JSON.parse(data);
-                if (tour.length > 0) {
-                    $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                    path = "./public/img/tour/"
-                    for (var i = 0; i < tour.length; i++) {
-                        img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                        src = path + img
-                        $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                            '<div class="khungchuaimg">' +
-                            ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                            ' <div class="item-meta">' +
-                            '  <p class="item-tua mb-1">' +
-                            ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                            '  </p>' +
-                            ' <p class="item-price md-1">' +
-                            '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                            '  <span>VNĐ</span>' +
-                            '  </p>' +
-                            ' <p class="item-khoihanh mb-1">' +
-                            '     <i class="fa-solid fa-clock"></i>' +
-                            '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                            ' </p>' +
-                            '  <div class="d-flex justify-content-between">' +
-                            '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                            '</div>' +
-                            '</div>' +
-                            ' </div>')
-                    }
-                } else {
-                    $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                }
+                renderTour(tour)
             })
         }
         if (value == 'price') {
             $.post("index.php?controller=ctour&action=getAllTourOrderByPrice", {}, function(data) {
                 tour = JSON.parse(data);
-                if (tour.length > 0) {
-                    $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                    path = "./public/img/tour/"
-                    for (var i = 0; i < tour.length; i++) {
-                        img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                        src = path + img
-                        $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                            '<div class="khungchuaimg">' +
-                            ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                            ' <div class="item-meta">' +
-                            '  <p class="item-tua mb-1">' +
-                            ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                            '  </p>' +
-                            ' <p class="item-price md-1">' +
-                            '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                            '  <span>VNĐ</span>' +
-                            '  </p>' +
-                            ' <p class="item-khoihanh mb-1">' +
-                            '     <i class="fa-solid fa-clock"></i>' +
-                            '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                            ' </p>' +
-                            '  <div class="d-flex justify-content-between">' +
-                            '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                            '</div>' +
-                            '</div>' +
-                            ' </div>')
-                    }
-                } else {
-                    $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                }
+                renderTour(tour)
             })
         }
         if (value == 'numberday') {
             $.post("index.php?controller=ctour&action=getAllTourOrderByNumberDay", {}, function(data) {
                 tour = JSON.parse(data);
-                if (tour.length > 0) {
-                    $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                    path = "./public/img/tour/"
-                    for (var i = 0; i < tour.length; i++) {
-                        img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                        src = path + img
-                        $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                            '<div class="khungchuaimg">' +
-                            ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                            ' <div class="item-meta">' +
-                            '  <p class="item-tua mb-1">' +
-                            ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                            '  </p>' +
-                            ' <p class="item-price md-1">' +
-                            '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                            '  <span>VNĐ</span>' +
-                            '  </p>' +
-                            ' <p class="item-khoihanh mb-1">' +
-                            '     <i class="fa-solid fa-clock"></i>' +
-                            '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                            ' </p>' +
-                            '  <div class="d-flex justify-content-between">' +
-                            '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                            '</div>' +
-                            '</div>' +
-                            ' </div>')
-                    }
-                } else {
-                    $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                }
+                renderTour(tour)
             })
         }
     }
@@ -543,7 +399,79 @@ if (isset($_SESSION['iduser'])) {
     }
 
     //----------------------------------------------button search-option clicked------------------------------------------
+    function getAllTourByNumberDayAround1To3AndMinPrice() {
+        $.post("index.php?controller=ctour&action=getAllTourByNumberDayAround1To3AndMinPrice", {
+            idplace: idplace,
+            minprice: min
+        }, function(data) {
+            tour = JSON.parse(data);
+            if (tour.length > 0) {
+                $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
+                path = "./public/img/tour/"
+                for (var i = 0; i < tour.length; i++) {
+                    img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
+                    src = path + img
+                    $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
+                        '<div class="khungchuaimg">' +
+                        ' <img src="' + src + '" alt="" style="width:100%"></div>' +
+                        ' <div class="item-meta">' +
+                        '  <p class="item-tua mb-1">' +
+                        ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
+                        '  </p>' +
+                        ' <p class="item-price md-1">' +
+                        '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
+                        '  <span>VNĐ</span>' +
+                        '  </p>' +
+                        ' <p class="item-khoihanh mb-1">' +
+                        '     <i class="fa-solid fa-clock"></i>' +
+                        '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
+                        ' </p>' +
+                        '  <div class="d-flex justify-content-between">' +
+                        '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                        '</div>' +
+                        '</div>' +
+                        ' </div>')
+                }
+            } else {
+                $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
+            }
+        })
+    }
 
+    function renderTour(tour, search = true) {
+        if (tour.length > 0) {
+            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
+            path = "./public/img/tour/"
+            for (var i = 0; i < tour.length; i++) {
+                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
+                src = path + img
+                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
+                    '<div class="khungchuaimg">' +
+                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
+                    ' <div class="item-meta">' +
+                    '  <p class="item-tua mb-1">' +
+                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
+                    '  </p>' +
+                    ' <p class="item-price md-1">' +
+                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
+                    '  <span>VNĐ</span>' +
+                    '  </p>' +
+                    ' <p class="item-khoihanh mb-1">' +
+                    '     <i class="fa-solid fa-clock"></i>' +
+                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
+                    ' </p>' +
+                    '  <div class="d-flex justify-content-between">' +
+                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
+                    '</div>' +
+                    '</div>' +
+                    ' </div>')
+            }
+        } else {
+         if(search){
+            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
+         }
+        }
+    }
     $('#search-option').on('click', function() {
         $('#result p').remove()
         $('#item-tour').children().remove()
@@ -570,36 +498,7 @@ if (isset($_SESSION['iduser'])) {
                         minprice: min
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else if ($('#max').prop("checked")) {
@@ -611,36 +510,7 @@ if (isset($_SESSION['iduser'])) {
                         maxprice: max
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else {
@@ -648,36 +518,7 @@ if (isset($_SESSION['iduser'])) {
                     idplace: idplace
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         }
@@ -698,36 +539,7 @@ if (isset($_SESSION['iduser'])) {
                         minprice: min
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else if ($('#max').prop("checked")) {
@@ -739,36 +551,7 @@ if (isset($_SESSION['iduser'])) {
                         maxprice: max
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else {
@@ -776,36 +559,7 @@ if (isset($_SESSION['iduser'])) {
                     idplace: idplace
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         }
@@ -823,39 +577,10 @@ if (isset($_SESSION['iduser'])) {
                 } else {
                     $.post("index.php?controller=ctour&action=getAllTourByNumberDayAround8To14AndMinPrice", {
                         idplace: idplace,
-                        minprice: min
+                        maxprice: max
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else if ($('#max').prop("checked")) {
@@ -867,36 +592,7 @@ if (isset($_SESSION['iduser'])) {
                         maxprice: max
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else {
@@ -904,36 +600,7 @@ if (isset($_SESSION['iduser'])) {
                     idplace: idplace
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         }
@@ -954,36 +621,7 @@ if (isset($_SESSION['iduser'])) {
                         minprice: min
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else if ($('#max').prop("checked")) {
@@ -995,36 +633,7 @@ if (isset($_SESSION['iduser'])) {
                         maxprice: max
                     }, function(data) {
                         tour = JSON.parse(data);
-                        if (tour.length > 0) {
-                            $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                            path = "./public/img/tour/"
-                            for (var i = 0; i < tour.length; i++) {
-                                img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                                src = path + img
-                                $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                    '<div class="khungchuaimg">' +
-                                    ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                    ' <div class="item-meta">' +
-                                    '  <p class="item-tua mb-1">' +
-                                    ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                    '  </p>' +
-                                    ' <p class="item-price md-1">' +
-                                    '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                    '  <span>VNĐ</span>' +
-                                    '  </p>' +
-                                    ' <p class="item-khoihanh mb-1">' +
-                                    '     <i class="fa-solid fa-clock"></i>' +
-                                    '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                    ' </p>' +
-                                    '  <div class="d-flex justify-content-between">' +
-                                    '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    ' </div>')
-                            }
-                        } else {
-                            $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                        }
+                        renderTour(tour)
                     })
                 }
             } else {
@@ -1032,36 +641,7 @@ if (isset($_SESSION['iduser'])) {
                     idplace: idplace
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         }
@@ -1075,36 +655,7 @@ if (isset($_SESSION['iduser'])) {
                     minprice: min
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         } else if ($('#max').prop("checked")) {
@@ -1116,36 +667,7 @@ if (isset($_SESSION['iduser'])) {
                     maxprice: max
                 }, function(data) {
                     tour = JSON.parse(data);
-                    if (tour.length > 0) {
-                        $('#result').append('<p>Chúng tôi tìm thấy ' + tour.length + ' tour phù hợp</p>')
-                        path = "./public/img/tour/"
-                        for (var i = 0; i < tour.length; i++) {
-                            img = tour[i]['hinhanh'].length > 0 ? tour[i]['hinhanh'] : "2b95fc58931487994632121fc1f00833_1_55_10_20_5_2022.jpg"
-                            src = path + img
-                            $('#item-tour').append('<div class="col-sm-3 item-wrap" id="tour">' +
-                                '<div class="khungchuaimg">' +
-                                ' <img src="' + src + '" alt="" style="width:100%"></div>' +
-                                ' <div class="item-meta">' +
-                                '  <p class="item-tua mb-1">' +
-                                ' <a class="item-header" href="#">' + tour[i]['nametour'] + '</a>' +
-                                '  </p>' +
-                                ' <p class="item-price md-1">' +
-                                '  <span class="amount" data-price="900000">' + tour[i]['price-adult'] + '</span>' +
-                                '  <span>VNĐ</span>' +
-                                '  </p>' +
-                                ' <p class="item-khoihanh mb-1">' +
-                                '     <i class="fa-solid fa-clock"></i>' +
-                                '     <span>Khởi hành:</span> ' + tour[i]['day-start'] + ' ' +
-                                ' </p>' +
-                                '  <div class="d-flex justify-content-between">' +
-                                '   <a class="item-chitiet" href="index.php?controller=chome&action=detail_tour">Xem chi tiết</a>' +
-                                '</div>' +
-                                '</div>' +
-                                ' </div>')
-                        }
-                    } else {
-                        $('#item-tour').append("<h4 class='m-5 p-5 mx-auto text-center bg-light'>Không tìm thấy kết quả</h4>")
-                    }
+                    renderTour(tour)
                 })
             }
         } else {
