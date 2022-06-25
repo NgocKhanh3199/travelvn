@@ -155,12 +155,12 @@ class mtour extends database
     }
     public function getCityByIdAndMinPrice($idplace, $minprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` > '$minprice' AND tour.xoa = 0 GROUP BY tour.idtour";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` < '$minprice' AND tour.xoa = 0 GROUP BY tour.idtour";
         return $this->select($qr);
     }
     public function getCityByIdAndMaxPrice($idplace, $maxprice)
     {
-        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` < '$maxprice' AND tour.xoa = 0 GROUP BY tour.idtour";
+        $qr = "SELECT tour.hinhanh, tour.nametour, tour.`price-adult`, 'tour.day-start', tour.idtour FROM `detail_place`, place, tour WHERE tour.`status` = 1 AND  detail_place.idplace = place.idplace AND detail_place.idtour = tour.idtour AND place.city = '$idplace' AND tour.`price-adult` > '$maxprice' AND tour.xoa = 0 GROUP BY tour.idtour";
         return $this->select($qr);
     }
     public function getAllTourOrderById()
