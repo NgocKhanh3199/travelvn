@@ -17,7 +17,7 @@
 
                     </div>
                     <div class="rate" id="slyt">
-                        
+
                     </div>
                 </div>
 
@@ -165,8 +165,8 @@ if (isset($_SESSION['iduser'])) {
                 var cat = "."
                 var day = "Ngày"
                 tour = JSON.parse(data);
-                
-               
+
+
                 t = tour[0];
                 nametour = t['nametour']
                 timeday = t['numberday']
@@ -210,15 +210,17 @@ if (isset($_SESSION['iduser'])) {
                     }
                 }
                 lichtrinh = t['schedule']
-                for (i = 0; i < lichtrinh.split("Ngày").length - 1; i++) {
-                    daynumber = i + 1;
+                arrDay = lichtrinh.split("Ngày")
+                for (i = 1; i < arrDay.length; i++) {
+                    ngay1 = arrDay[i].substring(4);
+                    daynumber = i;
                     $('#lich').append(`
                          <h2 class="day">Ngày ` + daynumber + `</h2>
                                 <div class="in4-day">
                                     <span class="line"></span>
                                     <div>
                                     <div class="content-in4" id="lichtrinh" style="text-align: justify;">
-                                            
+                                            ` + ngay1 + `
                                         </div>
                                         <br>
                                     </div>
@@ -226,15 +228,7 @@ if (isset($_SESSION['iduser'])) {
                 `)
                 }
 
-                for (var i = 0; i < lichtrinh.length; i++) {
-                    if (lichtrinh[i] == cat) {
-                        lichtrinhcat = lichtrinh.slice(str1, i + 1);
-                        str1 = i + 2;
-                        $('#lichtrinh').append(`
-                                            <p>` + lichtrinhcat + `</p>
-                        `)
-                    }
-                }
+
 
                 dichvu = t['service_not_include']
                 dichvubaogom = dichvu.substring(10, dichvu.indexOf("Không bao gồm"))
@@ -342,7 +336,7 @@ if (isset($_SESSION['iduser'])) {
                                         <p>Theo thực đơn</p>
                                     </div>      
                 `)
-                
+
                 $('#dichvu').append(`
                 <p>Dịch vụ bao gồm:</p>
                 <p>` + dichvubaogom + `</p>
@@ -364,7 +358,7 @@ if (isset($_SESSION['iduser'])) {
                     console.log(lat);
                 }
             })
-            
+
     }
 
     function addComment() {
