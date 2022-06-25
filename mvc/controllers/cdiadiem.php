@@ -55,8 +55,8 @@ class cdiadiem extends controller
     }
     public function loadTableDiadiemcompany()
     {
-       
-        $diadiem = $this->diadiem->getAllDiadiem();
+        $idcompany = $_POST['idcompany'];
+        $diadiem = $this->diadiem->getAllDiadiemcompany($idcompany);
         $stt = 0;
         $data = [];
         $path = "./public/img/diadiem/";

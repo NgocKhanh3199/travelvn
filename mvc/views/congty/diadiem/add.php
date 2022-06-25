@@ -51,7 +51,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
     var forms = document.querySelectorAll('.needs-validation')
-    $('.btn-add').on('click', function(event) {
+    $('.btn_add').on('click', function(event) {
         Array.prototype.slice.call(forms)
             .forEach(function(e) {
                 if (!e.checkValidity()) {
@@ -59,7 +59,7 @@
                     event.preventDefault()
                     event.stopPropagation()
                 } else {
-                    addplace()
+                    addplace();
                 }
             })
     });

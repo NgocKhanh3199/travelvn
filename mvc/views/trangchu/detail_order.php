@@ -6,9 +6,11 @@
         <h3 class="hd_detail">CHI TIẾT ĐƠN HÀNG</h3>
     </div>
     <div class="in4_detail_order" id="in4_detail_order">
-        
+
     </div>
+
 </div>
+<div class="btn-thoat"><a href="index.php?">Thoát</a></div>
 <script>
     var idorder = <?= $_GET['idorder'] ?>;
 

@@ -23,7 +23,7 @@
                 <button><i class="ti-close"></i></button>
             </div>
             <h3 class="login-title">Đăng Nhập</h3>
-            <p class="text-center mt-0 mb-0">Tài Khoản Nhà Bán Hàng</p>
+            <p class="text-center mt-0 mb-0">Welcome back.!</p>
             <hr>
             <a href="index.php?controller=cuser&action=loginpage" class="text-center link-dark">Đăng nhập với tài khoản người dùng</a>
             <div class="login-by-account">
@@ -122,7 +122,7 @@
         }, function(data) {
             // console.log(data)
             if (data > 0) {
-                alert("sucess")
+                alert("Thành công")
                 window.location.href = "index.php?controller=chome&action=reset_pass&iduser=" + data
             } else {
                 alert("Sai mã xác minh")
@@ -142,7 +142,7 @@
         }, function(data) {
             console.log(data)
             if (data > 0) {
-                alert('sucess');
+                alert('Đăng nhập thành công');
                 window.location.href = "index.php?controller=chome&action=config";
             } else if (data <= 0) {
                 alert('Đăng nhập thất bại')

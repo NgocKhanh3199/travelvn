@@ -64,4 +64,19 @@
             })
         }
     }
+    function huydon(idorder) {
+        choice = confirm("Bạn có chắc duyệt đơn hàng.!");
+        if (choice) {
+            $.post("index.php?controller=corder&action=huyOrderByIdorder", {
+                idorder: idorder
+            }, function(data) {
+                if (data > 0) {
+                    alert("Hủy thành công !");
+                    loadTableOrder();
+                } else if (data < 0) {
+                    alert("Hủy thất bại !");
+                }
+            })
+        }
+    }
 </script>

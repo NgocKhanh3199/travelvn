@@ -34,12 +34,17 @@ class morder extends database
     }
     public function getAllOrdercp($idcompany)
     {
-        $qr = "SELECT `order`.`idorder`, `order`.`name-customer`, `order`.`phone-customer`, `order`.`email-customer`,`order`.`address-customer`, `order`.`price-total`, `order`.`status` FROM `order`, tour WHERE `order`.`idtour`=tour.idtour AND tour.idcompany ='$idcompany'";
+        $qr = "SELECT `order`.`idorder`, `order`.`name-customer`, `order`.`phone-customer`, `order`.`email-customer`,`order`.`address-customer`, `order`.`price-total`, `order`.`status` FROM `order`, tour WHERE `order`.`idtour`=tour.idtour AND tour.idcompany ='$idcompany' AND `order`.xoa=0";
         return $this->select($qr);
     }
     public function duyetOrderByIdorder($idorder)
     {
         $qr = "UPDATE `order` SET `status`='1' WHERE idorder ='$idorder'";
+        return $this->insert($qr);
+    }
+    public function huyOrderByIdorder($idorder)
+    {
+        $qr = "UPDATE `order` SET `xoa`='1' WHERE idorder ='$idorder'";
         return $this->insert($qr);
     }
     public function addbill($idorder, $total_bill)

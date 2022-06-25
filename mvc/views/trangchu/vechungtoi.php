@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:120px; height:100vh">
+<div class="container" style=" height:100vh">
     <h1 class="text-center pt-4 pb-">GIỚI THIỆU</h1>
     <p class="mt-4 pt-2" style="text-align: justify; font-family: 'Tahoma',Verdana;">Du lịch Phương Nam được thành lập với mục tiêu chính là mang lại sự hài lòng và niềm vui cho khách hàng bằng cách mang đến cho họ dịch vụ tốt nhất với giá cả tốt nhất. Chúng tôi cung cấp các tour du lịch riêng và các tour du lịch ghép đoàn tại Châu Á. Các chuyến tham quan bao gồm các chuyến đi trong ngày chọn lọc, khách sạn, du ngoạn trên biển, đưa đón và hướng dẫn viên hiếu khách đến những điểm tham quan tốt nhất. Chúng tôi có thể tùy chỉnh các chuyến tham quan trọn gói để phù hợp với túi tiền của khách hàng. Chúng tôi muốn cho bạn thấy vẻ đẹp tự nhiên tuyệt vời của Châu Á. Khu vực Châu Á là cuộc sống của chúng ta; chúng ta đang sống và hít thở nền văn hóa, truyền thống và tín ngưỡng mỗi giây phút mỗi ngày. Chúng tôi rất tự hào về sự vĩ đại của quê hương và các nước láng giềng và chúng tôi rất hân hạnh được cho bạn thấy tất cả những gì chúng tôi yêu thích về nó.
 

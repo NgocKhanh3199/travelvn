@@ -1,8 +1,6 @@
 body {
-    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
-
+background-color: #8A97F5;
     font-family: Trebuchet;
-    background-color: rgb(241, 241, 247);
 }
 
 .detail_order {
@@ -14,6 +12,7 @@ body {
     margin: 30px 20%;
     background-color: white;
     border-radius: 20px;
+    margin-top: 140px;
 }
 
 .hd_detail {
@@ -23,12 +22,12 @@ body {
 }
 
 .hd_in4_tour, .hd_in4_khachhang {
-    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    background-color: #5957F5;
     border-radius: 5px;
 }
 
 .hd_tour, .hd_khachhang {
-    color: rgb(0, 61, 114);
+    color: rgb(255, 255, 255);
     padding: 10px;
     font-size: 21px;
 }
@@ -98,7 +97,7 @@ body {
 }
 
 .hd_in4_adult, .hd_in4_child {
-    color: rgb(220, 69, 4);
+    color: #F54A36;
     margin: 20px 42px;
 }
 
@@ -131,4 +130,19 @@ body {
 
 .lb_pttt {
     padding: 0 5px;
+}
+.btn-thoat{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.btn-thoat a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    padding: 10px 20px;
+    background-color: #3533F5;
+    border-radius: 6px;
+}
+.breadcrumb{
+    display: none;
 }

@@ -1,13 +1,4 @@
-<div class="container" style="margin-top:140px;">
-    <div style="border-top: double; border-bottom: solid; padding: 0;">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb fw-bold" style="margin-bottom: 0; text-transform:uppercase;">
-                <li class="breadcrumb-item"><a href="#" class="nav-link">Home</a></li>
-                <li class="mt-2">/</li>
-                <li class=""><a href="#" class="nav-link link-dark">Library</a></li>
-            </ol>
-        </nav>
-    </div>
+<div class="container" style="">
     <div class="d-flex">
         <div style="flex-basis:80%;">
             <img src="./public/img/tour/4-20_17_7_26_21_6_2022.jpg" alt="" width="700px">

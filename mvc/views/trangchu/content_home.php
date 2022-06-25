@@ -298,58 +298,58 @@
         <div class="item-blog">
             <div class="blog-1 blog">
                 <div class="blog-1-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/2.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Travel blogger và những câu hỏi thường gặp</p>
                 </div>
             </div>
             <div class="blog-2 blog">
                 <div class="blog-2-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/3.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Blog du lịch bụi bắt đầu từ đâu?</p>
                 </div>
             </div>
             <div class="blog-3 blog">
                 <div class="blog-3-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/1.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Làm travel blogger thế nào?</p>
                 </div>
             </div>
             <div class="blog-4 blog">
                 <div class="blog-4-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/4.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Vùng trời Hà Lan</p>
                 </div>
             </div>
             <div class="blog-5 blog">
                 <div class="blog-5-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/5.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch mẹo du lịch</p>
+                    <p class="tua-blog">10 món ngon Phan Thiết </p>
                 </div>
             </div>
             <div class="blog-6 blog">
                 <div class="blog-6-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/7.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Một ngày dạo quanh Chiang Mai</p>
                 </div>
             </div>
             <div class="blog-7 blog">
                 <div class="blog-7-img">
-                    <img src="./public/img/trangchu/tour-hoi-an-1.png" alt="">
+                    <img src="./public/img/blogdulich/6.jpg" alt="">
                 </div>
                 <div class="blog-1-hd">
-                    <p class="tua-blog">mẹo du lịch</p>
+                    <p class="tua-blog">Huế một ngày tháng 7</p>
                 </div>
             </div>
         </div>

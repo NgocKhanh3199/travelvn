@@ -18,26 +18,31 @@
                     <th style="width: 5%"></th>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 <script>
+    var idcompany = <?= $_SESSION['idcompany'] ?>;
     document.onload = load()
+
     function load() {
         loadTableDiadiem()
     }
 
     function loadTableDiadiem() {
-        $.post('index.php?controller=cdiadiem&action=loadTableDiadiemcompany', {}, function(data) {
-            data = JSON.parse(data); 
+        $.post('index.php?controller=cdiadiem&action=loadTableDiadiemcompany', {
+            idcompany: idcompany,
+        }, function(data) {
+            data = JSON.parse(data);
             $('#tbDiadiem').DataTable({
                 data: data
             })
         })
     }
+
     function deleteDiadiem(iddiadiem) {
         choice = confirm("Có chắc muốn xóa địa điểm này ?");
         if (choice) {

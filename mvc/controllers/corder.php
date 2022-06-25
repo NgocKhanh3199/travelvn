@@ -127,13 +127,13 @@ class corder extends controller
             if ($status == 0) {
                 $view = '<a href="index.php?controller=chome&action=company&path=donhang&page=detail&idorder=' . $idorder . '" class="a-view">Xem</a>';
                 $edit = '<a href="" onclick="DuyetOrder(' . $idorder . ')">Duyệt đơn</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idorder . ')">Hủy đơn</a>';
+                $delete = '<a href="" class = "a-delete" onclick="huydon(' . $idorder . ')">Hủy đơn</a>';
                 $row = [$stt, $idorder, $tenkh, $phone, $email, $address, $total_bill, $edit,  $view, $delete];
                 $data[] = $row;
             } else if ($status == 1) {
                 $view = '<a href="index.php?controller=chome&action=company&path=donhang&page=detail&idorder=' . $idorder . '" class="a-view">Xem</a>';
                 $edit = '<a href="">Đã duyệt</a>';
-                $delete = '<a href="" class = "a-delete" onclick="deleteTour(' . $idorder . ')">Hủy đơn</a>';
+                $delete = '<a href="" class = "a-delete""></a>';
                 $row = [$stt, $idorder, $tenkh, $phone, $email, $address, $total_bill, $edit,  $view, $delete];
                 $data[] = $row;
             }
@@ -155,6 +155,12 @@ class corder extends controller
             }
         }
         echo json_encode($row);
+    }
+    public function huyOrderByIdorder()
+    {
+        $idorder = $_POST['idorder'];
+        $data = $this->order->huyOrderByIdorder($idorder);
+        echo json_encode($data);
     }
 
     public function loadTableTourByIdOrder()

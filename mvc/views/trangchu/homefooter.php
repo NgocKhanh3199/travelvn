@@ -40,7 +40,9 @@
                     <a class="tw" href="#"><i class="fa-brands fa-twitter-square fa-2x"></i></a>
                     <a class="in" href="#"><i class="fa-brands fa-instagram-square fa-2x"></i></a>
                     <span class="doinn" >    
-                        <div class="translate" id="google_translate_element">ENG</div>
+                        <div class="translate" id="google_translate_element">
+                            <br>
+                        </div>
                         <script type="text/javascript">
                             function googleTranslateElementInit() {
                                 new google.translate.TranslateElement({

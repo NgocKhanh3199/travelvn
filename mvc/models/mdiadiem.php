@@ -6,9 +6,9 @@ class mdiadiem extends database
         $qr = "SELECT * FROM `place`WHERE xoa ='0'";
         return $this->select($qr);
     }
-    public function getAllDiadiemcompany()
+    public function getAllDiadiemcompany($idcompany)
     {
-        $qr = "SELECT * FROM `place`WHERE xoa ='0'";
+        $qr = "SELECT place.idplace,  place.hinhanh, place.nameplace, place.`full-address` FROM `place`, tour, detail_place WHERE place.xoa=0 AND tour.idcompany ='$idcompany' AND detail_place.idplace = place.idplace AND detail_place.idtour=tour.idtour";
         return $this->select($qr);
     }
     public function getAllDiadiembyTinh($tinh)

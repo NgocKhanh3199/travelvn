@@ -44,13 +44,13 @@
     <div id="total">
         <div class="total">
         <div class="totaldoanhthuday">
-                <button class="btn" onclick="tongdoanhthubyday()">Tổng doanh thu:</button>
+                <button class="btn" onclick="tongdoanhthubyday()">Xem doanh thu</button>
                 <div id="doanhthuday">
                    
                 </div>
             </div>
             <div class="totaldoanhthu">
-                <button class="btn" onclick="tongdoanhthu()">Doanh thu công ty:</button>
+                <button class="btn" onclick="tongdoanhthu()">Tổng doanh thu:</button>
                 <div id="doanhthunam">
                 
                 </div>
