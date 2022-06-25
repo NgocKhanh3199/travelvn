@@ -23,7 +23,7 @@
                 <button><i class="ti-close"></i></button>
             </div>
             <h3 class="login-title">Đăng Nhập</h3>
-            <p class="text-center mt-0 mb-0">Hello guys</p>
+            <p class="text-center mt-0 mb-0">Welcome back!</p>
             <hr>
             <a href="index.php?controller=ccompany&action=loginpage" class="text-center link-dark">Đăng nhập với tài khoản nhà bán hàng</a>
             <div class="login-by-account">
